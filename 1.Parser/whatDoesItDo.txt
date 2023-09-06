@@ -1,0 +1,5 @@
+takeInput();
+isCommandValid();
+parseCommand();
+computeResult();
+printResult();
