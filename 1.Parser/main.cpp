@@ -1,6 +1,6 @@
-#include "parser.hpp"
+#include "Controller/Controller.hpp"
 
 int main() {
-    /*Parser parser;
-    parser.run();*/
+    Controller prog;
+    prog.run();
 }
