@@ -20,7 +20,6 @@ class CommandValidatorFacade {
 
     private:
         std::unordered_map<std::string, std::unique_ptr<CommandStructureValidator>> validators;
-        CommandStructureValidator& structureValidator; // what?!
 };
 
 #endif // COMMAND_VALIDATOR_FACADE_HPP

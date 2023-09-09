@@ -1,7 +1,6 @@
 #include "CommandValidatorFacade.hpp"
 
 CommandValidatorFacade::CommandValidatorFacade() {               // I've tried decoupling
-
     validators["add"] = std::make_unique<AddCommandValiator>();
     validators["sub"] = std::make_unique<SubtractCommandValiator>();
     validators["mul"] = std::make_unique<MultiplyCommandValiator>();
