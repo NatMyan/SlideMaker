@@ -15,17 +15,15 @@ CommandValidatorFacade::CommandValidatorFacade() {               // I've tried d
     validators["xor"] = std::make_unique<XORCommandValiator>();
     validators["xnor"] = std::make_unique<XNORCommandValiator>();
     validators["not"] = std::make_unique<NOTCommandValiator>();
-    validators["clear"] = std::make_unique<ClearCommandValiator>();
+    validators["clear"] = std::make_unique<ClearCommandValidator>();
 }
 
-bool validateCommand(std::stringstream& input) {
-    std::string commandName = "";
-    // add stuff to commandName;
+bool CommandValidatorFacade::validateCommand(std::stringstream& input) {
+    std::string commandName = extractCommand(input);
     auto it = validators.find(commandName);
     if (it != validators.end()) {
-        return it->second->validateCommand(input);
+        return it->second->validateCommandStructure(input);
     }
-    // Handle unknown command.
     return false;
 }
 

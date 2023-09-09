@@ -2,11 +2,11 @@
 #define OTHER_COMMAND_VALIDATORS_HPP
 
 #include "../CommandStructureValidator.hpp"
-/*
-class ClearCommandValiator : public CommandStructureValidator {
+
+class ClearCommandValidator : public CommandStructureValidator {
     public:
-        bool validateCommand (std::stringstream& input) override;
+        bool validateCommandStructure (std::stringstream& input) override;
 };
-*/
+
 
 #endif // OTHER_COMMAND_VALIDATORS_HPP

@@ -13,7 +13,7 @@ bool isNumeric (const std::string& token) {
 }
 
 int main() {
-    std::string input = "add or sub -ops 10 ";
+    std::string input = "add or sub -op1 10";
     std::istringstream iss(input);
     std::string s;
     std::vector<std::string> tokens;
@@ -24,6 +24,7 @@ int main() {
         command += token + " ";
     }
     command.pop_back();
+    std::cout << "Command is: " << command << std::endl;
     tokens.push_back(command);
     tokens.push_back(token);
     while (iss >> token) {

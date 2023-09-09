@@ -58,6 +58,14 @@ class CommandStructureValidator {
             return false;
         }
 
+        bool isNullOperandCommand (std::stringstream& input) {
+            auto tokens = tokenizeInput(input);
+            if (tokens.size() == 1) {
+                return true;
+            }
+            return false;
+        }
+
     private:
         bool isNumeric (const std::string& token) {
             for (char c : token) {

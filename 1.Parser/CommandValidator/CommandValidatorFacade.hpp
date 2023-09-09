@@ -15,7 +15,7 @@ class CommandValidatorFacade {
         bool validateCommand(std::stringstream& input);
 
     private:
-        void extractCommand();
+        std::string extractCommand(std::stringstream& input);
 
     private:
         std::unordered_map<std::string, std::unique_ptr<CommandStructureValidator>> validators;
