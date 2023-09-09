@@ -10,7 +10,8 @@
 
 class CommandValidatorFacade {
     public:
-        CommandValidatorFacade();        
+        CommandValidatorFacade();   
+
     public:
         bool validateCommand(std::stringstream& input);
 
@@ -19,6 +20,7 @@ class CommandValidatorFacade {
 
     private:
         std::unordered_map<std::string, std::unique_ptr<CommandStructureValidator>> validators;
+        CommandStructureValidator& structureValidator; // what?!
 };
 
 #endif // COMMAND_VALIDATOR_FACADE_HPP
