@@ -8,14 +8,12 @@
 #include <memory>
 #include <unordered_map>
 
-class CommandValidatorFacade {
+class CommandValidatorFacade : public CommandStructureValidator {
     public:
         CommandValidatorFacade();   
 
     public:
         bool validateCommand(std::stringstream& input);
-
-    private:
         std::string extractCommand(std::stringstream& input);
 
     private:

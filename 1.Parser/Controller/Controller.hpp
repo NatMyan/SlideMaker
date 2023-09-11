@@ -4,6 +4,7 @@
 class Controller {
     public:
         void run();
+        void exec();
 };
 
 #endif // CONTROLLER_HPP

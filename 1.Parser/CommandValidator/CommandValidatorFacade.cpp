@@ -28,12 +28,6 @@ bool CommandValidatorFacade::validateCommand(std::stringstream& input) {
 }
 
 std::string CommandValidatorFacade::extractCommand(std::stringstream& input) {
-    std::string token;
-    std::string startOfOperand = "-";
-    std::string command = "";
-    while (input >> token && token[0] != startOfOperand[0]) {
-        command += token + " ";
-    }
-    command.pop_back();
-    return command;
+    auto tokens = tokenizeInput(input);
+    return tokens[0];
 }

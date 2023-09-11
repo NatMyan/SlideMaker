@@ -16,7 +16,7 @@ class CommandStructureValidator {
             std::string token;
             std::string startOfOperand = "-";
             std::string command = "";
-            while (input >> token && token[0] != startOfOperand[0]) {
+            while (input >> token && token.at(0) != startOfOperand.at(0)) {
                 command += token + " ";
             }
             command.pop_back();
@@ -31,17 +31,17 @@ class CommandStructureValidator {
     protected:  // these are also pretty bad, help me
         bool isBinaryCommand (std::stringstream& input) {
             auto tokens = tokenizeInput(input);
-            if (tokens[1] == "-op1" && tokens[3] == "-op2" 
-                && isNumeric(tokens[2]) && isNumeric(tokens[4]) && tokens.size() == 5) {
+            if (tokens.at(1) == "-op1" && tokens.at(3) == "-op2" 
+                && isNumeric(tokens.at(2)) && isNumeric(tokens.at(4)) && tokens.size() == 5) {
                 return true;
             }
         }
 
         bool isMultipleOperandCommand (std::stringstream& input) {
             auto tokens = tokenizeInput(input);
-            if (tokens[1] == "-ops" && !tokens[2].empty()) {
+            if (tokens.at(1) == "-ops" && !tokens.at(2).empty()) {
                 for (int i = 2; i < tokens.size(); ++i) {
-                    if (!isNumeric(tokens[i]))
+                    if (!isNumeric(tokens.at(i)))
                         return false;
                 }
                 return true;
@@ -51,8 +51,8 @@ class CommandStructureValidator {
 
         bool isUnaryCommand (std::stringstream& input) {
             auto tokens = tokenizeInput(input);
-            if (tokens[1] == "-op" && !tokens[2].empty() 
-                && isNumeric(tokens[2]) && tokens.size() == 3) {
+            if (tokens.at(1) == "-op" && !tokens.at(2).empty() 
+                && isNumeric(tokens.at(2)) && tokens.size() == 3) {
                 return true;
             }
             return false;
