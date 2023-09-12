@@ -11,7 +11,6 @@ template <typename InputType>  // probably a useless class
 class InputHandler {
     public:        
         InputHandler (InputType inputValue);
-        ~InputHandler();
 
     public:
         std::stringstream getInput();

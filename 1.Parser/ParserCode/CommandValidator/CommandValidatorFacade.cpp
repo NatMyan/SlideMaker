@@ -1,5 +1,7 @@
 #include "CommandValidatorFacade.hpp"
 
+#include <iostream>
+
 CommandValidatorFacade::CommandValidatorFacade() {               // I've tried decoupling
     validators["add"] = std::make_unique<AddCommandValiator>();
     validators["sub"] = std::make_unique<SubtractCommandValiator>();
@@ -18,16 +20,25 @@ CommandValidatorFacade::CommandValidatorFacade() {               // I've tried d
     validators["clear"] = std::make_unique<ClearCommandValidator>();
 }
 
-bool CommandValidatorFacade::validateCommand(std::stringstream& input) {
-    std::string commandName = extractCommand(input);
-    auto it = validators.find(commandName);
-    if (it != validators.end()) {
-        return it->second->validateCommandStructure(input);
+bool CommandValidatorFacade::validateCommandStructure(std::stringstream& input) {
+    std::string commandName;
+    
+        commandName = extractCommand(input);
+    
+    try {
+        auto it = validators.find(commandName);
+        if (it != validators.end() && it->second) {
+            return it->second->validateCommandStructure(input);
+        }
+    } 
+    catch (const std::bad_alloc& e) {
+        std::cout << "help" << std::endl;
     }
+    
     return false;
 }
 
 std::string CommandValidatorFacade::extractCommand(std::stringstream& input) {
     auto tokens = tokenizeInput(input);
-    return tokens[0];
+    return tokens.at(0);
 }

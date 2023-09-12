@@ -1,7 +1,7 @@
 #ifndef PARSER2_HPP
 #define PARSER2_HPP
 
-#include "CommandValidatorFacade.hpp"
+#include "../CommandValidator/CommandValidatorFacade.hpp"
 
 #include <utility>
 
@@ -11,7 +11,7 @@ using ParsedCommandType = std::pair<std::string, std::vector<Operand>>;
 template <typename Operand>
 class Parser2 {
     public:
-        Parser2(const CommandValidatorFacade& validatorFacade) : validator(validatorFacade) {}
+        Parser2(CommandValidatorFacade& validatorFacade) : validator(validatorFacade) {}
         
     public:
         ParsedCommandType<Operand> parseCommand(std::stringstream& input);

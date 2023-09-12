@@ -1,7 +1,7 @@
 #ifndef COMMAND_STRUCTURE_VALIDATOR_HPP
 #define COMMAND_STRUCTURE_VALIDATOR_HPP
 
-#include "InputHandler.hpp"
+#include "../InputHandler/InputHandler.hpp"
 
 #include <vector>
 #include <string>

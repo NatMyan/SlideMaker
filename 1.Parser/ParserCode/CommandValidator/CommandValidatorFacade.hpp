@@ -10,10 +10,10 @@
 
 class CommandValidatorFacade : public CommandStructureValidator {
     public:
-        CommandValidatorFacade();   
-
+        CommandValidatorFacade();
+        
     public:
-        bool validateCommand(std::stringstream& input);
+        bool validateCommandStructure(std::stringstream& input) override;
         std::string extractCommand(std::stringstream& input);
 
     private:

@@ -1,5 +1,7 @@
 #include "InputHandler.hpp"
 
+#include <iostream>
+
 template <typename InputType>
 InputType input() {
     InputType inputValue;
@@ -16,13 +18,13 @@ InputHandler<InputType>::InputHandler (InputType inputValue) {
     ssInput << inputValue;
 }
 
-template <typename InputType> // typename StreamType,
+template <typename InputType> 
 std::stringstream InputHandler<InputType>::getInput () {
     return ssInput;
 }
 
 template <typename InputType>
 void InputHandler<InputType>::setInput (const InputType& newInput) {
-    std::stringstream().swap(ssIntput);
+    std::stringstream().swap(ssInput);
     ssInput << newInput;
 }
