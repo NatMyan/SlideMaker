@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall
 TARGET=MyParser
 
-SRC=$(shell find $("ParserCode") -name '*.cpp')
+SRC=$(shell find $("ParserNew") -name '*.cpp')
 OBJ=$(patsubst %.cpp, %.o, $(SRC))
 
 $(TARGET): $(OBJ)
@@ -12,5 +12,5 @@ $(TARGET): $(OBJ)
 	$(CC) -c $< -o $@
 
 clean:
-	rm -rf $(shell find $("ParserCode") -name '*.o') *.o
+	rm -rf $(shell find $("ParserNew") -name '*.o') *.o
 

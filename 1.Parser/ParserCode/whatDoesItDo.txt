@@ -1,8 +1,0 @@
-run();
-
-takeInput();
-isCommandValid();
-parseCommand();
-computeResult();
-printResult();
-
