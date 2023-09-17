@@ -1,4 +1,4 @@
-#include "Controller/Controller.hpp"
+#include "Controller.hpp"
 
 int main() {
     Controller prog;

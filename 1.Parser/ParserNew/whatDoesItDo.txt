@@ -16,7 +16,6 @@ template <typename Operand>
 class FullCommand {
 public:
     void addArgument(const std::string& key, Operand value);
-    // Other methods for manipulating the command.
 };
 
 // Parser class
@@ -30,7 +29,6 @@ public:
 template <typename Operand>
 class CommandRegistry {
 public:
-    void registerCommand(const std::string& commandName, const FullCommand<Operand>& command);
     FullCommand<Operand> findCommand(const std::string& commandName);
 };
 

@@ -2,21 +2,22 @@
 #define COMMAND_HPP
 
 // #include "definitons.hpp"
+#include "Tokenizer.hpp"
 
 #include <string>
-#include <unordered_map>
+#include <map>
 #include <vector>
 
 template <typename Operand>
-using CommandStructureUnderlyingType = std::pair<std::string, std::vector<std::unordered_map<std::string, Operand>>>;
+using CommandStructureUnderlyingType = std::pair<std::string, std::map<std::string, std::vector<Operand>>>;
 
 template <typename Operand>
 class CommandStructure {
     public:
-        CommandStructureUnderlyingType<Operand> addArgument(std::string line);
+        CommandStructureUnderlyingType<Operand> rebuldCommand (const std::string& input);
 
-    private:
-        std::vector<std::unordered_map<std::string, Operand>> commandStructure;
+    /*private:
+        std::vector<std::map<std::string, Operand>> commandStructure;*/
 };
 
 #endif // COMMAND_HPP
