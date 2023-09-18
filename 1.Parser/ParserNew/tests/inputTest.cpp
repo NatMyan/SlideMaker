@@ -10,4 +10,6 @@ std::string readInput (std::istream& input) {
 int main () {
     std::istringstream input_stream("Line 1\nLine 2\nLine 3");
     std::cout << readInput(input_stream) << std::endl; // Line 1
+    std::string emptyy = "";
+    std::cout << "is empty: " << emptyy.empty() << std::endl;
 }

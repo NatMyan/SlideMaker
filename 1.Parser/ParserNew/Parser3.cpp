@@ -1,13 +1,13 @@
 #include "Parser3.hpp"
 
 template <typename Operand>
-CommandStructureUnderlyingType<Operand> Parser3<Operand>::parseCommand(std::string line) {
+CommandUnderlyingType<Operand> Parser3<Operand>::parseCommand(std::string line) {
     CommandRegistry cmdReg;    
-    CommandStructureUnderlyingType parsedCmd;
+    CommandUnderlyingType parsedCmd;
 
-    if (cmdReg.findCommandName(line)) {
-        CommandStructure cmdStruct;
-        parsedCmd = cmdStruct.rebuldCommand(line);
+    if (cmdReg.findCommand(line)) {
+        Command cmdStruct;
+        parsedCmd = cmdStruct.addArgument(line);
     }
 
     return parsedCmd;

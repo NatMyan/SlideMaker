@@ -1,8 +1,43 @@
-#include "CommandStructure.hpp"
+#include "Command.hpp"
 
 template <typename Operand>
-CommandStructureUnderlyingType<Operand> CommandStructure<Operand>::rebuldCommand(const std::string& input) {
-    std::map<std::string, std::vector<Operand>>> commandStructure;
+CommandUnderlyingType<Operand> Command<Operand>::addArgument(const std::string& input) {
+    CommandUnderlyingType<Operand> command;
+
+    auto index = input.find("-");
+    if (index == std::string::npos) {
+        return command;
+    }
+
+    auto commandName = input.substr(0, index);
+    auto subInput = input.substr(index);
+
+    Tokenizer token;
+
+    while (!subInput.empty()) {
+        auto currTokenPair = token.getToken(subInput);
+        auto opName = currTokenPair.first;
+        subInput = currTokenPair.second;
+
+        currTokenPair = token.getToken(subInput);
+        auto numStr = currTokenPair.first;
+        subInput = currTokenPair.second;
+       
+        try {   
+            command.second[opName].push_back(std::stod(numStr)); 
+        }
+        catch (const std::invalid_argument&) {
+
+        }
+    }
+
+    command.first = commandName;
+    return command;
+}
+   
+    
+    
+    /*std::map<std::string, std::vector<Operand>>> command;
     Tokenizer token;
     auto index = input.find("-");
     auto commandName = input.substr(0, index);
@@ -17,7 +52,7 @@ CommandStructureUnderlyingType<Operand> CommandStructure<Operand>::rebuldCommand
             auto num = currToken.first;
             subInput = currToken.second;
             
-            commandStructure[opName].push_back(num);
+            command[opName].push_back(num);
         }
     }
     else {
@@ -28,11 +63,11 @@ CommandStructureUnderlyingType<Operand> CommandStructure<Operand>::rebuldCommand
             auto currToken = token.getToken(subInput);
             auto num = currToken.first;
             subInput = currToken.second;
-            commandStructure[opName].push_back(num);
+            command[opName].push_back(num);
         }
     }
-    return {commandName, commandStructure};
-}
+    return {commandName, command};
+*/
 
     // the input is a copy, cause the first part will be gone when taking the rest of the structure
     // map, cause the order matters most of the time

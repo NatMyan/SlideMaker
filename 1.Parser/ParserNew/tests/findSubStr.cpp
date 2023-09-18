@@ -65,5 +65,23 @@ int main() {
     }
     std::cout << std::endl;
 
+    // ----------------------------------------------------------------------
+    std::string input2 = "create add -op1 12 -op2 22";
+    
+    std::istringstream iss(input2);
+    std::string firstWord;
+    iss >> firstWord;
+
+    std::string createCommand = "";
+
+    if (firstWord == "create") {
+        // Handle the "create" command separately
+        createCommand = input.substr(firstWord.length()+1);
+        std::cout << "Processing 'create' command: " << createCommand << std::endl;
+        // Handle the 'create' command logic here
+    }
+
+    std::cout << "create cmd:" << createCommand << std::endl;
+
     return 0;
 }

@@ -1,19 +1,18 @@
 #ifndef COMMAND_REGISTRY_HPP
 #define COMMAND_REGISTRY_HPP
 
-#include "CommandStructure.hpp"
+#include "Command.hpp"
 
 class CommandRegistry {
     public:
         CommandRegistry();
     
     public:    
-        template <typename Operand>
-        bool findCommandName (const std::string& commandName);
+        bool findCommand (const std::string& commandName);
 
     private: 
-        std::vector<std::string> commands;
-        std::vector<std::string> combCommands;
+        std::vector<CommandUnderlyingType<double>> instantCmds;
+        std::vector<CommandUnderlyingType<double>> conserverCmds;
 };
 
 #endif // COMMAND_REGISTRY_HPP

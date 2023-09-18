@@ -11,7 +11,6 @@ std::pair<TokenType, ArgType> Tokenizer::getToken(const std::string& inputStr) {
     }
 
     std::string token = input.substr(0, pos);
-
     input.erase(0, pos + 1);
 
     return {token, input};
