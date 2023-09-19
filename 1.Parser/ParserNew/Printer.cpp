@@ -3,7 +3,7 @@
 #include <iostream>
 
 // template <typename Operand>
-void Printer::printResult (std::string result) {
+void Printer::printResult (double result) {
     std::cout << "Result: " << result << std::endl;
 }
 

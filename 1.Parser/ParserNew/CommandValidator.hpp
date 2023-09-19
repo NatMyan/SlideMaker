@@ -6,6 +6,10 @@
 class CommandValidator {
     public:
         bool isCommandValid (CommandUnderlyingType<double> parsedCmd);
+        
+    private:
+        template <typename T>
+        bool areAllInts(const std::vector<T>& vec);
 };
 
 #endif // COMMAND_VALIDATOR_HPP

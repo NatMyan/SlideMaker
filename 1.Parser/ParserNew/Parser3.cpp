@@ -1,9 +1,8 @@
 #include "Parser3.hpp"
 
-template <typename Operand>
-CommandUnderlyingType<Operand> Parser3<Operand>::parseCommand(std::string line) {
+CommandUnderlyingType<double> Parser3::parseCommand(std::string line) {
     CommandRegistry cmdReg;    
-    CommandUnderlyingType parsedCmd;
+    CommandUnderlyingType<double> parsedCmd;
 
     if (cmdReg.findCommand(line)) {
         Command cmdStruct;

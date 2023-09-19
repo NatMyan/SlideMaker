@@ -6,8 +6,7 @@
 class Printer {
     public:
         // template <typename Operand>
-        void printResult(std::string result);
-        
+        void printResult(double result);        
         void printInvalidCommandError();
 };
 

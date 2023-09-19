@@ -1,6 +1,7 @@
 #include "CommandValidator.hpp"
 
 #include <type_traits>
+#include <algorithm>
 
 bool CommandValidator::isCommandValid (CommandUnderlyingType<double> parsedCmd) {
     // vector - parsedCmd.second.begin()->second;
@@ -8,8 +9,8 @@ bool CommandValidator::isCommandValid (CommandUnderlyingType<double> parsedCmd) 
     auto endIt = parsedCmd.second.end();
 
     for (; it != endIt; ++it) {
-        if (!std::is_arithmetic<decltype(it->second)>::value) {
-            return false;
+        if (std::is_arithmetic<decltype(it->second)>::value) {
+            return true;
         }
     }
     
@@ -21,10 +22,23 @@ bool CommandValidator::isCommandValid (CommandUnderlyingType<double> parsedCmd) 
         for (; it != endIt; ++it) {
             const std::vector<double>& values = it->second;
             for (const double& value : values) {
-                if (value != 1 || value != 0) {
-                    return false;
+                if (value == 1 || value == 0) {
+                    return true;
                 }
             }
         }
     }
+    
+    if (parsedCmd.first == "mod" && areAllInts(parsedCmd.second.begin()->second)) {
+        return true;
+    }
+
+    return false;
+}
+
+template <typename T>
+bool CommandValidator::areAllInts(const std::vector<T>& vec) {
+    return std::all_of(vec.begin(), vec.end(), [](const T& element) {
+        return std::is_same<T, int>::value;
+    });
 }

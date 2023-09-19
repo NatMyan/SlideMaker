@@ -5,11 +5,16 @@
 #include "CommandRegistry.hpp"
 
 #include <string>
+#include <utility>
 
-template <typename Operand>
+
 class Parser3 {
     public:
-        CommandUnderlyingType<Operand> parseCommand(std::string line);
+        CommandUnderlyingType<double> parseCommand(std::string line);
 };
 
+/*
+template <>
+CommandUnderlyingType<double> Parser3<double>::parseCommand(const std::string& command);
+*/
 #endif // PARSER_3_HPP

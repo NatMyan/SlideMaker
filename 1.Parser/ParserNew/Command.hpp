@@ -11,10 +11,9 @@
 template <typename Operand>
 using CommandUnderlyingType = std::pair<std::string, std::map<std::string, std::vector<Operand>>>;
 
-template <typename Operand>
 class Command {
     public:
-        CommandUnderlyingType<Operand> addArgument (const std::string& input);
+        CommandUnderlyingType<double> addArgument (const std::string& input);
 
 };
 

@@ -1,12 +1,11 @@
-/*#ifndef INPUT_READER_HPP
+#ifndef INPUT_READER_HPP
 #define INPUT_READER_HPP
 
-#include <iostream>
+#include <string>
 
-std::string readInputLine (std::istream& input) {
-    std::string line;
-    std::getline(input, line);
-    return line;
-}
+class InputReader {
+    public:
+        std::string readInputLine();
+};
 
-#endif // INPUT_READER_HPP*/
+#endif // INPUT_READER_HPP

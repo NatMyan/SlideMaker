@@ -1,8 +1,9 @@
 #include "Command.hpp"
 
-template <typename Operand>
-CommandUnderlyingType<Operand> Command<Operand>::addArgument(const std::string& input) {
-    CommandUnderlyingType<Operand> command;
+#include <stdexcept>
+
+CommandUnderlyingType<double> Command::addArgument(const std::string& input) {
+    CommandUnderlyingType<double> command;
 
     auto index = input.find("-");
     if (index == std::string::npos) {
@@ -26,7 +27,7 @@ CommandUnderlyingType<Operand> Command<Operand>::addArgument(const std::string& 
         try {   
             command.second[opName].push_back(std::stod(numStr)); 
         }
-        catch (const std::invalid_argument&) {
+        catch (const std::invalid_argument& e) {
 
         }
     }
