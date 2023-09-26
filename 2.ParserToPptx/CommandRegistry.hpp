@@ -8,8 +8,8 @@ using CommandNameType = std::string;
 class CommandRegistry {
     public:
         CommandRegistry ();
-
-    public:    
+        
+    public:
         CommandNameType findCommand (const std::string& commandName); // commandName is from getToken
 
     private:

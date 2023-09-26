@@ -10,10 +10,12 @@
 
 using ArgumentType = std::variant<std::string, int, double>;
 using CommandType = std::tuple<int, CommandNameType, std::map<std::string, ArgumentType> >;
+/// TODO: remove tuple[0] or not ???
 
 class Parser4 {
     public:
         std::variant<CommandType, std::string> parseCommand(std::istream& input);
+        
     private:
         ArgumentType parseArgumentValue(const std::string& argValue);
 };

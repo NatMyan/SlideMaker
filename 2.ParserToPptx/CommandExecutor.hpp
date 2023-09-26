@@ -4,12 +4,14 @@
 #include "Parser4.hpp"
 #include "CommandValidator.hpp"
 
+using ID = int;
+
 class CommandExecutor {
     public:
         virtual void execute (CommandType parsedCmd) = 0;
 
     protected:
-        std::vector<std::variant<bool, std::map<std::string, ArgumentType> > > itemStorage_;
+        static std::vector<std::tuple<ID, std::variant<bool, std::map<std::string, ArgumentType> > > > itemStorage_;
         static int index_;
 };
 
