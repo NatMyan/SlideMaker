@@ -11,7 +11,8 @@ class CommandExecutor {
         virtual void execute (CommandType parsedCmd) = 0;
 
     protected:
-        static std::vector<std::tuple<ID, std::variant<bool, std::map<std::string, ArgumentType> > > > itemStorage_;
+        // static std::vector<std::tuple<ID, std::variant<bool, std::map<std::string, ArgumentType> > > > itemStorage_;
+        static std::vector<std::tuple<ID, std::map<std::string, ArgumentType> > > itemStorage_;
         static int index_;
 };
 

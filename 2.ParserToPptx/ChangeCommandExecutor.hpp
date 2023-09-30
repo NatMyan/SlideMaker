@@ -6,8 +6,6 @@
 class ChangeCommandExecutor : public CommandExecutor {
     public:
         void execute (CommandType parsedCmd);
-    private:
-        void changeCommand();
 };
 
 #endif // CHANGE_COMMAND_EXECUTOR_HPP
