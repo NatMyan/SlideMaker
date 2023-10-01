@@ -2,7 +2,8 @@
 
 CommandRegistry::CommandRegistry () : 
     commandSpec_ {
-        "add", "remove", "change", "display"
+        "add", "remove", "change", "display", 
+        "list", "exit", "save", "load"
     }
 {}
 

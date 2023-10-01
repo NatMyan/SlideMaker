@@ -17,17 +17,17 @@ std::variant<CommandType, std::string> Parser4::parseCommand(std::istream& input
             tokenizer.takeToken(input);
             auto argName = tokenizer.getToken();
             std::string dash = "-";
-            if (argName.empty() || argName.at(0) != dash.at(0) || input.eof()) // Idk if eof() is needed, probably not
+            if (argName.at(0) != dash.at(0) || input.eof()) // Idk if eof() is needed, probably not
                 return wrongSyntaxErrorMsg;
 
             tokenizer.takeToken(input);
             auto argValue = tokenizer.getToken();
             if (argValue.empty() || input.eof()) // Idk if eof() is needed
                 return wrongSyntaxErrorMsg;
-            ///TODO: convert argValue to its type
             std::get<2>(parsedCmd)[argName] = parseArgumentValue(argValue);
         }
     }
+    return parsedCmd;
 }
 
 ArgumentType Parser4::parseArgumentValue(const std::string& argValue) {

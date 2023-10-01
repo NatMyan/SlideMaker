@@ -9,13 +9,12 @@ using ID = int;
 class CommandExecutor {
     public:
         virtual void execute (CommandType parsedCmd) = 0;
+        virtual ~CommandExecutor() = default;
 
     protected:
         // static std::vector<std::tuple<ID, std::variant<bool, std::map<std::string, ArgumentType> > > > itemStorage_;
         static std::vector<std::tuple<ID, std::map<std::string, ArgumentType> > > itemStorage_;
-        static int index_;
+        static int id_;
 };
-
-int CommandExecutor::index_ = 0;
 
 #endif // COMMAND_EXECUTOR_HPP

@@ -4,15 +4,28 @@
 
 void DisplayCommandExecutor::execute (CommandType parsedCmd) {
     if (std::get<1>(parsedCmd) == "display") {
-        for (const auto& item : itemStorage_) {
-            std::cout << "ID: " << std::get<0>(item) << " ";
-            // if constexpr (std::is_same_v <decltype(std::get<1>(item)), std::map<std::string, ArgumentType> >) {
+        if (std::get<2>(parsedCmd).empty()) {
+            for (const auto& item : itemStorage_) {
+                std::cout << "ID: " << std::get<0>(item) << " ";
                 const auto mapValue = std::get<1>(item);
-                for (const auto& mp : mapValue) {  // what ?
+                for (const auto& mp : mapValue) {  
                     std::cout << mp.first << " " << convertToString(mp.second) << std::endl;
                 }
                 std::cout << std::endl;
-           //  }
+            }
+        }
+        else if (std::get<2>(parsedCmd).find("-id") != std::get<2>(parsedCmd).end()) { 
+            for (const auto& item : itemStorage_) {
+                int itemID = std::get<0>(item);
+                int displayerID = std::get<int>(std::get<2>(parsedCmd)["-id"]);
+                if (itemID == displayerID) {
+                    const auto mapValue = std::get<1>(item);
+                    for (const auto& mp : mapValue) {  
+                        std::cout << mp.first << " " << convertToString(mp.second) << std::endl;
+                    }
+                    break;
+                }
+            }
         }
     }
 }
