@@ -4,18 +4,23 @@
 
 void Controller::run() {
     while (true) {
-        std::string inputLine;
         InputReader inputReader;
-        std::istream& input = inputReader.readInputLine(std::cin, inputLine);
+
+        char endOfLineToken = '\n';
+        // inputReader.readInputLine(std::cin, endOfLineToken); // yikes
+
         Parser4 parser;
-        auto command = parser.parseCommand(input);
+        auto command = parser.parseCommand(std::cin, endOfLineToken);
+
         if (std::holds_alternative<CommandType>(command)) {
             CommandType cmd = std::get<CommandType>(command);
             CommandValidator validator;
+
             if (validator.isCommandValid(cmd)) {
                 std::string cmdName = std::get<1>(cmd);
                 CommandExecutorFactory execFactory;
                 std::unique_ptr<CommandExecutor> executor = execFactory.createCommandExecutor(cmdName);
+
                 if (executor == nullptr) {
                     std::string errorMsg = "wrong_command_2";
                     /// TODO: parser checks for the right command, there should be no need for this

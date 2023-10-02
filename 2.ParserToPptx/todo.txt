@@ -1,0 +1,3 @@
+change cmd
+input reader
+command validator
