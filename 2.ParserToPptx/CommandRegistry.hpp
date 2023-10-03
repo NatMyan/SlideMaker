@@ -10,7 +10,7 @@ class CommandRegistry {
         CommandRegistry ();
         
     public:
-        CommandNameType findCommand (const std::string& commandName); // commandName is from getToken
+        CommandNameType findCommand (const std::string& commandName); // commandName is from takeToken
 
     private:
         std::vector<CommandNameType> commandSpec_;

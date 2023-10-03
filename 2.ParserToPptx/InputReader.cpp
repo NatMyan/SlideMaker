@@ -1,11 +1,8 @@
 #include "InputReader.hpp"
 
-std::istream& InputReader::readInputLine (std::istream& input, char endOfLineToken) {
-    // std::getline(input, line);
-    // return input; 
-    char currentChar;
+std::string InputReader::readInputLine (std::istream& input, const char& endOfLineToken) {
     std::string line;
-    // line.clear();
+    char currentChar;
 
     while (input.get(currentChar)) {
         if (currentChar == endOfLineToken) {
@@ -13,7 +10,6 @@ std::istream& InputReader::readInputLine (std::istream& input, char endOfLineTok
         }
         line += currentChar;
     }
-    // std::string line(std::istreambuf_iterator<char>(input), {});
 
-    return input;
+    return line;
 }

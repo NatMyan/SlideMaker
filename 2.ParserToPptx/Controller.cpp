@@ -4,13 +4,14 @@
 
 void Controller::run() {
     while (true) {
+        std::istream& inputStream = std::cin;
         InputReader inputReader;
 
         char endOfLineToken = '\n';
-        // inputReader.readInputLine(std::cin, endOfLineToken); // yikes
+        auto input = inputReader.readInputLine(inputStream, endOfLineToken); // yikes
 
         Parser4 parser;
-        auto command = parser.parseCommand(std::cin, endOfLineToken);
+        auto command = parser.parseCommand(input, endOfLineToken);
 
         if (std::holds_alternative<CommandType>(command)) {
             CommandType cmd = std::get<CommandType>(command);

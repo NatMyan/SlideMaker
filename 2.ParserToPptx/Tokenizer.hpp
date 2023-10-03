@@ -6,8 +6,7 @@
 
 class Tokenizer {
     public: 
-        std::istream& takeToken(std::istream& input, char endOfLineToken);
-        std::string getToken();
+        std::string takeToken (std::istringstream& iss, const char& endOfLineToken);
 
     private:
         std::string token_ = "";

@@ -1,23 +1,21 @@
 #include "Tokenizer.hpp"
 
-std::istream& Tokenizer::takeToken (std::istream& input, char endOfLineToken) {
-    // input >> token_; 
-    // return input;   
+#include <iostream>
+#include <sstream>
+
+std::string Tokenizer::takeToken (std::istringstream& iss, const char& endOfLineToken) {
     char nextChar;
-    input.get(nextChar);
-    
-    if (nextChar == endOfLineToken) {
-        token_ = endOfLineToken; 
+    iss.get(nextChar);
+    // std::cout << "next char: []" << nextChar << "[]" << std::endl;
+    if (nextChar == endOfLineToken || nextChar == '\0') {
+        token_ = endOfLineToken;
+        return token_; 
     } 
     else {
-        input.putback(nextChar); 
-        input >> token_; 
+        iss.putback(nextChar); 
+        iss >> token_; 
     }
-    
-    return input;
-}
-
-std::string Tokenizer::getToken () {
     return token_;
 }
+
 

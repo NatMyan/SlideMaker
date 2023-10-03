@@ -14,7 +14,7 @@ using CommandType = std::tuple<int, CommandNameType, std::map<std::string, Argum
 
 class Parser4 {
     public:
-        std::variant<CommandType, std::string> parseCommand(std::istream& input, char endOfLineToken);
+        std::variant<CommandType, std::string> parseCommand(std::string input, const char& endOfLineToken);
         
     private:
         ArgumentType parseArgumentValue(const std::string& argValue);

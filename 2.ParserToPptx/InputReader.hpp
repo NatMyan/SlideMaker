@@ -2,11 +2,11 @@
 #define INPUT_READER_HPP
 
 #include <istream>
-#include <string>
+#include <sstream>
 
 class InputReader {
     public:
-        std::istream& readInputLine (std::istream& input, char endOfLineToken);
+        std::string readInputLine (std::istream& input, const char& endOfLineToken);
 };
 
 #endif // INPUT_READER_HPP
