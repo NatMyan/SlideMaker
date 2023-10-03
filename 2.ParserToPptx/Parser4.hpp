@@ -1,7 +1,6 @@
 #ifndef PARSER_4_HPP
 #define PARSER_4_HPP
 
-// #include "Command.hpp"
 #include "CommandRegistry.hpp"
 
 #include <map>

@@ -1,6 +1,6 @@
 #ifndef ELLIPSE_HPP
 #define ELLIPSE_HPP
 
-#include "Item.hpp"
+#include "Shape.hpp"
 
 #endif // ELLIPSE_HPP

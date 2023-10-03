@@ -1,6 +1,6 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 
-#include "Item.hpp"
+#include "Shape.hpp"
 
 #endif // RECTANGLE_HPP

@@ -6,6 +6,7 @@
 class Printer {
     public:
         void printErrorMsg(const std::string& msg);
+        void printSuccessMsg (const std::string& msg);
 };
 
 #endif // PRINTER_HPP

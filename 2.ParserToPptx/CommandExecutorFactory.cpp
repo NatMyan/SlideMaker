@@ -4,12 +4,11 @@
 
 std::unique_ptr<CommandExecutor> CommandExecutorFactory::createCommandExecutor (const std::string& cmdName) {
     if (cmdName == "add") {
-        std::cout << "adding" << std::endl;
         return std::make_unique<AddCommandExecutor>();
     }
-    /*else if (cmdName == "change") {
+    else if (cmdName == "change") {
         return std::make_unique<ChangeCommandExecutor>();
-    }*/
+    }
     else if (cmdName == "remove") {
         return std::make_unique<RemoveCommandExecutor>();
     }

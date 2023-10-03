@@ -1,6 +1,6 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include "Item.hpp"
+#include "Shape.hpp"
 
 #endif // TRIANGLE_HPP

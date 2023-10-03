@@ -32,6 +32,11 @@ void Controller::run() {
                     executor->execute(cmd);
                 }
             }
+            else {
+                std::string errorMsg = "semantically_incorrect";
+                Printer printer;
+                printer.printErrorMsg (errorMsg);
+            }
         }
         else if (std::holds_alternative<std::string>(command)) {
             std::string errorMsg = std::get<std::string>(command);
