@@ -12,4 +12,4 @@ $(TARGET): $(OBJ)
 	$(CC) -c $< -o $@
 
 clean:
-	rm -rf $(shell find $("2.ParserToPptx") -name '*.o') *.o
+	find . -name '*.o' -type f -delete

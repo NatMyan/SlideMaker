@@ -1,8 +1,8 @@
 #ifndef COMMAND_EXECUTOR_HPP
 #define COMMAND_EXECUTOR_HPP
 
-#include "Parser4.hpp"
-#include "CommandValidator.hpp"
+#include "../Parser4.hpp"
+#include "../CommandValidator.hpp"
 
 using ID = int;
 

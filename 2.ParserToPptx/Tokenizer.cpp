@@ -6,7 +6,6 @@
 std::string Tokenizer::takeToken (std::istringstream& iss, const char& endOfLineToken) {
     char nextChar;
     iss.get(nextChar);
-    // std::cout << "next char: []" << nextChar << "[]" << std::endl;
     if (nextChar == endOfLineToken || nextChar == '\0') {
         token_ = endOfLineToken;
         return token_; 

@@ -1,5 +1,5 @@
 #include "CommandValidator.hpp"
-#include "ShapeRegistry.hpp"
+#include "Shapes/ShapeRegistry.hpp"
 
 #include <type_traits>
 #include <variant>
@@ -8,6 +8,10 @@
 
 bool CommandValidator::isCommandValid (CommandType parsedCmd) {
     ShapeRegistry shapeReg;
+    if ((std::get<1>(parsedCmd) == "exit" || std::get<1>(parsedCmd) == "list" || std::get<1>(parsedCmd) == "display") 
+        && (std::get<2>(parsedCmd).empty())) {
+        return true;
+    }
     if (std::holds_alternative<std::string>(std::get<2>(parsedCmd)["-type"])) {
         auto shapeName = std::get<std::string>(std::get<2>(parsedCmd)["-type"]);
         if ((shapeReg.findShape(shapeName) != "wrong_shape") && ((hasCornerPoints(std::get<2>(parsedCmd)) && !hasPositionWidthHeight(std::get<2>(parsedCmd))) || 
