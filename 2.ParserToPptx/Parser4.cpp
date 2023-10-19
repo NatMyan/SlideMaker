@@ -1,48 +1,47 @@
 #include "Parser4.hpp"
+#include "WrongCommandException.hpp"
+#include "WrongSyntaxException.hpp"
 
 #include <iostream>
 #include <sstream>
 
-std::variant<CommandType, std::string> Parser4::parseCommand (std::string input, const char& endOfLineToken) {
-    ///TODO: beautify this function
+// std::variant<CommandType, std::string> Parser4::parseCommand (std::string input, const char& endOfLineToken) {
+CommandType Parser4::parseCommand (std::string input, const char& endOfLineToken) {
     CommandType parsedCmd;
-    std::string wrongSyntaxErrorMsg1 = "wrong_syntax1";
-    std::string wrongSyntaxErrorMsg2 = "wrong_syntax2";
     Tokenizer tokenizer;
     std::istringstream iss(input);
+    std::string endToken(1, endOfLineToken);
     
     const auto commandName = tokenizer.takeToken(iss, endOfLineToken);
     std::cout << commandName << "[]" << std::endl;
 
-    std::string endToken (1, endOfLineToken);
-    
     CommandRegistry cmdReg;
-    if (cmdReg.findCommand(commandName) != "wrong_command") {
-        std::get<1>(parsedCmd) = commandName;
-        while (true) {
-            auto currToken = tokenizer.takeToken(iss, endOfLineToken);
-            // std::cout << currToken << "[]]" << std::endl;
-            if (currToken == endToken)
-                break;
-            auto argName = currToken;
-
-            std::string dash = "-";
-            std::cout << argName.size() << " " << argName << std::endl;
-            if (argName.at(0) != dash.at(0) || (argName.size() == 1 && argName != endToken)) // || tokenizer.getToken() == endToken) 
-                return wrongSyntaxErrorMsg1;
-
-            auto argValue = tokenizer.takeToken(iss, endOfLineToken);
-            // std::cout << argValue << "[]]" << std::endl;
-            if (argValue.empty() || argValue == endToken) 
-                return wrongSyntaxErrorMsg2;
-            std::get<2>(parsedCmd)[argName] = parseArgumentValue(argValue);
-            std::cout << argValue.size() << " " << argValue << std::endl;
-            std::cout << argName << "[name] " << argValue << "[val]" << std::endl;
-        }   
-        return parsedCmd;
+    if (cmdReg.findCommand(commandName) == "wrong_command") {
+        throw WrongCommandException(commandName);
     }
-    return cmdReg.findCommand(commandName);
+    std::get<1>(parsedCmd) = commandName;
+
+    while (true) {
+        auto argName = tokenizer.takeToken(iss, endOfLineToken);
+        if (argName == endToken) {
+            break;
+        }
+        if (argName.size() <= 1 && argName.at(0) != '-') {
+            throw WrongSyntaxException("Invalid argument name syntax: " + argName);
+        }
+
+        auto argValue = tokenizer.takeToken(iss, endOfLineToken);
+        if (argValue.empty() || argValue == endToken) {
+            throw WrongSyntaxException("Empty argument value, " + argValue);
+        }
+
+        std::get<2>(parsedCmd)[argName] = parseArgumentValue(argValue);
+        std::cout << argValue.size() << " " << argValue << std::endl;
+        std::cout << argName << "[name] " << argValue << "[val]" << std::endl;
+    }
+    return parsedCmd;
 }
+
 
 ArgumentType Parser4::parseArgumentValue(const std::string& argValue) {
     try {

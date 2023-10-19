@@ -6,6 +6,7 @@
 class CommandValidator {
     public:
         bool isCommandValid (CommandType parsedCmd);
+        
     private:
         bool hasPositionWidthHeight (std::map<std::string, ArgumentType> commandPairs);
         bool hasCornerPoints (std::map<std::string, ArgumentType> commandPairs);

@@ -1,9 +1,8 @@
 #ifndef COMMAND_REGISTRY_HPP
 #define COMMAND_REGISTRY_HPP
 
+#include "definitions.hpp"
 #include "Tokenizer.hpp"
-
-using CommandNameType = std::string;
 
 class CommandRegistry {
     public:

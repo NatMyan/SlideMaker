@@ -7,13 +7,13 @@ using ShapeNameType = std::string;
 
 class ShapeRegistry {
     public:
-        ShapeRegistry ();
+        ShapeRegistry();
         
     public:
         ShapeNameType findShape (const std::string& shapeName); // commandName is from takeToken
 
     private:
-        std::vector<ShapeNameType> shapeSpec;
+        std::vector<ShapeNameType> shapeSpec_;
 };
 
 

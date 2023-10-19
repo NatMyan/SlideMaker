@@ -1,7 +1,8 @@
 #include "ShapeRegistry.hpp"
+#include "WrongShapeException.hpp"
 
 ShapeRegistry::ShapeRegistry () :
-    shapeSpec {
+    shapeSpec_ {
         "Ellipse", "Rectangle", "Polygon", 
         "Trapezoid", "Triangle", "Line"
     }
@@ -9,9 +10,10 @@ ShapeRegistry::ShapeRegistry () :
 
 /// NOTE: same as commandRegistry, but w/different name
 ShapeNameType ShapeRegistry::findShape (const std::string& shapeName) {
-    std::string wrongShapeErrorMsg = "wrong_shape";
-    for (const auto& shp : shapeSpec) 
-        if (shapeName == shp) 
+    for (const auto& shp : shapeSpec_) {
+        if (shapeName == shp) {
             return shp;
-    return wrongShapeErrorMsg;
+        }
+    }
+    throw WrongShapeException(shapeName);
 }

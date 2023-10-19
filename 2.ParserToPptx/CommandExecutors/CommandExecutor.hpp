@@ -3,8 +3,7 @@
 
 #include "../Parser4.hpp"
 #include "../CommandValidator.hpp"
-
-using ID = int;
+#include "../Slide.hpp"
 
 class CommandExecutor {
     public:
@@ -12,7 +11,6 @@ class CommandExecutor {
         virtual ~CommandExecutor() = default;
 
     protected:
-        // static std::vector<std::tuple<ID, std::variant<bool, std::map<std::string, ArgumentType> > > > itemStorage_;
         static std::vector<std::tuple<ID, std::map<std::string, ArgumentType> > > itemStorage_;
         static int id_;
 };

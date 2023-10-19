@@ -16,6 +16,7 @@ class Controller {
 
     private:
         std::unique_ptr<Document> doc;
+        std::unique_ptr<Slide> currSlide;
 };
 
 #endif // CONTROLLER_HPP

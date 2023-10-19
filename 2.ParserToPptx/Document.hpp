@@ -1,15 +1,16 @@
 #ifndef DOCUMENT_HPP
 #define DOCUMENT_HPP
 
-#include <vector>
+#include "Slide.hpp"
 
-using Slide = int;
+#include <vector>
 
 class Document {
     public:
-        
+        Document(int slideNum);
+
     private:
-        std::vector<Slide> slides;
+        static std::vector<Slide> slides_;
 };
 
 #endif // DOCUMENT_HPP
