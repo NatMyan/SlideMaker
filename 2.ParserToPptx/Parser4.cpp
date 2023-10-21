@@ -19,7 +19,7 @@ CommandType Parser4::parseCommand (std::string input, const char& endOfLineToken
     if (cmdReg.findCommand(commandName) == "wrong_command") {
         throw WrongCommandException(commandName);
     }
-    std::get<1>(parsedCmd) = commandName;
+    std::get<0>(parsedCmd) = commandName;
 
     while (true) {
         auto argName = tokenizer.takeToken(iss, endOfLineToken);
@@ -35,23 +35,11 @@ CommandType Parser4::parseCommand (std::string input, const char& endOfLineToken
             throw WrongSyntaxException("Empty argument value, " + argValue);
         }
 
-        std::get<2>(parsedCmd)[argName] = parseArgumentValue(argValue);
-        std::cout << argValue.size() << " " << argValue << std::endl;
+        std::get<1>(parsedCmd)[argName] = defs::parseArgumentValue(argValue);
+        // std::cout << argValue.size() << " " << argValue << std::endl;
         std::cout << argName << "[name] " << argValue << "[val]" << std::endl;
     }
     return parsedCmd;
 }
 
 
-ArgumentType Parser4::parseArgumentValue(const std::string& argValue) {
-    try {
-        return std::stoi(argValue);
-    } catch (const std::invalid_argument&) {
-        try {
-            return std::stod(argValue);
-        } catch (const std::invalid_argument&) {
-            return argValue;
-        }
-    }
-    return argValue;
-}

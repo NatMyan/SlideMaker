@@ -11,7 +11,6 @@ class LoadCommandExecutor : public CommandExecutor {
     
     private:
         ItemType parseLineForLoad (std::string line);
-        ArgumentType parseArgumentValue(const std::string& argValue);
 };
 
 #endif // LOAD_COMMAND_EXECUTOR_HPP

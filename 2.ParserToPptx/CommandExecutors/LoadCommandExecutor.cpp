@@ -1,11 +1,12 @@
 #include "LoadCommandExecutor.hpp"
+#include "../definitions.hpp"
 
 #include <fstream>
 #include <sstream>
 
 void LoadCommandExecutor::execute (CommandType parsedCmd) {
-    if (std::get<1>(parsedCmd) == "load") {
-        std::string fileWPath = std::get<std::string>(std::get<2>(parsedCmd)["-file"]);
+    if (std::get<0>(parsedCmd) == "load") {
+        std::string fileWPath = std::get<std::string>(std::get<1>(parsedCmd)["-file"]);
         std::ifstream fileToLoad(fileWPath);
         if (fileToLoad.is_open()) {
             std::istream& inputStream = fileToLoad;
@@ -30,21 +31,7 @@ ItemType LoadCommandExecutor::parseLineForLoad(std::string line) {
     std::string key;
     std::string val;
     while (iss >> key >> val) {
-        arguments[key] = parseArgumentValue(val);
+        arguments[key] = defs::parseArgumentValue(val);
     }
     return {id, arguments};
-}
-
-/// TODO: fix code duplication -> appears in Parser4
-ArgumentType LoadCommandExecutor::parseArgumentValue(const std::string& argValue) { 
-    try {
-        return std::stoi(argValue);
-    } catch (const std::invalid_argument&) {
-        try {
-            return std::stod(argValue);
-        } catch (const std::invalid_argument&) {
-            return argValue;
-        }
-    }
-    return argValue;
 }

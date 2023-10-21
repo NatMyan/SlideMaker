@@ -5,12 +5,17 @@
 
 #include <vector>
 
-class Document {
-    public:
-        Document(int slideNum);
+/* 
+    I understand Document as a container only, in a sense that it contains slides
+    but since commands can be added and/or removed, I'll separate them from Document into DocumentCommandExecutors
+*/
 
-    private:
-        static std::vector<Slide> slides_;
+class Document { 
+    public:
+        Document (int slideNum) : slides_(slideNum) {};
+
+    protected:
+        std::vector<Slide> slides_;
 };
 
 #endif // DOCUMENT_HPP

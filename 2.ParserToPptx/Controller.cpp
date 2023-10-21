@@ -19,10 +19,11 @@ void Controller::run() {
             CommandValidator validator;
 
             if (validator.isCommandValid(cmd)) {
-                std::string cmdName = std::get<1>(cmd);
+                std::string cmdName = std::get<0>(cmd);
                 CommandExecutorFactory execFactory;
                 std::unique_ptr<CommandExecutor> executor = execFactory.createCommandExecutor(cmdName);
-
+                ///TODO: bnakanabar change this hors arev
+                
                 if (executor == nullptr) {
                     std::string errorMsg = "wrong_command_2";
                     /// TODO: parser checks for the right command, there should be no need for this
