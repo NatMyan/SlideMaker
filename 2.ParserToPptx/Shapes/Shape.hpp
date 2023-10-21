@@ -1,16 +1,20 @@
-#ifndef ITEM_HPP
-#define ITEM_HPP
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
 
-#include <map>
-#include <string>
+#include "../definitions.hpp"
 
-using Position = double;
+using LTCoordinate2D = std::pair<ArgumentType, ArgumentType>;
+using RBCoordinate2D = std::pair<ArgumentType, ArgumentType>;
+using Position = std::pair<LTCoordinate2D, RBCoordinate2D>;
 using ID = int;
 using Type = std::string;
 using Key = std::string;
-using Value = double;
+using Value = ArgumentType;
 
-class Item {
+class Shape {
+    public:
+        Shape(Position pos, ID id, Type type, std::map<Key, Value> attribute);
+
     public:
         void setPosition(Position pos);
         Position getPosition();
@@ -26,4 +30,4 @@ class Item {
         std::map<Key, Value> attribute_;
 };
 
-#endif // ITEM_HPP
+#endif // SHAPE_HPP

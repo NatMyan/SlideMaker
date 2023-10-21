@@ -1,4 +1,5 @@
 #include "CommandRegistry.hpp"
+#include "WrongCommandException.hpp"
 
 CommandRegistry::CommandRegistry () : 
     commandSpec_ {
@@ -8,11 +9,12 @@ CommandRegistry::CommandRegistry () :
 {}
 
 CommandNameType CommandRegistry::findCommand (const std::string& commandName) {
-    std::string wrongCommandErrorMsg = "wrong_command";
-    for (const auto& cmd : commandSpec_) 
-        if (commandName == cmd) 
+    for (const auto& cmd : commandSpec_) {
+        if (commandName == cmd) {
             return cmd;
-    return wrongCommandErrorMsg;
+        }
+    }
+    throw WrongCommandException(commandName);
 }
 
 

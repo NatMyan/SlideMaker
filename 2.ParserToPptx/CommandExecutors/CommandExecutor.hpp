@@ -4,15 +4,17 @@
 #include "../Parser4.hpp"
 #include "../CommandValidator.hpp"
 #include "../Slide.hpp"
+#include "../Document.hpp"
 
 
 class CommandExecutor {
     public:
+        CommandExecutor() : slide_(std::make_shared<Slide>()) {}
         virtual void execute (CommandType parsedCmd) = 0;
         virtual ~CommandExecutor() = default;
 
     protected:
-        std::vector<std::tuple<ID, std::map<std::string, ArgumentType> > > itemStorage_;
+        std::shared_ptr<Slide> slide_;
         static int id_;
 };
 

@@ -1,5 +1,5 @@
 #include "ShapeRegistry.hpp"
-#include "WrongShapeException.hpp"
+#include "Shapes/WrongShapeException.hpp"
 
 ShapeRegistry::ShapeRegistry () :
     shapeSpec_ {

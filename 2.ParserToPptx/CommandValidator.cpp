@@ -1,5 +1,5 @@
 #include "CommandValidator.hpp"
-#include "Shapes/ShapeRegistry.hpp"
+#include "ShapeRegistry.hpp"
 #include "Shapes/WrongShapeException.hpp"
 
 #include <type_traits>

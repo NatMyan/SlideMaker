@@ -12,9 +12,10 @@
 
 class Document { 
     public:
-        Document (int slideNum) : slides_(slideNum) {};
+        Document (int slideNum) : slides_(slideNum, Slide{}) {};
+        std::vector<Slide> getSlides();
 
-    protected:
+    private:
         std::vector<Slide> slides_;
 };
 

@@ -11,16 +11,10 @@
 #include "SaveCommandExecutor.hpp"
 #include "LoadCommandExecutor.hpp"
 
-// #include "../DocumentCommandExecutors/DocumentCommandExecutor.hpp"
-// #include "../DocumentCommandExecutors/AddSlideCommandExecutor.hpp"
-
 class CommandExecutorFactory {
     public:
         std::unique_ptr<CommandExecutor> createCommandExecutor (const std::string& cmdName);
         ///TODO: static or not?
-
-    private:
-        std::string convertToString (ArgumentType arg);
 };
 
 #endif // COMMAND_EXECUTOR_FACTORY_HPP
