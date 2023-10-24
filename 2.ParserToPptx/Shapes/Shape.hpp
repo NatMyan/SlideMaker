@@ -13,21 +13,21 @@ using Value = ArgumentType;
 
 class Shape {
     public:
-        Shape(Position pos, ID id, Type type, std::map<Key, Value> attribute);
+        Shape (Position pos, ID id, Type type, std::map<Key, Value> attributes);
 
     public:
         void setPosition(Position pos);
-        Position getPosition();
-        ID getID();
-        Type getType();
-        Value getAttribute(Key);
-        bool setAttribute(Key, Value);
+        Position getPosition() const;
+        ID getID() const;
+        Type getType() const;
+        Value getAttribute(Key) const;
+        void setAttribute(Key, Value);
         
     private:
         Position pos_;
         ID id_;
         Type type_;
-        std::map<Key, Value> attribute_;
+        std::map<Key, Value> attributes_;
 };
 
 #endif // SHAPE_HPP

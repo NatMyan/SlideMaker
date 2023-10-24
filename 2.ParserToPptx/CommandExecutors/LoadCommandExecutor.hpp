@@ -11,6 +11,7 @@ class LoadCommandExecutor : public CommandExecutor {
     
     private:
         ItemType parseLineForLoad (std::string line);
+        Shape createShapeFromIDAndAttributes(ID id, std::map<std::string, ArgumentType> attributes);
 };
 
 #endif // LOAD_COMMAND_EXECUTOR_HPP
