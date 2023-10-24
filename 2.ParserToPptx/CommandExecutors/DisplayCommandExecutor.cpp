@@ -5,11 +5,10 @@
 #include <iostream>
 
 void DisplayCommandExecutor::execute (CommandType parsedCmd) {
-    // if (std::get<0>(parsedCmd) == "display") {
     if (std::get<1>(parsedCmd).empty()) {
         for (const auto& item : slide_->getSlide()) {
             std::cout << "ID: " << std::get<0>(item) << " ";
-            const auto shape = std::get<1>(item);
+            auto shape = std::get<1>(item);
             for (const auto& mp : std::get<1>(parsedCmd)) {  
                 std::cout << mp.first << " " << defs::convertToString(shape.getAttribute(mp.first)) << std::endl;
             }
@@ -21,7 +20,7 @@ void DisplayCommandExecutor::execute (CommandType parsedCmd) {
             int itemID = std::get<0>(item);
             int displayerID = std::get<int>(std::get<1>(parsedCmd)["-id"]);
             if (itemID == displayerID) {
-                const auto shape = std::get<1>(item);
+                auto shape = std::get<1>(item);
                 for (const auto& mp : std::get<1>(parsedCmd)) {  
                     std::cout << mp.first << " " << defs::convertToString(shape.getAttribute(mp.first)) << std::endl;
                 }
@@ -29,6 +28,5 @@ void DisplayCommandExecutor::execute (CommandType parsedCmd) {
             }
         }
     }
-    // }
 }
 

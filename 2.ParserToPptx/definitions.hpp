@@ -8,11 +8,16 @@
 #include <vector>
 
 using ID = int;
+
 using CommandNameType = std::string;
 using NumberType = double; // std::variant<int, double>;
 using ArgumentType = std::variant<std::string, int, double>;
 using CommandType = std::tuple<CommandNameType, std::map<std::string, ArgumentType>, int>;
 ///TODO: keep tuple int or not?
+
+using Type = std::string;
+using Key = std::string;
+using Value = ArgumentType;
 
 namespace defs {
     std::string convertToString (ArgumentType arg) {
@@ -43,6 +48,18 @@ namespace defs {
         }
         return argValue;
     }
+
+    double convertToDouble(std::map<Key, Value>& attributes, const Key& key) {
+        if (attributes.find(key) != attributes.end()) {
+            if (std::holds_alternative<double>(attributes[key])) {
+                return std::get<double>(attributes[key]);
+            } 
+            else if (std::holds_alternative<int>(attributes[key])) {
+                return static_cast<double>(std::get<int>(attributes[key]));
+            }
+        }
+    }
+
 }
 
 #endif // DEFINITIONS_HPP

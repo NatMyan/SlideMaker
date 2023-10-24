@@ -31,7 +31,7 @@ void Shape::setAttribute(Key key, Value val) {
     attributes_[key] = val;
 }
 
-double Shape::convertToDouble(std::map<Key, Value>& attributes, const Key& key) {
+/*double Shape::convertToDouble(std::map<Key, Value>& attributes, const Key& key) {
     if (attributes.find(key) != attributes.end()) {
         if (std::holds_alternative<double>(attributes[key])) {
             return std::get<double>(attributes[key]);
@@ -41,4 +41,4 @@ double Shape::convertToDouble(std::map<Key, Value>& attributes, const Key& key) 
         }
     }
     ///TODO: is else if needed, if the validator already validates everything, or throw exception
-}
+}*/

@@ -41,7 +41,10 @@ ItemType LoadCommandExecutor::parseLineForLoad(std::string line) {
 }
 
 Shape LoadCommandExecutor::createShapeFromIDAndAttributes(ID id, std::map<std::string, ArgumentType> attributes) {
-    Position pos = {{attributes["-l"], attributes["-t"]}, {attributes["-r"], attributes["-b"]}};
+    Position pos = {
+        {defs::convertToDouble(attributes, "-l"), defs::convertToDouble(attributes, "-t")}, 
+        {defs::convertToDouble(attributes, "-r"), defs::convertToDouble(attributes, "-b")}
+    };
     Type type = std::get<std::string>(attributes["-type"]);
     std::map<std::string, ArgumentType> attrs;
     std::set<std::string> keysToExclude = {"-l", "-t", "-r", "-b", "-type"};
@@ -50,6 +53,6 @@ Shape LoadCommandExecutor::createShapeFromIDAndAttributes(ID id, std::map<std::s
             attrs[pair.first] = pair.second;
         }
     }
-    return Shape{pos, id, type, attrs};
+    return Shape{type, id, pos, attrs};
 }
 

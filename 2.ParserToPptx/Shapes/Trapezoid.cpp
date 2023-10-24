@@ -5,10 +5,10 @@ Trapezoid::Trapezoid (ID id, Position pos, std::map<Key, Value> attributes) : Sh
     if (attributes.find("-t") != attributes.end() && attributes.find("-t") != attributes.end() &&  
         attributes.find("-t") != attributes.end() && attributes.find("-t") != attributes.end()) {
 
-        double top = convertToDouble(attributes, "-t");
-        double bottom = convertToDouble(attributes, "-b");
-        double right = convertToDouble(attributes, "-r");
-        double left = convertToDouble(attributes, "-l");
+        double top = defs::convertToDouble(attributes, "-t");
+        double bottom = defs::convertToDouble(attributes, "-b");
+        double right = defs::convertToDouble(attributes, "-r");
+        double left = defs::convertToDouble(attributes, "-l");
 
         bottomWidth_ = (top - bottom);
         topWidth_ = (top - bottom) / 2;
@@ -17,9 +17,9 @@ Trapezoid::Trapezoid (ID id, Position pos, std::map<Key, Value> attributes) : Sh
     else if (attributes.find("-w") != attributes.end() && attributes.find("-h") != attributes.end()
         && attributes.find("-pos") != attributes.end()) {
 
-        bottomWidth_ = convertToDouble(attributes, "-w");
-        topWidth_ = convertToDouble(attributes, "-w") / 2;
-        height_ = convertToDouble(attributes, "-h");  
+        bottomWidth_ = defs::convertToDouble(attributes, "-w");
+        topWidth_ = defs::convertToDouble(attributes, "-w") / 2;
+        height_ = defs::convertToDouble(attributes, "-h");  
     }
 }
 

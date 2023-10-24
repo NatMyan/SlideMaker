@@ -3,7 +3,8 @@
 #include <iostream>
 
 void Controller::run() {
-    while (true) {
+    ///TODO: do exit part
+    while (!exit->getExit()) { 
         std::istream& inputStream = std::cin;
         InputReader inputReader;
 

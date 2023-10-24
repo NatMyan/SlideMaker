@@ -6,10 +6,6 @@
 using LTCoordinate2D = std::pair<NumberType, NumberType>;
 using RBCoordinate2D = std::pair<NumberType, NumberType>;
 using Position = std::pair<LTCoordinate2D, RBCoordinate2D>;
-using ID = int;
-using Type = std::string;
-using Key = std::string;
-using Value = ArgumentType;
 
 class Shape {
     public:
@@ -23,8 +19,8 @@ class Shape {
         Value getAttribute(Key key);
         void setAttribute(Key key, Value val);
     
-    protected:
-        double convertToDouble(std::map<Key, Value>& attributes, const Key& key);
+    // protected:
+        // double convertToDouble(std::map<Key, Value>& attributes, const Key& key);
 
     protected:
         Position pos_;
