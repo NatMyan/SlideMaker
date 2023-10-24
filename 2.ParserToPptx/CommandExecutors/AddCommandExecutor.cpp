@@ -9,7 +9,7 @@ void AddCommandExecutor::execute (CommandType parsedCmd) {
     Position pos = {{temp["-l"], temp["-t"]}, {temp["-l"], temp["-t"]}};
     ID id = id_;
     Type type = std::get<std::string>(temp["-type"]);
-    slide_->getSlide().push_back({id_, Shape{pos, id, type, temp}});
+    slide_->getSlide().push_back({id_, Shape{type, id, pos, temp}});
     std::cout << id_ << std::endl;
     ++id_;  
     ///TODO: check this part, print id after adding

@@ -9,7 +9,7 @@
 
 using ID = int;
 using CommandNameType = std::string;
-using NumberType = std::variant<int, double>;
+using NumberType = double; // std::variant<int, double>;
 using ArgumentType = std::variant<std::string, int, double>;
 using CommandType = std::tuple<CommandNameType, std::map<std::string, ArgumentType>, int>;
 ///TODO: keep tuple int or not?

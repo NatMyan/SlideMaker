@@ -8,9 +8,10 @@
 
 class DocumentCommandExecutor {
     public:
+        virtual ~DocumentCommandExecutor() = default;
+        
         DocumentCommandExecutor() : doc_ (std::make_shared<Document>()) {}
         virtual void execute (CommandType parsedCmd) = 0;
-        virtual ~DocumentCommandExecutor() = default;
 
     protected:
         std::shared_ptr<Document> doc_;
