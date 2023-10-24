@@ -1,5 +1,6 @@
 #include "RemoveSlideDocCmdExecutor.hpp"
 
+///TODO: define operator== for shapes ?
 void RemoveSlideDocCmdExecutor::execute(CommandType parsedCmd) {
     auto temp = std::get<1>(parsedCmd);
     if (isGivenOneSlide(temp)) {
@@ -20,3 +21,15 @@ bool RemoveSlideDocCmdExecutor::isGivenSlideRange(std::map<std::string, Argument
 bool RemoveSlideDocCmdExecutor::isGivenOneSlide(std::map<std::string, ArgumentType> cmdPart) {
     return cmdPart.find("-slbegin") != cmdPart.end() && cmdPart.find("-slend") != cmdPart.end();
 }
+
+/*
+
+// Define a custom predicate function for std::remove_if
+bool customRemovePredicate(const std::tuple<int, Shape>& item) {
+    // Implement your custom comparison logic here
+    return std::get<0>(item) == 42;  // Change the condition as needed
+}
+
+// Use std::remove_if with the custom predicate
+items.erase(std::remove_if(items.begin(), items.end(), customRemovePredicate), items.end());
+*/
