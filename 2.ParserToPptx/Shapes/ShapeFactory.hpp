@@ -12,7 +12,7 @@
 
 class ShapeFactory {
     public:
-        std::unique_ptr<Shape> createShape (Type type, ID id, Position pos, std::map<Key, Value> attributes);
+        std::shared_ptr<Shape> createShape (Type type, ID id, Position pos, std::map<Key, Value> attributes);
 
 };
 

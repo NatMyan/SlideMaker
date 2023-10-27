@@ -12,7 +12,8 @@ void AddCommandExecutor::execute (CommandType parsedCmd) {
     };
     ID id = id_;
     Type type = std::get<std::string>(temp["-type"]);
-    slide_->getSlide().push_back({id_, Shape{type, id, pos, temp}});
+    ShapeFactory rightShape;
+    slide_->getSlide().push_back({id_, rightShape.createShape(type, id, pos, temp)});
     std::cout << id_ << std::endl;
     ++id_;  
     ///TODO: check this part, print id after adding
