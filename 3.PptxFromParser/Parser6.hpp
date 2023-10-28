@@ -2,7 +2,6 @@
 #define PARSER_6_HPP
 
 #include "definitions.hpp"
-#include "CommandRegistry.hpp"
 
 class Parser6 {
     public:

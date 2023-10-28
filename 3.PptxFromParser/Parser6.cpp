@@ -1,4 +1,5 @@
 #include "Parser6.hpp"
+#include "CommandRegistry.hpp"
 #include "WrongCommandException.hpp"
 #include "WrongSyntaxException.hpp"
 
