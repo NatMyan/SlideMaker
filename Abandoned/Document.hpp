@@ -10,6 +10,8 @@
     but since commands can be added and/or removed, I'll separate them from Document into DocumentCommandExecutors
 */
 
+///UPDATE: boi, was I wrong
+
 class Document { 
     public:
         Document (int slideNum) : slides_(slideNum, Slide{}) {};
