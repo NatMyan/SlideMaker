@@ -21,10 +21,10 @@ void Attributes::setPair (Key key, Value value) {
     attributeMap_[key] = value;
 }
 
-AttributesIterator<Key, Value> Attributes::begin() const {
-    return 
+AttributesIterator<Key, Value> Attributes::begin() {
+    return AttributesIterator<Key, Value>(attributeMap_.begin()); 
 }
 
-AttributesIterator<Key, Value> Attributes::end() const {
-    return 
+AttributesIterator<Key, Value> Attributes::end() {
+    return AttributesIterator<Key, Value>(attributeMap_.end());
 }

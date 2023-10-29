@@ -8,10 +8,10 @@ class CommandValidator {
         bool isCommandValid (CommandType parsedCmd);
         
     private:
-        bool hasPositionWidthHeight (std::map<std::string, ArgumentType> commandPairs);
-        bool hasCornerPoints (std::map<std::string, ArgumentType> commandPairs);
+        bool hasPositionWidthHeight (MapPair<std::string, ArgumentType> commandPairs);
+        bool hasCornerPoints (MapPair<std::string, ArgumentType> commandPairs);
         bool isNumber (ArgumentType argVal);
-        bool arePositionsNumbers (std::map<std::string, ArgumentType> commandPairs);
+        bool arePositionsNumbers (MapPair<std::string, ArgumentType> commandPairs);
 };
 
 #endif // COMMAND_VALIDATOR_HPP

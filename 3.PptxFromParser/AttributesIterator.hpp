@@ -4,9 +4,6 @@
 #include <iterator> // std::bidirectional_iterator_tag;
 
 template <typename Key, typename Value>
-using MapPair = std::unordered_map<Key, Value>;
-
-template <typename Key, typename Value>
 class AttributesIterator {
     public:
         using iterator_category = std::bidirectional_iterator_tag;
@@ -19,7 +16,7 @@ class AttributesIterator {
         using const_reference = const value_type&;
 
     public:
-        AttributesIterator(MapPair<Key, Value>* mapIter) : iter_(mapIter) {}
+        explicit AttributesIterator(typename MapPair<Key, Value>::iterator mapIter) : iter_(mapIter) {}
 
     public:
         reference operator*();
@@ -34,7 +31,7 @@ class AttributesIterator {
         bool operator!=(const AttributesIterator& other) const;
 
     private:
-        MapPair<Key, Value>* iter_;
+        typename MapPair<Key, Value>::iterator iter_;
 };
 
 #endif // ATTRIBUTE_ITERATOR_HPP

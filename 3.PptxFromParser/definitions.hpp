@@ -1,26 +1,31 @@
-#ifndef DEFINITIONS_HPP
-#define DEFINITIONS_HPP
+#ifndef DEFINITIONSS_HPP
+#define DEFINITIONSS_HPP
 
-#include <map>
+#include "VariantWrapper.hpp"
+#include "TupleWrapper.hpp"
+
+#include <unordered_map>
 #include <string>
-#include <tuple>
-#include <variant>
 #include <vector>
 
-using ID = int;
-
 using CommandNameType = std::string;
-using NumberType = double; // std::variant<int, double>;
-using ArgumentType = std::variant<std::string, int, double>;
-using CommandType = std::tuple<CommandNameType, std::map<std::string, ArgumentType>, int>;
-///TODO: keep tuple int or not?
+using NumberType = double; 
+using ArgumentType = VariantWrapper<std::string, int, double>;
 
+template <typename Key, typename Value>
+using MapPair = std::unordered_map<Key, Value>;
+
+using ID = int;
 using Type = std::string;
 using Key = std::string;
 using Value = ArgumentType;
 
+using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
+
+///TODO: keep tuple int or not?
+
 namespace defs {
-    std::string convertToString (ArgumentType arg) {
+    /*std::string convertToString (ArgumentType arg) {
         struct {
             std::string operator()(const std::string& str) const {
                 return str;
@@ -34,22 +39,21 @@ namespace defs {
         } visitor;
 
         return std::visit(visitor, arg);
-    }
+    }*/
 
     ArgumentType parseArgumentValue(const std::string& argValue) {
         try {
-            return std::stoi(argValue);
+            return ArgumentType(std::stoi(argValue));
         } catch (const std::invalid_argument&) {
             try {
-                return std::stod(argValue);
+                return ArgumentType(std::stod(argValue));
             } catch (const std::invalid_argument&) {
-                return argValue;
+                return ArgumentType(argValue);
             }
         }
-        return argValue;
     }
 
-    double convertToDouble(std::map<Key, Value>& attributes, const Key& key) {
+    /*double convertToDouble(Attributes& attributes, Key& key) {
         if (attributes.find(key) != attributes.end()) {
             if (std::holds_alternative<double>(attributes[key])) {
                 return std::get<double>(attributes[key]);
@@ -58,8 +62,7 @@ namespace defs {
                 return static_cast<double>(std::get<int>(attributes[key]));
             }
         }
-    }
-
+    }*/
 }
 
-#endif // DEFINITIONS_HPP
+#endif // DEFINITIONSS_HPP

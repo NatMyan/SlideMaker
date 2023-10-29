@@ -6,9 +6,6 @@
 
 #include <string>
 
-using Key = std::string;
-using Value = ArgumentType;
-
 class Attributes {
     public:
         Key getKey(const Value& value) const;
@@ -17,8 +14,8 @@ class Attributes {
         // void setValue(Key key);
         ///TODO: are setKey, setValue, getValue needed ?
         void setPair(Key, Value);
-        AttributesIterator<Key, Value> begin() const;
-        AttributesIterator<Key, Value> end() const; 
+        AttributesIterator<Key, Value> begin();
+        AttributesIterator<Key, Value> end();
     
     private:
         MapPair<Key, Value> attributeMap_;   
