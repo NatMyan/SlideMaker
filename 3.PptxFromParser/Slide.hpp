@@ -6,12 +6,19 @@
 
 class Slide {
     public:
+        using SlideIterator = SlideType<ID, std::shared_ptr<Item>>::iterator;
+    public:
         Slide() = default;
-        SlideType getSlide();         
+        SlideType<ID, std::shared_ptr<Item> > getSlide();         
         // std::vector<std::tuple<ID, std::shared_ptr<Item> > > getSlide(); 
+        void addtoSlide(std::shared_ptr<Item> item);
+        void removeFromSlide(ID id);
+        std::shared_ptr<Item> getItem(ID id);
+        SlideIterator begin();
+        SlideIterator end();
 
     private:
-        SlideType slide_; 
+        SlideType<ID, std::shared_ptr<Item> > slide_; 
         // std::vector<std::tuple<ID, std::shared_ptr<Item> > > slide_;
         /// TODO: static or not?
         /// TODO: ID belongs to Item, not command...

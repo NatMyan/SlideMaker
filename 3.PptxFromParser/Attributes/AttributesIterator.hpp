@@ -5,6 +5,7 @@
 
 #include <iterator> // std::bidirectional_iterator_tag;
 
+///NOTE: this somehow iterates over values, and not keys-value pairs... *sigh*
 template <typename Key, typename Value>
 class AttributesIterator {
     public:

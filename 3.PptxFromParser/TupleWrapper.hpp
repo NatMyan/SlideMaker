@@ -11,8 +11,8 @@ class TupleWrapper {
 
     public:
         template <size_t Index>
-        auto get() {
-            return std::get<index>(data_);
+        auto get() const {
+            return std::get<Index>(data_);
         }
 
         template <size_t Index>

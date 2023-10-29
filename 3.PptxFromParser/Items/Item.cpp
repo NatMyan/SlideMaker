@@ -32,3 +32,15 @@ Value Item::getAttribute(Key key) const {
 void Item::setAttribute(Key key, Value value) {
     attrs_.setPair(key, value);
 }
+
+Attributes Item::getAttributes() const {
+    return attrs_;
+}
+
+///TODO: review this func
+void Item::setAttributes(Attributes attrs) {
+    for (const auto& val : attrs) {
+        const auto& key = attrs_.getKey(val);
+        attrs_.setPair(key, val);
+    }
+}

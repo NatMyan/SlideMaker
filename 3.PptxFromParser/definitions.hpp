@@ -23,7 +23,8 @@ using Value = ArgumentType;
 
 using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
 
-using SlideType = std::vector<TupleWrapper<ID, std::shared_ptr<Item> > >;
+template <typename ID, typename ItemPtr>
+using SlideType = std::vector<TupleWrapper<ID, ItemPtr> >;
 
 ///TODO: keep tuple int or not?
 
