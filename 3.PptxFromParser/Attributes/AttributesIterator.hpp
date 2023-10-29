@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTE_ITERATOR_HPP
 #define ATTRIBUTE_ITERATOR_HPP
 
-#include "definitions.hpp"
+#include "../definitions.hpp"
 
 #include <iterator> // std::bidirectional_iterator_tag;
 

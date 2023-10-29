@@ -1,5 +1,5 @@
 #include "Item.hpp"
-#include "../AttributeNotFoundException.hpp"
+#include "../Attributes/AttributeNotFoundException.hpp"
 
 ///TODO: add default attributes
 Item::Item (Type type, ID id, Position pos,  Attributes attributes) :
