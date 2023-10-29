@@ -1,11 +1,11 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 
-#include "Shape.hpp"
+#include "Item.hpp"
 
-class Rectangle : public Shape {
+class Rectangle : public Item {
     public: 
-        Rectangle (ID id, Position pos, std::map<Key, Value> attributes);
+        Rectangle (ID id, Position pos, Attributes attributes);
 
     public:
         double getHeight();

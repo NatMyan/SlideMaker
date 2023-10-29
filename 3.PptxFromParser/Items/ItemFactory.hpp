@@ -1,7 +1,7 @@
 #ifndef SHAPE_FACTORY_HPP
 #define SHAPE_FACTORY_HPP
 
-#include "Shape.hpp"
+#include "Item.hpp"
 #include "Ellipse.hpp"
 #include "Line.hpp"
 #include "Rectangle.hpp"
@@ -10,9 +10,9 @@
 
 #include <memory>
 
-class ShapeFactory {
+class ItemFactory {
     public:
-        std::shared_ptr<Shape> createShape (Type type, ID id, Position pos, std::map<Key, Value> attributes);
+        std::shared_ptr<Item> createItem (Type type, ID id, Position pos, Attributes attributes);
 
 };
 

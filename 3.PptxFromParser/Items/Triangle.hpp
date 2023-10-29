@@ -1,11 +1,11 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include "Shape.hpp"
+#include "Item.hpp"
 
-class Triangle : public Shape {
+class Triangle : public Item {
     public: 
-        Triangle (ID id, Position pos, std::map<Key, Value> attributes);
+        Triangle (ID id, Position pos, Attributes attributes);
 
     public:
         double getHeight();

@@ -1,11 +1,11 @@
 #ifndef TRAPEZOID_HPP
 #define TRAPEZOID_HPP
 
-#include "Shape.hpp"
+#include "Item.hpp"
 
-class Trapezoid : public Shape {
+class Trapezoid : public Item {
     public: 
-        Trapezoid (ID id, Position pos, std::map<Key, Value> attributes);
+        Trapezoid (ID id, Position pos, Attributes attributes);
 
     public:
         double getHeight();

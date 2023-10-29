@@ -1,11 +1,11 @@
 #ifndef LINE_HPP
 #define LINE_HPP
 
-#include "Shape.hpp"
+#include "Item.hpp"
 
-class Line : public Shape {
+class Line : public Item {
     public:
-        Line (ID id, Position pos, std::map<Key, Value> attributes);
+        Line (ID id, Position pos, Attributes attributes);
     
     private:
         double length_;

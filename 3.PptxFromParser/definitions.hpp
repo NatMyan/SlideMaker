@@ -41,7 +41,7 @@ namespace defs {
         return std::visit(visitor, arg);
     }*/
 
-    ArgumentType parseArgumentValue(const std::string& argValue) {
+    ArgumentType parseArgValue(const std::string& argValue) {
         try {
             return ArgumentType(std::stoi(argValue));
         } catch (const std::invalid_argument&) {
@@ -53,16 +53,26 @@ namespace defs {
         }
     }
 
-    /*double convertToDouble(Attributes& attributes, Key& key) {
-        if (attributes.find(key) != attributes.end()) {
-            if (std::holds_alternative<double>(attributes[key])) {
-                return std::get<double>(attributes[key]);
-            } 
-            else if (std::holds_alternative<int>(attributes[key])) {
-                return static_cast<double>(std::get<int>(attributes[key]));
+    double convertToDouble(const MapPair<Key, Value>& attributes, const Key& key) {
+        auto it = attributes.find(key);
+        if (it != attributes.end()) {
+            const Value& value = it->second;
+            if (std::is_same_v<Value, int>) {
+                return static_cast<double>(value.get<int>());
+            } else if (std::is_same_v<Value, double>) {
+                return value.get<double>();
             }
         }
-    }*/
+    }
+
+    double convertToDouble(const Value& value) {
+        if (std::is_same_v<Value, int>) {
+            return static_cast<double>(value.get<int>());
+        } else if (std::is_same_v<Value, double>) {
+            return value.get<double>();
+        }
+    }
+    
 }
 
 #endif // DEFINITIONSS_HPP

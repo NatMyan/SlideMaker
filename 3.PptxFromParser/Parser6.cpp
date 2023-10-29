@@ -34,7 +34,7 @@ CommandType Parser6::parseCommand (std::string input, const char& endOfLineToken
                 throw WrongSyntaxException("Empty argument value, " + argValue);
             }
             
-            mapPair[argName] = defs::parseArgumentValue(argValue);
+            mapPair[argName] = defs::parseArgValue(argValue);
             std::cout << argName << "[name] " << argValue << "[val]" << std::endl;
         }
     }

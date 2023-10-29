@@ -5,19 +5,19 @@ Ellipse::Ellipse (ID id, Position pos, Attributes attributes) : Item ("Ellipse",
     if (attributes.getValue("-t") != Value() && attributes.getValue("-l") != Value() &&  
         attributes.getValue("-b") != Value() && attributes.getValue("-r") != Value()) {
 
-        double top = attributes.getValue("-t");
-        double bottom = attributes.getValue("-b");
-        double right = attributes.getValue("-r");
-        double left = attributes.getValue("-l");
+        double top = defs::convertToDouble(attributes.getValue("-t"));
+        double bottom = defs::convertToDouble(attributes.getValue("-b"));
+        double right = defs::convertToDouble(attributes.getValue("-r"));
+        double left = defs::convertToDouble(attributes.getValue("-l"));
 
-        verticalRadius_ = (top - bottom) / 2;
+        verticalRadius_ = (bottom - top) / 2;
         horizontalRadius_ = (right - left) / 2;
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
         && attributes.getValue("-pos") != Value()) {
 
-        double width = attributes.getValue("-w");
-        double height = attributes.getValue("-h");
+        double width = defs::convertToDouble(attributes.getValue("-w"));
+        double height = defs::convertToDouble(attributes.getValue("-h"));
 
         verticalRadius_ = height / 2;
         horizontalRadius_ = width / 2;  
