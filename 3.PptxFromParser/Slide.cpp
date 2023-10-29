@@ -1,31 +1,30 @@
 #include "Slide.hpp"
 
-SlideType<ID, std::shared_ptr<Item> > Slide::getSlide() {
+SlideType<std::shared_ptr<Item> > Slide::getSlide() {
     return slide_;
 }
 
-void Slide::addtoSlide(std::shared_ptr<Item> item) {
-    slide_.push_back(TupleWrapper{item->getID(), item});
+void Slide::addtoSlide(std::shared_ptr<Item> itemPtr) {
+    slide_.push_back(itemPtr);
 }
 
 void Slide::removeFromSlide(ID id) {
-    for (auto it = slide_.begin(); it != slide_.end(); ++it) {
-        if (it->get<0>() == id) {
-            it = slide_.erase(it);
+    for (size_t i = 0; i < slide_.size(); ++i) {
+        auto itemId = slide_.at(i)->getID();
+        if (itemId == id) {
+            slide_.erase(slide_.begin() + i);
         }
-    }
+    } 
 }
 
 std::shared_ptr<Item> Slide::getItem(ID id) {
-    auto it = slide_.begin();
-    while (it != slide_.end()) {
-        if (it->get<0>() == id) {
-            return it->get<1>();
+    for (size_t i = 0; i < slide_.size(); ++i) {
+        auto itemId = slide_.at(i)->getID();
+        if (itemId == id) {
+            return slide_.at(i);
         }
-        ++it;
-    }
-    return it->get<1>(); 
-    ///NOTE: this^ should be the end
+    } 
+    return nullptr;
 }
 
 Slide::SlideIterator Slide::begin() {

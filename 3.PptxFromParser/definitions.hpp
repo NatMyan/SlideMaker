@@ -23,8 +23,13 @@ using Value = ArgumentType;
 
 using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
 
-template <typename ID, typename ItemPtr>
-using SlideType = std::vector<TupleWrapper<ID, ItemPtr> >;
+template <typename ItemPtr>
+using SlideType = std::vector<ItemPtr>;
+
+template <typename SlidePtr>
+using DocumentType = std::vector<SlidePtr>;
+
+using Idx = size_t;
 
 ///TODO: keep tuple int or not?
 
