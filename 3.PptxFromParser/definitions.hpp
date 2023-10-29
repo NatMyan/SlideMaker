@@ -4,8 +4,9 @@
 #include "VariantWrapper.hpp"
 #include "TupleWrapper.hpp"
 
-#include <unordered_map>
+#include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 using CommandNameType = std::string;
@@ -21,6 +22,8 @@ using Key = std::string;
 using Value = ArgumentType;
 
 using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
+
+using SlideType = std::vector<TupleWrapper<ID, std::shared_ptr<Item> > >;
 
 ///TODO: keep tuple int or not?
 
@@ -53,7 +56,7 @@ namespace defs {
         }
     }
 
-    double convertToDouble(const MapPair<Key, Value>& attributes, const Key& key) {
+    /*double convertToDouble(const MapPair<Key, Value>& attributes, const Key& key) {
         auto it = attributes.find(key);
         if (it != attributes.end()) {
             const Value& value = it->second;
@@ -63,7 +66,7 @@ namespace defs {
                 return value.get<double>();
             }
         }
-    }
+    }*/
 
     double convertToDouble(const Value& value) {
         if (std::is_same_v<Value, int>) {
