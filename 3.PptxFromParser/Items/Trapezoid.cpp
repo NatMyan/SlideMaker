@@ -10,12 +10,12 @@ Trapezoid::Trapezoid (ID id, Position pos, Attributes attributes) : Item ("Trape
         double right = defs::convertToDouble(attributes.getValue("-r"));
         double left = defs::convertToDouble(attributes.getValue("-l"));
 
-        bottomWidth_ = (top - bottom);
-        topWidth_ = (top - bottom) / 2;
+        bottomWidth_ = (bottom - top);
+        topWidth_ = (bottom - top) / 2;
         height_ = (right - left);
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
-        && attributes.getValue("-pos") != Value()) {
+        && attributes.getValue("-x") != Value() && attributes.getValue("-y") != Value()) {
 
         bottomWidth_ = defs::convertToDouble(attributes.getValue("-w"));
         topWidth_ = defs::convertToDouble(attributes.getValue("-w")) / 2;

@@ -14,7 +14,7 @@ Ellipse::Ellipse (ID id, Position pos, Attributes attributes) : Item ("Ellipse",
         horizontalRadius_ = (right - left) / 2;
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
-        && attributes.getValue("-pos") != Value()) {
+        && attributes.getValue("-x") != Value() && attributes.getValue("-y") != Value()) {
 
         double width = defs::convertToDouble(attributes.getValue("-w"));
         double height = defs::convertToDouble(attributes.getValue("-h"));

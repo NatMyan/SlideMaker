@@ -10,11 +10,11 @@ Rectangle::Rectangle (ID id, Position pos, Attributes attributes) : Item ("Recta
         double right = defs::convertToDouble(attributes.getValue("-r"));
         double left = defs::convertToDouble(attributes.getValue("-l"));
 
-        width_ = (top - bottom);
+        width_ = (bottom - top);
         height_ = (right - left);
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
-        && attributes.getValue("-pos") != Value()) {
+        && attributes.getValue("-x") != Value() && attributes.getValue("-y") != Value()) {
 
         width_ = defs::convertToDouble(attributes.getValue("-w"));
         height_ = defs::convertToDouble(attributes.getValue("-h"));  

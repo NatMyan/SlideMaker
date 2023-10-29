@@ -11,10 +11,10 @@ Line::Line (ID id, Position pos, Attributes attributes) : Item ("Line", id, pos,
         double right = defs::convertToDouble(attributes.getValue("-r"));
         double left = defs::convertToDouble(attributes.getValue("-l"));
 
-        length_ = sqrt(pow(top - bottom, 2) + pow (right - left, 2));
+        length_ = sqrt(pow(bottom - top, 2) + pow (right - left, 2));
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
-        && attributes.getValue("-pos") != Value()) {
+        && attributes.getValue("-x") != Value() && attributes.getValue("-y") != Value()) {
 
         double width = defs::convertToDouble(attributes.getValue("-w"));
         double height = defs::convertToDouble(attributes.getValue("-h"));

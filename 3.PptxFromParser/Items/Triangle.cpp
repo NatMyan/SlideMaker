@@ -9,11 +9,11 @@ Triangle::Triangle (ID id, Position pos, Attributes attributes) : Item ("Trapezo
         double right = defs::convertToDouble(attributes.getValue("-r"));
         double left = defs::convertToDouble(attributes.getValue("-l"));
 
-        base_ = (top - bottom);
+        base_ = (bottom - top);
         height_ = (right - left);
     }
     else if (attributes.getValue("-w") != Value() && attributes.getValue("-h") != Value()
-        && attributes.getValue("-pos") != Value()) {
+        && attributes.getValue("-x") != Value() && attributes.getValue("-y") != Value()) {
 
         base_ = defs::convertToDouble(attributes.getValue("-w"));
         height_ = defs::convertToDouble(attributes.getValue("-h"));  
