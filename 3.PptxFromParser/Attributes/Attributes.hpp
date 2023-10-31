@@ -7,6 +7,9 @@
 #include <string>
 
 class Attributes {
+    public: 
+        Attributes (MapPair<Key, Value> mapPairs);
+
     public:
         Key getKey(const Value& value) const;
         // void setKey(Value value);  
@@ -18,7 +21,11 @@ class Attributes {
         AttributesIterator<Key, Value> end();
     
     private:
+        bool isPairAttribute(std::pair<Key, Value> pair);
+
+    private:
         MapPair<Key, Value> attributeMap_;   
+        std::vector<std::string> attrRegistry_ = { "-lstyle", "-fcolour", "-lcolour", "-lwidth" };
 };
 
 #endif // ATTRIBUTES_HPP

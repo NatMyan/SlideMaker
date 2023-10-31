@@ -22,6 +22,10 @@ Type Item::getType() const {
     return type_;
 }
 
+void Item::setType(Type type) {
+    type_ = type;
+}
+
 Value Item::getAttribute(Key key) const { 
     if (attrs_.getValue(key) != Value())  
     ///TODO: is this^ correct ?

@@ -14,7 +14,9 @@ class Item {
 
     public:
         ID getID() const;
+
         Type getType() const;
+        void setType(Type type);
 
         Position getPosition() const;
         void setPosition(Position pos);

@@ -1,0 +1,6 @@
+Attributes ctor:
+    gets arguments, but in some cases, it doesn't bring an wrror, when w/out argument
+
+CommandExecutor ctor:
+    CommandExecutor() : doc_(std::make_shared<Document>()), slide_(std::make_shared<Slide>()) {}
+    where is the current slide ?

@@ -4,7 +4,7 @@ Document::Document() {
     slides_.push_back(std::make_shared<Slide>());
 }
 
-///TODO: probably improve this when time allows
+///TODO: probably improve this when time allows + have this or nah ?
 Document::Document (int slideNum) {
     for (size_t i = 0; i < slideNum; ++i) {
         slides_.push_back(std::make_shared<Slide>());
