@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTES_HPP
 #define ATTRIBUTES_HPP
 
-#include "../definitions.hpp"
+#include "../../definitions.hpp"
 #include "AttributesIterator.hpp"
 
 #include <string>

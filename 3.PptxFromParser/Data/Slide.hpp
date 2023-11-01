@@ -1,7 +1,7 @@
 #ifndef SLIDE_HPP
 #define SLIDE_HPP
 
-#include "definitions.hpp"
+#include "../definitions.hpp"
 #include "ItemFactory.hpp"
 
 class Slide {

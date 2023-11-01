@@ -1,6 +1,6 @@
 #include "Command.hpp"
-#include "../Data/ShapeRegistry.hpp"
-#include "../Data/WrongShapeException.hpp"
+#include "../../Data/ShapeRegistry.hpp"
+#include "../../Data/WrongShapeException.hpp"
 
 bool Command::isTypeSlide (MapPair<Key, Value> pairs) {
     return pairs["-type"].get<std::string>() == "slide";
