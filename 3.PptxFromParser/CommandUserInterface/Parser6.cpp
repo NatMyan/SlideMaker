@@ -1,7 +1,9 @@
 #include "Parser6.hpp"
-#include "CommandRegistry.hpp"
-#include "WrongCommandException.hpp"
-#include "WrongSyntaxException.hpp"
+#include "../CommandUserInterface/CommandRegistry.hpp"
+#include "../CommandUserInterface/WrongCommandException.hpp"
+#include "../CommandUserInterface/WrongSyntaxException.hpp"
+#include "../TupleWrapper.hpp"
+#include "../VariantWrapper.hpp"
 
 #include <iostream>
 #include <sstream>

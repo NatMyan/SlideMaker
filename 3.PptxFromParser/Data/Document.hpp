@@ -15,7 +15,8 @@ class Document {
         DocumentType<std::shared_ptr<Slide> > getSlides();
         void addtoDocument(std::shared_ptr<Slide> slidePtr);
         void removeFromDocument(Idx idx);
-        std::shared_ptr<Slide> getSlide(Idx idx);
+        std::weak_ptr<Slide> getSlide(Idx idx);
+        ///TODO: weak ptr
         DocumentIterator begin();
         DocumentIterator end();
 

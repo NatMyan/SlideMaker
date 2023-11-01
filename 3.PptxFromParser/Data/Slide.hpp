@@ -2,7 +2,7 @@
 #define SLIDE_HPP
 
 #include "definitions.hpp"
-#include "Items/ItemFactory.hpp"
+#include "ItemFactory.hpp"
 
 class Slide {
     public:

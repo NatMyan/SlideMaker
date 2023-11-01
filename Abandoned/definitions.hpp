@@ -7,7 +7,7 @@
 #include <variant>
 #include <vector>
 
-using ID = int;
+/*using ID = int;
 
 using CommandNameType = std::string;
 using NumberType = double; // std::variant<int, double>;
@@ -61,5 +61,5 @@ namespace defs {
     }
 
 }
-
+*/
 #endif // DEFINITIONS_HPP

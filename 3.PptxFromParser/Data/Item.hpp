@@ -2,7 +2,7 @@
 #define ITEM_HPP
 
 #include "../definitions.hpp"
-#include "../Attributes/Attributes.hpp"
+#include "Attributes.hpp"
 
 using LTCoordinate2D = std::pair<NumberType, NumberType>;
 using RBCoordinate2D = std::pair<NumberType, NumberType>;

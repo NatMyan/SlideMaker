@@ -23,11 +23,11 @@ void Document::removeFromDocument(Idx idx) {
     slides_.erase(slides_.begin() + idx);
 }
 
-std::shared_ptr<Slide> Document::getSlide(Idx idx) {
+std::weak_ptr<Slide> Document::getSlide(Idx idx) {
     if (idx < slides_.size()) {
         return slides_.at(idx);
     }
-    return nullptr;
+    return {};
 }
 
 Document::DocumentIterator Document::begin() {

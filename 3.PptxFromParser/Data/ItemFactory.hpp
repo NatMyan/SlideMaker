@@ -12,7 +12,7 @@
 
 class ItemFactory {
     public:
-        std::shared_ptr<Item> createItem (Type type, ID id, Position pos, Attributes attributes);
+        static std::shared_ptr<Item> createItem (Type type, ID id, Position pos, Attributes attributes);
 
 };
 

@@ -10,8 +10,6 @@ class VariantWrapper {
         template <typename T, typename = std::enable_if_t<(std::is_same_v<T, Types> || ...)>>
         explicit VariantWrapper(T value) : data_(value) {}
 
-        // VariantWrapper(Types()...) : data_(Types()...) {}
-
         VariantWrapper() : data_() {}
 
         bool operator==(const VariantWrapper& other) const {

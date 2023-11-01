@@ -1,6 +1,6 @@
-#include "AddCommandExecutor.hpp"
+#include "AddCommand.hpp"
 
-void AddCommandExecutor::execute(CommandType parsedCmd) {
+void AddCommand::execute(CommandType parsedCmd) {
     ///NOTE: assuming the validator works properly
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
@@ -12,9 +12,11 @@ void AddCommandExecutor::execute(CommandType parsedCmd) {
         LTCoordinate2D lt = {defs::convertToDouble(pairs["-l"]), defs::convertToDouble(pairs["-t"])};
         RBCoordinate2D rb = {defs::convertToDouble(pairs["-r"]), defs::convertToDouble(pairs["-b"])};
         Position pos = {lt, rb};
-        Attributes attrs(pairs);
-        ItemFactory itemFactory;
-        slide_->addtoSlide(itemFactory.createItem(type, id, pos, attrs));
+        Attributes attrs{pairs};
+        auto slide = doc_->getSlide(pairs["-idx"].get<ID>()).lock(); // becomes shared
+        if (slide) {
+            slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
+        }
         ++itemId_;
     }
 }

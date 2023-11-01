@@ -1,7 +1,7 @@
 #ifndef PARSER_6_HPP
 #define PARSER_6_HPP
 
-#include "definitions.hpp"
+#include "../definitions.hpp"
 
 class Parser6 {
     public:

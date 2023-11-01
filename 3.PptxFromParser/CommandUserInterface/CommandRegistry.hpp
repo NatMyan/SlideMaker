@@ -1,7 +1,7 @@
 #ifndef COMMAND_REGISTRY_HPP
 #define COMMAND_REGISTRY_HPP
 
-#include "definitions.hpp"
+#include "../definitions.hpp"
 #include "Tokenizer.hpp"
 
 class CommandRegistry {

@@ -1,10 +1,10 @@
 #include "ShapeRegistry.hpp"
-#include "Items/WrongShapeException.hpp"
+#include "WrongShapeException.hpp"
 
 ShapeRegistry::ShapeRegistry () :
     shapeSpec_ {
-        "Ellipse", "Rectangle", "Polygon", 
-        "Trapezoid", "Triangle", "Line"
+        "ellipse", "rectangle", "polygon", 
+        "trapezoid", "triangle", "line"
     }
 {}
 

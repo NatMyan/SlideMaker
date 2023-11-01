@@ -31,8 +31,6 @@ using DocumentType = std::vector<SlidePtr>;
 
 using Idx = size_t;
 
-///TODO: keep tuple int or not?
-
 namespace defs {
     /*std::string convertToString (ArgumentType arg) {
         struct {
@@ -61,18 +59,6 @@ namespace defs {
             }
         }
     }
-
-    /*double convertToDouble(const MapPair<Key, Value>& attributes, const Key& key) {
-        auto it = attributes.find(key);
-        if (it != attributes.end()) {
-            const Value& value = it->second;
-            if (std::is_same_v<Value, int>) {
-                return static_cast<double>(value.get<int>());
-            } else if (std::is_same_v<Value, double>) {
-                return value.get<double>();
-            }
-        }
-    }*/
 
     double convertToDouble(const Value& value) {
         if (std::is_same_v<Value, int>) {
