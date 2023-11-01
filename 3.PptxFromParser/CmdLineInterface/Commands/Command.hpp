@@ -1,8 +1,8 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include "../../definitions.hpp"
-#include "../../Data/Document.hpp"
+#include "../definitions.hpp"
+#include "../Data/Document.hpp"
 
 class Command {
     public:
@@ -17,9 +17,6 @@ class Command {
     protected:
         std::shared_ptr<Document> doc_;
         static int itemId_;
-
 };
-
-int Command::itemId_ = 0;
 
 #endif // COMMAND_HPP
