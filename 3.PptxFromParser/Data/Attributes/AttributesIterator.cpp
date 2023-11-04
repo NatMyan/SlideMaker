@@ -21,7 +21,7 @@ auto AttributesIterator<Key, Value>:: operator->() const -> const_pointer {
 }
 
 template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator++() -> AttributesIterator&{
+auto AttributesIterator<Key, Value>::operator++() -> AttributesIterator& {
     ++iter_;
     return *this;
 }

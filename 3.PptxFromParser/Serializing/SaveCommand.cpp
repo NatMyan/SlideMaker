@@ -1,22 +1,34 @@
 #include "SaveCommand.hpp"
+#include "FileDidNotOpenException.hpp"
 
-void SaveCommand::execute(CommandType parsedCmd) {
-    
-}
+#include <fstream>
 
-/*  if (std::get<0>(parsedCmd) == "save") {
-        std::string fileWPath = std::get<std::string>(std::get<1>(parsedCmd)["-file"]);
-        std::ofstream fileToSave(fileWPath);
-        if (fileToSave.is_open()) {
-            for (const auto& item : slide_->getSlide()) {
-                fileToSave << std::get<0>(item) << " ";
-                auto shape = std::get<1>(item);
-                for (const auto& mp : std::get<1>(parsedCmd)) {  
-                    fileToSave << mp.first << " " << defs::convertToString(shape.getAttribute(mp.first)) << std::endl;
-                }
-                fileToSave << std::endl;
-            }
-        }
-        fileToSave.close();
+/// TODO: I don't like this
+void SaveCommand::execute(CommandType parsedCmd) {  
+    MapPair<Key, Value> pairs = parsedCmd.get<1>();
+    std::string fileWPath = pairs["-file"].get<std::string>();
+    std::ofstream fileToSave(fileWPath, std::ios::binary);
+    if (!fileToSave.is_open()) {
+        throw FileDidNotOpenException(fileWPath);
     }
-*/
+    else if (fileToSave.is_open()) {
+        for (const auto& slide : doc_->getSlides()) {
+            for (const auto& item : slide->getSlide()) {
+                fileToSave << item->getID() << " " << item->getType() << " ";
+                auto pos = item->getPosition();
+                NumberType l = pos.first.first;
+                NumberType t = pos.first.second;
+                NumberType r = pos.second.first;
+                NumberType b = pos.second.second;
+                fileToSave << " " << l << " " << t << " " << r << " " << b << " ";
+
+                auto attrs = item->getAttributes();
+                for (const auto& attr : attrs) {
+                    fileToSave << attrs.getKey(attr) << " " << attr << " ";
+                }
+            }
+            fileToSave << std::endl;
+        }
+    }
+    fileToSave.close();
+}
