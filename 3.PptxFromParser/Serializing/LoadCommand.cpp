@@ -1,9 +1,11 @@
 #include "LoadCommand.hpp"
 #include "FileDidNotOpenException.hpp"
-#include "definitions.hpp"
+#include "../definitions.hpp"
 
 #include <fstream>
+#include <sstream>
 
+/// TODO: such bad code, forgot w, h, x, y version... hdfbigbhfdhv
 void LoadCommand::execute(CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath = pairs["-file"].get<std::string>();
@@ -16,61 +18,38 @@ void LoadCommand::execute(CommandType parsedCmd) {
         /// TODO: memory leak or not ?
         doc_ = std::make_shared<Document>();
         std::string line;
+        // id type pos: l t r b attrs: key val
         while (std::getline(inputStream, line)) {
-            
-        }
-    }
-}
-
-/*
-void LoadCommandExecutor::execute (CommandType parsedCmd) {
-    if (std::get<0>(parsedCmd) == "load") {
-        std::string fileWPath = std::get<std::string>(std::get<1>(parsedCmd)["-file"]);
-        std::ifstream fileToLoad(fileWPath);
-        if (fileToLoad.is_open()) {
-            std::istream& inputStream = fileToLoad;
-            slide_->getSlide().clear();
-            std::string line;
+            std::istringstream is(line);
+            std::string token;
+            is >> token;
+            is >> token;
+            Idx idx = std::stoi(token);
+            doc_->addtoDocument(std::make_shared<Slide>());
             while (std::getline(inputStream, line)) {
-                auto newItem = parseLineForLoad(line);
-                auto id = std::get<0>(newItem);
-                auto attributes = std::get<1>(newItem);
-                Shape shape = createShapeFromIDAndAttributes(id, attributes);
-                slide_->getSlide().push_back({id, shape});
+                std::istringstream iss(line);
+                iss >> token;
+                ID id = std::stoi(token);
+                iss >> token;
+                Type type = token;
+                iss >> token;
+                NumberType l = defs::convertToDouble(defs::parseArgValue(token));
+                iss >> token;
+                NumberType t = defs::convertToDouble(defs::parseArgValue(token));
+                iss >> token;
+                NumberType r = defs::convertToDouble(defs::parseArgValue(token));
+                iss >> token;
+                NumberType b = defs::convertToDouble(defs::parseArgValue(token));
+                Position pos = {{l, t}, {r, b}};
+                std::string key, value;
+                MapPair<Key, Value> mapPairs;
+                Attributes attrs(mapPairs);
+                while (iss >> key >> value) {
+                    attrs.setPair(key, defs::parseArgValue(value));
+                }
+                auto slide = doc_->getSlide(idx).lock();
+                slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
             }
-            auto finalElemIndex = slide_->getSlide().size() - 1;
-            id_ = std::get<0>(slide_->getSlide().at(finalElemIndex)) + 1;
         }
     }
 }
-
-ItemType LoadCommandExecutor::parseLineForLoad(std::string line) {
-    std::istringstream iss(line);
-    ID id;
-    iss >> id;
-    std::map<std::string, ArgumentType> arguments;
-
-    std::string key;
-    std::string val;
-    while (iss >> key >> val) {
-        arguments[key] = defs::parseArgumentValue(val);
-    }
-    return {id, arguments};
-}
-
-Shape LoadCommandExecutor::createShapeFromIDAndAttributes(ID id, std::map<std::string, ArgumentType> attributes) {
-    Position pos = {
-        {defs::convertToDouble(attributes, "-l"), defs::convertToDouble(attributes, "-t")}, 
-        {defs::convertToDouble(attributes, "-r"), defs::convertToDouble(attributes, "-b")}
-    };
-    Type type = std::get<std::string>(attributes["-type"]);
-    std::map<std::string, ArgumentType> attrs;
-    std::set<std::string> keysToExclude = {"-l", "-t", "-r", "-b", "-type"};
-    for (const auto& pair : attributes) {
-        if (keysToExclude.find(pair.first) == keysToExclude.end()) {
-            attrs[pair.first] = pair.second;
-        }
-    }
-    return Shape{type, id, pos, attrs};
-}
-*/

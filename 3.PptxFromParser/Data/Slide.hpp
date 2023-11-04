@@ -16,6 +16,7 @@ class Slide {
         void addtoSlide(std::shared_ptr<Item> itemPtr);
         void removeFromSlide(ID id);
         std::shared_ptr<Item> getItem(ID id);
+        // void setItem(Type type, ID id, Position pos, Attributes attributes);
         SlideIterator begin();
         SlideIterator end();
 

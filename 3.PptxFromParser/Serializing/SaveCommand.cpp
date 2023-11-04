@@ -3,7 +3,7 @@
 
 #include <fstream>
 
-/// TODO: I don't like this
+/// TODO: I don't like this, forgot w, h, x, y version... hdfbigbhfdhv
 void SaveCommand::execute(CommandType parsedCmd) {  
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath = pairs["-file"].get<std::string>();
@@ -13,6 +13,8 @@ void SaveCommand::execute(CommandType parsedCmd) {
     }
     else if (fileToSave.is_open()) {
         for (const auto& slide : doc_->getSlides()) {
+            auto count = 0;
+            fileToSave << "slide" << " " << count << std::endl;
             for (const auto& item : slide->getSlide()) {
                 fileToSave << item->getID() << " " << item->getType() << " ";
                 auto pos = item->getPosition();
@@ -28,6 +30,7 @@ void SaveCommand::execute(CommandType parsedCmd) {
                 }
             }
             fileToSave << std::endl;
+            ++count;
         }
     }
     fileToSave.close();
