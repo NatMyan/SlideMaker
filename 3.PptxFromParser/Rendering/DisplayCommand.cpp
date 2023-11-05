@@ -1,6 +1,8 @@
 #include "DisplayCommand.hpp"
+
 #include <iostream>
 
+///TODO: I hate this
 void DisplayCommand::execute(CommandType parsedCmd) {
     for (const auto& slide : doc_->getSlides()) {
         auto count = 0;
@@ -16,7 +18,13 @@ void DisplayCommand::execute(CommandType parsedCmd) {
 
             auto attrs = item->getAttributes();
             for (const auto& attr : attrs) {
-                std::cout << attrs.getKey(attr) << " " << attr << " ";
+                std::cout << attrs.getKey(attr);
+                if (std::is_same_v<decltype(attr), int>) 
+                    std::cout << attr.get<int>() << " ";
+                else if (std::is_same_v<decltype(attr), double>)
+                    std::cout << attr.get<double>() << " ";
+                else if (std::is_same_v<decltype(attr), std::string>)
+                    std::cout << attr.get<std::string>() << " ";
             }
         }
         std::cout << std::endl;
