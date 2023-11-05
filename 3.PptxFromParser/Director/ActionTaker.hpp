@@ -4,7 +4,8 @@
 #include "../CmdLineInterface/CommandFactory.hpp"
 
 class ActionTaker {
-    void execute (CommandType parsedCmd);
+    public:
+        void execute (CommandType parsedCmd);
 };
 
 #endif // ACTION_TAKER_HPP
