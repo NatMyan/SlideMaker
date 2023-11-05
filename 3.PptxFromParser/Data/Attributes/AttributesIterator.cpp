@@ -1,7 +1,7 @@
 #include "AttributesIterator.hpp"
 
 template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator*() -> reference {
+auto AttributesIterator<Key, Value>::operator*() -> reference { // undefined
     return iter_->second;
 }
 
@@ -21,7 +21,7 @@ auto AttributesIterator<Key, Value>:: operator->() const -> const_pointer {
 }
 
 template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator++() -> AttributesIterator& {
+auto AttributesIterator<Key, Value>::operator++() -> AttributesIterator& { // undefined
     ++iter_;
     return *this;
 }
@@ -52,6 +52,6 @@ auto AttributesIterator<Key, Value>::operator==(const AttributesIterator& rhs) c
 }
 
 template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator!=(const AttributesIterator& rhs) const -> bool {
+auto AttributesIterator<Key, Value>::operator!=(const AttributesIterator& rhs) const -> bool { // undefined
     return iter_ != rhs.iter_;
 }
