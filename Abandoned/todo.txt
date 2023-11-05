@@ -1,5 +1,0 @@
-change cmd : doesn't work
-command validator : finish it
-Document ptr in controller and remove itemStorage from command Executor
-
-definitions : ???
