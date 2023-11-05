@@ -1,5 +1,5 @@
-CC=g++ -std=c++17
-CFLAGS=-g -std=c++17 -Wall -pedantic
+CC=g++ -std=c++20
+CFLAGS=-g -std=c++20 -Wall -pedantic
 TARGET=ParserPPTX
 
 SRC=$(shell find . $("3.PptxFromParser") -name '*.cpp')
