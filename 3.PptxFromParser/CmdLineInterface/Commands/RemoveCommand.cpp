@@ -3,7 +3,7 @@
 void RemoveCommand::execute(CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
-        auto idx = pairs["-idx"].get<Idx>();
+        auto idx = pairs["-idx"].get<int>();
         doc_->removeFromDocument(idx);
     }
     else if (isTypeItem(pairs)) {

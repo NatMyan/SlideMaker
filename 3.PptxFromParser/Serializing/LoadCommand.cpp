@@ -1,6 +1,5 @@
 #include "LoadCommand.hpp"
 #include "FileDidNotOpenException.hpp"
-#include "../definitions.hpp"
 
 #include <fstream>
 #include <sstream>

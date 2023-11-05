@@ -3,10 +3,10 @@
 void ChangeCommand::execute (CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
-        doc_->getSlide(pairs["-idx"].get<Idx>()).lock(); // becomes shared
+        doc_->getSlide(pairs["-idx"].get<int>()).lock(); // becomes shared
     }
     else if (isTypeItem(pairs)) {
-        auto slide = doc_->getSlide(pairs["-idx"].get<Idx>()).lock();
+        auto slide = doc_->getSlide(pairs["-idx"].get<int>()).lock();
         auto itemID = pairs["-id"].get<ID>();
         auto item = slide->getItem(itemID);
 

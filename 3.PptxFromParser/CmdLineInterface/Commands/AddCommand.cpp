@@ -13,7 +13,7 @@ void AddCommand::execute(CommandType parsedCmd) {
         RBCoordinate2D rb = {defs::convertToDouble(pairs["-r"]), defs::convertToDouble(pairs["-b"])};
         Position pos = {lt, rb};
         Attributes attrs{pairs};
-        auto slide = doc_->getSlide(pairs["-idx"].get<ID>()).lock(); // becomes shared
+        auto slide = doc_->getSlide(pairs["-idx"].get<int>()).lock(); // becomes shared
         if (slide) {
             slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
         }

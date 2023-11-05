@@ -58,6 +58,8 @@ namespace defs {
                 return ArgumentType(argValue);
             }
         }
+        return ArgumentType(0);  
+        /// NOTE: theoretically, it shouldn't reach this point
     }
 
     double convertToDouble(const Value& value) {
@@ -66,8 +68,9 @@ namespace defs {
         } else if (std::is_same_v<Value, double>) {
             return value.get<double>();
         }
+        return 0.0;  
+        /// NOTE: theoretically, it shouldn't reach this point
     }
-    
 }
 
 #endif // DEFINITIONSS_HPP

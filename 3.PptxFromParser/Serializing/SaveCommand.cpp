@@ -23,10 +23,16 @@ void SaveCommand::execute(CommandType parsedCmd) {
                 NumberType r = pos.second.first;
                 NumberType b = pos.second.second;
                 fileToSave << " " << l << " " << t << " " << r << " " << b << " ";
-
+                
                 auto attrs = item->getAttributes();
                 for (const auto& attr : attrs) {
-                    fileToSave << attrs.getKey(attr) << " " << attr << " ";
+                    fileToSave << attrs.getKey(attr);
+                    if (std::is_same_v<decltype(attr), int>) 
+                        fileToSave << attr.get<int>() << " ";
+                    else if (std::is_same_v<decltype(attr), double>)
+                        fileToSave << attr.get<double>() << " ";
+                    else if (std::is_same_v<decltype(attr), std::string>)
+                        fileToSave << attr.get<std::string>() << " ";
                 }
             }
             fileToSave << std::endl;

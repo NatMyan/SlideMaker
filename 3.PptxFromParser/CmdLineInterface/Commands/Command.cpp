@@ -1,6 +1,6 @@
 #include "Command.hpp"
-#include "../Data/Items/ShapeRegistry.hpp"
-#include "../Data/Items/WrongShapeException.hpp"
+#include "../../Data/Items/ShapeRegistry.hpp"
+#include "../../Data/Items/WrongShapeException.hpp"
 
 int Command::itemId_ = 0;
 
