@@ -21,6 +21,10 @@ using Type = std::string;
 using Key = std::string;
 using Value = ArgumentType;
 
+using LTCoordinate2D = std::pair<NumberType, NumberType>;
+using RBCoordinate2D = std::pair<NumberType, NumberType>;
+using Position = std::pair<LTCoordinate2D, RBCoordinate2D>;
+
 using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
 
 template <typename ItemPtr>
@@ -29,9 +33,11 @@ using SlideType = std::vector<ItemPtr>;
 template <typename SlidePtr>
 using DocumentType = std::vector<SlidePtr>;
 
-using Idx = size_t;
+using Idx = int;
 
 namespace defs {
+    ArgumentType parseArgValue(const std::string& argValue);
+    double convertToDouble(const Value& value);
     /*std::string convertToString (ArgumentType arg) {
         struct {
             std::string operator()(const std::string& str) const {
@@ -47,30 +53,6 @@ namespace defs {
 
         return std::visit(visitor, arg);
     }*/
-
-    ArgumentType parseArgValue(const std::string& argValue) {
-        try {
-            return ArgumentType(std::stoi(argValue));
-        } catch (const std::invalid_argument&) {
-            try {
-                return ArgumentType(std::stod(argValue));
-            } catch (const std::invalid_argument&) {
-                return ArgumentType(argValue);
-            }
-        }
-        return ArgumentType(0);  
-        /// NOTE: theoretically, it shouldn't reach this point
-    }
-
-    double convertToDouble(const Value& value) {
-        if (std::is_same_v<Value, int>) {
-            return static_cast<double>(value.get<int>());
-        } else if (std::is_same_v<Value, double>) {
-            return value.get<double>();
-        }
-        return 0.0;  
-        /// NOTE: theoretically, it shouldn't reach this point
-    }
 }
 
 #endif // DEFINITIONSS_HPP

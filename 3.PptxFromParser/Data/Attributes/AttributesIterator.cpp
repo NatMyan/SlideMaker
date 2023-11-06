@@ -1,57 +1,57 @@
 #include "AttributesIterator.hpp"
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator*() -> reference { // undefined
+// template <typename Key, typename Value>
+auto AttributesIterator::operator*() -> reference { // undefined
     return iter_->second;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator*() const -> const_reference {
+// template <typename Key, typename Value>
+auto AttributesIterator::operator*() const -> const_reference {
     return iter_->second;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator->() -> pointer {
+// template <typename Key, typename Value>
+auto AttributesIterator::operator->() -> pointer {
     return &(iter_->second);
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>:: operator->() const -> const_pointer {
+// template <typename Key, typename Value>
+auto AttributesIterator:: operator->() const -> const_pointer {
     return &(iter_->second);
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator++() -> AttributesIterator& { // undefined
+// template <typename Key, typename Value>
+auto AttributesIterator::operator++() -> AttributesIterator& { // undefined
     ++iter_;
     return *this;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator++(int) -> AttributesIterator {
+// template <typename Key, typename Value>
+auto AttributesIterator::operator++(int) -> AttributesIterator {
     AttributesIterator temp = *this;
     ++iter_;
     return temp;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator--() -> AttributesIterator& {
+// template <typename Key, typename Value>
+/*auto AttributesIterator::operator--() -> AttributesIterator& {
     --iter_;
     return *this;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator--(int) -> AttributesIterator {
+// template <typename Key, typename Value>
+auto AttributesIterator::operator--(int) -> AttributesIterator {
     AttributesIterator temp = *this;
     --iter_;
     return temp;
-}
+}*/
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator==(const AttributesIterator& rhs) const -> bool {
+// template <typename Key, typename Value>
+auto AttributesIterator::operator==(const AttributesIterator& rhs) const -> bool {
     return iter_ == rhs.iter_;
 }
 
-template <typename Key, typename Value>
-auto AttributesIterator<Key, Value>::operator!=(const AttributesIterator& rhs) const -> bool { // undefined
+// template <typename Key, typename Value>
+auto AttributesIterator::operator!=(const AttributesIterator& rhs) const -> bool { // undefined
     return iter_ != rhs.iter_;
 }

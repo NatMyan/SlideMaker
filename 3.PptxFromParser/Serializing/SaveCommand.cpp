@@ -2,6 +2,7 @@
 #include "FileDidNotOpenException.hpp"
 
 #include <fstream>
+#include <iostream>
 
 /// TODO: I don't like this, forgot w, h, x, y version... hdfbigbhfdhv
 void SaveCommand::execute(CommandType parsedCmd) {  
@@ -23,17 +24,32 @@ void SaveCommand::execute(CommandType parsedCmd) {
                 NumberType r = pos.second.first;
                 NumberType b = pos.second.second;
                 fileToSave << " " << l << " " << t << " " << r << " " << b << " ";
-                
+
                 auto attrs = item->getAttributes();
                 for (const auto& attr : attrs) {
-                    fileToSave << attrs.getKey(attr);
-                    if (std::is_same_v<decltype(attr), int>) 
+                fileToSave << attrs.getKey(attr);
+                if (std::is_same_v<decltype(attr), int>) {
+                    try {
                         fileToSave << attr.get<int>() << " ";
-                    else if (std::is_same_v<decltype(attr), double>)
-                        fileToSave << attr.get<double>() << " ";
-                    else if (std::is_same_v<decltype(attr), std::string>)
-                        fileToSave << attr.get<std::string>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in save attr int" << std::endl;
+                    }
                 }
+                else if (std::is_same_v<decltype(attr), double>) {
+                    try {
+                        fileToSave << attr.get<double>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in save attr double" << std::endl;
+                    }
+                }
+                else if (std::is_same_v<decltype(attr), std::string>) {
+                    try {
+                        fileToSave << attr.get<std::string>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in save attr string" << std::endl;
+                    }
+                }
+            }
             }
             fileToSave << std::endl;
             ++count;

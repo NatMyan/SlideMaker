@@ -1,6 +1,8 @@
 #include "Command.hpp"
 #include "../../Data/Items/ShapeRegistry.hpp"
-#include "../../Data/Items/WrongShapeException.hpp"
+#include "../../Exception.hpp"
+
+#include <iostream>
 
 int Command::itemId_ = 0;
 
@@ -12,9 +14,14 @@ bool Command::isTypeSlide (MapPair<Key, Value> pairs) {
 bool Command::isTypeItem(MapPair<Key, Value> pairs) {
     try {
         ShapeRegistry shapeReg;
-        shapeReg.findShape(pairs["-type"].get<std::string>());
+        try {
+            shapeReg.findShape(pairs["-type"].get<std::string>());
+        } catch (const std::bad_variant_access&) {
+            std::cerr << "in shapeReg not found in isTypeItem" << std::endl;
+            return false;
+        }
     } 
-    catch (const WrongShapeException& e) {
+    catch (const Exception& e) {
         return false;  
     }
     return true;

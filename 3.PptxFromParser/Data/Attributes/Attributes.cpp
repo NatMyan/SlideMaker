@@ -31,12 +31,12 @@ void Attributes::setPair (Key key, Value value) {
     attributeMap_[key] = value;
 }
 
-AttributesIterator<Key, Value> Attributes::begin() {
-    return AttributesIterator<Key, Value>(attributeMap_.begin()); 
+AttributesIterator Attributes::begin() {
+    return AttributesIterator(attributeMap_.begin()); 
 }
 
-AttributesIterator<Key, Value> Attributes::end() {
-    return AttributesIterator<Key, Value>(attributeMap_.end());
+AttributesIterator Attributes::end() {
+    return AttributesIterator(attributeMap_.end());
 }
 
 bool Attributes::isPairAttribute(std::pair<Key, Value> p) {

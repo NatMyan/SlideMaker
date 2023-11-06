@@ -5,6 +5,8 @@
 #include "CommandValidator.hpp"
 #include "../Director/ActionTaker.hpp"
 
+#include <iostream>
+
 void CmdController::run(std::istream& input) {
     exec(input);
 }
@@ -23,8 +25,12 @@ void CmdController::exec(std::istream& input) {
         if (validator.isCommandValid(parsedCmd)) {
             if (parsedCmd.get<0>() == "exit")
                 break;
-            ActionTaker action;
-            action.execute(parsedCmd);
+            // try {
+                ActionTaker action;
+                action.execute(parsedCmd);
+            // } catch (const std::bad_variant_access&) {
+                // std::cerr << "bad variant access" << std::endl;
+            // }
         } 
     }
 }

@@ -1,5 +1,5 @@
 #include "CommandRegistry.hpp"
-#include "WrongCommandException.hpp"
+#include "../Exception.hpp"
 
 CommandRegistry::CommandRegistry () : 
     commandSpec_ {
@@ -14,7 +14,7 @@ CommandNameType CommandRegistry::findCommand (const std::string& commandName) {
             return cmd;
         }
     }
-    throw WrongCommandException(commandName);
+    throw Exception("Invalid command: " + commandName);
 }
 
 

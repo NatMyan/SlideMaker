@@ -1,5 +1,5 @@
 #include "Item.hpp"
-#include "../Attributes/AttributeNotFoundException.hpp"
+#include "../../Exception.hpp"
 
 ///TODO: add default attributes
 Item::Item (Type type, ID id, Position pos,  Attributes attributes) :
@@ -30,7 +30,7 @@ Value Item::getAttribute(Key key) const {
     if (attrs_.getValue(key) != Value())  
     ///TODO: is this^ correct ?
         return attrs_.getValue(key);
-    throw AttributeNotFoundException("Attribute not found");
+    throw Exception("Attribute not found");
 }
 
 void Item::setAttribute(Key key, Value value) {

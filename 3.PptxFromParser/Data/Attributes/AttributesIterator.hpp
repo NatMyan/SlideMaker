@@ -6,7 +6,7 @@
 #include <iterator> // std::bidirectional_iterator_tag;
 
 ///NOTE: this somehow iterates over values, and not keys-value pairs... *sigh*
-template <typename Key, typename Value>
+// template <typename Key, typename Value>
 class AttributesIterator {
     public:
         using iterator_category = std::bidirectional_iterator_tag;
@@ -19,7 +19,7 @@ class AttributesIterator {
         using const_reference = const value_type&;
 
     public:
-        explicit AttributesIterator(typename MapPair<Key, Value>::iterator mapIter) : iter_(mapIter) {}
+        explicit AttributesIterator(MapPair<Key, Value>::iterator mapIter) : iter_(mapIter) {}
 
     public:
         reference operator*();
@@ -28,13 +28,13 @@ class AttributesIterator {
         const_pointer operator->() const;
         AttributesIterator& operator++();
         AttributesIterator operator++(int);
-        AttributesIterator& operator--();
-        AttributesIterator operator--(int);
+        //AttributesIterator& operator--();
+        //AttributesIterator operator--(int);
         bool operator==(const AttributesIterator& other) const;
         bool operator!=(const AttributesIterator& other) const;
 
     private:
-        typename MapPair<Key, Value>::iterator iter_;
+        MapPair<Key, Value>::iterator iter_;
 };
 
 #endif // ATTRIBUTE_ITERATOR_HPP

@@ -3,11 +3,17 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 /// TODO: such bad code, forgot w, h, x, y version... hdfbigbhfdhv
 void LoadCommand::execute(CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
-    std::string fileWPath = pairs["-file"].get<std::string>();
+    std::string fileWPath;
+    try {
+        fileWPath = pairs["-file"].get<std::string>();
+    } catch (const std::bad_variant_access&) {
+        std::cerr << "file existeth not" << std::endl;
+    }
     std::ifstream fileToLoad(fileWPath, std::ios::binary);
     if (!fileToLoad.is_open()) {
         throw FileDidNotOpenException(fileWPath);

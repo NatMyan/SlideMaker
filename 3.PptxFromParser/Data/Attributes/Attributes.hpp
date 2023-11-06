@@ -1,7 +1,6 @@
 #ifndef ATTRIBUTES_HPP
 #define ATTRIBUTES_HPP
 
-#include "../../definitions.hpp"
 #include "AttributesIterator.hpp"
 
 #include <string>
@@ -17,8 +16,8 @@ class Attributes {
         // void setValue(Key key);
         ///TODO: are setKey, setValue, getValue needed ?
         void setPair(Key, Value);
-        AttributesIterator<Key, Value> begin();
-        AttributesIterator<Key, Value> end();
+        AttributesIterator begin();
+        AttributesIterator end();
     
     private:
         bool isPairAttribute(std::pair<Key, Value> pair);

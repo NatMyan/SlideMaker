@@ -1,12 +1,7 @@
 #ifndef ITEM_HPP
 #define ITEM_HPP
 
-#include "../../definitions.hpp"
 #include "../Attributes/Attributes.hpp"
-
-using LTCoordinate2D = std::pair<NumberType, NumberType>;
-using RBCoordinate2D = std::pair<NumberType, NumberType>;
-using Position = std::pair<LTCoordinate2D, RBCoordinate2D>;
 
 class Item {
     public:

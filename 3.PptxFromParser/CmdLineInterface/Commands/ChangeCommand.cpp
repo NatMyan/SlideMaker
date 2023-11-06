@@ -1,13 +1,28 @@
 #include "ChangeCommand.hpp"
 
+#include <iostream>
+
 void ChangeCommand::execute (CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
+    int idx = 0;
+    try {
+        idx = pairs["-idx"].get<int>();
+    } catch (const std::bad_variant_access&) {
+        std::cerr << "bad variant access in change cmd idx" << std::endl;
+        idx = 0;
+    }
     if (isTypeSlide(pairs)) {
-        doc_->getSlide(pairs["-idx"].get<int>()).lock(); // becomes shared
+        doc_->getSlide(idx).lock(); // becomes shared
     }
     else if (isTypeItem(pairs)) {
-        auto slide = doc_->getSlide(pairs["-idx"].get<int>()).lock();
-        auto itemID = pairs["-id"].get<ID>();
+        auto slide = doc_->getSlide(idx).lock();
+        ID itemID = itemId_;
+        try {
+            itemID = pairs["-id"].get<ID>();
+        } catch (const std::bad_variant_access&) {
+            std::cerr << "bad variant access in changecmd is type item" << std::endl;
+            itemID = itemId_;
+        }
         auto item = slide->getItem(itemID);
 
         Type type = item->getType();
@@ -19,7 +34,12 @@ void ChangeCommand::execute (CommandType parsedCmd) {
         NumberType b = pos.second.second;
 
         if (pairs.find("-type") != pairs.end()) {
-            type = pairs["-type"].get<std::string>();
+            try {
+                type = pairs["-type"].get<std::string>();
+            } catch (const std::bad_variant_access&) {
+                std::cerr << "bad variant access in change cmd rectangle" << std::endl;
+                type = "rectangle";
+            }
             item->setType(type);
         }
 

@@ -19,12 +19,27 @@ void DisplayCommand::execute(CommandType parsedCmd) {
             auto attrs = item->getAttributes();
             for (const auto& attr : attrs) {
                 std::cout << attrs.getKey(attr);
-                if (std::is_same_v<decltype(attr), int>) 
-                    std::cout << attr.get<int>() << " ";
-                else if (std::is_same_v<decltype(attr), double>)
-                    std::cout << attr.get<double>() << " ";
-                else if (std::is_same_v<decltype(attr), std::string>)
-                    std::cout << attr.get<std::string>() << " ";
+                if (std::is_same_v<decltype(attr), int>) {
+                    try {
+                        std::cout << attr.get<int>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in display attr int" << std::endl;
+                    }
+                }
+                else if (std::is_same_v<decltype(attr), double>) {
+                    try {
+                        std::cout << attr.get<double>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in display attr double" << std::endl;
+                    }
+                }
+                else if (std::is_same_v<decltype(attr), std::string>) {
+                    try {
+                        std::cout << attr.get<std::string>() << " ";
+                    } catch (const std::bad_variant_access&) {
+                        std::cerr << "bad variant access in display attr string" << std::endl;
+                    }
+                }
             }
         }
         std::cout << std::endl;

@@ -1,5 +1,5 @@
 #include "ShapeRegistry.hpp"
-#include "WrongShapeException.hpp"
+#include "../../Exception.hpp"
 
 ShapeRegistry::ShapeRegistry () :
     shapeSpec_ {
@@ -15,5 +15,5 @@ ShapeNameType ShapeRegistry::findShape (const std::string& shapeName) {
             return shp;
         }
     }
-    throw WrongShapeException(shapeName);
+    throw Exception("Invalid shape: " + shapeName);
 }

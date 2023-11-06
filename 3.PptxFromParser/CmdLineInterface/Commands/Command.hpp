@@ -1,7 +1,6 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include "../../definitions.hpp"
 #include "../../Data/Document.hpp"
 
 class Command {
