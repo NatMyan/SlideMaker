@@ -12,17 +12,15 @@ bool Command::isTypeSlide (MapPair<Key, Value> pairs) {
 
 ///TODO: should this exist or should I assume validator works and write else ?
 bool Command::isTypeItem(MapPair<Key, Value> pairs) {
-    try {
-        ShapeRegistry shapeReg;
+    if (pairs["-type"].holdsAlternative<std::string>()) {
+            ShapeRegistry shapeReg;
         try {
             shapeReg.findShape(pairs["-type"].get<std::string>());
-        } catch (const std::bad_variant_access&) {
-            std::cerr << "in shapeReg not found in isTypeItem" << std::endl;
+        } catch (const Exception&) {
             return false;
         }
+        return true;
     } 
-    catch (const Exception& e) {
-        return false;  
-    }
-    return true;
+    return false;
+    ///NOTE: theoretically, it shouldn't reach here ^
 }

@@ -4,8 +4,8 @@
 
 ///TODO: I hate this
 void DisplayCommand::execute(CommandType parsedCmd) {
+    auto idx = 0;
     for (const auto& slide : doc_->getSlides()) {
-        auto idx = 0;
         std::cout << "slide" << " " << idx << std::endl;
         for (const auto& item : slide->getSlide()) {
             std::cout << item->getID() << " " << item->getType() << " ";
