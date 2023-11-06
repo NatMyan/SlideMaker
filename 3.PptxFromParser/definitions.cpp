@@ -22,20 +22,21 @@ namespace defs {
     }
 
     double convertToDouble(const Value& value) {
-        if (std::is_same_v<Value, int>) {
-            try {
+        if (std::is_same_v<Value, int> && value.holdsAlternative<int>()) {
+            //try {
                 return static_cast<double>(value.get<int>());
-            } catch (const std::bad_variant_access&) {
+            /*} catch (const std::bad_variant_access&) {
                 std::cerr << "bad variant access in convert to double static_cast" << std::endl;
                 return 0.0;
-            }
-        } else if (std::is_same_v<Value, double>) {
-            try {
+            }*/
+        } 
+        else if (std::is_same_v<Value, double> && value.holdsAlternative<double>()) {
+            // try {
                 return value.get<double>();
-            } catch (const std::bad_variant_access&) {
+            /*} catch (const std::bad_variant_access&) {
                 std::cerr << "bad variant access in convert to double no cast" << std::endl;
                 return 0.0;
-            }
+            }*/
         }
         return 0.0;  
         /// NOTE: theoretically, it shouldn't reach this point

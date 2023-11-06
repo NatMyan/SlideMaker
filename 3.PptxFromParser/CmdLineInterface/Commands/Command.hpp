@@ -5,7 +5,7 @@
 
 class Command {
     public:
-        Command() : doc_(std::make_shared<Document>()) {}
+        Command() : doc_(std::make_shared<Document>()) { doc_->addtoDocument(std::make_shared<Slide>()); } // default 1st slide
         virtual void execute (CommandType parsedCmd) = 0;
         virtual ~Command() = default;
 

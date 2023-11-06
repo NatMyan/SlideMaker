@@ -26,6 +26,11 @@ class VariantWrapper {
             return std::get<T>(data_);
         }
 
+        template <typename T>
+        bool holdsAlternative() const {
+            return std::holds_alternative<T>(data_);
+        }
+
     private:
         std::variant<Types...> data_;
 };

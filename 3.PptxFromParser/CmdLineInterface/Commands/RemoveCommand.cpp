@@ -5,23 +5,17 @@
 void RemoveCommand::execute(CommandType parsedCmd) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
-        auto idx = 0;
-        try {
-            idx = pairs["-idx"].get<int>();
-        } catch (const std::bad_variant_access&) {
-            std::cerr << "bad variant access in remove cmd" << std::endl;
-            idx = 0;
+        Idx idx = 0;
+        if (pairs["-idx"].holdsAlternative<Idx>()) {
+            idx = pairs["-idx"].get<Idx>();
         }
         doc_->removeFromDocument(idx);
     }
     else if (isTypeItem(pairs)) {
-        int id = itemId_;
-        try {
+        ID id = itemId_;
+        if (pairs["-id"].holdsAlternative<ID>()) {
             id = pairs["-id"].get<ID>();
-        } catch (const std::bad_variant_access&) {
-            id = itemId_;
-            std::cerr << "bad variant access in remove item" << std::endl;
-        }
+        } 
         auto slides = doc_->getSlides(); 
         for (auto ptr : slides) {
             if (ptr->getItem(id)) {

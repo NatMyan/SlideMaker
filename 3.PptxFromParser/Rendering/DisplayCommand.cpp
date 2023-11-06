@@ -5,8 +5,8 @@
 ///TODO: I hate this
 void DisplayCommand::execute(CommandType parsedCmd) {
     for (const auto& slide : doc_->getSlides()) {
-        auto count = 0;
-        std::cout << "slide" << " " << count << std::endl;
+        auto idx = 0;
+        std::cout << "slide" << " " << idx << std::endl;
         for (const auto& item : slide->getSlide()) {
             std::cout << item->getID() << " " << item->getType() << " ";
             auto pos = item->getPosition();
@@ -19,30 +19,18 @@ void DisplayCommand::execute(CommandType parsedCmd) {
             auto attrs = item->getAttributes();
             for (const auto& attr : attrs) {
                 std::cout << attrs.getKey(attr);
-                if (std::is_same_v<decltype(attr), int>) {
-                    try {
-                        std::cout << attr.get<int>() << " ";
-                    } catch (const std::bad_variant_access&) {
-                        std::cerr << "bad variant access in display attr int" << std::endl;
-                    }
+                if (std::is_same_v<decltype(attr), int> && attr.holdsAlternative<int>()) {
+                    std::cout << attr.get<int>() << " ";
                 }
-                else if (std::is_same_v<decltype(attr), double>) {
-                    try {
-                        std::cout << attr.get<double>() << " ";
-                    } catch (const std::bad_variant_access&) {
-                        std::cerr << "bad variant access in display attr double" << std::endl;
-                    }
+                else if (std::is_same_v<decltype(attr), double> && attr.holdsAlternative<double>()) {
+                    std::cout << attr.get<double>() << " ";
                 }
-                else if (std::is_same_v<decltype(attr), std::string>) {
-                    try {
-                        std::cout << attr.get<std::string>() << " ";
-                    } catch (const std::bad_variant_access&) {
-                        std::cerr << "bad variant access in display attr string" << std::endl;
-                    }
+                else if (std::is_same_v<decltype(attr), std::string> && attr.holdsAlternative<std::string>()) {
+                    std::cout << attr.get<std::string>() << " ";
                 }
             }
         }
         std::cout << std::endl;
-        ++count;
+        ++idx;
     }
 }
