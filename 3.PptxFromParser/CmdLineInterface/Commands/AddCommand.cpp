@@ -2,13 +2,19 @@
 
 #include <iostream>
 
-void AddCommand::execute(CommandType parsedCmd) {
+void AddCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     ///NOTE: assuming the validator works properly
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
-    if (isTypeSlide(pairs)) {
-        doc_->addtoDocument(std::make_shared<Slide>());
+    if (isTypeSlide(pairs)) {   // bugged
+        doc->addtoDocument(std::make_shared<Slide>());
+        int i = 0;
+        for (const auto& slide : doc->getSlides()) {
+            std::cout << "slide " << i << std::endl;
+            ++i;
+        }
+        std::cout << "added to document" << std::endl;
     }
-    else if (isTypeItem(pairs)) {
+    else if (isTypeItem(pairs)) {  // works
         Type type = "rectangle";
         if (pairs["-type"].holdsAlternative<std::string>()) {
             type = pairs["-type"].get<std::string>();
@@ -22,9 +28,13 @@ void AddCommand::execute(CommandType parsedCmd) {
         if (pairs["-idx"].holdsAlternative<Idx>()) {
             idx = pairs["-idx"].get<Idx>();
         }
-        auto slide = doc_->getSlide(idx).lock(); // becomes shared
+        auto slide = doc->getSlide(idx).lock(); // becomes shared
         if (slide != nullptr) {
-            slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
+            slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs)); 
+            /*for (const auto& item : *slide) {
+                std::cout << item->getType() << " " << item->getID() << std::endl;
+            }
+            std::cout << "added to slide" << std::endl;*/
         }
         ++itemId_;
     }

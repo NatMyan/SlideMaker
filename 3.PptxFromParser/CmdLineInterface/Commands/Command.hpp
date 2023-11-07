@@ -5,8 +5,8 @@
 
 class Command {
     public:
-        Command() : doc_(std::make_shared<Document>()) { doc_->addtoDocument(std::make_shared<Slide>()); } // default 1st slide
-        virtual void execute (CommandType parsedCmd) = 0;
+        Command() {} // doc_->addtoDocument(std::make_shared<Slide>()); } // default 1st slide
+        virtual void execute (CommandType parsedCmd, std::shared_ptr<Document> doc) = 0;
         virtual ~Command() = default;
 
     protected:
@@ -14,7 +14,6 @@ class Command {
         bool isTypeItem(MapPair<Key, Value> pairs);
 
     protected:
-        std::shared_ptr<Document> doc_;
         static int itemId_;
 };
 

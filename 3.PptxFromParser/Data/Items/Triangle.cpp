@@ -1,6 +1,6 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle (ID id, Position pos, Attributes attributes) : Item ("Trapezoid", id, pos, attributes) {
+Triangle::Triangle (ID id, Position pos, Attributes attributes) : Item ("Triangle", id, pos, attributes) {
     if (attributes.getValue("-t") != Value() && attributes.getValue("-l") != Value() &&  
         attributes.getValue("-b") != Value() && attributes.getValue("-r") != Value()) {
 

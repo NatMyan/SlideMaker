@@ -5,7 +5,7 @@
 
 class LoadCommand : public SerializerCommand {
     public:
-        void execute(CommandType parsedCmd);
+        void execute(CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
 #endif // LOAD_COMMAND_HPP

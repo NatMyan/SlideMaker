@@ -6,7 +6,7 @@
 #include <iostream>
 
 /// TODO: such bad code, forgot w, h, x, y version... hdfbigbhfdhv
-void LoadCommand::execute(CommandType parsedCmd) {
+void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath;
     try {
@@ -21,7 +21,7 @@ void LoadCommand::execute(CommandType parsedCmd) {
     else if (fileToLoad.is_open()) {
         std::istream& inputStream = fileToLoad;
         /// TODO: memory leak or not ?
-        doc_ = std::make_shared<Document>();
+        doc = std::make_shared<Document>();
         std::string line;
         // id type pos: l t r b attrs: key val
         while (std::getline(inputStream, line)) {
@@ -30,7 +30,7 @@ void LoadCommand::execute(CommandType parsedCmd) {
             is >> token;
             is >> token;
             Idx idx = std::stoi(token);
-            doc_->addtoDocument(std::make_shared<Slide>());
+            doc->addtoDocument(std::make_shared<Slide>());
             while (std::getline(inputStream, line)) {
                 std::istringstream iss(line);
                 iss >> token;
@@ -52,7 +52,7 @@ void LoadCommand::execute(CommandType parsedCmd) {
                 while (iss >> key >> value) {
                     attrs.setPair(key, defs::parseArgValue(value));
                 }
-                auto slide = doc_->getSlide(idx).lock();
+                auto slide = doc->getSlide(idx).lock();
                 slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
             }
         }

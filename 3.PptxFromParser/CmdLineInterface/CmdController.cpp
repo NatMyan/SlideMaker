@@ -27,7 +27,8 @@ void CmdController::exec(std::istream& input) {
                 break;
             // try {
                 ActionTaker action;
-                action.execute(parsedCmd);
+                auto docPtr = std::make_shared<Document>();
+                action.execute(parsedCmd, docPtr);
             // } catch (const std::bad_variant_access&) {
                 // std::cerr << "bad variant access" << std::endl;
             // }

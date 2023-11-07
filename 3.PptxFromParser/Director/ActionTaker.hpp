@@ -5,7 +5,7 @@
 
 class ActionTaker {
     public:
-        void execute (CommandType parsedCmd);
+        void execute (CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
 #endif // ACTION_TAKER_HPP

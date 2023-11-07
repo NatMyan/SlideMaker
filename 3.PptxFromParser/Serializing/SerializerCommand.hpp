@@ -5,7 +5,7 @@
 
 class SerializerCommand : public Command {
     public:
-        virtual void execute(CommandType parsedCmd) = 0;
+        virtual void execute(CommandType parsedCmd, std::shared_ptr<Document> doc) = 0;
 };
 
 #endif // SERIALIZER_COMMAND_HPP

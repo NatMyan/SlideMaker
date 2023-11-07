@@ -5,7 +5,7 @@
 #include <iostream>
 
 /// TODO: I don't like this, forgot w, h, x, y version... hdfbigbhfdhv
-void SaveCommand::execute(CommandType parsedCmd) {  
+void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {  
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath = pairs["-file"].get<std::string>();
     std::ofstream fileToSave(fileWPath, std::ios::binary);
@@ -13,7 +13,7 @@ void SaveCommand::execute(CommandType parsedCmd) {
         throw FileDidNotOpenException(fileWPath);
     }
     else if (fileToSave.is_open()) {
-        for (const auto& slide : doc_->getSlides()) {
+        for (const auto& slide : doc->getSlides()) {
             auto count = 0;
             fileToSave << "slide" << " " << count << std::endl;
             for (const auto& item : slide->getSlide()) {

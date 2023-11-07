@@ -7,7 +7,7 @@
 int Command::itemId_ = 0;
 
 bool Command::isTypeSlide (MapPair<Key, Value> pairs) {
-    return pairs["-type"].get<std::string>() == "slide";
+    return pairs["-type"].get<std::string>() == std::string("slide");
 }
 
 ///TODO: should this exist or should I assume validator works and write else ?

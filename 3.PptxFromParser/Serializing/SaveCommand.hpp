@@ -5,7 +5,7 @@
 
 class SaveCommand : public SerializerCommand {
     public:
-        void execute(CommandType parsedCmd);
+        void execute(CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
 #endif // SAVE_COMMAND_HPP

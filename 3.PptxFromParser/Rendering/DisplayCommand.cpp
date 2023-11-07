@@ -3,9 +3,9 @@
 #include <iostream>
 
 ///TODO: I hate this
-void DisplayCommand::execute(CommandType parsedCmd) {
+void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     auto idx = 0;
-    for (const auto& slide : doc_->getSlides()) {
+    for (const auto& slide : doc->getSlides()) {
         std::cout << "slide" << " " << idx << std::endl;
         // if (!slide->getSlide().empty()) {
             for (const auto& item : slide->getSlide()) {
