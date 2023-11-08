@@ -13,6 +13,7 @@ void CmdController::run(std::istream& input) {
 
 ///TODO: catch exceptions
 void CmdController::exec(std::istream& input) {
+    auto docPtr = std::make_shared<Document>();
     while(!exit) {
         InputReader inputReader;
         const char eolToken = '\n';
@@ -27,7 +28,6 @@ void CmdController::exec(std::istream& input) {
                 break;
             // try {
                 ActionTaker action;
-                auto docPtr = std::make_shared<Document>();
                 action.execute(parsedCmd, docPtr);
             // } catch (const std::bad_variant_access&) {
                 // std::cerr << "bad variant access" << std::endl;
