@@ -38,7 +38,11 @@ CommandNameType CommandRegistry::findCommandName (const std::string& cmdName) {
     throw Exception("Invalid command: " + cmdName);
 }
 
-CommandTemplateType CommandRegistry::findCommand (const std::string& cmdName, const MapPair<Key, Value> args) {
+CommandTemplateType CommandRegistry::getCommandTemplate() {
+    return cmdTemplates_;
+}
+
+/*CommandTemplateType CommandRegistry::findCommand (const std::string& cmdName, const MapPair<Key, Value> args) {
     for (const auto& command : cmdTemplates_) {
         if (cmdName == command.commandName) {
             for (const auto& arg : args) {
@@ -49,29 +53,6 @@ CommandTemplateType CommandRegistry::findCommand (const std::string& cmdName, co
             }
         }
     }
-}
+}*/
 
-/*
-bool matchesCommandTemplate(const CommandType& parsedCmd, const CommandTemplate& template) {
-    // Check if the command name matches.
-    if (parsedCmd.get<0>() == template.commandName) {
-        const auto& parsedKeys = parsedCmd.get<1>();
-        for (const auto& possibleKeys : template.possibleKeys) {
-            // Check if the parsed keys match one of the possible key combinations.
-            if (parsedKeys.size() == possibleKeys.size()) {
-                bool keysMatch = true;
-                for (const auto& key : possibleKeys) {
-                    if (parsedKeys.find(key) == parsedKeys.end()) {
-                        keysMatch = false;
-                        break;
-                    }
-                }
-                if (keysMatch) {
-                    return true; // Parsed command matches this template.
-                }
-            }
-        }
-    }
-    return false; // Parsed command doesn't match this template.
-}
-*/   
+
