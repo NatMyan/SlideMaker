@@ -9,8 +9,9 @@ class CommandRegistry {
         CommandRegistry();
         
     public:
-        CommandNameType findCommandName (const std::string& cmdName); // commandName is from takeToken
-        CommandTemplateType getCommandTemplate();
+        CommandNameType findCommandName (const std::string& cmdName) const; // commandName is from takeToken
+        CommandTemplateType getCommandTemplates();
+        // bool validateCommandArgNames(const CommandType& parsedCmd) const;
         // CommandTemplateType findCommand (const std::string& cmdName, const MapPair<Key, Value> args); 
 
     private:

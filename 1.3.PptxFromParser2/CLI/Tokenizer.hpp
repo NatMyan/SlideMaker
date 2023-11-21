@@ -6,7 +6,7 @@
 
 class Tokenizer {
     public: 
-        static std::string takeToken (std::istringstream& iss, const char& endOfLineToken);
+        std::string takeToken (std::istringstream& iss, const char& endOfLineToken);
 };
 
 #endif // TOKENIZER_HPP

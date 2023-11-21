@@ -29,7 +29,8 @@ using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
 
 struct CommandTemplate {
     CommandNameType commandName;
-    std::vector<std::vector<Key> > possibleKeys;
+    std::vector<std::vector<Key> > mandatoryKeys;
+    std::vector<std::vector<Key> > optionalKeys;
 };
 
 using CommandTemplateType = std::vector<CommandTemplate>;
