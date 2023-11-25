@@ -15,9 +15,9 @@ void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
         throw Exception("File didn't open: " + fileWPath);
     }
     else if (fileToLoad.is_open()) {
-        doc = std::make_shared<Document>(); // memory leak ?
+        auto nDoc = std::make_shared<Document>(); // memory leak ?
         Idx idx = 0;
-        LoadAction l(doc, idx);
+        LoadAction l(nDoc, idx);
         l.execute();
     }
 }

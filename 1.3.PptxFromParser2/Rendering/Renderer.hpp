@@ -3,6 +3,7 @@
 
 class Renderer {
     public:
+        virtual ~Renderer() = default;
         virtual void execute() = 0;
 };
 
