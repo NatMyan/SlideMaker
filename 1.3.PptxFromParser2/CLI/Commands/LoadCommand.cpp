@@ -1,5 +1,5 @@
 #include "LoadCommand.hpp"
-#include "FileDidNotOpenException.hpp"
+#include "Exception.hpp"
 
 #include <fstream>
 #include <sstream>
@@ -9,17 +9,20 @@
 void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath;
-    try {
-        fileWPath = pairs["-file"].get<std::string>();
-    } catch (const std::bad_variant_access&) {
-        std::cerr << "file existeth not" << std::endl;
-    }
+    fileWPath = pairs["-file"].get<std::string>();
     std::ifstream fileToLoad(fileWPath, std::ios::binary);
     if (!fileToLoad.is_open()) {
-        throw FileDidNotOpenException(fileWPath);
+        throw Exception("File didn't open: " + fileWPath);
     }
     else if (fileToLoad.is_open()) {
-        std::istream& inputStream = fileToLoad;
+        doc = std::make_shared<Document>(); // memory leak ?
+        Idx idx = 0;
+        LoadAction l(doc, idx);
+        l.execute();
+    }
+}
+
+/*std::istream& inputStream = fileToLoad;
         /// TODO: memory leak or not ?
         doc = std::make_shared<Document>();
         std::string line;
@@ -55,6 +58,4 @@ void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
                 auto slide = doc->getSlide(idx).lock();
                 slide->addtoSlide(ItemFactory::createItem(type, id, pos, attrs));
             }
-        }
-    }
-}
+        }*/

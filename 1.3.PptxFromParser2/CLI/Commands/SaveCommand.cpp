@@ -1,5 +1,5 @@
 #include "SaveCommand.hpp"
-#include "FileDidNotOpenException.hpp"
+#include "Exception.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -10,7 +10,7 @@ void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
     std::string fileWPath = pairs["-file"].get<std::string>();
     std::ofstream fileToSave(fileWPath, std::ios::binary);
     if (!fileToSave.is_open()) {
-        throw FileDidNotOpenException(fileWPath);
+        throw Exception("File didn't open: " + fileWPath);
     }
     else if (fileToSave.is_open()) {
         auto slides = doc->getSlides();
@@ -22,7 +22,8 @@ void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
             }
             ++idx;
         }
-    fileToSave.close();
+        fileToSave.close();
+    }
 }
 
       /*for (const auto& slide : doc->getSlides()) {
