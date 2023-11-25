@@ -1,5 +1,6 @@
 #include "SaveCommand.hpp"
 #include "Exception.hpp"
+#include "../Serializing/SaveItemToFileAction.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -8,7 +9,7 @@
 void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {  
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath = pairs["-file"].get<std::string>();
-    std::ofstream fileToSave(fileWPath, std::ios::binary);
+    std::ofstream fileToSave(fileWPath, ios::out | ios::binary);
     if (!fileToSave.is_open()) {
         throw Exception("File didn't open: " + fileWPath);
     }
@@ -17,7 +18,7 @@ void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
         Idx idx = 0;
         for (const auto& slide : slides) {
             for (const auto& item : slide->getSlide()) {
-                SaveItemToFileAction sitf(fileToSave, idx, item);
+                SaveItemToFileAction sitf(fileWPath, fileToSave, idx, item);
                 sitf.execute();
             }
             ++idx;
