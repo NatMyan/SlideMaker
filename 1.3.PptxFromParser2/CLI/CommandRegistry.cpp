@@ -22,6 +22,7 @@ CommandRegistry::CommandRegistry () :
                    {{"-type", "-t", "-r", "-b", "-l"},      // optional
                     {"-type", "-x", "-y", "-w", "-h"}}},    // optional
         {"display", {{"-id"},
+                     {"-idx"},
                      {}},                  // mandatory empty
                     {{}}},                 // optional
         {"list", {{}}, {{}}},                   

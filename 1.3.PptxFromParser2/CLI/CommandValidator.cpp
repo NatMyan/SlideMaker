@@ -49,6 +49,7 @@ bool CommandValidator::validateCommandArgNames(const CommandType& parsedCmd) con
             for (size_t j = 0; j < parsedArgNames.size(); ++j) {
                 if (parsedArgNames.at(j) == mandatoryArgNames.at(i)) {
                     parsedArgNames.erase(parsedArgNames.begin() + j);
+                    --j;
                 }
             }
         }
@@ -68,6 +69,7 @@ bool CommandValidator::validateCommandArgNames(const CommandType& parsedCmd) con
             for (size_t j = 0; j < parsedArgNames.size(); ++j) {
                 if (parsedArgNames.at(j) == optionalArgNames.at(i)) {
                     parsedArgNames.erase(parsedArgNames.begin() + j);
+                    --j;
                 }
             }
         }
