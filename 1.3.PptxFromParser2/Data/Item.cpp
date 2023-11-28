@@ -3,8 +3,25 @@
 
 ///TODO: add default attributes
 Item::Item (Type type, ID id, Position pos,  Attributes attributes) :
-    type_(type), id_(id), pos_(pos), attrs_(attributes)
-{} 
+    type_(type), 
+    id_(id), 
+    pos_(pos),
+    attrs_(attributes)
+{
+    // {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down"}}},
+    if (attrs_.getValue("-lstyle") == Value()) {
+        attrs_.setPair("-lstyle", Value(std::string("straight")));
+    }
+    if (attrs_.getValue("-fcolour") == Value()) {
+        attrs_.setPair("-fcolour", Value(std::string("black")));
+    }
+    if (attrs_.getValue("-lcolour") == Value()) {
+        attrs_.setPair("-lcolour", Value(std::string("green")));
+    }
+    if (attrs_.getValue("-lwidth") == Value()) {
+        attrs_.setPair("-lwidth", Value(1));
+    }
+} 
 
 void Item::setPosition(Position pos) {
     pos_ = pos;

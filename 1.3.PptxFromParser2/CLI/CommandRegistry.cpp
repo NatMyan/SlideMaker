@@ -11,16 +11,16 @@ CommandRegistry::CommandRegistry () :
     },
     cmdTemplates_ {
         {"add", {{"-type"}, 
-                 {"-type", "-t", "-r", "-b", "-l", "-idx"}, 
-                 {"-type", "-x", "-y", "-w", "-h", "-idx"}},
+                 {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
+                 // {"-type", "-x", "-y", "-w", "-h", "-idx"}},
                 {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down"}}},   // optional
         {"remove", {{"-id"},
                     {"-idx"}},
                    {{}}},                  // optional
         {"change", {{"-cidx", "-nidx"},
                     {"-id"}}, 
-                   {{"-type", "-t", "-r", "-b", "-l"},      // optional
-                    {"-type", "-x", "-y", "-w", "-h"}}},    // optional
+                   {{"-type", "-t", "-r", "-b", "-l"}}},      // optional
+                    // {"-type", "-x", "-y", "-w", "-h"}      // optional
         {"display", {{"-id"},
                      {"-idx"},
                      {}},                  // mandatory empty

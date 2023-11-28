@@ -7,7 +7,7 @@
 template <typename... Types>
 class VariantWrapper {
     public:
-        template <typename T, typename = std::enable_if_t<(std::is_same_v<T, Types> || ...)>>
+        template <typename T, typename = std::enable_if_t<(std::is_same_v<T, Types> || ...)> >
         explicit VariantWrapper(T value) : data_(value) {}
 
         VariantWrapper() : data_() {}

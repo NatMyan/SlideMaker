@@ -1,5 +1,5 @@
-#ifndef DEFINITIONSS_HPP
-#define DEFINITIONSS_HPP
+#ifndef DEFINITIONS_HPP
+#define DEFINITIONS_HPP
 
 #include "VariantWrapper.hpp"
 #include "TupleWrapper.hpp"
@@ -48,4 +48,4 @@ namespace defs {
     double convertToDouble(const Value& value);
 }
 
-#endif // DEFINITIONSS_HPP
+#endif // DEFINITIONS_HPP

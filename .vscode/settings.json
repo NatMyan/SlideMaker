@@ -80,6 +80,8 @@
         "stack": "cpp",
         "set": "cpp",
         "filesystem": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "list": "cpp",
+        "version": "cpp"
     }
 }

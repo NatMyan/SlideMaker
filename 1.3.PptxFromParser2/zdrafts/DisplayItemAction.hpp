@@ -1,3 +1,4 @@
+/*
 #ifndef DISPLAY_ITEM_ACTION_HPP
 #define DISPLAY_ITEM_ACTION_HPP
 
@@ -17,3 +18,4 @@ class DisplayItemAction : public Renderer {
 };
 
 #endif // DISPLAY_ITEM_ACTION_HPP
+*/
