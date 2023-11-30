@@ -8,7 +8,7 @@ Item::Item (Type type, ID id, Position pos,  Attributes attributes) :
     pos_(pos),
     attrs_(attributes)
 {
-    // {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down"}}},
+    // {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down", "-sideCount"}}},
     if (attrs_.getValue("-lstyle") == Value()) {
         attrs_.setPair("-lstyle", Value(std::string("straight")));
     }
@@ -20,6 +20,9 @@ Item::Item (Type type, ID id, Position pos,  Attributes attributes) :
     }
     if (attrs_.getValue("-lwidth") == Value()) {
         attrs_.setPair("-lwidth", Value(1));
+    }
+    if (type == std::string("polygon") && attrs_.getValue("-sideCount") == Value()) {
+        attrs_.setPair("-sideCount", Value(5));
     }
 } 
 

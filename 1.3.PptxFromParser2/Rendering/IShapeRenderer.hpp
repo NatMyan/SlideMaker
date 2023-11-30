@@ -12,6 +12,9 @@ class IShapeRenderer {
         virtual ~IShapeRenderer() = default;
         virtual void draw(QPainter* painter) = 0;
         void print(std::ostream& stream);
+
+    protected:
+        Qt::GlobalColor stringToGlobalColor(const QString& colorName);
     
     private:
         std::shared_ptr<Item> itemPtr_;

@@ -1,5 +1,8 @@
 #include "IShapeRenderer.hpp"
 
+#include <QString>
+#include <QHash>
+
 IShapeRenderer::IShapeRenderer(Idx idx, std::shared_ptr<Item> itemPtr) :
     itemPtr_(itemPtr),
     idx_(idx)     
@@ -27,4 +30,19 @@ void IShapeRenderer::print(std::ostream& stream) {
         }
     }
     stream << std::endl;
+}
+
+// QColor(int r, int g, int b, int a = 255)
+///TODO: bad design, change it someday
+Qt::GlobalColor IShapeRenderer::stringToGlobalColor(const QString& colorName) {
+    static const QHash<QString, Qt::GlobalColor> colorMap = {
+        {"red", Qt::red},
+        {"green", Qt::green},
+        {"blue", Qt::blue},
+        {"yellow", Qt::yellow},
+        {"darkYellow", Qt::darkYellow},
+        {"darkBlue", Qt::darkBlue},
+        {"darkCyan", Qt::darkCyan}
+    };
+    return colorMap.value(colorName, Qt::black); // Default to black if the color is not found
 }

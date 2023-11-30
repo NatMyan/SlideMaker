@@ -9,10 +9,6 @@ class RectangleRenderer : public IShapeRenderer {
         void draw(QPainter* painter);
 
     private:
-        QString getColour(Value colour);
-        Qt::GlobalColor stringToGlobalColor(const QString& colorName);
-
-    private:
         std::shared_ptr<Item> itemPtr_;
         Idx idx_;
 };

@@ -39,25 +39,4 @@ void RectangleRenderer::draw(QPainter* painter) {
     painter->fillRect(QRectF(l, t, r - l, b - t), fglobalColor);
 }
 
-// QColor(int r, int g, int b, int a = 255)
-///TODO: bad design, change it someday
-Qt::GlobalColor RectangleRenderer::stringToGlobalColor(const QString& colorName) {
-    static const QHash<QString, Qt::GlobalColor> colorMap = {
-        {"red", Qt::red},
-        {"green", Qt::green},
-        {"blue", Qt::blue},
-        {"yellow", Qt::yellow},
-        {"darkYellow", Qt::darkYellow},
-    };
 
-    return colorMap.value(colorName, Qt::black); // Default to black if the color is not found
-}
-
-/*void setPenAndBrushFromColorString(const QString& colorName) {
-    Qt::GlobalColor globalColor = stringToGlobalColor(colorName);
-
-    QPen pen(globalColor);
-    
-    QBrush brush(globalColor);
-
-}*/

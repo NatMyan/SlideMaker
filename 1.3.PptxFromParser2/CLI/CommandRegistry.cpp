@@ -13,7 +13,7 @@ CommandRegistry::CommandRegistry () :
         {"add", {{"-type"}, 
                  {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
                  // {"-type", "-x", "-y", "-w", "-h", "-idx"}},
-                {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down"}}},   // optional
+                {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down", "-sideCount"}}},   // optional
         {"remove", {{"-id"},
                     {"-idx"}},
                    {{}}},                  // optional
