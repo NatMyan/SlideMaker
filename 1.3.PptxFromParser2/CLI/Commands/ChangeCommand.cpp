@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-void ChangeCommand::execute (CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
+void ChangeCommand::execute (CommandType parsedCmd, std::shared_ptr<Document> doc) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
         Idx cidx = -1;

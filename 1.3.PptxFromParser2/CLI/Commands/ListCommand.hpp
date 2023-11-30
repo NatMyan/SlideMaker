@@ -5,7 +5,7 @@
 
 class ListCommand : public Command {
     public:
-        void execute (CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir);
+        void execute (CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
 #endif // LIST_COMMAND_EXECUTOR_HPP

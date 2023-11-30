@@ -4,7 +4,7 @@
 #include <iostream>
 
 ///TODO: I hate this
-void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
+void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (pairs.find("-idx") != pairs.end()) {
         auto idx = pairs["-idx"].get<Idx>();

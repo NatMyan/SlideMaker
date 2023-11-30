@@ -8,10 +8,10 @@
 #include <istream>
 #include <memory>
 
-class LoadAction : public Serializer {
+class LoadSerializer : public Serializer {
     public:
-        LoadAction(std::string fileName, std::ifstream& fileToLoad, std::shared_ptr<Document> nDoc, Idx idx);
-        //LoadAction l(nDoc, idx);
+        LoadSerializer(std::string fileName, std::ifstream& fileToLoad, std::shared_ptr<Document> nDoc, Idx idx);
+        //LoadSerializer l(nDoc, idx);
         void execute();
     
     private:

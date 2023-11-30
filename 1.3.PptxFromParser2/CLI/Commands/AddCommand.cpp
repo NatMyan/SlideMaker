@@ -1,6 +1,6 @@
 #include "AddCommand.hpp"
 
-void AddCommand::execute (CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
+void AddCommand::execute (CommandType parsedCmd, std::shared_ptr<Document> doc) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     if (isTypeSlide(pairs)) {
         Idx idx = -1;

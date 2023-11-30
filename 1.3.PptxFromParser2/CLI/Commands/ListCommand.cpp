@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-void ListCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
+void ListCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     for (const auto& slide : doc->getSlides()) {
         Idx idx = 0;
         for (const auto& item : slide->getSlide()) {

@@ -5,7 +5,7 @@
 
 class SaveCommand : public Command {
     public:
-        void execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir);
+        void execute(CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
 #endif // SAVE_COMMAND_HPP

@@ -6,7 +6,7 @@
 class Command {
     public:
         Command() = default;
-        virtual void execute (CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) = 0;
+        virtual void execute (CommandType parsedCmd, std::shared_ptr<Document> doc) = 0;
         virtual ~Command() = default;
 
     protected:

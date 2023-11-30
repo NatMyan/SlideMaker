@@ -1,14 +1,14 @@
-#include "SaveItemToFileAction.hpp"
+#include "SaveItemToFileSerializer.hpp"
 #include "Exception.hpp"
 
-SaveItemToFileAction::SaveItemToFileAction(std::string fileName, std::ofstream& fileToSave, Idx idx, std::shared_ptr<Item> item) :
+SaveItemToFileSerializer::SaveItemToFileSerializer(std::string fileName, std::ofstream& fileToSave, Idx idx, std::shared_ptr<Item> item) :
     fileName_(fileName),
     fileToSave_(fileToSave),
     idx_(idx),
     item_(item)
 {}
 
-void SaveItemToFileAction::execute() {
+void SaveItemToFileSerializer::execute() {
     if (!fileToSave_.is_open()) {
         throw Exception("File2 failed to open: " + fileName_);
     }

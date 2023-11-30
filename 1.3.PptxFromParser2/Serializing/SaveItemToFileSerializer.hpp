@@ -7,9 +7,9 @@
 #include <fstream>
 #include <ostream>
 
-class SaveItemToFileAction : public Serializer {
+class SaveItemToFileSerializer : public Serializer {
     public:
-        SaveItemToFileAction(std::string fileName, std::ofstream& fileToSave, Idx idx, std::shared_ptr<Item> item);
+        SaveItemToFileSerializer(std::string fileName, std::ofstream& fileToSave, Idx idx, std::shared_ptr<Item> item);
         void execute();
 
     private:

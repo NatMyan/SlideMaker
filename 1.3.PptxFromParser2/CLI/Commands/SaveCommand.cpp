@@ -1,12 +1,12 @@
 #include "SaveCommand.hpp"
 #include "Exception.hpp"
-#include "../Serializing/SaveItemToFileAction.hpp"
+#include "../Serializing/SaveItemToFileSerializer.hpp"
 
 #include <fstream>
 #include <iostream>
 
 /// TODO: I don't like this, forgot w, h, x, y version... hdfbigbhfdhv
-void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {  
+void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {  
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath = pairs["-file"].get<std::string>();
     std::ofstream fileToSave(fileWPath, ios::out | ios::binary);
@@ -18,7 +18,7 @@ void SaveCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
         Idx idx = 0;
         for (const auto& slide : slides) {
             for (const auto& item : slide->getSlide()) {
-                SaveItemToFileAction sitf(fileWPath, fileToSave, idx, item);
+                SaveItemToFileSerializer sitf(fileWPath, fileToSave, idx, item);
                 sitf.execute();
             }
             ++idx;

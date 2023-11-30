@@ -1,12 +1,12 @@
 #include "LoadCommand.hpp"
 #include "Exception.hpp"
-#include "../Serializing/LoadAction.hpp"
+#include "../Serializing/LoadSerializer.hpp"
 
 #include <fstream>
 #include <sstream>
 
 /// TODO: such bad code, forgot w, h, x, y version... hdfbigbhfdhv
-void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) {
+void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc) {
     MapPair<Key, Value> pairs = parsedCmd.get<1>();
     std::string fileWPath;
     fileWPath = pairs["-file"].get<std::string>();
@@ -17,7 +17,7 @@ void LoadCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> doc, 
     else if (fileToLoad.is_open()) {
         auto nDoc = std::make_shared<Document>(); // memory leak ?
         Idx idx = 0;
-        LoadAction l(fileWPath, fileToLoad, nDoc, idx);
+        LoadSerializer l(fileWPath, fileToLoad, nDoc, idx);
         l.execute();
     }
 }
