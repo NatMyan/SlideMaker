@@ -1,5 +1,5 @@
-#ifndef LIST_COMMAND_EXECUTOR_HPP
-#define LIST_COMMAND_EXECUTOR_HPP
+#ifndef LIST_COMMAND_HPP
+#define LIST_COMMAND_HPP
 
 #include "Command.hpp"
 
@@ -8,4 +8,4 @@ class ListCommand : public Command {
         void execute (CommandType parsedCmd, std::shared_ptr<Document> doc);
 };
 
-#endif // LIST_COMMAND_EXECUTOR_HPP
+#endif // LIST_COMMAND_HPP

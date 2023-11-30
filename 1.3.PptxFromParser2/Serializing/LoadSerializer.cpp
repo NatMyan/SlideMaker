@@ -1,7 +1,7 @@
 #include "LoadSerializer.hpp"
 #include "../Exception.hpp"
 
-LoadSerializer::LoadSerializer(std::string fileName, std::ifstream& fileToLoad,std::shared_ptr<Document> nDoc, Idx idx) :
+LoadSerializer::LoadSerializer(std::string fileName, std::ifstream& fileToLoad, std::shared_ptr<Document> nDoc, Idx idx) :
     fileName_(fileName),
     fileToLoad_(fileToLoad),
     nDoc_(nDoc),
@@ -13,7 +13,9 @@ void LoadSerializer::execute() {
         throw Exception("File2 failed to open for loading: " + fileName_);
     }
     else if (fileToLoad_.is_open()) {
-        Idx loadedIdx;
+        auto slide = nDoc_->getSlide(idx_).lock();
+        
+        /*Idx loadedIdx;
         fileToLoad_.read(reinterpret_cast<char*>(&loadedIdx), sizeof(loadedIdx));
         if (loadedIdx != idx_) {
             throw Exception("Mismatched index during loading.");
@@ -23,7 +25,7 @@ void LoadSerializer::execute() {
         double loadedDoubleAttr;
         fileToLoad_.read(reinterpret_cast<char*>(&loadedDoubleAttr), sizeof(loadedDoubleAttr));
         std::string loadedStrAttr;
-        fileToLoad_.read(reinterpret_cast<char*>(&loadedStrAttr), sizeof(loadedStrAttr));
+        fileToLoad_.read(reinterpret_cast<char*>(&loadedStrAttr), sizeof(loadedStrAttr));*/
 
         fileToLoad_.close();
     }
