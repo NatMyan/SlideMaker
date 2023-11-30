@@ -9,11 +9,25 @@ LoadSerializer::LoadSerializer(std::string fileName, std::ifstream& fileToLoad, 
 {}
 
 void LoadSerializer::execute() {
+    //idx id type l t r b attrs
     if (!fileToLoad_.is_open()) {
         throw Exception("File2 failed to open for loading: " + fileName_);
     }
     else if (fileToLoad_.is_open()) {
-        auto slide = nDoc_->getSlide(idx_).lock();
+        // auto slide = nDoc_->getSlide(idx_).lock();
+        Idx idxl;
+        fileToLoad_ >> idxl;
+        auto slide = nDoc_->getSlide(idxl).lock();
+
+        ID id;
+        fileToLoad_ >> id;
+        
+        Type type;
+        fileToLoad_ >> type;
+
+        NumberType l, t, r, b;
+        std::string holder; 
+        fileToLoad_ >> holder >> l >> holder >> t >> holder >> r >> holder >> b;
         
         /*Idx loadedIdx;
         fileToLoad_.read(reinterpret_cast<char*>(&loadedIdx), sizeof(loadedIdx));

@@ -8,6 +8,7 @@ SaveItemToFileSerializer::SaveItemToFileSerializer(std::string fileName, std::of
     item_(item)
 {}
 
+//idx id type l t r b attrs
 void SaveItemToFileSerializer::execute() {
     if (!fileToSave_.is_open()) {
         throw Exception("File2 failed to open: " + fileName_);
