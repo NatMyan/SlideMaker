@@ -1,5 +1,5 @@
 #include "DisplayCommand.hpp"
-#include "../Rendering/DisplayItemAction.hpp"
+#include "../Rendering/ShapeFactory.hpp"
 
 #include <iostream>
 
@@ -10,8 +10,10 @@ void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> do
         auto idx = pairs["-idx"].get<Idx>();
         auto slide = doc->getSlide(idx).lock();
         for (auto item : slide->getSlide()) {
-            DisplayItemAction di(idx, item);
-            di.execute();
+            ShapeFactory sf;
+            auto shapeRenderer = sf.createShapeRenderer(idx, item);
+            std::ostream& stream = std::cout;
+            shapeRenderer.print(stream);
         }
     }
     else if (pairs.find("-id") != pairs.end()) {

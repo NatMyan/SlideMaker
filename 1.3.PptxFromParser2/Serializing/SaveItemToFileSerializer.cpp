@@ -8,54 +8,66 @@ SaveItemToFileSerializer::SaveItemToFileSerializer(std::string fileName, std::of
     item_(item)
 {}
 
+///TODO: to_string().c_str(), remove reinterpret_cast-s
 //idx id type l t r b attrs
 void SaveItemToFileSerializer::execute() {
     if (!fileToSave_.is_open()) {
         throw Exception("File2 failed to open: " + fileName_);
     }
     else if (fileToSave_.is_open()) {
-        fileToSave_.write(reinterpret_cast<const char*>(&idx_), sizeof(idx_));
+        // fileToSave_.write(reinterpret_cast<const char*>(&idx_), sizeof(idx_));
+        fileToSave_ << idx_ << " ";
 
         auto id = item_->getID();
-        fileToSave_.write(reinterpret_cast<const char*>(&id), sizeof(id));
+        fileToSave_ << id << " ";
+        // fileToSave_.write(reinterpret_cast<const char*>(&id), sizeof(id));
         
         auto type = item_->getType();
-        fileToSave_.write(reinterpret_cast<const char*>(&type), sizeof(type));
+        fileToSave_ << type << " ";
+        // fileToSave_.write(reinterpret_cast<const char*>(&type), sizeof(type));
 
         auto pos = item_->getPosition();
-        std::string dashP = "";
+        // std::string dashP = "";
         NumberType l = pos.first.first;
-        dashP = "-l";
-        fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
-        fileToSave_.write(reinterpret_cast<const char*>(&l), sizeof(l));
+        fileToSave_ << l << " ";
+        // dashP = "-l";
+        // fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
+        // fileToSave_.write(reinterpret_cast<const char*>(&l), sizeof(l));
         NumberType t = pos.first.second;
-        dashP = "-t";
-        fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
-        fileToSave_.write(reinterpret_cast<const char*>(&t), sizeof(t));
+        fileToSave_ << t << " ";
+        // dashP = "-t";
+        // fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
+        // fileToSave_.write(reinterpret_cast<const char*>(&t), sizeof(t));
         NumberType r = pos.second.first;
-        dashP = "-r";
-        fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
-        fileToSave_.write(reinterpret_cast<const char*>(&r), sizeof(r));
+        fileToSave_ << r << " ";
+        // dashP = "-r";
+        // fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
+        // fileToSave_.write(reinterpret_cast<const char*>(&r), sizeof(r));
         NumberType b = pos.second.second;
-        dashP = "-b";
-        fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
-        fileToSave_.write(reinterpret_cast<const char*>(&b), sizeof(b));
+        fileToSave_ << b << " ";
+        // dashP = "-b";
+        // fileToSave_.write(reinterpret_cast<const char*>(&dashP), sizeof(dashP));
+        // fileToSave_.write(reinterpret_cast<const char*>(&b), sizeof(b));
 
         auto attrs = item_->getAttributes();
         for (const auto& attr : attrs) {
             auto key = attrs.getKey(attr);
-            fileToSave_.write(reinterpret_cast<const char*>(&key), sizeof(key));
+            // fileToSave_.write(reinterpret_cast<const char*>(&key), sizeof(key));
+            fileToSave_ << key << " ";
             if (std::is_same_v<decltype(attr), int> && attr.holdsAlternative<int>()) {
                 auto intAttr = attr.get<int>();
-                fileToSave_.write(reinterpret_cast<const char*>(&intAttr), sizeof(intAttr));
+                // fileToSave_.write(reinterpret_cast<const char*>(&intAttr), sizeof(intAttr));
+                fileToSave_ << intAttr << " ";
             }
             else if (std::is_same_v<decltype(attr), double> && attr.holdsAlternative<double>()) {
                 auto doubleAttr = attr.get<double>();
-                fileToSave_.write(reinterpret_cast<const char*>(&doubleAttr), sizeof(doubleAttr));
+                fileToSave_ << doubleAttr << " ";
+                // fileToSave_.write(reinterpret_cast<const char*>(&doubleAttr), sizeof(doubleAttr));
             }
             else if (std::is_same_v<decltype(attr), std::string> && attr.holdsAlternative<std::string>()) {
                 auto strAttr = attr.get<std::string>();
-                fileToSave_.write(reinterpret_cast<const char*>(&strAttr), sizeof(strAttr));
+                fileToSave_ << strAttr << " ";
+                // fileToSave_.write(reinterpret_cast<const char*>(&strAttr), sizeof(strAttr));
             }
         }
     }

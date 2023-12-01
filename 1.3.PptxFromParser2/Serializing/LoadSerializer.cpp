@@ -18,16 +18,15 @@ void LoadSerializer::execute() {
         Idx idxl;
         fileToLoad_ >> idxl;
         auto slide = nDoc_->getSlide(idxl).lock();
-
-        ID id;
-        fileToLoad_ >> id;
         
         Type type;
         fileToLoad_ >> type;
 
         NumberType l, t, r, b;
-        std::string holder; 
-        fileToLoad_ >> holder >> l >> holder >> t >> holder >> r >> holder >> b;
+        // std::string holder; 
+        fileToLoad_ >> l >> t >> r >> b;
+
+
         
         /*Idx loadedIdx;
         fileToLoad_.read(reinterpret_cast<char*>(&loadedIdx), sizeof(loadedIdx));
