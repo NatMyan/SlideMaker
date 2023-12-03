@@ -28,15 +28,14 @@ void RectangleRenderer::draw(QPainter* painter) {
     auto lwidth = itemPtr_->getAttribute("-lwidth");
 
     Qt::GlobalColor lglobalColor = stringToGlobalColor(lcolour.toString());
+    Qt::GlobalColor fglobalColor = stringToGlobalColor(fcolour.toString());
     QPen pen(lglobalColor);
-    QBrush brush(lglobalColor);
+    QBrush brush(fglobalColor);
     
     painter->setPen(pen);
     painter->setBrush(brush);
     painter->drawRect(QRectF(l, t, r - l, b - t));
-    
-    Qt::GlobalColor fglobalColor = stringToGlobalColor(fcolour.toString());
-    painter->fillRect(QRectF(l, t, r - l, b - t), fglobalColor);
+    // painter->fillRect(QRectF(l, t, r - l, b - t), fglobalColor);
 }
 
 
