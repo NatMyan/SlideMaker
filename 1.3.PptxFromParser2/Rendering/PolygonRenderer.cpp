@@ -28,5 +28,6 @@ void PolygonRenderer::draw(QPainter* painter) {
     
     painter->setPen(pen);
     painter->setBrush(brush);
-    painter->drawPolygon(QRectF(l, t, r - l, b - t));
+    ///TODO: draw Polygon
+    painter->drawPolygon(QRectF(l, t, r - l, b - t)); // ????
 }
