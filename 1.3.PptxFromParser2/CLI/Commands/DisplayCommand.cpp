@@ -1,5 +1,5 @@
 #include "DisplayCommand.hpp"
-#include "../Rendering/ShapeFactory.hpp"
+#include "../../Rendering/ShapeFactory.hpp"
 
 #include <iostream>
 
@@ -13,7 +13,7 @@ void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> do
             ShapeFactory sf;
             auto shapeRenderer = sf.createShapeRenderer(idx, item);
             std::ostream& stream = std::cout;
-            shapeRenderer.print(stream);
+            shapeRenderer->print(stream);
         }
     }
     else if (pairs.find("-id") != pairs.end()) {
@@ -23,14 +23,16 @@ void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> do
         for (auto slide : slides) {
             if (slide->getItem(id)) {
                 auto item = slide->getItem(id);
-                DisplayItemAction di(idx, item);
-                di.execute();
+                ShapeFactory sf;
+                auto shapeRenderer = sf.createShapeRenderer(idx, item);
+                std::ostream& stream = std::cout;
+                shapeRenderer->print(stream);
                 break;
             }
             ++idx;
         }
     }
-    else {
+    /*else {
         auto id = pairs["-id"].get<ID>();
         auto slides = doc->getSlides(); 
         Idx idx = 0;
@@ -42,7 +44,7 @@ void DisplayCommand::execute(CommandType parsedCmd, std::shared_ptr<Document> do
             }
             ++idx;
         }
-    }
+    }*/
 }
 
 /*std::cout << "slide" << " " << idx << std::endl;

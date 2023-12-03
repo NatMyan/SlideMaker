@@ -13,6 +13,8 @@ using CommandNameType = std::string;
 using NumberType = double; 
 using ArgumentType = VariantWrapper<std::string, int, double>;
 
+using CommandHistoryContainer = std::vector<std::string>;
+
 template <typename Key, typename Value>
 using MapPair = std::unordered_map<Key, Value>;
 

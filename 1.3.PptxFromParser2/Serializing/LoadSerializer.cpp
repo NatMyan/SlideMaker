@@ -1,5 +1,6 @@
 #include "LoadSerializer.hpp"
 #include "../Exception.hpp"
+#include "../definitions.hpp"
 
 LoadSerializer::LoadSerializer(std::string fileName, std::ifstream& fileToLoad, std::shared_ptr<Document> nDoc, Idx idx) :
     fileName_(fileName),
@@ -14,7 +15,6 @@ void LoadSerializer::execute() {
         throw Exception("File2 failed to open for loading: " + fileName_);
     }
     else if (fileToLoad_.is_open()) {
-        // auto slide = nDoc_->getSlide(idx_).lock();
         Idx idxl;
         fileToLoad_ >> idxl;
         auto slide = nDoc_->getSlide(idxl).lock();
@@ -23,23 +23,18 @@ void LoadSerializer::execute() {
         fileToLoad_ >> type;
 
         NumberType l, t, r, b;
-        // std::string holder; 
         fileToLoad_ >> l >> t >> r >> b;
 
-
+        MapPair<Key, Value> pairs;
+        std::string key;
+        std::string val;
         
-        /*Idx loadedIdx;
-        fileToLoad_.read(reinterpret_cast<char*>(&loadedIdx), sizeof(loadedIdx));
-        if (loadedIdx != idx_) {
-            throw Exception("Mismatched index during loading.");
+        while (fileToLoad_ >> key >> val) {
+            auto value = defs::parseArgValue(val);
+            pairs[key] = value;
         }
-        int loadedIntAttr;
-        fileToLoad_.read(reinterpret_cast<char*>(&loadedIntAttr), sizeof(loadedIntAttr));
-        double loadedDoubleAttr;
-        fileToLoad_.read(reinterpret_cast<char*>(&loadedDoubleAttr), sizeof(loadedDoubleAttr));
-        std::string loadedStrAttr;
-        fileToLoad_.read(reinterpret_cast<char*>(&loadedStrAttr), sizeof(loadedStrAttr));*/
-
+        Attributes attrs(pairs);
+        
         fileToLoad_.close();
     }
 }

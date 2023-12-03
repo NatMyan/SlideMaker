@@ -1,6 +1,8 @@
 #ifndef CLI_CONTROLLER_HPP
 #define CLI_CONTROLLER_HPP
 
+#include "../Data/Document.hpp"
+
 #include <istream>
 
 class CLIController {

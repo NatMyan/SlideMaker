@@ -1,5 +1,5 @@
-#ifndef ITEM_HPP
-#define ITEM_HPP
+#ifndef ITEMM_HPP
+#define ITEMM_HPP
 
 #include "../Attributes/Attributes.hpp"
 
@@ -28,4 +28,4 @@ class Item {
         Attributes attrs_;
 };
 
-#endif // ITEM_HPP
+#endif // ITEMM_HPP

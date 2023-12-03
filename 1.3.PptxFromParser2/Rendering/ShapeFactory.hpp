@@ -1,5 +1,5 @@
-#ifndef SHAPE_FACTORY_HPP
-#define SHAPE_FACTORY_HPP
+#ifndef SHAPEE_FACTORY_HPP
+#define SHAPEE_FACTORY_HPP
 
 #include "IShapeRenderer.hpp"
 
@@ -8,4 +8,4 @@ class ShapeFactory {
         std::shared_ptr<IShapeRenderer> createShapeRenderer(Idx idx, std::shared_ptr<Item> itemPtr);
 };
 
-#endif // SHAPE_FACTORY_HPP
+#endif // SHAPEE_FACTORY_HPP

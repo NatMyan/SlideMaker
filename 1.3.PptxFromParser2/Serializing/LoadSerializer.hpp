@@ -11,7 +11,6 @@
 class LoadSerializer : public Serializer {
     public:
         LoadSerializer(std::string fileName, std::ifstream& fileToLoad, std::shared_ptr<Document> nDoc, Idx idx);
-        //LoadSerializer l(nDoc, idx);
         void execute();
     
     private:
