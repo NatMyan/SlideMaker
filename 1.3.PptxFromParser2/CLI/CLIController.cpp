@@ -3,6 +3,7 @@
 #include "Parser7.hpp"
 #include "CommandValidator.hpp"
 #include "Commands/Command.hpp"
+#include "CommandHistory.hpp"
 
 void CLIController::run(std::istream& input) {
     exec(input);
@@ -15,9 +16,9 @@ void CLIController::exec(std::istream& input) {
         const char eolToken = '\n';
         auto inputStr = inputReader.readInputLine(input, eolToken);
 
-        CommandHistory history;
-        history.append(inputStr);
-        // CommandHistory::append(inputStr);
+        // CommandHistory history;
+        // history.append(inputStr);
+        CommandHistory::append(inputStr);
 
         Parser7 parser;
         auto parsedCmd = parser.parseCommand(inputStr, eolToken);
