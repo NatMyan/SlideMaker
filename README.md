@@ -1,2 +1,2 @@
-PptxFromParser(old) was for 70%, Abandoned is the one you checked, 8.HopefullyFinal is the one I'm working on           
+8.HopefullyFinal is the one I'm working on, Abandoned is the one you checked, PptxFromParser(old) was for 70%            
 Thank you
