@@ -24,7 +24,7 @@ using Key = std::string;
 using Value = ArgumentType;
 
 using LTCoordinate2D = std::pair<NumberType, NumberType>;
-using RBCoordinate2D = std::pair<NumberType, NumberType>;
+using RBCoordinate2D = LTCoordinate2D;
 using Position = std::pair<LTCoordinate2D, RBCoordinate2D>;
 
 using CommandType = TupleWrapper<CommandNameType, MapPair<Key, Value> >;
