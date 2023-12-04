@@ -27,7 +27,7 @@ void CLIController::exec(std::istream& input) {
         if (validator.isCommandValid(parsedCmd)) {
             if (parsedCmd.get<0>() == "exit")
                 break;
-            Command cmd->execute(director ptr);  // creates what needs to be created in it
+            Command cmd->execute();  // creates what needs to be created in it
             // ActionTaker action; //call from GUI, CLI 
             // action.execute(parsedCmd, docPtr_);
             
