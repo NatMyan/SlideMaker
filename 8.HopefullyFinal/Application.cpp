@@ -5,7 +5,7 @@ Application::Application (std::istream& inputStream) :
     doc_(std::make_shared<Document>()),
     dir_(std::make_shared<Director>()),
 {
-    ctr_ = std::make_shared<CLIController>(inputStream, dir_, doc_);
+    ctr_ = std::make_shared<CLIController>(dir_, doc_);
 }
 
 ///NOTE: Enters the main event loop and waits until exit() is called, (IN QT)
@@ -15,5 +15,7 @@ void Application::exec() {
 }
 
 void Application::run() {
-
+    const char eolToken = '\n';
+    std::istream& input = InputReader::readInputLine(inputStream_, eolToken);
+    ctr_->execCLI(input);
 }

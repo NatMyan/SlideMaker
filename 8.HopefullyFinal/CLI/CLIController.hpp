@@ -3,13 +3,12 @@
 
 class CLIController {
     public:
-        CLIController(std::istream& inputStream, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir);
+        CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir);
 
     public:
-        void execCLI();
+        void execCLI(std::istream& input);
     
     private:
-        std::istream& inputStream_;
         std::shared_ptr<Document> doc_;
         std::shared_ptr<Director> dir_;
 };

@@ -1,29 +1,25 @@
 #include "CLIController.hpp"
 
-CLIController::CLIController(std::istream& inputStream, std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) :
-    inputStream_(inputStream),
+CLIController::CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) :
     doc_(doc),
     dir_(dir)
 {}
 
-void CLIController::execCLI() {
-    const char eolToken = '\n';
-    InputReader::readInputLine(inputStream_, eolToken);
-
-    Parser8 parser(inputStream_, eolToken);
+void CLIController::execCLI(std::istream& input) {
+    Parser8 parser(input, eolToken);
     if (parser.isCommandValid()) {
-        CommandHistory::append(parser.constructCommandAssInfo());
+        CommandHistory::append(parser.constructCommandInfo());
         Command parsedCmd = parser.constructCommand(doc_, dir_);
         parsedCmd.execute();
     }
 }
 
-    /*try {
-        parsedCmd = parser.constructCommand();
-    }
-    catch (const Exception& e) {
-        ///TODO: handle exception
-    }*/
+/*try {
+    parsedCmd = parser.constructCommand();
+}
+catch (const Exception& e) {
+    ///TODO: handle exception
+}*/
 
 // docPtr_ = std::make_shared<Document>(); 
     /*while (!exit) {
