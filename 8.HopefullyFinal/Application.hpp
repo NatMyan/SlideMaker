@@ -15,6 +15,8 @@ class Application {
         std::istream& inputStream_;
         std::shared_ptr<Document> doc_;
         std::shared_ptr<Director> dir_;
+        std::shared_ptr<Renderer> rend_;
+        std::shared_ptr<Serializer> srlz_;
         std::shared_ptr<CLIController> ctr_;
 };
 

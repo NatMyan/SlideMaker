@@ -8,8 +8,8 @@ CLIController::CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Dire
 void CLIController::execCLI(std::istream& input) {
     Parser8 parser(input, eolToken);
     if (parser.isCommandValid()) {
-        CommandHistory::append(parser.constructCommandInfo());
-        Command parsedCmd = parser.constructCommand(doc_, dir_);
+        CommandHistory::append(parser.constructCommandInfo(input, eolToken));
+        Command parsedCmd = parser.constructCommand();
         parsedCmd.execute();
     }
 }

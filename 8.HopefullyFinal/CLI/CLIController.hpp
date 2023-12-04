@@ -3,7 +3,7 @@
 
 class CLIController {
     public:
-        CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir);
+        CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir, std::shared_ptr<Renderer> rend, std::shared_ptr<Serializer> srlz);
 
     public:
         void execCLI(std::istream& input);
@@ -11,6 +11,8 @@ class CLIController {
     private:
         std::shared_ptr<Document> doc_;
         std::shared_ptr<Director> dir_;
+        std::shared_ptr<Renderer> rend_;
+        std::shared_ptr<Serializer> srlz_;
 };
 
 #endif // CLI_CONTROLLERR_HPP
