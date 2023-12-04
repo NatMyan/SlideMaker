@@ -82,6 +82,8 @@
         "filesystem": "cpp",
         "__memory": "cpp",
         "list": "cpp",
-        "version": "cpp"
+        "version": "cpp",
+        "qtconcurrent": "cpp",
+        "qtxml": "cpp"
     }
 }

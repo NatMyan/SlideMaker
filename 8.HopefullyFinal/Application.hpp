@@ -5,13 +5,14 @@
 
 class Application {
     public:    
-        Application();
+        Application(std::istream& inputStream);
 
     public:
         void exec(); // with loop
         void run();  // without loop
     
     private:
+        std::istream& inputStream_;
         std::shared_ptr<Document> doc_;
         std::shared_ptr<Director> dir_;
         std::shared_ptr<CLIController> ctr_;
