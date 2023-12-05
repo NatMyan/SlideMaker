@@ -16,20 +16,36 @@ CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOf
     Tokenizer tokenizer;
 
     auto commandName = tokenizer.takeToken(input, endOfLineToken);
-
-    std::string argName, argVal;
+    cmdInfo_.second.clear();
+    
     ///TODO: is this ok ? v
-    auto& argMap = cmdInfo_.second; 
-    while (true) {
-        argName = tokenizer.takeToken(input, endOfLineToken);
-        if (input.eof()) {
-            argMap[argName] = Value(std::string("")); 
-            break;  
-        }
-        argVal = tokenizer.takeToken(input, endOfLineToken);
-        argMap[argName] = Value(argVal);
+    bool flag = true;
+    while (flag) {
+        flag = fillCmdInfoMap(input, endOfLineToken, tokenizer);
     }
     return cmdInfo_;
+}
+
+/*
+argName = tokenizer.takeToken(input, endOfLineToken);
+if (input.eof()) {
+    argMap[argName] = Value(std::string("")); 
+    break;  
+}
+argVal = tokenizer.takeToken(input, endOfLineToken);
+argMap[argName] = Value(argVal);
+*/
+
+bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, Tokenizer tokenizer) {
+    std::string argName = tokenizer.takeToken(input, endOfLineToken);
+    if (input.eof()) {
+        cmdInfo_.second[argName] = Value(std::string(""));
+        return false; 
+    }
+    std::string argVal = tokenizer.takeToken(input, endOfLineToken);
+    cmdInfo_.second[argName] = Value(argVal);
+
+    return true;  
 }
 
 std::shared_ptr<Command> Parser8::constructCommand() {

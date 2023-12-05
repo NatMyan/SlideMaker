@@ -2,6 +2,7 @@
 #define PARSER_8_HPP
 
 #include "Command.hpp"
+#include "Tokenizer.hpp"
 #include "SyntaxAnalyzer.hpp"
 #include "SemanticAnalyzer.hpp"
 
@@ -17,6 +18,7 @@ class Parser8 {
     
     private:
         bool isCmdInfoValid();
+        bool fillCmdInfoMap(std::istream& input, const char& endOfLineToken, Tokenizer tokenizer);
     
     private:
         CommandInfo cmdInfo_;
