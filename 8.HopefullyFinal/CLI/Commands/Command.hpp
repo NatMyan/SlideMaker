@@ -6,9 +6,12 @@
 class Command {
     public:
         virtual void execute() = 0;
+        virtual ~Command() = default;
 };
 
 #endif // COMMANDD_HPP
+
+
 
 /*public:
     Command() = default;

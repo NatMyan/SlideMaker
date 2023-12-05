@@ -10,6 +10,13 @@ class Application {
     public:
         void exec(); // with loop
         void run();  // without loop
+
+    public:
+        std::shared_ptr<Document> getDocument();
+        std::shared_ptr<Director> getDirector();
+        std::shared_ptr<Renderer> getRenderer();
+        std::shared_ptr<Serializer> getSerializer();
+        // std::shared_ptr<CLIController> getCLIController();
     
     private:
         std::istream& inputStream_;

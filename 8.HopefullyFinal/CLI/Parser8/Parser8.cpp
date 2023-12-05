@@ -15,7 +15,8 @@ CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOf
     auto commandName = tokenizer.takeToken(input, endOfLineToken);
 
     std::string argName, argVal;
-    auto argMap = cmdInfo_.second;
+    ///TODO: is this ok ? v
+    auto& argMap = cmdInfo_.second; 
     while (true) {
         argName = tokenizer.takeToken(input, endOfLineToken);
         if (input.eof()) {

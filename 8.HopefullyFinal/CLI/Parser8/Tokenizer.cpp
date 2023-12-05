@@ -17,6 +17,7 @@ std::string Tokenizer::takeToken (std::istream& iss, const char& endOfLineToken)
     return token;
 }
 
+/*
 std::string Tokenizer::getNextToken (std::istream& iss, const char& endOfLineToken) {
     std::string token;
     char currentChar;
@@ -29,3 +30,4 @@ std::string Tokenizer::getNextToken (std::istream& iss, const char& endOfLineTok
     }
     return token;
 }
+*/
