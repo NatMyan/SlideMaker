@@ -1,15 +1,17 @@
 #ifndef PARSER_8_HPP
 #define PARSER_8_HPP
 
-#include "SyntaxAnalyzer.hpp"
-#include "SemanticAnalyzer.hpp"
+#include "Command.hpp"
 
 #include <istream>
 
 class Parser8 {
     public:
         CommandInfo constructCommandInfo(std::istream& input, const char& endOfLineToken);
-        Command constructCommand();
+        std::shared_ptr<Command> constructCommand();
+    
+    private:
+        bool isValid(CommandInfo cmdInfo);
 };
 
 #endif // PARSER_8_HPP
