@@ -1,13 +1,14 @@
 #ifndef COMMANDD_HPP
 #define COMMANDD_HPP
 
+#include "../../definitions.hpp"
 #include "../../Data/Document.hpp"
 
 #include <string>
 
 class Command {
     public:
-        virtual void execute() = 0;
+        virtual void execute(Map infoMap) = 0;
         virtual ~Command() = default;
     
     protected:
@@ -15,7 +16,6 @@ class Command {
         bool isTypeItem(const std::string& type);
 
     protected:
-        static int itemID_;
         std::string type_;
 };
 

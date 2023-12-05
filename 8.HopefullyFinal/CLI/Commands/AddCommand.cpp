@@ -1,14 +1,20 @@
 #include "AddCommand.hpp"
 
-void AddCommand::execute() {
-    if (isTypeItem()) {
-        auto slide = Application::getDocument().getSlide();
+int AddCommand::itemID_ = 0;
+
+void AddCommand::execute(Map infoMap) {
+    const std::string type = toStr(infoMap["-type"]); // definitions is included
+    std::shared_ptr<Action> action;
+
+    if (isTypeItem(type)) {
+        auto slide = Application::getDocument().getSlide(int(toNum(infoMap["-idx"])));
         auto item = std::shared_ptr<Item>();
-        auto action = std::make_shared<AddItemAction>(slide, item);
+        ++itemID_;
+        action = std::make_shared<AddItemAction>(slide, item);
     }
-    else if (isTypeSlide()) {
+    else if (isTypeSlide(type)) {
         auto doc = Application::getDocument();
         auto slide = std::shared_ptr<Slide>();
-        auto action = std::make_shared<AddSlideAction>(doc, slide);
+        action = std::make_shared<AddSlideAction>(doc, slide);
     }
 }

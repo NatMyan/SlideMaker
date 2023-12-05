@@ -10,7 +10,7 @@ CLIController::CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Dire
 void CLIController::execCLI(std::istream& input) {
     Parser8 parser(input, eolToken);
     if (parser.isCommandValid()) {
-        const CommandInfo& cmdInfo = parser.constructCommandInfo(input, eolToken);
+        const CommandInfo cmdInfo = parser.constructCommandInfo(input, eolToken);
         CommandHistory::append(cmdInfo);
         std::shared_ptr<Command> parsedCmd = parser.constructCommand();
         const auto& infoMap = cmdInfo.second;
