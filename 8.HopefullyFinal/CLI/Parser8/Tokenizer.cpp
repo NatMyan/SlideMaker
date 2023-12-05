@@ -18,5 +18,14 @@ std::string Tokenizer::takeToken (std::istream& iss, const char& endOfLineToken)
 }
 
 std::string Tokenizer::getNextToken (std::istream& iss, const char& endOfLineToken) {
-    
+    std::string token;
+    char currentChar;
+
+    while (iss.get(currentChar)) {
+        if (currentChar == endOfLineToken) {
+            break;
+        }
+        token += currentChar;
+    }
+    return token;
 }

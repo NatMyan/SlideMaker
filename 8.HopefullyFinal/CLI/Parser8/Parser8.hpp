@@ -11,7 +11,10 @@ class Parser8 {
         std::shared_ptr<Command> constructCommand();
     
     private:
-        bool isValid(CommandInfo cmdInfo);
+        bool isCmdInfoValid();
+    
+    private:
+        CommandInfo cmdInfo_;
 };
 
 #endif // PARSER_8_HPP

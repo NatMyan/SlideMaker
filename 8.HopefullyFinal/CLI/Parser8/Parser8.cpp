@@ -3,34 +3,40 @@
 #include "Tokenizer.hpp"
 #include "SyntaxAnalyzer.hpp"
 #include "SemanticAnalyzer.hpp"
+#include "../Commands/CommandFactory.hpp"
 #include "../../definitions.hpp"
 
 #include <sstream>
 
 CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOfLineToken) {
-    CommandInfo cmdInfo;
     std::string endToken(1, endOfLineToken);
     Tokenizer tokenizer;
 
     auto commandName = tokenizer.takeToken(input, endOfLineToken);
-    std::string argName = tokenizer.takeToken(input, endOfLineToken);
-    std::string argVal;
-    ///TODO: getnext()
-    while (!argVal.empty()) {
-        argVal = tokenizer.takeToken(input, endOfLineToken);
-        cmdInfo.second[argName] = Value(argVal);
-    }
 
-    return cmdInfo;
+    std::string argName, argVal;
+    auto argMap = cmdInfo_.second;
+    while (true) {
+        argName = tokenizer.takeToken(input, endOfLineToken);
+        if (input.eof()) {
+            argMap[argName] = Value(std::string("")); 
+            break;  
+        }
+        argVal = tokenizer.takeToken(input, endOfLineToken);
+        argMap[argName] = Value(argVal);
+    }
+    return cmdInfo_;
 }
 
 std::shared_ptr<Command> Parser8::constructCommand() {
-isValid();
-
+    if (isCmdInfoValid()) {
+        return CommandFactory::createCommand(cmdInfo_);
+    }
+    return nullptr;
 }
     
-bool Parser8::isValid(CommandInfo cmdInfo) {
-
+bool Parser8::isCmdInfoValid() {
+    return SyntaxAnalyzer::isSyntaxValid(cmdInfo_) && SemanticAnalyzer::isSemanticallyValid(cmdInfo_);
 }
 
 /*CommandType Parser7::parseCommand(const std::string& input, const char& endOfLineToken) {
