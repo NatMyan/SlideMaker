@@ -7,6 +7,9 @@ class Command {
     public:
         virtual void execute() = 0;
         virtual ~Command() = default;
+
+    protected:
+        static int itemID_;
 };
 
 #endif // COMMANDD_HPP

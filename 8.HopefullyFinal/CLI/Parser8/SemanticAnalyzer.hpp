@@ -8,7 +8,7 @@
 ///NOTE: separating into classes, cause I don't want to put every function into 1 class
 class SemanticAnalyzer {
     public:
-        static bool isSemanticallyValid (CommandInfo cmdInfo);
+        bool isSemanticallyValid (CommandInfo cmdInfo);
 };
 
 #endif // SEMANTIC_ANALYZER_HPP

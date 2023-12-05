@@ -1,12 +1,15 @@
 #include "Parser8.hpp"
 
 #include "Tokenizer.hpp"
-#include "SyntaxAnalyzer.hpp"
-#include "SemanticAnalyzer.hpp"
 #include "../Commands/CommandFactory.hpp"
 #include "../../definitions.hpp"
 
 #include <sstream>
+
+Parser8::Parser8() :
+    syntaxAnalyzer_(std::make_unique<SyntaxAnalyzer>()),
+    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>())
+{}
 
 CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOfLineToken) {
     std::string endToken(1, endOfLineToken);
@@ -31,13 +34,13 @@ CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOf
 
 std::shared_ptr<Command> Parser8::constructCommand() {
     if (isCmdInfoValid()) {
-        return CommandFactory::createCommand(cmdInfo_);
+        return CommandFactory::createCommand(cmdInfo_.first);
     }
     return nullptr;
 }
     
 bool Parser8::isCmdInfoValid() {
-    return SyntaxAnalyzer::isSyntaxValid(cmdInfo_) && SemanticAnalyzer::isSemanticallyValid(cmdInfo_);
+    return syntaxAnalyzer_->isSyntaxValid(cmdInfo_) && semanticAnalyzer_->isSemanticallyValid(cmdInfo_);
 }
 
 /*CommandType Parser7::parseCommand(const std::string& input, const char& endOfLineToken) {

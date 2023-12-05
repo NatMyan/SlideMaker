@@ -12,6 +12,7 @@ class Application {
         void run();  // without loop
 
     public:
+        ///TODO: static or not ?
         std::shared_ptr<Document> getDocument();
         std::shared_ptr<Director> getDirector();
         std::shared_ptr<Renderer> getRenderer();
