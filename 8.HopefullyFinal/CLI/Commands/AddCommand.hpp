@@ -6,9 +6,6 @@
 class AddCommand : public Command {
     public:
         void execute();
-
-    private:
-        std::string type_;
 };
 
 #endif // ADD_COMMANDD_HPP

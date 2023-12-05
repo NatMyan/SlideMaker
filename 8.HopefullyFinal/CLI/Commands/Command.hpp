@@ -3,17 +3,20 @@
 
 #include "../../Data/Document.hpp"
 
+#include <string>
+
 class Command {
     public:
         virtual void execute() = 0;
         virtual ~Command() = default;
     
     protected:
-        bool isTypeSlide(std::string type);
-        bool isTypeItem(std::string type);
+        bool isTypeSlide(const std::string& type);
+        bool isTypeItem(const std::string& type);
 
     protected:
         static int itemID_;
+        std::string type_;
 };
 
 #endif // COMMANDD_HPP

@@ -15,7 +15,13 @@ std::unique_ptr<Command> CommandFactory::createCommand (const std::string& cmdNa
     else return nullptr;
 }
 
-/*std::unique_ptr<Command> CommandFactory::createCommand(const std::string& cmdName) {
+
+/*
+#include <functional>
+#include <memory>
+#include <string>
+
+std::unique_ptr<Command> CommandFactory::createCommand(const std::string& cmdName) {
     static const std::unordered_map<std::string, std::function<std::unique_ptr<Command>()> > commandMap = {
         {"add", [] { return std::make_unique<AddCommand>(); }},
         {"change", [] { return std::make_unique<ChangeCommand>(); }},
@@ -29,6 +35,5 @@ std::unique_ptr<Command> CommandFactory::createCommand (const std::string& cmdNa
     };
     auto it = commandMap.find(cmdName); 
     return (it != commandMap.end()) ? it->second() : nullptr;
-}*/
-
-
+}
+*/
