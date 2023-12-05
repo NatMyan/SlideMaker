@@ -43,6 +43,7 @@ bool Parser8::isCmdInfoValid() {
     return syntaxAnalyzer_->isSyntaxValid(cmdInfo_) && semanticAnalyzer_->isSemanticallyValid(cmdInfo_);
 }
 
+
 /*CommandType Parser7::parseCommand(const std::string& input, const char& endOfLineToken) {
     MapPair<Key, Value> mapPair;
     std::istringstream iss(input);

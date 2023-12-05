@@ -1,4 +1,6 @@
 #include "CLIController.hpp"
+#include "Commands/Command.hpp"
+#include "Parser8/Parser8.hpp"
 
 CLIController::CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) :
     doc_(doc),
@@ -9,8 +11,8 @@ void CLIController::execCLI(std::istream& input) {
     Parser8 parser(input, eolToken);
     if (parser.isCommandValid()) {
         CommandHistory::append(parser.constructCommandInfo(input, eolToken));
-        Command parsedCmd = parser.constructCommand();
-        parsedCmd.execute();
+        std::shared_ptr<Command> parsedCmd = parser.constructCommand();
+        parsedCmd->execute();
     }
 }
 

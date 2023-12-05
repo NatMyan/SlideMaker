@@ -7,6 +7,10 @@ class Command {
     public:
         virtual void execute() = 0;
         virtual ~Command() = default;
+    
+    protected:
+        bool isTypeSlide(std::string type);
+        bool isTypeItem(std::string type);
 
     protected:
         static int itemID_;
