@@ -84,6 +84,7 @@
         "list": "cpp",
         "version": "cpp",
         "qtconcurrent": "cpp",
-        "qtxml": "cpp"
+        "qtxml": "cpp",
+        "__availability": "cpp"
     }
 }
