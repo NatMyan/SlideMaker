@@ -9,7 +9,10 @@ void DrawCommand::execute() {
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto idx = int(toNum(infoMap_["-idx"]));
     auto slide = Application::getDocument()->getSlide(idx);
-    renderer->draw(slide);
+    auto [width, height] = calculateImgDocHeight();
+    QImage img(width, height);
+    renderer->draw(slide, img);
+    img.save(filePath ... );
 }
 
 

@@ -9,15 +9,16 @@ void DisplayCommand::execute() {
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();
     auto idx = int(toNum(infoMap_["-idx"]));
-    auto id = int(toNum(infoMap_["-id"]));
 
     if (isTypeItem(type)) {
+        auto id = int(toNum(infoMap_["-id"]));
         auto item = Application::getDocument()->getSlide(idx)->getItem(id);
-        renderer->print(item);
+        renderer->display(item);
     }
     else if (isTypeSlide(type)) {
         auto slide = Application::getDocument()->getSlide(idx);
-        renderer->print(slide);
+        auto group = slide->getItemGroup();
+        renderer->display(group);
     }
     else {
         ///TODO: display the entire document contents
