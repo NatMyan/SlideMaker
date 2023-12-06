@@ -3,17 +3,17 @@
 int AddCommand::itemID_ = 0;
 
 AddCommand::AddCommand(const Map& info) :
-    info_(info)
+    infoMap_(info)
 {}
 
 void AddCommand::execute() {
-    const std::string type = toStr(infoMap["-type"]); // definitions is included
+    const std::string type = toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Action> action;
 
     if (isTypeItem(type)) {
-        auto idx = int(toNum(infoMap["-idx"]));
+        auto idx = int(toNum(infoMap_["-idx"]));
         auto slide = Application::getDocument().getSlide(idx);
-        auto item = std::shared_ptr<Item>(argumenteghen from infoMap, ++itemID_);
+        auto item = std::shared_ptr<Item>(argumenteghen from infoMap_, ++itemID_);
         action = std::make_shared<AddItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {

@@ -9,7 +9,7 @@ class RemoveCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // REMOVE_COMMANDD_HPP

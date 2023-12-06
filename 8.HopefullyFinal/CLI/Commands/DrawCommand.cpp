@@ -1,20 +1,21 @@
 #include "DrawCommand.hpp"
 
 DrawCommand::DrawCommand(const Map& info) :
-    info_(info)
+    infoMap_(info)
 {}
 
-
 void DrawCommand::execute() {
-    const std::string type = toStr(infoMap["-type"]); // definitions is included
-    std::shared_ptr<Renderer> renderer;
-    
-    auto slide = Application::getDocument()->getSlide(int(toNum(infoMap["-idx"])));
-    auto drawable = std::make_shared<IShape>(type);
-    drawable = dynamic_cast(IShape to IVisualDisplayable);
-    drawable->draw();
+    const std::string type = toStr(infoMap_["-type"]); // definitions is included
+    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
+    auto idx = int(toNum(infoMap_["-idx"]));
+    auto slide = Application::getDocument()->getSlide(idx);
+    renderer->draw(slide);
 }
 
+
+
+// auto drawable = std::make_shared<IShape>(type);
+// drawable = dynamic_cast(IShape to IVisualDisplayable);
     /*if (isTypeItem(type)) {
         auto shape = ShapeFactory::createShape(type);
         ///TODO: display item and its contents

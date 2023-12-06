@@ -10,7 +10,7 @@ class AddCommand : public Command {
 
     private:
         static int itemID_;
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // ADD_COMMANDD_HPP

@@ -3,12 +3,13 @@
 #include <iostream>
 
 ListCommand::ListCommand(const Map& info) :
-    info_(info)
+    infoMap_(info)
 {}
 
 void ListCommand::execute() {
     auto doc = Application::getDocument();
-    auto slide = doc->getSlide(int(toNum(infoMap["-idx"])));
+    auto idx = int(toNum(infoMap_["-idx"]));
+    auto slide = doc->getSlide(idx);
     for (const auto& slide : doc) {
         size_t idx = 0;
         for (const auto& item : slide) {

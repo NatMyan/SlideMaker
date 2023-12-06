@@ -9,7 +9,7 @@ class DrawCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // DRAW_COMMANDD_HPP

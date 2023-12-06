@@ -9,7 +9,7 @@ class ListCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // LIST_COMMANDD_HPP

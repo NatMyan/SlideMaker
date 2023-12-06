@@ -9,7 +9,7 @@ class SaveCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // SAVE_COMMANDD_HPP

@@ -9,7 +9,7 @@ class ChangeCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // CHANGE_COMMANDD_HPP

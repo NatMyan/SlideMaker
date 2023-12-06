@@ -9,7 +9,7 @@ class DisplayCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // DISPLAY_COMMANDD_HPP

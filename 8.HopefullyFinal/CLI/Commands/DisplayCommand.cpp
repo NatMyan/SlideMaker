@@ -1,22 +1,22 @@
 #include "DisplayCommand.hpp"
 
 DisplayCommand::DisplayCommand(const Map& info) :
-    info_(info)
+    infoMap_(info)
 {}
 
 void DisplayCommand::execute() {
-    const std::string type = toStr(infoMap["-type"]); // definitions is included
+    const std::string type = toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();
+    auto idx = int(toNum(infoMap_["-idx"]));
+    auto id = int(toNum(infoMap_["-id"]));
 
     if (isTypeItem(type)) {
-        ///TODO: display item and its contents
-        auto item = Application::getDocument()->getSlide(slideindex)->getItem(itemid);
+        auto item = Application::getDocument()->getSlide(idx)->getItem(id);
         renderer->print(item);
     }
     else if (isTypeSlide(type)) {
-        ///TODO: display slide and its contents
-        auto slide = Application::getDocument()->getSlide(slideIndex or currentslide);
+        auto slide = Application::getDocument()->getSlide(idx);
         renderer->print(slide);
     }
     else {
