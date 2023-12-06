@@ -1,5 +1,5 @@
-#ifndef VARIANT_WRAPPER_HPP
-#define VARIANT_WRAPPER_HPP
+#ifndef VARIANT_WRAPPERR_HPP
+#define VARIANT_WRAPPERR_HPP
 
 #include <variant>
 #include <type_traits>
@@ -42,4 +42,4 @@ class VariantWrapper {
         std::variant<Types...> data_;
 };
 
-#endif // VARIANT_WRAPPER_HPP
+#endif // VARIANT_WRAPPERR_HPP
