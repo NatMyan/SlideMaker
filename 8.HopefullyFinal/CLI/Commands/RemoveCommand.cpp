@@ -6,7 +6,7 @@ void RemoveCommand::execute(Map infoMap) {
 
     if (isTypeItem(type)) {
         auto slide = Application::getDocument()->getSlide(int(toNum(infoMap["-idx"])));
-        auto item = slide->getItem(int(toNum(infoMap["-idx"])));
+        auto item = slide->getItem(int(toNum(infoMap["-id"])));
         action = std::make_shared<RemoveItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {

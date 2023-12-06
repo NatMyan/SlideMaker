@@ -12,11 +12,11 @@
 #include "Commands/UndoCommand.hpp"
 #include "Commands/RedoCommand.hpp"
 // #include "Commands/ExitCommand.hpp"
+#include "../../definitions.hpp"
 
 class CommandFactory {
     public:
-        static std::unique_ptr<Command> createCommand (const std::string& cmdName);
-        ///TODO: static or not?
+        std::unique_ptr<Command> createCommand (const CommandInfo& cmdInfo);
 };
 
 #endif // COMMAND_FACTORYY_HPP

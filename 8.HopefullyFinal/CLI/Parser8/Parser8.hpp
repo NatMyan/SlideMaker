@@ -5,6 +5,7 @@
 #include "Tokenizer.hpp"
 #include "SyntaxAnalyzer.hpp"
 #include "SemanticAnalyzer.hpp"
+#include "../Commands/CommandFactory.hpp"
 
 #include <istream>
 
@@ -14,7 +15,7 @@ class Parser8 {
 
     public:
         CommandInfo constructCommandInfo(std::istream& input, const char& endOfLineToken);
-        std::shared_ptr<Command> constructCommand();
+        std::shared_ptr<Command> parseCommand();
     
     private:
         bool isCmdInfoValid();
@@ -24,6 +25,7 @@ class Parser8 {
         CommandInfo cmdInfo_;
         std::unique_ptr<SyntaxAnalyzer> syntaxAnalyzer_;
         std::unique_ptr<SemanticAnalyzer> semanticAnalyzer_;
+        std::unique_ptr<CommandFactory> cmdFactory_;
 };
 
 #endif // PARSER_8_HPP

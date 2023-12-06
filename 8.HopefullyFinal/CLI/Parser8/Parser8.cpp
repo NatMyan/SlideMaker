@@ -1,14 +1,14 @@
 #include "Parser8.hpp"
 
 #include "Tokenizer.hpp"
-#include "../Commands/CommandFactory.hpp"
 #include "../../definitions.hpp"
 
 #include <sstream>
 
 Parser8::Parser8() :
     syntaxAnalyzer_(std::make_unique<SyntaxAnalyzer>()),
-    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>())
+    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>()),
+    cmdFactory_(std::make_unique<CommandFactory>())
 {}
 
 CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOfLineToken) {
@@ -17,7 +17,7 @@ CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOf
 
     auto commandName = tokenizer.takeToken(input, endOfLineToken);
     cmdInfo_.second.clear();
-    
+
     ///TODO: is this ok ? v
     bool flag = true;
     while (flag) {
@@ -48,9 +48,9 @@ bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, To
     return true;  
 }
 
-std::shared_ptr<Command> Parser8::constructCommand() {
+std::shared_ptr<Command> Parser8::parseCommand() {
     if (isCmdInfoValid()) {
-        return CommandFactory::createCommand(cmdInfo_.first);
+        return cmdFactory_->createCommand(cmdInfo_);
     }
     return nullptr;
 }

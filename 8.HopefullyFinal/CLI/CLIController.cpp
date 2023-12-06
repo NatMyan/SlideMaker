@@ -2,21 +2,27 @@
 #include "Commands/Command.hpp"
 #include "Parser8/Parser8.hpp"
 
-CLIController::CLIController(std::shared_ptr<Document> doc, std::shared_ptr<Director> dir) :
-    doc_(doc),
-    dir_(dir)
+CLIController::CLIController() 
+    // doc_(doc),
+    // dir_(dir)
 {}
 
-void CLIController::execCLI(std::istream& input) {
+void CLIController::execCLI(std::istream& input, const char& eolToken) {
     Parser8 parser(input, eolToken);
-    if (parser.isCommandValid()) {
-        const CommandInfo cmdInfo = parser.constructCommandInfo(input, eolToken);
-        CommandHistory::append(cmdInfo);
-        std::shared_ptr<Command> parsedCmd = parser.constructCommand();
-        const auto& infoMap = cmdInfo.second;
-        parsedCmd->execute(infoMap);
+    while (!exit) {
+        std::string strCmd;
+        std::shared_ptr<Command> parsedCmd = parser.parseCommand(strCmd);
+        parsedCmd->execute();
+        history->add(strCmd);
     }
 }
+
+/*if (parser.isCommandValid()) {
+    const CommandInfo cmdInfo = parser.constructCommandInfo(input, eolToken);
+    CommandHistory::append(cmdInfo);
+    std::shared_ptr<Command> parsedCmd = parser.constructCommand();
+    parsedCmd->execute();
+}*/
 
 /*try {
     parsedCmd = parser.constructCommand();

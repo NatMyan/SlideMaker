@@ -8,8 +8,7 @@ void AddCommand::execute(Map infoMap) {
 
     if (isTypeItem(type)) {
         auto slide = Application::getDocument().getSlide(int(toNum(infoMap["-idx"])));
-        auto item = std::shared_ptr<Item>();
-        ++itemID_;
+        auto item = std::shared_ptr<Item>(argumenteghen from infoMap, ++itemID_);
         action = std::make_shared<AddItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {

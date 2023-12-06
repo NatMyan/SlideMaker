@@ -5,7 +5,7 @@
 
 class InputReader {
     public:
-        static std::istream& readInputLine (std::istream& inputStream, const char& endOfLineToken);
+        std::istream& readInputLine (std::istream& inputStream, const char& endOfLineToken);
 };
 
 #endif // INPUT_READERR_HPP

@@ -5,10 +5,12 @@
 
 class AddCommand : public Command {
     public:
-        void execute(Map infoMap);
+        AddCommand(Map info);
+        void execute();
 
     private:
         static int itemID_;
+        Map info_;
 };
 
 #endif // ADD_COMMANDD_HPP
