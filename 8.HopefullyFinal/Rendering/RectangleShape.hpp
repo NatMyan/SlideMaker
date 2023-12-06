@@ -1,0 +1,1 @@
+#ifndef RECT_SHAPE_HPP
