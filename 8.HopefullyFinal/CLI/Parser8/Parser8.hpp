@@ -25,7 +25,7 @@ class Parser8 {
         CommandInfo cmdInfo_;
         std::unique_ptr<SyntaxAnalyzer> syntaxAnalyzer_;
         std::unique_ptr<SemanticAnalyzer> semanticAnalyzer_;
-        std::unique_ptr<CommandFactory> cmdFactory_;
+        // std::unique_ptr<CommandFactory> cmdFactory_;
 };
 
 #endif // PARSER_8_HPP

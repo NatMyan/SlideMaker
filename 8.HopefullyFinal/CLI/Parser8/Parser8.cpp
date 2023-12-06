@@ -7,8 +7,8 @@
 
 Parser8::Parser8() :
     syntaxAnalyzer_(std::make_unique<SyntaxAnalyzer>()),
-    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>()),
-    cmdFactory_(std::make_unique<CommandFactory>())
+    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>())
+    // cmdFactory_(std::make_unique<CommandFactory>())
 {}
 
 CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOfLineToken) {
@@ -50,7 +50,8 @@ bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, To
 
 std::shared_ptr<Command> Parser8::parseCommand() {
     if (isCmdInfoValid()) {
-        return cmdFactory_->createCommand(cmdInfo_);
+        auto cmdFactory = std::make_unique<CommandFactory>(cmdInfo_);
+        return cmdFactory->createCommand();
     }
     return nullptr;
 }

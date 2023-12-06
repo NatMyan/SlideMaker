@@ -1,39 +1,52 @@
 #include "CommandFactory.hpp"
 
-std::unique_ptr<Command> CommandFactory::createCommand (const CommandInfo& cmdInfo) { 
-    if (cmdInfo.first == "add") return std::make_unique<AddCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "change") return std::make_unique<ChangeCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "remove") return std::make_unique<RemoveCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "display") return std::make_unique<DisplayCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "list") return std::make_unique<ListCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "draw") return std::make_unique<DrawCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "undo") return std::make_unique<UndoCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "redo") return std::make_unique<RedoCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "save") return std::make_unique<SaveCommand>(cmdInfo.second);
-    else if (cmdInfo.first == "load") return std::make_unique<LoadCommand>(cmdInfo.second);
-    // else if (cmdInfo.first == "exit") return std::make_unique<ExitCommand>();
+CommandFactory::CommandFactory(const CommandInfo& cmdInfo) :
+    cmdInfo_(cmdInfo)
+{}
+
+std::unique_ptr<Command> CommandFactory::createCommand() { 
+    const auto cmdName = cmdInfo_.first;
+    const Map info = cmdInfo_.second;
+    if (cmdName == "add") return std::make_unique<AddCommand>(info);
+    else if (cmdName == "change") return std::make_unique<ChangeCommand>(info);
+    else if (cmdName == "remove") return std::make_unique<RemoveCommand>(info);
+    else if (cmdName == "display") return std::make_unique<DisplayCommand>(info);
+    else if (cmdName == "list") return std::make_unique<ListCommand>(info);
+    else if (cmdName == "draw") return std::make_unique<DrawCommand>(info);
+    else if (cmdName == "undo") return std::make_unique<UndoCommand>(info);
+    else if (cmdName == "redo") return std::make_unique<RedoCommand>(info);
+    else if (cmdName == "save") return std::make_unique<SaveCommand>(info);
+    else if (cmdName == "load") return std::make_unique<LoadCommand>(info);
+    // else if (cmdName == "exit") return std::make_unique<ExitCommand>();
     else return nullptr;
 }
 
 
-/*
-#include <functional>
-#include <memory>
-#include <string>
-
-std::unique_ptr<Command> CommandFactory::createCommand(const std::string& cmdName) {
-    static const std::unordered_map<std::string, std::function<std::unique_ptr<Command>()> > commandMap = {
-        {"add", [] { return std::make_unique<AddCommand>(); }},
-        {"change", [] { return std::make_unique<ChangeCommand>(); }},
-        {"remove", [] { return std::make_unique<RemoveCommand>(); }},
-        {"display", [] { return std::make_unique<DisplayCommand>(); }},
-        {"list", [] { return std::make_unique<ListCommand>(); }},
-        {"undo", [] { return std::make_unique<UndoCommand>(); }},
-        {"redo", [] { return std::make_unique<RedoCommand>(); }},
-        {"save", [] { return std::make_unique<SaveCommand>(); }},
-        {"load", [] { return std::make_unique<LoadCommand>(); }},
+/*CommandFactory::CommandFactory(const CommandInfo& cmdInfo) :
+    cmdInfo_(cmdInfo)
+{
+    const Map info = cmdInfo.second;
+    commandMap_ = {
+        {"add", [info] { return std::make_unique<AddCommand>(info); }},
+        {"change", [info] { return std::make_unique<ChangeCommand>(info); }},
+        {"remove", [info] { return std::make_unique<RemoveCommand>(info); }},
+        {"display", [info] { return std::make_unique<DisplayCommand>(info); }},
+        {"list", [info] { return std::make_unique<ListCommand>(info); }},
+        {"undo", [info] { return std::make_unique<UndoCommand>(info); }},
+        {"redo", [info] { return std::make_unique<RedoCommand>(info); }},
+        {"save", [info] { return std::make_unique<SaveCommand>(info); }},
+        {"load", [info] { return std::make_unique<LoadCommand>(info); }}
     };
-    auto it = commandMap.find(cmdName); 
-    return (it != commandMap.end()) ? it->second() : nullptr;
 }
-*/
+
+std::unique_ptr<Command> CommandFactory::createCommand() {
+    auto it = commandMap_.find(cmdInfo_.first); 
+    return (it != commandMap_.end()) ? it->second() : nullptr;
+}*/
+
+
+
+
+
+
+

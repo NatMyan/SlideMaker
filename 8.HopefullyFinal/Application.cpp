@@ -1,5 +1,6 @@
 #include "Application.hpp"
 
+///TODO: since static, put them outside of Application
 Application::Application(std::istream& inputStream) :
     inputStream_(inputStream),
     doc_(std::make_shared<Document>()),

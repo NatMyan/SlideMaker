@@ -5,7 +5,11 @@
 
 class DisplayCommand : public Command {
     public:
-        void execute(Map infoMap);
+        DisplayCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // DISPLAY_COMMANDD_HPP

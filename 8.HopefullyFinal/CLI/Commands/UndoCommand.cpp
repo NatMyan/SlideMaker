@@ -1,6 +1,10 @@
 #include "UndoCommand.hpp"
 
-void UndoCommand::execute(Map infoMap) {
+UndoCommand::UndoCommand(const Map& info) :
+    info_(info)
+{}
+
+void UndoCommand::execute() {
     auto dir = Application::getDirector();
-    
+    dir->undo();
 }

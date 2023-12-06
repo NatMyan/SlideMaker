@@ -1,6 +1,10 @@
 #ifndef CLI_CONTROLLERR_HPP
 #define CLI_CONTROLLERR_HPP
 
+#include "CommandHistory.hpp"
+
+#include <memory>
+
 class CLIController {
     public:
         CLIController();
@@ -9,7 +13,8 @@ class CLIController {
         void execCLI(std::istream& input, const char& eolToken);
         void executeCmd();
         
-    // private:
+    private:
+        std::shared_ptr<CommandHistory> history_;
         // std::shared_ptr<Document> doc_;
         // std::shared_ptr<Director> dir_;
         // std::shared_ptr<Renderer> rend_;

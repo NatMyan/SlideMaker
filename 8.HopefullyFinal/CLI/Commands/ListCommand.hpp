@@ -5,7 +5,11 @@
 
 class ListCommand : public Command {
     public:
-        void execute(Map infoMap);
+        ListCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // LIST_COMMANDD_HPP

@@ -2,7 +2,8 @@
 #include "Commands/Command.hpp"
 #include "Parser8/Parser8.hpp"
 
-CLIController::CLIController() 
+CLIController::CLIController() :
+    history_(std::make_shared<CommandHistory>())
     // doc_(doc),
     // dir_(dir)
 {}

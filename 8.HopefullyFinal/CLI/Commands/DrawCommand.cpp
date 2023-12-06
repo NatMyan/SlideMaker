@@ -1,6 +1,11 @@
 #include "DrawCommand.hpp"
 
-void DrawCommand::execute(Map infoMap) {
+DrawCommand::DrawCommand(const Map& info) :
+    info_(info)
+{}
+
+
+void DrawCommand::execute() {
     const std::string type = toStr(infoMap["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer;
     

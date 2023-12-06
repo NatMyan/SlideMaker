@@ -5,7 +5,11 @@
 
 class RemoveCommand : public Command {
     public:
-        void execute(Map infoMap);
+        RemoveCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // REMOVE_COMMANDD_HPP

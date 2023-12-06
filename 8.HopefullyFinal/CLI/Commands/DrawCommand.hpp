@@ -5,7 +5,11 @@
 
 class DrawCommand : public Command {
     public:
-        void execute(Map infoMap);
+        DrawCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // DRAW_COMMANDD_HPP

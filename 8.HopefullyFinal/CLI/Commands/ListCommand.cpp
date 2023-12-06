@@ -2,7 +2,11 @@
 
 #include <iostream>
 
-void ListCommand::execute(Map infoMap) {
+ListCommand::ListCommand(const Map& info) :
+    info_(info)
+{}
+
+void ListCommand::execute() {
     auto doc = Application::getDocument();
     auto slide = doc->getSlide(int(toNum(infoMap["-idx"])));
     for (const auto& slide : doc) {

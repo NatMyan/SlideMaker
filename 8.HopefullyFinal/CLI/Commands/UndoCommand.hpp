@@ -5,7 +5,11 @@
 
 class UndoCommand : public Command {
     public:
-        void execute(Map infoMap);
+        UndoCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // UNDO_COMMANDD_HPP

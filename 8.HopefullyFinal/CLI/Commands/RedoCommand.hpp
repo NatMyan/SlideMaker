@@ -3,9 +3,13 @@
 
 #include "Command.hpp"
 
-class ListCommand : public Command {
+class RedoCommand : public Command {
     public:
-        void execute(Map infoMap);
+        RedoCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // REDO_COMMANDD_HPP

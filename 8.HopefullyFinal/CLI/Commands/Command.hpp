@@ -8,7 +8,7 @@
 
 class Command {
     public:
-        virtual void execute(Map infoMap) = 0;
+        virtual void execute() = 0;
         virtual ~Command() = default;
     
     protected:

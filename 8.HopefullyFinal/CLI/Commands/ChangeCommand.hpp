@@ -5,7 +5,11 @@
 
 class ChangeCommand : public Command {
     public:
-        void execute(Map infoMap);
+        ChangeCommand(const Map& info);
+        void execute();
+
+    private:
+        Map info_;
 };
 
 #endif // CHANGE_COMMANDD_HPP

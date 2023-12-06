@@ -1,8 +1,12 @@
 #include "DisplayCommand.hpp"
 
-void DisplayCommand::execute(Map infoMap) {
+DisplayCommand::DisplayCommand(const Map& info) :
+    info_(info)
+{}
+
+void DisplayCommand::execute() {
     const std::string type = toStr(infoMap["-type"]); // definitions is included
-    // std::shared_ptr<Renderer> renderer;
+    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();
 
     if (isTypeItem(type)) {

@@ -5,7 +5,7 @@
 
 class AddCommand : public Command {
     public:
-        AddCommand(Map info);
+        AddCommand(const Map& info);
         void execute();
 
     private:

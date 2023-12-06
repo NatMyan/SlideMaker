@@ -14,9 +14,18 @@
 // #include "Commands/ExitCommand.hpp"
 #include "../../definitions.hpp"
 
+#include <functional>
+#include <memory>
+#include <string>
+
 class CommandFactory {
     public:
-        std::unique_ptr<Command> createCommand (const CommandInfo& cmdInfo);
+        CommandFactory(const CommandInfo& cmdInfo);
+        std::unique_ptr<Command> createCommand();
+    
+    private:
+        // std::unordered_map<std::string, std::function<std::unique_ptr<Command>(Map)> > commandMap_;
+        CommandInfo cmdInfo_;
 };
 
 #endif // COMMAND_FACTORYY_HPP
