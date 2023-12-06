@@ -4,11 +4,11 @@
 #include <algorithm>
 
 CommandRegistry::CommandRegistry () :
-    commandSpec_ {
+    /*commandSpec_ {
         "add", "remove", "change", "list", 
         "display", "draw", "save", "load", 
         "undo", "redo", "exit"
-    },
+    },*/
     cmdTemplates_ {
         {"add", {{"-type"}, 
                  {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
@@ -36,17 +36,32 @@ CommandRegistry::CommandRegistry () :
 {}
 
 std::string CommandRegistry::findCommandName (const std::string& cmdName) const {
-    for (const auto& cmd : commandSpec_) {
-        if (cmdName == cmd) {
-            return cmd;
+    for (auto iter = cmdTemplates_.begin(); iter != cmdTemplates_.end(); ++iter) {
+        if (iter->commandName == cmdName) {
+            return iter->commandName;
         }
     }
     throw Exception("Invalid command: " + cmdName);
 }
 
+std::vector<CommandTemplate>::iterator CommandRegistry::findCmdIter(const std::string& cmdName) {
+    for (auto iter = cmdTemplates_.begin(); iter != cmdTemplates_.end(); ++iter) {
+        if (iter->commandName == cmdName) {
+            return iter;
+        }
+    }
+}
+
 std::vector<CommandTemplate> CommandRegistry::getCommandTemplates() {
     return cmdTemplates_;
 }
+
+/*for (const auto& cmd : commandSpec_) {
+    if (cmdName == cmd) {
+        return cmd;
+    }
+}
+throw Exception("Invalid command: " + cmdName);*/
 
 /*bool CommandRegistry::validateCommandArgNames(const CommandType& parsedCmd) const {
     CommandNameType cmd = "";

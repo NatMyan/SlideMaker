@@ -26,16 +26,6 @@ CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOf
     return cmdInfo_;
 }
 
-/*
-argName = tokenizer.takeToken(input, endOfLineToken);
-if (input.eof()) {
-    argMap[argName] = Value(std::string("")); 
-    break;  
-}
-argVal = tokenizer.takeToken(input, endOfLineToken);
-argMap[argName] = Value(argVal);
-*/
-
 bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, Tokenizer tokenizer) {
     std::string argName = tokenizer.takeToken(input, endOfLineToken);
     if (input.eof()) {
@@ -60,6 +50,16 @@ bool Parser8::isCmdInfoValid() {
     return syntaxAnalyzer_->isSyntaxValid(cmdInfo_) && semanticAnalyzer_->isSemanticallyValid(cmdInfo_);
 }
 
+
+/*
+argName = tokenizer.takeToken(input, endOfLineToken);
+if (input.eof()) {
+    argMap[argName] = Value(std::string("")); 
+    break;  
+}
+argVal = tokenizer.takeToken(input, endOfLineToken);
+argMap[argName] = Value(argVal);
+*/
 
 /*CommandType Parser7::parseCommand(const std::string& input, const char& endOfLineToken) {
     MapPair<Key, Value> mapPair;

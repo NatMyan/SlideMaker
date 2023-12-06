@@ -11,7 +11,7 @@ class CLIController {
 
     public:
         void execCLI(std::istream& input, const char& eolToken);
-        void executeCmd();
+        // void executeCmd();
         
     private:
         std::shared_ptr<CommandHistory> history_;

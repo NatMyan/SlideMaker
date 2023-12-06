@@ -9,10 +9,11 @@ class CommandRegistry {
         
     public:
         std::string findCommandName (const std::string& cmdName) const; // commandName is from takeToken
+        std::vector<CommandTemplate>::iterator findCmdIter(const std::string& cmdName);
         std::vector<CommandTemplate> getCommandTemplates();
         
     private:
-        std::vector<std::string> commandSpec_;
+        // std::vector<std::string> commandSpec_;
         std::vector<CommandTemplate> cmdTemplates_;
 };
 
