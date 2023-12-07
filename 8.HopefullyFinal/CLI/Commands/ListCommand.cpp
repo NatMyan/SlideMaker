@@ -8,7 +8,7 @@ ListCommand::ListCommand(const Map& info) :
 
 void ListCommand::execute() {
     auto doc = Application::getDocument();
-    auto idx = int(toNum(infoMap_["-idx"]));
+    auto idx = defs::toInt(infoMap_["-idx"]);
     auto slide = doc->getSlide(idx);
     for (const auto& slide : doc) {
         size_t idx = 0;

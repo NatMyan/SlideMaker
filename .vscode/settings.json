@@ -85,6 +85,7 @@
         "version": "cpp",
         "qtconcurrent": "cpp",
         "qtxml": "cpp",
-        "__availability": "cpp"
+        "__availability": "cpp",
+        "thread": "cpp"
     }
 }

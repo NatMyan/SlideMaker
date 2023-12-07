@@ -8,7 +8,7 @@ Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
     bbox_(bbox),
     attrs_(attributes)
 {
-    // {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-down", "-sideCount"}}},
+    // {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount"}}},
     if (attrs_.getValue("-lstyle") == Value()) {
         attrs_.setPair("-lstyle", Value(std::string("straight")));
     }

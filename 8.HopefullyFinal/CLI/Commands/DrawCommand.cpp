@@ -5,9 +5,9 @@ DrawCommand::DrawCommand(const Map& info) :
 {}
 
 void DrawCommand::execute() {
-    const std::string type = toStr(infoMap_["-type"]); // definitions is included
+    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
-    auto idx = int(toNum(infoMap_["-idx"]));
+    auto idx = int(defs::toInt(infoMap_["-idx"]));
     auto slide = Application::getDocument()->getSlide(idx);
     auto [width, height] = calculateImgDocHeight();
     QImage img(width, height);

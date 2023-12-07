@@ -5,13 +5,13 @@ DisplayCommand::DisplayCommand(const Map& info) :
 {}
 
 void DisplayCommand::execute() {
-    const std::string type = toStr(infoMap_["-type"]); // definitions is included
+    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();
-    auto idx = int(toNum(infoMap_["-idx"]));
+    auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
-        auto id = int(toNum(infoMap_["-id"]));
+        auto id = defs::toInt(infoMap_["-id"]);
         auto item = Application::getDocument()->getSlide(idx)->getItem(id);
         renderer->display(item);
     }
@@ -20,9 +20,9 @@ void DisplayCommand::execute() {
         auto group = slide->getItemGroup();
         renderer->display(group);
     }
-    else {
+    // else {
         ///TODO: display the entire document contents
-    }
+    // }
 }
 
 /*

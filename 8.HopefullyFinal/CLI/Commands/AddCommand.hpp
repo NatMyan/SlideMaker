@@ -9,6 +9,10 @@ class AddCommand : public Command {
         void execute();
 
     private:
+        Map getRemainingPairs();
+        BoundingBox createBoundingBox();
+
+    private:
         static int itemID_;
         Map infoMap_;
 };

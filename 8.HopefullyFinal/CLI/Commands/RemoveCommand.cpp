@@ -5,13 +5,13 @@ RemoveCommand::RemoveCommand(const Map& info) :
 {}
 
 void RemoveCommand::execute() {
-    const std::string type = toStr(infoMap_["-type"]); // definitions is included
+    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Action> action;
-    auto idx = int(toNum(infoMap_["-idx"]));
+    auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
         auto slide = Application::getDocument()->getSlide(idx);
-        auto item = slide->getItem(int(toNum(infoMap_["-id"])));
+        auto item = slide->getItem(defs::toInt(infoMap_["-id"]));
         action = std::make_shared<RemoveItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {

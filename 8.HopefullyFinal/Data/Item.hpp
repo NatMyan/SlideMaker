@@ -19,6 +19,7 @@ class Item : public ItemBase {
         
         Value getAttribute(Key key) const;
         void setAttribute(Key key, Value value);
+        
         Attributes getAttributes() const;
         void setAttributes(Attributes attrs);
 
