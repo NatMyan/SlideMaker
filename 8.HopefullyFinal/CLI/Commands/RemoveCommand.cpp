@@ -6,7 +6,8 @@ RemoveCommand::RemoveCommand(const Map& info) :
 
 void RemoveCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<IAction> action;
+    auto dir = Application::getDirector();
+    std::shared_ptr<IAction> action = nullptr;
     auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
@@ -19,4 +20,5 @@ void RemoveCommand::execute() {
         auto slide = doc->getSlide(idx);
         action = std::make_shared<RemoveSlideAction>(doc, slide);
     }
+    dir->runAction(action);
 }

@@ -9,7 +9,8 @@ AddCommand::AddCommand(const Map& info) :
 
 void AddCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<IAction> action;
+    auto dir = Application::getDirector();
+    std::shared_ptr<IAction> action = nullptr;
 
     if (isTypeItem(type)) {
         auto idx = defs::toInt(infoMap_["-idx"]);
@@ -22,6 +23,7 @@ void AddCommand::execute() {
         auto slide = std::make_shared<Slide>();
         action = std::make_shared<AddSlideAction>(doc, slide);
     }
+    dir->runAction(action);
 }
 
 BoundingBox AddCommand::createTheBoundingBox() {

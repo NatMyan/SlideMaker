@@ -1,6 +1,8 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
+#include "Data/Document.hpp"
+
 #include <memory>
 
 class Application {

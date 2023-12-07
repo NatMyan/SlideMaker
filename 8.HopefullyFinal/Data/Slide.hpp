@@ -1,7 +1,6 @@
 #ifndef SLIDEE_HPP
 #define SLIDEE_HPP
 
-#include "ItemBase.hpp"
 #include "ItemGroup.hpp"
 
 #include <memory>

@@ -6,7 +6,8 @@ ChangeCommand::ChangeCommand(const Map& info) :
 
 void ChangeCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<IAction> action;
+    auto dir = Application::getDirector();
+    std::shared_ptr<IAction> action = nullptr;
     auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
@@ -21,4 +22,5 @@ void ChangeCommand::execute() {
         auto newIndex = infoMap_["-nidx"];
         action = std::make_shared<ChangeSlideAction>(doc, slide, currentIndex, newIndex);
     }
+    dir->runAction(action);
 }

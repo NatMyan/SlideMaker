@@ -6,7 +6,7 @@ DisplayCommand::DisplayCommand(const Map& info) :
 
 void DisplayCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
+    std::shared_ptr<Renderer> renderer = Application::getRenderer(); // std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();
     auto idx = defs::toInt(infoMap_["-idx"]);
 

@@ -23,6 +23,9 @@ ItemGroup::ItemIterator Slide::end() {
     // return slide_.end();
 }
 
+std::shared_ptr<ItemBase> Slide::getTopItem() {
+    return itemGroup_->getTopItem();    
+}
 
 //remove
 /*for (size_t i = 0; i < slide_.size(); ++i) {
