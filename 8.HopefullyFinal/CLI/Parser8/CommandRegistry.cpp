@@ -4,11 +4,6 @@
 #include <algorithm>
 
 CommandRegistry::CommandRegistry () :
-    /*commandSpec_ {
-        "add", "remove", "change", "list", 
-        "display", "draw", "save", "load", 
-        "undo", "redo", "exit"
-    },*/
     cmdTemplates_ {
         {"add", {{"-type"}, 
                  {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
@@ -55,6 +50,12 @@ std::vector<CommandTemplate>::iterator CommandRegistry::findCmdIter(const std::s
 std::vector<CommandTemplate> CommandRegistry::getCommandTemplates() {
     return cmdTemplates_;
 }
+
+/*commandSpec_ {
+    "add", "remove", "change", "list", 
+    "display", "draw", "save", "load", 
+    "undo", "redo", "exit"
+},*/
 
 /*for (const auto& cmd : commandSpec_) {
     if (cmdName == cmd) {

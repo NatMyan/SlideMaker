@@ -24,8 +24,8 @@ class CommandFactory {
         std::unique_ptr<Command> createCommand();
     
     private:
-        // std::unordered_map<std::string, std::function<std::unique_ptr<Command>(Map)> > commandMap_;
         CommandInfo cmdInfo_;
+        // std::unordered_map<std::string, std::function<std::unique_ptr<Command>(Map)> > commandMap_;
 };
 
 #endif // COMMAND_FACTORYY_HPP

@@ -12,6 +12,9 @@ using Value = VariantWrapper<std::string, double>;
 using Map = std::unordered_map<Key, Value>;
 using CommandInfo = std::pair<std::string, Map>;
 
+using Coord = std::pair<double, double>;
+using BoundingBox = std::pair<Coord, Coord>;
+
 struct CommandTemplate {
     std::string commandName;
     std::vector<std::vector<Key> > mandatoryKeys;

@@ -13,8 +13,8 @@ class CommandRegistry {
         std::vector<CommandTemplate> getCommandTemplates();
         
     private:
-        // std::vector<std::string> commandSpec_;
         std::vector<CommandTemplate> cmdTemplates_;
+        // std::vector<std::string> commandSpec_;
 };
 
 #endif // COMMAND_REGISTRYY_HPP

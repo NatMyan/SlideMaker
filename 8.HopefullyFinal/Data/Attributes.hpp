@@ -1,5 +1,5 @@
-#ifndef ATTRIBUTES_HPP
-#define ATTRIBUTES_HPP
+#ifndef ATTRIBUTESS_HPP
+#define ATTRIBUTESS_HPP
 
 #include "../definitions.hpp"
 
@@ -30,4 +30,4 @@ class Attributes {
 };
 
 
-#endif // ATTRIBUTES_HPP
+#endif // ATTRIBUTESS_HPP
