@@ -19,10 +19,10 @@ Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
         attrs_.setPair("-lcolour", Value(std::string("green")));
     }
     if (attrs_.getValue("-lwidth") == Value()) {
-        attrs_.setPair("-lwidth", Value(1.0));
+        attrs_.setPair("-lwidth", Value(1));
     }
     if (type == std::string("polygon") && attrs_.getValue("-sideCount") == Value()) {
-        attrs_.setPair("-sideCount", Value(5.0));
+        attrs_.setPair("-sideCount", Value(5));
     }
 } 
 

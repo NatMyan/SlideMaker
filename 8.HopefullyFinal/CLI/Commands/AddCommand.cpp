@@ -1,4 +1,5 @@
 #include "AddCommand.hpp"
+#include "../../Data/Item.hpp"
 
 int AddCommand::itemID_ = 0;
 
@@ -7,13 +8,23 @@ AddCommand::AddCommand(const Map& info) :
 {}
 
 void AddCommand::execute() {
-    const std::string type = toStr(infoMap_["-type"]); // definitions is included
+    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Action> action;
 
     if (isTypeItem(type)) {
-        auto idx = int(toNum(infoMap_["-idx"]));
+        auto idx = int(defs::toInt(infoMap_["-idx"]));
         auto slide = Application::getDocument().getSlide(idx);
-        auto item = std::shared_ptr<Item>(argumenteghen from infoMap_, ++itemID_);
+        std::string type = defs::toStr(infoMap_["-type"]);
+
+        double l = defs::toDouble(infoMap_["-l"]); 
+        double t = defs::toDouble(infoMap_["-t"]); 
+        double r = defs::toDouble(infoMap_["-r"]); 
+        double b = defs::toDouble(infoMap_["-b"]); 
+        BoundingBox bbox = {{l, t}, {r, b}};
+
+        Attributes attrs;
+        
+        auto item = std::shared_ptr<Item>(type, ++itemID_, bbox, attrs);
         action = std::make_shared<AddItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {

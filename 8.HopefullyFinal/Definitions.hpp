@@ -8,7 +8,7 @@
 #include <vector>
 
 using Key = std::string;
-using Value = VariantWrapper<std::string, double>;
+using Value = VariantWrapper<std::string, int, double>;
 using Map = std::unordered_map<Key, Value>;
 using CommandInfo = std::pair<std::string, Map>;
 
@@ -23,7 +23,8 @@ struct CommandTemplate {
 
 namespace defs {
     std::string toStr(Value val);
-    double toNum (Value val);
+    double toDouble (Value val);
+    int toInt (Value val);
 }
 
 #endif // DEFINITIONS_HPP

@@ -11,16 +11,17 @@ class Attributes {
     public:
         ///TODO: setKey, setValue needed ?
         Key getKey(const Value& value) const;
-        // void setKey(Value value);  
 
         Value getValue(const Key& key) const;
-        // void setValue(Key key);
-
+        
         void setPair(Key, Value);
-        std::pair<Key, Value> getPair();
-
+    
         AttributesIterator begin();
         AttributesIterator end();
+        
+        // void setKey(Value value);  
+        // void setValue(Key key);
+        // std::pair<Key, Value> getPair();
     
     private:
         bool isPairAttribute(std::pair<Key, Value> pair);

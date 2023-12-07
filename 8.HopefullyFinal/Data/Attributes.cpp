@@ -13,10 +13,6 @@ Key Attributes::getKey(const Value& value) const {
     return Key();
 }
 
-// void Attributes::setKey(Value value) {
-
-// }
-
 Value Attributes::getValue(const Key& key) const {
     auto it = attributeMap_.find(key);
     if (it != attributeMap_.end()) {
@@ -25,16 +21,8 @@ Value Attributes::getValue(const Key& key) const {
     return Value();
 }
 
-// void Attributes::setValue(Key key) {
-
-// }
-
-void Attributes::setPair(Key, Value) {
+void Attributes::setPair(Key key, Value value) {
     attributeMap_[key] = value;
-}
-
-std::Attributes::pair<Key, Value> getPair() {
-    // attributeMap_[key] = value;
 }
 
 Attributes::AttributesIterator Attributes::begin() {
@@ -44,3 +32,16 @@ Attributes::AttributesIterator Attributes::begin() {
 Attributes::AttributesIterator Attributes::end() {
     return AttributesIterator(attributeMap_.begin()); 
 }
+
+// void Attributes::setKey(Value value) {
+
+// }
+
+// void Attributes::setValue(Key key) {
+
+// }
+
+/*std::pair<Key, Value> Attributes::getPair() {
+    return attributeMap_;
+    // attributeMap_[key] = value;
+}*/
