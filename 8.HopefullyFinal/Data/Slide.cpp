@@ -23,6 +23,7 @@ ItemGroup::ItemIterator Slide::end() {
     // return slide_.end();
 }
 
+
 //remove
 /*for (size_t i = 0; i < slide_.size(); ++i) {
     auto itemId = slide_.at(i)->getID();
