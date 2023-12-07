@@ -8,15 +8,18 @@
 #include <vector>
 
 class Slide {
-    public:
-        using ItemIterator = std::vector<std::shared_ptr<ItemBase> >::iterator;
+    // public:
+        // using ItemIterator = std::vector<std::shared_ptr<ItemBase> >::iterator;
 
     public:    
         void addItem(std::shared_ptr<ItemBase> itemPtr);
         void removeItem(int id);
+
+        std::shared_ptr<ItemBase> getItem(int id);
         std::shared_ptr<ItemBase> getTopItem();
-        ItemIterator begin();
-        ItemIterator end();
+
+        ItemGroup::ItemIterator begin();
+        ItemGroup::ItemIterator end();
         // void setItem(Type type, ID id, Position pos, Attributes attributes);
         //SlideType<std::shared_ptr<Item> > getSlide();     
 

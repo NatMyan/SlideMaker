@@ -15,7 +15,8 @@ class ItemGroup {
 
     public:
         void addItem(std::shared_ptr<ItemBase> itemPtr);
-        
+        void removeItem(int id);
+
         int getGroupId();
         void setGroupId(int id);
 
@@ -30,6 +31,9 @@ class ItemGroup {
 
         std::shared_ptr<ItemBase> getItem(int id);
         std::shared_ptr<ItemBase> getTopItem();
+
+        ItemIterator begin();
+        ItemIterator end();
 
         // std::string getTypes() const;
         // void setType(std::string type);
