@@ -1,14 +1,11 @@
 #include "Slide.hpp"
 
-SlideType<std::shared_ptr<Item> > Slide::getSlide() {
-    return slide_;
+void Slide::addItem(std::shared_ptr<ItemBase> itemPtr) {
+    itemGroup_->addItem(itemPtr);
+    // slide_.push_back(itemPtr);
 }
 
-void Slide::addtoSlide(std::shared_ptr<Item> itemPtr) {
-    slide_.push_back(itemPtr);
-}
-
-void Slide::removeFromSlide(ID id) {
+void Slide::removeItem(int id) {
     for (size_t i = 0; i < slide_.size(); ++i) {
         auto itemId = slide_.at(i)->getID();
         if (itemId == id) {
@@ -17,7 +14,7 @@ void Slide::removeFromSlide(ID id) {
     } 
 }
 
-std::shared_ptr<Item> Slide::getItem(ID id) {
+std::shared_ptr<ItemBase> Slide::getItem(int id) {
     for (size_t i = 0; i < slide_.size(); ++i) {
         auto itemId = slide_.at(i)->getID();
         if (itemId == id) {
@@ -27,10 +24,10 @@ std::shared_ptr<Item> Slide::getItem(ID id) {
     return nullptr;
 }
 
-Slide::SlideIterator Slide::begin() {
+Slide::ItemIterator Slide::begin() {
     return slide_.begin();
 }
 
-Slide::SlideIterator Slide::end() {
+Slide::ItemIterator Slide::end() {
     return slide_.end();
 }
