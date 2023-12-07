@@ -1,12 +1,12 @@
 #include "ChangeCommand.hpp"
 
 ChangeCommand::ChangeCommand(const Map& info) :
-    infoMap__(info)
+    infoMap_(info)
 {}
 
 void ChangeCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<Action> action;
+    std::shared_ptr<IAction> action;
     auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {

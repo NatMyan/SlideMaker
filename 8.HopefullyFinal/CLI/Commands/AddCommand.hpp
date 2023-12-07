@@ -10,7 +10,8 @@ class AddCommand : public Command {
 
     private:
         Map getRemainingPairs();
-        BoundingBox createBoundingBox();
+        BoundingBox createTheBoundingBox();
+        std::shared_ptr<Item> createTheItem();
 
     private:
         static int itemID_;

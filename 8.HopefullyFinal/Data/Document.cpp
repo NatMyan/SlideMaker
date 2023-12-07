@@ -12,7 +12,7 @@ void Document::removeSlide(int idx) {
     slides_.erase(slides_.begin() + idx);
 }
 
-std::weak_ptr<Slide> Document::getSlide(int idx) {
+std::shared_ptr<Slide> Document::getSlide(int idx) {
     if (idx < slides_.size()) {
         return slides_.at(idx);
     }

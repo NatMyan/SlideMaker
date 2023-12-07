@@ -9,15 +9,12 @@ AddCommand::AddCommand(const Map& info) :
 
 void AddCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<Action> action;
+    std::shared_ptr<IAction> action;
 
     if (isTypeItem(type)) {
         auto idx = defs::toInt(infoMap_["-idx"]);
         auto slide = Application::getDocument().getSlide(idx);
-        std::string type = defs::toStr(infoMap_["-type"]);
-        BoundingBox bbox = createBoundingBox();
-        Attributes attrs(getRemainingPairs());
-        auto item = std::make_shared<Item>(type, ++itemID_, bbox, attrs);
+        auto item = createTheItem();
         action = std::make_shared<AddItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {
@@ -27,7 +24,7 @@ void AddCommand::execute() {
     }
 }
 
-BoundingBox AddCommand::createBoundingBox() {
+BoundingBox AddCommand::createTheBoundingBox() {
     double l = defs::toDouble(infoMap_["-l"]); 
     double t = defs::toDouble(infoMap_["-t"]); 
     double r = defs::toDouble(infoMap_["-r"]); 
@@ -46,4 +43,11 @@ Map AddCommand::getRemainingPairs() {
         }
     }
     return remainingPairs;
+}
+
+std::shared_ptr<Item> AddCommand::createTheItem() {
+    std::string type = defs::toStr(infoMap_["-type"]);
+    BoundingBox bbox = createTheBoundingBox();
+    Attributes attrs(getRemainingPairs());
+    return std::make_shared<Item>(type, ++itemID_, bbox, attrs);
 }

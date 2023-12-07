@@ -9,7 +9,7 @@ class LoadCommand : public Command {
         void execute();
 
     private:
-        Map info_;
+        Map infoMap_;
 };
 
 #endif // LOAD_COMMANDD_HPP

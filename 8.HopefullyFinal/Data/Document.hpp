@@ -14,7 +14,9 @@ class Document {
     public:
         int addSlide(std::shared_ptr<Slide> slidePtr);
         void removeSlide(int idx);
+
         std::shared_ptr<Slide> getSlide(int idx);
+        
         SlideIterator begin();
         SlideIterator end();
 

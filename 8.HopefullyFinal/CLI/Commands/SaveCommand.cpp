@@ -1,7 +1,7 @@
 #include "SaveCommand.hpp"
 
 SaveCommand::SaveCommand(const Map& info) :
-    info_(info)
+    infoMap_(info)
 {}
 
 void SaveCommand::execute() {

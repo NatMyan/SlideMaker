@@ -10,13 +10,14 @@ class Attributes {
         Attributes (const Map& info);
  
     public:
-        ///TODO: setKey, setValue needed ?
         Key getKey(const Value& value) const;
         Value getValue(const Key& key) const;
         void setPair(Key, Value);
-        
+
         AttributesIterator begin();
-        AttributesIterator end();
+        AttributesIterator end();  
+        
+        ///TODO: setKey, setValue needed ?
         // void setKey(Value value);  
         // void setValue(Key key);
         // std::pair<Key, Value> getPair();
