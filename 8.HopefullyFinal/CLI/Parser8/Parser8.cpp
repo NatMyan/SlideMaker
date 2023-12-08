@@ -5,13 +5,27 @@
 
 #include <sstream>
 
-Parser8::Parser8() :
+Parser8::Parser8(std::istream& input, const char& eolToken) :
     syntaxAnalyzer_(std::make_unique<SyntaxAnalyzer>()),
     semanticAnalyzer_(std::make_unique<SemanticAnalyzer>())
     // cmdFactory_(std::make_unique<CommandFactory>())
-{}
+{
+    createCommandInfo(input, eolToken);
+}
 
-CommandInfo Parser8::constructCommandInfo(std::istream& input, const char& endOfLineToken) {
+std::shared_ptr<Command> Parser8::parseCommand() {
+    if (isCmdInfoValid()) {
+        auto cmdFactory = std::make_unique<CommandFactory>(cmdInfo_);
+        return cmdFactory->createCommand();
+    }
+    return nullptr;
+}
+    
+bool Parser8::isCmdInfoValid() {
+    return syntaxAnalyzer_->isSyntaxValid(cmdInfo_) && semanticAnalyzer_->isSemanticallyValid(cmdInfo_);
+}
+
+CommandInfo Parser8::createCommandInfo(std::istream& input, const char& endOfLineToken) {
     std::string endToken(1, endOfLineToken);
     Tokenizer tokenizer;
 
@@ -34,20 +48,18 @@ bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, To
     }
     std::string argVal = tokenizer.takeToken(input, endOfLineToken);
     cmdInfo_.second[argName] = Value(argVal);
-
     return true;  
 }
 
-std::shared_ptr<Command> Parser8::parseCommand() {
-    if (isCmdInfoValid()) {
-        auto cmdFactory = std::make_unique<CommandFactory>(cmdInfo_);
-        return cmdFactory->createCommand();
+/// NOTE: a bit inefficient, but it is what it is for now
+std::string Parser8::createCmdString() { 
+    const auto& cmdName = cmdInfo_.first;
+    const auto& map = cmdInfo_.second;
+    std::string cmdStr = cmdName;
+    for (const auto& pair : cmdInfo_.second) {
+        cmdStr += " " + pair.first + " " + defs::toStr(pair.second);
     }
-    return nullptr;
-}
-    
-bool Parser8::isCmdInfoValid() {
-    return syntaxAnalyzer_->isSyntaxValid(cmdInfo_) && semanticAnalyzer_->isSemanticallyValid(cmdInfo_);
+    return cmdStr;
 }
 
 

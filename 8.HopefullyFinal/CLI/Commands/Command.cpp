@@ -5,5 +5,5 @@ bool Command::isTypeSlide(const std::string& type) {
 }
 
 bool Command::isTypeItem(const std::string& type) {
-    type == "item";
+    return (type == "item" || type == "itemGroup"); // for now
 }

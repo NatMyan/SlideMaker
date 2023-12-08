@@ -11,10 +11,11 @@
 
 class Parser8 {
     public:
-        Parser8();
+        Parser8(std::istream& input, const char& eolToken);
 
     public:
-        CommandInfo constructCommandInfo(std::istream& input, const char& endOfLineToken);
+        std::string createCmdString();
+        CommandInfo createCommandInfo(std::istream& input, const char& endOfLineToken);
         std::shared_ptr<Command> parseCommand();
     
     private:

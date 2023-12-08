@@ -7,7 +7,7 @@
 
 class Application {
     public:    
-        Application(std::istream& inputStream);
+        Application(std::istream& inputStream, std::ofstream& outputStream);
 
     public:
         void exec(); // with loop

@@ -13,12 +13,13 @@ void RemoveCommand::execute() {
     if (isTypeItem(type)) {
         auto slide = Application::getDocument()->getSlide(idx);
         auto item = slide->getItem(defs::toInt(infoMap_["-id"]));
-        action = std::make_shared<RemoveItemAction>(slide, item);
+        action = std::make_shared<RemoveItemAction>(slide, id);
     }
     else if (isTypeSlide(type)) {
         auto doc = Application::getDocument();
         auto slide = doc->getSlide(idx);
-        action = std::make_shared<RemoveSlideAction>(doc, slide);
+        action = std::make_shared<RemoveSlideAction>(doc, idx);
     }
+
     dir->runAction(action);
 }

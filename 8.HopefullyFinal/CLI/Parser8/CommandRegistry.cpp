@@ -14,7 +14,7 @@ CommandRegistry::CommandRegistry () :
                    {{}}},                  // optional
         {"change", {{"-cidx", "-nidx"},
                     {"-id"}}, 
-                   {{"-type", "-t", "-r", "-b", "-l"}}},      // optional
+                   {{"-type", "-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount"}}}, // optional
                     // {"-type", "-x", "-y", "-w", "-h"}      // optional
         {"display", {{"-id"},
                      {"-idx"},

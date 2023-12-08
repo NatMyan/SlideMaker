@@ -1,7 +1,7 @@
 #include "Application.hpp"
 
 ///TODO: since static, put them outside of Application
-Application::Application(std::istream& inputStream) :
+Application::Application(std::istream& inputStream, std::ofstream& outputStream) :
     inputStream_(inputStream),
     doc_(std::make_shared<Document>()),
     dir_(std::make_shared<Director>()),
@@ -12,6 +12,7 @@ Application::Application(std::istream& inputStream) :
     ctr_ = std::make_shared<CLIController>();
 }
 
+///TODO: to be fixed
 ///NOTE: Enters the main event loop and waits until exit() is called, (IN QT)
 //       then returns the value that was set to exit() (which is 0 if exit() is called via quit()).
 void Application::exec() {

@@ -3,7 +3,7 @@
 
 class IAction {
     public:
-        virtual void startAction() = 0;
+        virtual void doAction() = 0;
 };
 
 #endif // I_ACTION_HPP

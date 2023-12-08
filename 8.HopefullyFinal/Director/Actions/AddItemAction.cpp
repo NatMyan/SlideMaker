@@ -5,6 +5,6 @@ AddItemAction::AddItemAction(std::shared_ptr<Slide> slide, std::shared_ptr<ItemB
     itemPtr_(itemPtr)
 {}
 
-void AddItemAction::addItem() {
+void AddItemAction::doAction() {
     slide_->addItem(itemPtr_);
 }

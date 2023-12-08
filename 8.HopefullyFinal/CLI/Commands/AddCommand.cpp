@@ -23,6 +23,7 @@ void AddCommand::execute() {
         auto slide = std::make_shared<Slide>();
         action = std::make_shared<AddSlideAction>(doc, slide);
     }
+    
     dir->runAction(action);
 }
 
