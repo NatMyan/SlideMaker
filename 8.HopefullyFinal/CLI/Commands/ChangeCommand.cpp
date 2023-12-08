@@ -12,14 +12,14 @@ void ChangeCommand::execute() {
 
     if (isTypeItem(type)) {
         auto slide = Application::getDocument()->getSlide(idx);
-        if (infoMap_["-type"] == Value(std::string("item"))) {
-            auto id = defs::toInt(infoMap_["-id"]);
+        auto id = defs::toInt(infoMap_["-id"]);
+        if (id > 0) {
             auto item = slide->getItem(id);
             action = std::make_shared<ChangeItemAction>(item, infoMap_);
         }
-        else if (infoMap_["-type"] == Value(std::string("item"))) {
+        else {
             auto itemGroup = slide->getTopItem();
-            action = std::make_shared<ChangeItemAction>(itemGroup, infoMap_);
+            action = std::make_shared<ChangeItemAction>(item, infoMap_);
         }
     }
     else if (isTypeSlide(type)) {

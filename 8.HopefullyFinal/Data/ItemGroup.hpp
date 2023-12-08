@@ -6,7 +6,7 @@
 
 #include <string>
 
-class ItemGroup {
+class ItemGroup : public ItemBase {
     public:
         using ItemIterator = std::vector<std::shared_ptr<ItemBase> >::iterator;
 

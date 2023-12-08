@@ -27,6 +27,10 @@ std::shared_ptr<ItemBase> Slide::getTopItem() {
     return itemGroup_->getTopItem();    
 }
 
+std::shared_ptr<ItemBase> Slide::getItemGroup() {
+    return itemGroup_;
+}
+
 //remove
 /*for (size_t i = 0; i < slide_.size(); ++i) {
     auto itemId = slide_.at(i)->getID();
