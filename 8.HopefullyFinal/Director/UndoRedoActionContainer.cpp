@@ -1,7 +1,9 @@
 #include "UndoRedoActionContainer.hpp"
 
 void UndoRedoActionContainer::addAction(std::shared_ptr<IAction> action) {
-    
+    actions_.push_back(action);
+    if (actions_.size() > maxAmount_) 
+        actions_.pop_front();
 }
 
 void UndoRedoActionContainer::popFrontRedoable() {

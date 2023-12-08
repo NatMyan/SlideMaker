@@ -12,6 +12,9 @@ class ChangeItemAction : public IAction {
     
     public:
         void doAction();
+        std::shared_ptr<Slide> getItemGroupPtr();
+        std::shared_ptr<ItemBase> getItemPtr();
+        Map getInfo();
     
     private:
         void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr);

@@ -21,14 +21,15 @@ class UndoRedoActionContainer {
         void addUndoableAction(std::shared_ptr<IAction> action);
 
     private:
-        std::list<std::shared_ptr<IAction> > undoables_;
-        std::list<std::shared_ptr<IAction> > redoables_;
+        std::list<std::shared_ptr<IAction> > actions_;
+        std::list<std::shared_ptr<IAction> > undoneActions_;
+        int maxAmount_ = 5;
 };
 
 #endif // UNDO_REDO_ACTION_CONTAINER_HPP
 
-/*
 
+/*
 class UndoRedoContainer {
 private:
     std::stack<BaseAction*> actions;

@@ -86,6 +86,7 @@
         "qtconcurrent": "cpp",
         "qtxml": "cpp",
         "__availability": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "queue": "cpp"
     }
 }
