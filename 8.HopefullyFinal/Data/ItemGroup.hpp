@@ -30,6 +30,7 @@ class ItemGroup : public ItemBase {
         Attributes getAttributes() const;
         void setAttributes(Attributes attrs);
 
+        std::string getType() const;
         void setType(std::string type); // change all the types into 1 type
 
         std::shared_ptr<ItemBase> getItem(int id) const;

@@ -12,14 +12,20 @@ class ChangeItemAction : public IAction {
     
     public:
         void doAction();
+        std::shared_ptr<IAction> createReverseAction();
     
     private:
-        void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr);
+        void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr, Map info);
+        void getItemStuff(std::shared_ptr<ItemBase> itemBasePtr);
+        void getOriginalItemStuff();
 
     private:    
         std::shared_ptr<ItemGroup> itemGroupPtr_;
         std::shared_ptr<Item> itemPtr_;
+        std::shared_ptr<ItemGroup> itemGroupPtrOriginal_;
+        std::shared_ptr<Item> itemPtrOriginal_;
         Map info_;
+        Map oldInfo_;
 };
 
 #endif // CHANGE_ITEM_ACTION_HPP

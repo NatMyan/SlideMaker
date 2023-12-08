@@ -14,6 +14,7 @@ class ItemBase {
         virtual Attributes getAttributes() const = 0;
         virtual void setAttributes(Attributes attrs) = 0;
 
+        virtual std::string getType() const = 0;
         virtual void setType(std::string type) = 0; 
 };
 

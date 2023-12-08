@@ -10,6 +10,7 @@ class RemoveSlideAction : public IAction {
     
     public:
         void doAction();
+        std::shared_ptr<IAction> createReverseAction();
     
     private:
         std::shared_ptr<Document> doc_;

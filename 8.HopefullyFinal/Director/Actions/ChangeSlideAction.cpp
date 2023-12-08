@@ -11,3 +11,7 @@ void ChangeSlideAction::doAction() {
     docPtr_->removeSlide(currentIdx_);
     docPtr_->insertSlide(slidePtr_, newIdx_);
 }
+
+std::shared_ptr<IAction> ChangeSlideAction::createReverseAction() {
+    return std::make_shared<ChangeSlideAction>(docPtr_, slidePtr_, newIdx_, currentIdx_);
+}
