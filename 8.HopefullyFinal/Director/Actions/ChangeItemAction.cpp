@@ -21,6 +21,7 @@ void ChangeItemAction::doAction() {
     }
 }
 
+///NOTE: I know this isn't ideal, and it probably should be in Change Command, but for now, it should do
 void ChangeItemAction::changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr) {
     for (const auto& pair : info_) {
         const auto key = pair.first;
