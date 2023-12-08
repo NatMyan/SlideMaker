@@ -17,8 +17,8 @@ class ItemGroup : public ItemBase {
         void addItem(std::shared_ptr<ItemBase> itemPtr);
         void removeItem(int id);
 
-        int getGroupId();
-        void setGroupId(int id);
+        int getID() const;
+        // void setID(int id);
 
         BoundingBox getBoundingBox() const;
         void setBoundingBox(BoundingBox bbox);
@@ -29,8 +29,10 @@ class ItemGroup : public ItemBase {
         Attributes getAttributes() const;
         void setAttributes(Attributes attrs);
 
-        std::shared_ptr<ItemBase> getItem(int id);
-        std::shared_ptr<ItemBase> getTopItem();
+        void setType(std::string type); // change all the types into 1 type
+
+        std::shared_ptr<ItemBase> getItem(int id) const;
+        std::shared_ptr<ItemBase> getTopItem() const;
         size_t getItemCount();
 
         ItemIterator begin();

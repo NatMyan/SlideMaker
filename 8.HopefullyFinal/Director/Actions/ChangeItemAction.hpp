@@ -12,6 +12,9 @@ class ChangeItemAction : public IAction {
     
     public:
         void doAction();
+    
+    private:
+        void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr);
 
     private:    
         std::shared_ptr<ItemGroup> itemGroupPtr_;

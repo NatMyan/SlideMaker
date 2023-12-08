@@ -15,12 +15,12 @@ void ChangeCommand::execute() {
         if (id > 0) {
             auto item = slide->getItem(id);
             Map necessaryInfo = createNecessaryInfo();
-            action = std::make_shared<ChangeItemAction>(item, infoMap_);
+            action = std::make_shared<ChangeItemAction>(item, necessaryInfo);
         }
         else {
             auto itemGroup = slide->getItemGroup();
             Map necessaryInfo = createNecessaryInfo();
-            action = std::make_shared<ChangeItemAction>(itemGroup, infoMap_);
+            action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo);
         }
     }
     else if (isTypeSlide(type)) {
