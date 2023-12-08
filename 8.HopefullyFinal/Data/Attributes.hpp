@@ -4,8 +4,10 @@
 #include "../definitions.hpp"
 
 class Attributes {
-    ///NOTE: let's just pretend this isn't Map's iterator, but a custom one
-    using AttributesIterator = Map::iterator; 
+    public:
+        ///NOTE: let's just pretend this isn't Map's iterator, but a custom one
+        using AttributesIterator = Map::iterator; 
+
     public: 
         Attributes (const Map& info);
  

@@ -13,16 +13,6 @@ std::shared_ptr<ItemBase> Slide::getItem(int id) {
     return itemGroup_->getItem(id);
 }
 
-ItemGroup::ItemIterator Slide::begin() {
-    return itemGroup_->begin();
-    // return slide_.begin();
-}
-
-ItemGroup::ItemIterator Slide::end() {
-    return itemGroup_->end();
-    // return slide_.end();
-}
-
 std::shared_ptr<ItemBase> Slide::getTopItem() {
     return itemGroup_->getTopItem();    
 }
@@ -34,6 +24,17 @@ std::shared_ptr<ItemBase> Slide::getItemGroup() {
 size_t Slide::getItemCount() {
     return itemGroup_->getItemCount();
 }
+
+ItemGroup::ItemIterator Slide::begin() {
+    return itemGroup_->begin();
+    // return slide_.begin();
+}
+
+ItemGroup::ItemIterator Slide::end() {
+    return itemGroup_->end();
+    // return slide_.end();
+}
+
 
 //remove
 /*for (size_t i = 0; i < slide_.size(); ++i) {

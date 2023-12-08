@@ -1,7 +1,7 @@
 #include "AddCommand.hpp"
 #include "../../Data/Item.hpp"
 
-int AddCommand::itemID_ = 0;
+int AddCommand::itemID_ = 1;
 
 AddCommand::AddCommand(const Map& info) :
     infoMap_(info)
