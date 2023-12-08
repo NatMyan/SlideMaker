@@ -21,6 +21,18 @@ void ChangeItemAction::doAction() {
     }
 }
 
+std::shared_ptr<ItemBase> ChangeItemAction::getItemGroupPtr() {
+    return itemGroupPtr_;
+}
+
+std::shared_ptr<ItemBase> ChangeItemAction::getItemPtr() {
+    return itemPtr_;
+}
+
+Map ChangeItemAction::getInfo() {
+    return info_;
+}
+
 ///NOTE: I know this isn't ideal, and it probably should be in Change Command, but for now, it should do
 void ChangeItemAction::changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr) {
     for (const auto& pair : info_) {

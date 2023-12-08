@@ -10,7 +10,7 @@ class RemoveSlideAction : public IAction {
     
     public:
         void doAction();
-        std::shared_ptr<Slide> getSlidePtr();
+        int getSlideIdx();
         std::shared_ptr<Document> getDocumentPtr();
     
     private:
