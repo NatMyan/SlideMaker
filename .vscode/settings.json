@@ -87,6 +87,8 @@
         "qtxml": "cpp",
         "__availability": "cpp",
         "thread": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "qjsonobject": "cpp",
+        "qjsonarray": "cpp"
     }
 }

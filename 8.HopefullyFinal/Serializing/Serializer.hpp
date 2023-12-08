@@ -7,7 +7,7 @@
 
 class Serializer : public ISerializer {
     public:
-        void exec(std::shared_ptr<Document> doc, JSONDocument jsonDoc);
+        void exec(std::shared_ptr<Document> doc, JSONDocument& jsonDoc);
 };
 
 #endif // SERIALIZERR_HPP
