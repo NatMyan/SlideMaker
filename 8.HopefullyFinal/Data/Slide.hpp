@@ -17,6 +17,7 @@ class Slide {
         std::shared_ptr<ItemBase> getItem(int id);
         std::shared_ptr<ItemBase> getTopItem();
         std::shared_ptr<ItemBase> getItemGroup();
+        size_t getItemCount();
 
         ItemGroup::ItemIterator begin();
         ItemGroup::ItemIterator end();

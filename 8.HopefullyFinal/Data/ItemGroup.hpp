@@ -31,6 +31,7 @@ class ItemGroup : public ItemBase {
 
         std::shared_ptr<ItemBase> getItem(int id);
         std::shared_ptr<ItemBase> getTopItem();
+        size_t getItemCount();
 
         ItemIterator begin();
         ItemIterator end();

@@ -16,6 +16,7 @@ class Document {
         void removeSlide(int idx);
 
         std::shared_ptr<Slide> getSlide(int idx);
+        size_t getSlideCount();
         
         SlideIterator begin();
         SlideIterator end();

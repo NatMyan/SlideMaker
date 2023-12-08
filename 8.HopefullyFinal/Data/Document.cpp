@@ -4,7 +4,7 @@ Document::Document() {
     slides_.push_back(std::make_shared<Slide>());
 }
 
-void Document::addSlide(std::shared_ptr<Slide> slidePtr) {
+int Document::addSlide(std::shared_ptr<Slide> slidePtr) {
     slides_.push_back(slidePtr);
 }
 
@@ -17,6 +17,10 @@ std::shared_ptr<Slide> Document::getSlide(int idx) {
         return slides_.at(idx);
     }
     return {};
+}
+
+size_t Document::getSlideCount() {
+    return slides_.size() - 1;
 }
 
 Document::SlideIterator Document::begin() {
