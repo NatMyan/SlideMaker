@@ -12,6 +12,7 @@ class Slide {
 
     public:    
         void addItem(std::shared_ptr<ItemBase> itemPtr);
+        void insertItem(std::shared_ptr<ItemBase> itemPtr, int index);
         void removeItem(int id);
 
         std::shared_ptr<ItemBase> getItem(int id);

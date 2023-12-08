@@ -13,6 +13,7 @@ class Document {
 
     public:
         int addSlide(std::shared_ptr<Slide> slidePtr);
+        void insertSlide(std::shared_ptr<Slide> slidePtr, int idx);
         void removeSlide(int idx);
 
         std::shared_ptr<Slide> getSlide(int idx);

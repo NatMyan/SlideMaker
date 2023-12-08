@@ -15,6 +15,7 @@ class ItemGroup : public ItemBase {
 
     public:
         void addItem(std::shared_ptr<ItemBase> itemPtr);
+        void insertItem(std::shared_ptr<ItemBase> itemPtr, int index); // items_.insert(items_.begin(), itemPtr);
         void removeItem(int id);
 
         int getID() const;

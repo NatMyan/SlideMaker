@@ -8,6 +8,10 @@ int Document::addSlide(std::shared_ptr<Slide> slidePtr) {
     slides_.push_back(slidePtr);
 }
 
+void Document::insertSlide(std::shared_ptr<Slide> slidePtr, int idx) {
+    slides_.insert(slides_.begin(), slidePtr);
+}
+
 void Document::removeSlide(int idx) {
     slides_.erase(slides_.begin() + idx);
 }

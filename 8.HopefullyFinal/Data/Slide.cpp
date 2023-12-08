@@ -5,6 +5,10 @@ void Slide::addItem(std::shared_ptr<ItemBase> itemPtr) {
     // slide_.push_back(itemPtr);
 }
 
+void Slide::insertItem(std::shared_ptr<ItemBase> itemPtr, int index) {
+    itemGroup_->insertItem(itemPtr, index);
+}
+
 void Slide::removeItem(int id) {
     itemGroup_->removeItem(id);
 }
