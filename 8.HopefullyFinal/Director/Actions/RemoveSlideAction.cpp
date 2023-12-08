@@ -8,11 +8,3 @@ RemoveSlideAction::RemoveSlideAction(std::shared_ptr<Document> doc, int slideIdx
 void RemoveSlideAction::doAction() {
     doc_->removeSlide(slideIdx_);
 }
-
-int RemoveSlideAction::getSlideIdx() {
-    return slideIdx_;
-}
-
-std::shared_ptr<Document> RemoveSlideAction::getDocumentPtr() {
-    return doc_;
-}

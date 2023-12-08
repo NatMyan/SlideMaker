@@ -12,9 +12,6 @@ class ChangeItemAction : public IAction {
     
     public:
         void doAction();
-        std::shared_ptr<ItemBase> getItemGroupPtr();
-        std::shared_ptr<ItemBase> getItemPtr();
-        Map getInfo();
     
     private:
         void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr);

@@ -10,8 +10,6 @@ class AddItemAction : public IAction {
     
     public:
         void doAction();
-        std::shared_ptr<Slide> getSlidePtr();
-        std::shared_ptr<ItemBase> getItemPtr();
     
     private:
         std::shared_ptr<Slide> slidePtr_;

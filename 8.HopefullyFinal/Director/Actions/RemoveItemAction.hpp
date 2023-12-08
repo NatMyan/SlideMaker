@@ -10,8 +10,6 @@ class RemoveItemAction : public IAction {
     
     public:
         void doAction();
-        std::shared_ptr<Slide> getSlidePtr();
-        int getItemID();
     
     private:
         std::shared_ptr<Slide> slidePtr_;
