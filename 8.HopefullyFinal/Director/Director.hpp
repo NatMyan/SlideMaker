@@ -2,13 +2,14 @@
 #define DIRECTORR_HPP
 
 #include "IAction.hpp"
-#include "UndoRedoActionContainer.hpp"
 #include "AddItemAction.hpp"
 #include "AddSlideAction.hpp"
 #include "RemoveItemAction.hpp"
 #include "RemoveSlideAction.hpp"
 #include "ChangeItemAction.hpp"
 #include "ChangeSlideAction.hpp"
+
+#include <list>
 
 class Director {
     public:
@@ -20,8 +21,11 @@ class Director {
         void redo();
     
     private:
-        std::list<std::shared_ptr<IAction> > undoables_;
-        std::list<std::shared_ptr<IAction> > redoables_;
+        const int maxCount_ = 6;
+        std::list<std::shared_ptr<IAction> > actions_;
+        std::list<std::shared_ptr<IAction> >::iterator it_;
+        // int undoCount_;
+        // int redoCount_;
 };
 
 #endif // DIRECTOR_HPP
