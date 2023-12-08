@@ -1,11 +1,11 @@
-#include "LineShape.hpp"
+#include "GroupShape.hpp"
 
-std::unique_ptr<IShape> LineShape::clone() {
-    return std::make_unique<LineShape>(*this); // deep copy
+std::unique_ptr<IShape> GroupShape::clone() {
+    return std::make_unique<GroupShape>(*this); // deep copy
 }
 
 ///TODO: rechange this
-void LineShape::draw(QPainter* painter, std::shared_ptr<ItemBase> item) {
+void GroupShape::draw(QPainter* painter, std::shared_ptr<ItemBase> item) {
     if (!painter) {
         return;
     }
@@ -26,5 +26,6 @@ void LineShape::draw(QPainter* painter, std::shared_ptr<ItemBase> item) {
     
     painter->setPen(pen);
     painter->setBrush(brush);
-    painter->drawLine(QRectF(l, t, r - l, b - t));
+    ///TODO: fix this part
+    painter->drawShape(QRectF(l, t, r - l, b - t)); 
 }
