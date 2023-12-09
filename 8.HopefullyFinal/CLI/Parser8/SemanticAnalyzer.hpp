@@ -14,9 +14,10 @@ class SemanticAnalyzer {
         bool isCmdNameValid(const std::string& cmdName);
         bool isMandatoryArgListValid(const std::string& cmdName, const Map& argMap);
         bool isOptionalArgListValid(const std::string& cmdName, const Map& argMap);
-
-        bool areValuesValid(const Map& argMap);
         
+        ///TODO: implement later
+        bool areValuesValid(const Map& argMap);
+
         bool validateAdd(const std::string& cmdName, const Map& argMap);
         bool validateRemove(const std::string& cmdName, const Map& argMap);
         bool validateChange(const std::string& cmdName, const Map& argMap);

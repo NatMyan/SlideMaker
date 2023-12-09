@@ -1,5 +1,7 @@
 #include "AddCommand.hpp"
 #include "../../Data/Item.hpp"
+#include "../../Application.hpp"
+#include "../../Director/Director.hpp"
 
 int AddCommand::itemID_ = 1;
 
@@ -14,7 +16,7 @@ void AddCommand::execute() {
 
     if (isTypeItem(type)) {
         auto idx = defs::toInt(infoMap_["-idx"]);
-        auto slide = Application::getDocument().getSlide(idx);
+        auto slide = Application::getDocument()->getSlide(idx);
         auto item = createTheItem();
         action = std::make_shared<AddItemAction>(slide, item);
     }

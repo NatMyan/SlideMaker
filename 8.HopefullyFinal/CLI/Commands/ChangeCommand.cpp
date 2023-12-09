@@ -1,4 +1,6 @@
 #include "ChangeCommand.hpp"
+#include "../../Application.hpp"
+#include "../../Director/Director.hpp"
 
 ChangeCommand::ChangeCommand(const Map& info) :
     infoMap_(info)
@@ -11,6 +13,7 @@ void ChangeCommand::execute() {
     auto idx = defs::toInt(infoMap_["-idx"]);
     
     if (isTypeItem(type)) {
+        auto slide = Application::getDocument()->getSlide(idx);
         auto id = defs::toInt(infoMap_["-id"]);
         if (id > 0) {
             auto item = slide->getItem(id);

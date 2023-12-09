@@ -11,7 +11,7 @@
 
 class Application {
     public:    
-        Application(std::istream& inputStream, std::ofstream& outputStream);
+        Application(std::istream& inputStream, std::ostream& outputStream);
 
     public:
         void exec(); // with loop
@@ -19,6 +19,9 @@ class Application {
 
     public:
         ///TODO: static or not ?
+        static std::shared_ptr<std::istream> getInputStream();
+        static std::shared_ptr<std::ostream> getOutputStream();
+        static void setStreams(std::istream& inputStream, std::ostream& outputStream);
         static std::shared_ptr<Document> getDocument();
         static std::shared_ptr<Director> getDirector();
         static std::shared_ptr<Renderer> getRenderer();
@@ -26,8 +29,8 @@ class Application {
         // static std::shared_ptr<Serializer> getSerializer();
     
     private:
-        std::istream& inputStream_;
-        std::ofstream& outputStream_;
+        static std::shared_ptr<std::istream> inputStream_;
+        static std::shared_ptr<std::ostream> outputStream_;
         static std::shared_ptr<Document> doc_;
         static std::shared_ptr<Director> dir_;
         static std::shared_ptr<Renderer> rend_;

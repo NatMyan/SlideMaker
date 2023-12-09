@@ -1,4 +1,6 @@
 #include "DisplayCommand.hpp"
+#include "../../Application.hpp"
+#include "../../Rendering/Renderer.hpp"
 
 DisplayCommand::DisplayCommand(const Map& info) :
     infoMap_(info)
