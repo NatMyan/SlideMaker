@@ -8,14 +8,17 @@ DrawCommand::DrawCommand(const Map& info) :
 {}
 
 void DrawCommand::execute() {
-    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
+    const std::string type = defs::toStr(infoMap_["-type"]); 
+    // std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
+    std::shared_ptr<Renderer> renderer = Application::getRenderer(); // this or the one above ?
     auto idx = defs::toInt(infoMap_["-idx"]);
     auto filePath = defs::toStr(infoMap_["-file"]);
     auto slide = Application::getDocument()->getSlide(idx);
+
     auto [width, height] = calculateImgDocWidthHeight();
     QImage img(width, height, QImage::Format_ARGB32);
     renderer->draw(slide, &img);
+
     img.save(filePath.c_str()); // Assuming filePath is a std::string member variable
 }
 
