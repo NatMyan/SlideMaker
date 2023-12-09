@@ -46,9 +46,9 @@ void Item::setType(std::string type) {
     type_ = type;
 }
 
+///TODO: fix this
 Value Item::getAttribute(Key key) const { 
     if (attrs_.getValue(key) != Value())  
-    ///TODO: is this^ correct ?
         return attrs_.getValue(key);
     throw Exception("Attribute not found");
 }

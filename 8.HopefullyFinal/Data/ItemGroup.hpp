@@ -45,7 +45,7 @@ class ItemGroup : public ItemBase {
 
     private:
         std::vector<std::shared_ptr<ItemBase> > items_;
-        std::string type_;
+        std::string type_; // for the case when all the types are the same or that it's itemGroup
         int id_; 
         BoundingBox bbox_; 
         Attributes attrs_;
