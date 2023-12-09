@@ -15,12 +15,12 @@ void DisplayCommand::execute() {
     if (isTypeItem(type)) {
         auto id = defs::toInt(infoMap_["-id"]);
         auto item = Application::getDocument()->getSlide(idx)->getItem(id);
-        renderer->display(item);
+        renderer->display(item, *Application::getOutputStream());
     }
     else if (isTypeSlide(type)) {
         auto slide = Application::getDocument()->getSlide(idx);
         auto group = slide->getItemGroup();
-        renderer->display(group);
+        renderer->display(group, *Application::getOutputStream());
     }
     // else {
         ///TODO: display the entire document contents

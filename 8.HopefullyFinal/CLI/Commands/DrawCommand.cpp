@@ -1,4 +1,7 @@
 #include "DrawCommand.hpp"
+#include "../../Application.hpp"
+
+#include <QPainter>
 
 DrawCommand::DrawCommand(const Map& info) :
     infoMap_(info)
@@ -8,12 +11,14 @@ void DrawCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
     auto idx = defs::toInt(infoMap_["-idx"]);
+    auto filePath = defs::toStr(infoMap_["-file"]);
     auto slide = Application::getDocument()->getSlide(idx);
-    auto [width, height] = calculateImgDocHeight();
-    QImage img(width, height);
-    renderer->draw(slide, img);
-    img.save(filePath ... );
+    auto [width, height] = calculateImgDocWidthHeight();
+    QImage img(width, height, QImage::Format_ARGB32);
+    renderer->draw(slide, &img);
+    img.save(filePath.c_str()); // Assuming filePath is a std::string member variable
 }
+
 
 
 
