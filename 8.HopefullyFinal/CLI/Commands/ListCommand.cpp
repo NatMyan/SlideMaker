@@ -14,6 +14,7 @@ void ListCommand::execute() {
     auto slide = doc->getSlide(idx);
     for (auto& slide : *doc) {
         size_t idx = 0;
+        (*ostr) << "slideIdx: " << idx << "\n";
         for (const auto& item : *slide) {
             auto id = item->getID();
             auto type = item->getType();
