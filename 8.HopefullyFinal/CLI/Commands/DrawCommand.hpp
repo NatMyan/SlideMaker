@@ -7,6 +7,9 @@ class DrawCommand : public Command {
     public:
         DrawCommand(const Map& info);
         void execute();
+    
+    private:
+        std::pair<double, double> calculateImgDocWidthHeight();
 
     private:
         Map infoMap_;

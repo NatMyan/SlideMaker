@@ -19,6 +19,13 @@ void DrawCommand::execute() {
     img.save(filePath.c_str()); // Assuming filePath is a std::string member variable
 }
 
+// 1 cm -> 37.7952755906 pixel 
+std::pair<double, double> calculateImgDocWidthHeight() {
+    auto [width, height] = Application::getDocument()->getFormatSize(); // std::pair for now, might be {string, pair}
+    auto cmToPixelSize = 37.7952755906;
+    return {width * cmToPixelSize, height * cmToPixelSize};
+}
+
 
 
 
