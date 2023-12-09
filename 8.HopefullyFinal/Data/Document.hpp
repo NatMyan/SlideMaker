@@ -18,6 +18,8 @@ class Document {
 
         std::shared_ptr<Slide> getSlide(int idx);
         size_t getSlideCount();
+
+        std::pair<std::string, std::pair<double, double> > getFormatSize();
         
         SlideIterator begin();
         SlideIterator end();

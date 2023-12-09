@@ -20,13 +20,17 @@ void DrawCommand::execute() {
 }
 
 // 1 cm -> 37.7952755906 pixel 
+// cmToPixel = (size / cmPerInch) * dpi
 std::pair<double, double> calculateImgDocWidthHeight() {
-    auto [width, height] = Application::getDocument()->getFormatSize(); // std::pair for now, might be {string, pair}
-    auto cmToPixelSize = 37.7952755906;
-    return {width * cmToPixelSize, height * cmToPixelSize};
+    auto [width, height] = Application::getDocument()->getFormatSize().second; // std::pair for now, might be {string, pair}
+    return {cmToPixel(width), cmToPixel(height)};
 }
 
-
+double cmToPixel(double length) {
+    const auto dpi = 96;
+    const auto cmPerInch = 2.54;
+    return (length / cmPerInch) * dpi;
+}
 
 
 // auto drawable = std::make_shared<IShape>(type);
