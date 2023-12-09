@@ -3,13 +3,14 @@
 ///TODO: since static, put them outside of Application
 Application::Application(std::istream& inputStream, std::ofstream& outputStream) :
     inputStream_(inputStream),
-    doc_(std::make_shared<Document>()),
-    dir_(std::make_shared<Director>()),
-    rend_(std::make_shared<Renderer>()),
+    outputStream_(outputStream),
+    reader_(std::make_shared<InputReader>())
     // srlz_(std::make_shared<Serializer>())
-    reader_(std::make_shared<InputReader>());
 {
     ctr_ = std::make_shared<CLIController>();
+    doc_ = std::make_shared<Document>();
+    dir_ = std::make_shared<Director>(); 
+    rend_ = std::make_shared<Renderer>();
 }
 
 ///TODO: to be fixed

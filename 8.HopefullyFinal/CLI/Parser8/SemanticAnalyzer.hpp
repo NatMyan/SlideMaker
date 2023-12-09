@@ -14,7 +14,17 @@ class SemanticAnalyzer {
         bool isCmdNameValid(const std::string& cmdName);
         bool isMandatoryArgListValid(const std::string& cmdName, const Map& argMap);
         bool isOptionalArgListValid(const std::string& cmdName, const Map& argMap);
+
         bool areValuesValid(const Map& argMap);
+        
+        bool validateAdd(const std::string& cmdName, const Map& argMap);
+        bool validateRemove(const std::string& cmdName, const Map& argMap);
+        bool validateChange(const std::string& cmdName, const Map& argMap);
+        bool validateDraw(const std::string& cmdName, const Map& argMap);
+        bool validateDisplay(const std::string& cmdName, const Map& argMap);
+        bool validateSave(const std::string& cmdName, const Map& argMap);
+        bool validateLoad(const std::string& cmdName, const Map& argMap);
+        bool validateEmptyArgsCommands(const std::string& cmdName, const Map& argMap);
 };
 
 #endif // SEMANTIC_ANALYZER_HPP

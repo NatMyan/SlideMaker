@@ -2,6 +2,10 @@
 #define APPLICATION_HPP
 
 #include "Data/Document.hpp"
+#include "Rendering/Renderer.hpp"
+#include "Director/Director.hpp"
+#include "CLI/CLIController.hpp"
+#include "CLI/InputReader.hpp"
 
 #include <memory>
 
@@ -23,6 +27,7 @@ class Application {
     
     private:
         std::istream& inputStream_;
+        std::ofstream& outputStream_;
         static std::shared_ptr<Document> doc_;
         static std::shared_ptr<Director> dir_;
         static std::shared_ptr<Renderer> rend_;

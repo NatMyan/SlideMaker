@@ -20,7 +20,7 @@ CommandRegistry::CommandRegistry () :
                      {"-idx"},
                      {}},                  // mandatory empty
                     {{}}},                 // optional
-        {"draw", {{}}, {{}}},
+        {"draw", {{"-idx"}}, {{}}},
         {"list", {{}}, {{}}},                   
         {"save", {{"-file"}}, {{}}},                    
         {"load", {{"-file"}}, {{}}},                    
