@@ -10,7 +10,7 @@
 class ShapeBase : public IShape, public ITextDisplayable {
     public:
         std::unique_ptr<IShape> clone();
-        void display(std::shared_ptr<ItemBase> item, std::ostream& output) final override;
+        void display(std::ostream& output, std::shared_ptr<ItemBase> item) final override;
         // void display(VariantWrapper<std::shared_ptr<Item>, std::shared_ptr<ItemGroup> > item, std::ostream& output) final override;
     
     /*private:

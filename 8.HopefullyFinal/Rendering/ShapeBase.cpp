@@ -5,7 +5,7 @@ std::unique_ptr<IShape> ShapeBase::clone() {
     return std::make_unique<ShapeBase>(*this); // deep copy
 }
 
-void display(std::shared_ptr<ItemBase> item, std::ostream& output) {
+void ShapeBase::display(std::ostream& output, std::shared_ptr<ItemBase> item) {
     output << "id: " << item->getID() << " type: " << item->getType();
     output << " coords: (" << item->getBoundingBox().first.first << ", " << item->getBoundingBox().first.second << "), ";
     output << "(" << item->getBoundingBox().second.first << ", " << item->getBoundingBox().second.second << ")";
