@@ -1,5 +1,12 @@
 #include "ItemGroup.hpp"
 
+ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs) :
+    type_(type),
+    id_(id),
+    bbox_(bbox),
+    attrs_(attrs)
+{}
+
 void ItemGroup::addItem(std::shared_ptr<ItemBase> itemPtr) {
     items_.push_back(itemPtr);
 }
