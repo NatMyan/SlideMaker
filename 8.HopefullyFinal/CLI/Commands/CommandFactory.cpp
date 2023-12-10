@@ -17,6 +17,7 @@ CommandFactory::CommandFactory(const CommandInfo& cmdInfo) :
 {}
 
 std::unique_ptr<Command> CommandFactory::createCommand() { 
+    ///NOTE: PRETEND THIS IF ELSE IS A MAP
     const auto cmdName = cmdInfo_.first;
     const Map info = cmdInfo_.second;
     if (cmdName == "add") return std::make_unique<AddCommand>(info);

@@ -4,6 +4,7 @@
 #include <string>
 
 std::pair<std::string, std::pair<double, double> > FormatSize::createFormatSize(const std::string& formatName) {
+    ///NOTE: PRETEND THIS IF ELSE IS A MAP
     if (formatName == "A0") return {"A0", {84.1, 118.9}};
     else if (formatName == "A1") return {"A1", {59.4, 84.1}};
     else if (formatName == "A2") return {"A2", {42, 59.4}};
