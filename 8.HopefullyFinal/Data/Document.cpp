@@ -1,6 +1,8 @@
 #include "Document.hpp"
 
-Document::Document() {
+Document::Document() :
+    orientation_("landscape")
+{
     slides_.push_back(std::make_shared<Slide>());
 }
 
@@ -32,14 +34,21 @@ std::pair<std::string, std::pair<double, double> > Document::getFormatSize() {
 }
 
 std::pair<double, double> Document::setFormatSize(const std::string& formatName) {
-    currFormat_ = 
+    auto formatSize_ = std::make_unique<FormatSize>();
+    currFormat_ = formatSize_->createFormatSize(formatName);
 }
 
-std::string Document::setFormatSize(std::pair<double, double> customSize);
+std::string Document::setCustomFormatSize(std::pair<double, double> customSize) {
+    currFormat_ = {"custom", customSize};
+}
 
-std::string Document::getOrientation() const;
+std::string Document::getOrientation() const {
+    return orientation_;
+}
 
-voidDocument:: setOrientation(const std::string& orientation);
+void Document::setOrientation(const std::string& orientation) {
+    orientation_ = orientation;
+}
 
 Document::SlideIterator Document::begin() {
     return slides_.begin();
