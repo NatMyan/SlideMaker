@@ -89,6 +89,7 @@
         "thread": "cpp",
         "queue": "cpp",
         "qjsonobject": "cpp",
-        "qjsonarray": "cpp"
+        "qjsonarray": "cpp",
+        "future": "cpp"
     }
 }

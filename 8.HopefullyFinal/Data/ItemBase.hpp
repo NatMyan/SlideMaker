@@ -5,6 +5,9 @@ class ItemBase {
     public:
         virtual int getID() const = 0;
 
+        virtual std::string getType() const = 0;
+        virtual void setType(std::string type) = 0; 
+
         virtual BoundingBox getBoundingBox() const = 0;
         virtual void setBoundingBox(BoundingBox bbox) = 0;
         
@@ -13,9 +16,6 @@ class ItemBase {
 
         virtual Attributes getAttributes() const = 0;
         virtual void setAttributes(Attributes attrs) = 0;
-
-        virtual std::string getType() const = 0;
-        virtual void setType(std::string type) = 0; 
 };
 
 #endif // ITEM_BASE_HPP
