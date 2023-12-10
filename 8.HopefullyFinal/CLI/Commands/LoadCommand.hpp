@@ -9,6 +9,9 @@ class LoadCommand : public Command {
         void execute();
 
     private:
+        std::streamsize takeFileSize(std::ifstream& file);
+
+    private:
         Map infoMap_;
 };
 

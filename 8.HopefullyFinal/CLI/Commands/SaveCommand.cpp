@@ -1,6 +1,6 @@
 #include "SaveCommand.hpp"
-#include "../../Serializing/Serializer.hpp"
 #include "../../Application.hpp"
+#include "../../Serializing/Serializer.hpp"
 
 #include <fstream>
 
@@ -14,7 +14,7 @@ void SaveCommand::execute() {
     auto fileName = defs::toStr(infoMap_["-file"]);
     JSONDocument jsonDoc;
     serializer->exec(doc, jsonDoc);
-    QByteArray buffer = jsonDoc.toJSON();
+    QByteArray buffer = jsonDoc.getQJson().toJSON();
 
     std::ofstream file(fileName, std::ios::out | std::ios::binary);
     if (file.is_open()) {
