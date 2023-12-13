@@ -90,6 +90,7 @@
         "queue": "cpp",
         "qjsonobject": "cpp",
         "qjsonarray": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "csetjmp": "cpp"
     }
 }

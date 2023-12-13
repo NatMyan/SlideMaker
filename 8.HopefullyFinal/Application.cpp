@@ -2,14 +2,22 @@
 
 ///TODO: since static, put them outside of Application
 Application::Application(std::istream& inputStream, std::ostream& outputStream) :
-    reader_(std::make_shared<InputReader>())
+    reader_(std::make_shared<InputReader>()),
+    ctr_ (std::make_shared<CLIController>()),
+    doc_ (std::make_shared<Document>()),
+    dir_ (std::make_shared<Director>()), 
+    rend_ (std::make_shared<Renderer>())
     // srlz_(std::make_shared<Serializer>())
 {
     setStreams(inputStream, outputStream);
-    ctr_ = std::make_shared<CLIController>();
-    doc_ = std::make_shared<Document>();
-    dir_ = std::make_shared<Director>(); 
-    rend_ = std::make_shared<Renderer>();
+    
+}
+
+Application::~Application() = default;
+
+Application& Application::getApplication(std::istream& inputStream, std::ostream& outputStream) {
+    static Application instance(inputStream, outputStream);
+    return instance;
 }
 
 void Application::setStreams(std::istream& inputStream, std::ostream& outputStream) {
@@ -57,6 +65,23 @@ std::shared_ptr<std::istream> Application::getInputStream() {
 /*
 std::shared_ptr<Serializer> Application::getSerializer() {
     return srlz_;
+}
+*/
+
+/*
+MeyersSingleton::~MeyersSingleton()= default; 
+
+MeyersSingleton::MeyersSingleton() : value {0} {
+    ++value;
+}
+
+int MeyersSingleton::getValue() const {
+    return value;
+}
+
+MeyersSingleton& MeyersSingleton::getInstance() {
+    static MeyersSingleton instance;
+    return instance;
 }
 */
 
