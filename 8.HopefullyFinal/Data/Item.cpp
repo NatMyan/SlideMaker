@@ -26,6 +26,10 @@ Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
     }
 } 
 
+void Item::accept(std::unique_ptr<IItemVisitor> visitor) {
+    visitor->visitItem(std::unique_ptr<Item>(this));
+}
+
 void Item::setBoundingBox(BoundingBox bbox) {
     bbox_ = bbox;
 }

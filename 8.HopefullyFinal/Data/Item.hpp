@@ -9,6 +9,8 @@ class Item : public ItemBase {
         Item (std::string type, int id, BoundingBox bbox, Attributes attributes);
 
     public:
+        void accept(std::unique_ptr<IItemVisitor> visitor);
+
         int getID() const;
 
         std::string getType() const;
