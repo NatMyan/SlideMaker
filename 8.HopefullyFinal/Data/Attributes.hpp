@@ -20,6 +20,8 @@ class Attributes {
         AttributesIterator begin();
         AttributesIterator end();  
         
+        bool operator==(Attributes other);
+        bool operator!=(Attributes other);
         ///TODO: setKey, setValue needed ?
         // void setKey(Value value);  
         // void setValue(Key key);

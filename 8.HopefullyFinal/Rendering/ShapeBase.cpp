@@ -10,10 +10,13 @@ void ShapeBase::display(std::ostream& output, std::shared_ptr<ItemBase> item) {
     output << " coords: (" << item->getBoundingBox().first.first << ", " << item->getBoundingBox().first.second << "), ";
     output << "(" << item->getBoundingBox().second.first << ", " << item->getBoundingBox().second.second << ")";
     auto attrs = item->getAttributes();
-    for (auto& pair : attrs) {
-        output << " " << pair.first << " " << defs::toStr(pair.second);
+    if (attrs != Attributes()) {
+        for (auto& pair : attrs) {
+            output << " " << pair.first << " " << defs::toStr(pair.second);
+        }
     }
 }
+
 
 /*void ShapeBase::display(VariantWrapper<std::shared_ptr<Item>, std::shared_ptr<ItemGroup> > item, std::ostream& output) {
     if (item.holdsAlternative<std::shared_ptr<Item> >()) 

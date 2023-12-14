@@ -7,6 +7,8 @@ class ItemBase {
     public:
         virtual void accept(std::unique_ptr<IItemVisitor> visitor) = 0;
 
+        virtual int getID() const = 0;
+
         virtual std::string getType() const = 0;
         // virtual void setType(std::string type) = 0;
 

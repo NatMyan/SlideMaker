@@ -33,6 +33,14 @@ Attributes::AttributesIterator Attributes::end() {
     return AttributesIterator(attributeMap_.begin()); 
 }
 
+bool Attributes::operator==(Attributes other) {
+    return *this == other;
+}
+
+bool Attributes::operator!=(Attributes other) {
+    return *this != other;
+}
+
 // void Attributes::setKey(Value value) {
 
 // }
