@@ -1,7 +1,8 @@
 #include "AddItemAction.hpp"
 #include "RemoveItemAction.hpp"
+#include "../../Data/Item.hpp"
 
-AddItemAction::AddItemAction(std::shared_ptr<Slide> slidePtr, std::shared_ptr<ItemBase> itemPtr) :
+AddItemAction::AddItemAction(std::shared_ptr<Slide> slidePtr, std::shared_ptr<Item> itemPtr) :
     slidePtr_(slidePtr),
     itemPtr_(itemPtr)
 {}

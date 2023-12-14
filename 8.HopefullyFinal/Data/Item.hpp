@@ -14,7 +14,7 @@ class Item : public ItemBase {
         int getID() const;
 
         std::string getType() const;
-        void setType(std::string type);
+        // void setType(std::string type);
 
         BoundingBox getBoundingBox() const;
         void setBoundingBox(BoundingBox bbox);

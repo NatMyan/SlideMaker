@@ -11,7 +11,7 @@ class ItemGroup : public ItemBase {
         using ItemIterator = std::vector<std::shared_ptr<Item> >::iterator;
 
     public:
-        ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs);
+        ItemGroup(int id, BoundingBox bbox, Attributes attrs);
 
     public:
         void accept(std::unique_ptr<IItemVisitor> visitor);
@@ -33,7 +33,7 @@ class ItemGroup : public ItemBase {
         void setAttributes(Attributes attrs);
 
         std::string getType() const;
-        void setType(std::string type); // change all the types into 1 type
+        // void setType(std::string type); // change all the types into 1 type
 
         std::shared_ptr<Item> getItem(int id) const;
         std::shared_ptr<Item> getTopItem() const;
@@ -44,6 +44,9 @@ class ItemGroup : public ItemBase {
 
         // std::string getTypes() const;
         // void setType(std::string type);
+    
+    private:
+        void updateBoundingBox(const BoundingBox& bbox);
 
     private:
         std::vector<std::shared_ptr<Item> > items_;
@@ -51,6 +54,7 @@ class ItemGroup : public ItemBase {
         int id_; 
         BoundingBox bbox_; 
         Attributes attrs_;
+        std::unordered_map<Key, bool> attrStates_;
 };
 
 #endif // ITEM_GROUPP_HPP

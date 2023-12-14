@@ -9,6 +9,7 @@ class Attributes {
         using AttributesIterator = Map::iterator; 
 
     public: 
+        Attributes() = default;
         Attributes (const Map& info);
  
     public:

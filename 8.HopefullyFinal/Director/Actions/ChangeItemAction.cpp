@@ -52,9 +52,6 @@ void ChangeItemAction::changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr, Ma
     for (const auto& pair : info) {
         const auto key = pair.first;
         const auto value = pair.second;
-        if (key == "-type") {
-            itemBasePtr->setType(defs::toStr(info["-type"]));
-        }
         if (key == "-l" || key == "-t" || key == "-r" || key == "-b") {
             auto bbox = itemBasePtr->getBoundingBox();
             if (key == "-l") { bbox.first.first = defs::toDouble(info["-l"]); }
@@ -73,9 +70,9 @@ void ChangeItemAction::getItemStuff(std::shared_ptr<ItemBase> itemBasePtr) {
     for (const auto& pair : info_) {
         const Key key = pair.first;
         Value value = pair.second;
-        if (key == "-type") {
-            value = Value(itemBasePtr->getType());
-        }
+        // if (key == "-type") {
+            // value = Value(itemBasePtr->getType());
+        // }
         if (key == "-l" || key == "-t" || key == "-r" || key == "-b") {
             auto bbox = itemBasePtr->getBoundingBox();
             if (key == "-l") { value = Value(itemBasePtr->getBoundingBox().first.first); }

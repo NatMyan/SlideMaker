@@ -27,7 +27,7 @@ Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
 } 
 
 void Item::accept(std::unique_ptr<IItemVisitor> visitor) {
-    visitor->visitItem(std::unique_ptr<Item>(this));
+    visitor->visitItem(std::shared_ptr<Item>(this));
 }
 
 void Item::setBoundingBox(BoundingBox bbox) {
@@ -46,9 +46,9 @@ std::string Item::getType() const {
     return type_;
 }
 
-void Item::setType(std::string type) {
+/*void Item::setType(std::string type) {
     type_ = type;
-}
+}*/
 
 ///TODO: fix this
 Value Item::getAttribute(Key key) const { 

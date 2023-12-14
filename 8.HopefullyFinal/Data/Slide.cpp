@@ -1,11 +1,11 @@
 #include "Slide.hpp"
 
-void Slide::addItem(std::shared_ptr<ItemBase> itemPtr) {
+void Slide::addItem(std::shared_ptr<Item> itemPtr) {
     itemGroup_->addItem(itemPtr);
     // slide_.push_back(itemPtr);
 }
 
-void Slide::insertItem(std::shared_ptr<ItemBase> itemPtr, int index) {
+void Slide::insertItem(std::shared_ptr<Item> itemPtr, int index) {
     itemGroup_->insertItem(itemPtr, index);
 }
 
@@ -13,15 +13,15 @@ void Slide::removeItem(int id) {
     itemGroup_->removeItem(id);
 }
 
-std::shared_ptr<ItemBase> Slide::getItem(int id) {
+std::shared_ptr<Item> Slide::getItem(int id) {
     return itemGroup_->getItem(id);
 }
 
-std::shared_ptr<ItemBase> Slide::getTopItem() {
+std::shared_ptr<Item> Slide::getTopItem() {
     return itemGroup_->getTopItem();    
 }
 
-std::shared_ptr<ItemBase> Slide::getItemGroup() {
+std::shared_ptr<ItemGroup> Slide::getItemGroup() {
     return itemGroup_;
 }
 

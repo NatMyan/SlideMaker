@@ -11,13 +11,13 @@ class Slide {
         // using ItemIterator = std::vector<std::shared_ptr<ItemBase> >::iterator;
 
     public:    
-        void addItem(std::shared_ptr<ItemBase> itemPtr);
-        void insertItem(std::shared_ptr<ItemBase> itemPtr, int index);
+        void addItem(std::shared_ptr<Item> itemPtr);
+        void insertItem(std::shared_ptr<Item> itemPtr, int index);
         void removeItem(int id);
 
-        std::shared_ptr<ItemBase> getItem(int id);
-        std::shared_ptr<ItemBase> getTopItem();
-        std::shared_ptr<ItemBase> getItemGroup();
+        std::shared_ptr<Item> getItem(int id);
+        std::shared_ptr<Item> getTopItem();
+        std::shared_ptr<ItemGroup> getItemGroup();
         size_t getItemCount();
 
         ItemGroup::ItemIterator begin();

@@ -1,16 +1,20 @@
 #include "Application.hpp"
 
 ///TODO: since static, put them outside of Application
-Application::Application(std::istream& inputStream, std::ostream& outputStream) :
-    reader_(std::make_shared<InputReader>()),
-    ctr_ (std::make_shared<CLIController>()),
-    doc_ (std::make_shared<Document>()),
-    dir_ (std::make_shared<Director>()), 
-    rend_ (std::make_shared<Renderer>())
+Application::Application(std::istream& inputStream, std::ostream& outputStream) // :
+    // reader_(std::make_shared<InputReader>()),
+    // ctr_ (std::make_shared<CLIController>()),
+    // doc_ (std::make_shared<Document>()),
+    // dir_ (std::make_shared<Director>()), 
+    // rend_ (std::make_shared<Renderer>())
     // srlz_(std::make_shared<Serializer>())
 {
+    reader_ = std::make_shared<InputReader>();
+    ctr_ = std::make_shared<CLIController>();
+    doc_ = std::make_shared<Document>();
+    dir_ = std::make_shared<Director>(); 
+    rend_ = std::make_shared<Renderer>();
     setStreams(inputStream, outputStream);
-    
 }
 
 Application::~Application() = default;
