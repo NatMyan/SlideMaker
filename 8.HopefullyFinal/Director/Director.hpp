@@ -23,7 +23,7 @@ class Director {
     private:
         const int maxCount_ = 6;
         std::list<std::shared_ptr<IAction> > actions_;
-        std::list<std::shared_ptr<IAction> >::iterator it_;
+        std::list<std::shared_ptr<IAction> >::iterator it_; //TK: Call your variables appropriately, i.e itCurrentPos_
         // int undoCount_;
         // int redoCount_;
 };

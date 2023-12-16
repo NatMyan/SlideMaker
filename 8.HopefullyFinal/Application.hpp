@@ -37,6 +37,9 @@ class Application {
         Application& operator=(const Application&)= delete;
     
     private:
+        //TK: If your application is singletone, why you need to keep members as static, make them regular members
+
+        //TK: for the sake of object decoupling inputStream, outputStream & reader belonging to controller, not the application itself 
         static std::shared_ptr<std::istream> inputStream_;
         static std::shared_ptr<std::ostream> outputStream_;
         static std::shared_ptr<Document> doc_;
@@ -45,6 +48,9 @@ class Application {
         static std::shared_ptr<CLIController> ctr_;
         // static std::shared_ptr<Serializer> srlz_;
         static std::shared_ptr<InputReader> reader_;
+
+        //TK: Where is your exit condition?
+        bool needToExit_ = false;
 };
 
 #endif // APPLICATION_HPP

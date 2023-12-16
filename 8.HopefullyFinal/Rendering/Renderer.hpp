@@ -7,7 +7,7 @@
 #include <memory>
 #include <QImage>
 
-class Renderer {
+class Renderer : public IItemVisitor { //TK: Implement Visitor here
     public:
         void draw(std::shared_ptr<Slide> slide, QPaintDevice* paintDevice);
         void display(std::shared_ptr<ItemBase> item, std::ostream& ostr);

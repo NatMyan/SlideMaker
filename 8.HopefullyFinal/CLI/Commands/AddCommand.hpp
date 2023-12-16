@@ -14,7 +14,7 @@ class AddCommand : public Command {
         std::shared_ptr<Item> createTheItem();
 
     private:
-        static int itemID_;
+        static int itemID_; //TK: This is wrong, itemId_ couldn't be in the command
         Map infoMap_;
 };
 

@@ -4,6 +4,7 @@
 #include "ShapeBase.hpp"
 #include "IVisualDisplayable.hpp"
 
+//TK: You are using visitor to iterate groups, you do not need this shape anymore
 class GroupShape : public ShapeBase, public IVisualDisplayable {
     public:
         std::unique_ptr<IShape> clone();

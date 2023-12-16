@@ -6,8 +6,12 @@ Director::Director() :
 {}
 
 void Director::runAction(std::shared_ptr<IAction> action) {
-    action->doAction();
-
+    //action->doAction();
+    //TK: you should create reverse action then add it to your stack, otherwise your program may not be executed as expected
+    //TK: your doAction method should return its reverse action immediately
+    action = action->doAction();
+    if (it_ != actions_.end())
+        actions_.erase(it_, actions_.end());
     actions_.push_back(action);
     it_ = actions_.end();
     if (actions_.size() >= maxCount_) {
@@ -19,18 +23,20 @@ void Director::runAction(std::shared_ptr<IAction> action) {
 void Director::undo() {
     if (it_ != actions_.begin()) {
         --it_;
-        *it_ = (*it_)->createReverseAction();
-        (*it_)->doAction();
+        //*it_ = (*it_)->createReverseAction();
+        //(*it_)->doAction();
+        *it_ = (*it_)->doAction();
     }
 }
 
 void Director::redo() {
-    auto lastElemIter = actions_.end();
-    --lastElemIter; // to point at the last valid element
-    if (it_ != lastElemIter) {
+    //auto lastElemIter = actions_.end();
+    //--lastElemIter; // to point at the last valid element
+    if (it_ != actions_.end()) {
+        *it_ = (*it_)->doAction();
         ++it_;
-        *it_ = (*it_)->createReverseAction();
-        (*it_)->doAction();
+        //*it_ = (*it_)->createReverseAction();
+        //(*it_)->doAction();
     }
 }
 

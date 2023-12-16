@@ -26,6 +26,7 @@ void ChangeCommand::execute() {
             action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo);
         }
     }
+    //TK: change command need to work only with items, for slides there should be another command i.e. move 
     else if (isTypeSlide(type)) {
         auto doc = Application::getDocument();
         auto slide = doc->getSlide(idx);

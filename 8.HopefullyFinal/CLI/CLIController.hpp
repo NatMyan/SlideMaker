@@ -10,7 +10,8 @@ class CLIController {
         CLIController();
 
     public:
-        void execCLI(std::istream& input, const char& eolToken);
+        void exec();
+        void execOnce(std::istream& input, const char& eolToken);
         // void executeCmd();
         
     private:

@@ -15,8 +15,11 @@ Parser8::Parser8(std::istream& input, const char& eolToken) :
 
 std::shared_ptr<Command> Parser8::parseCommand() {
     if (isCmdInfoValid()) {
+        //TK: Command factory should be created only once and then used each time
+        //TK: Create command factory in the controller and pass to the parser in the constructor 
         auto cmdFactory = std::make_unique<CommandFactory>(cmdInfo_);
-        return cmdFactory->createCommand();
+        //TK: you should pass cmdInfo_ to the createCommand mehod
+        return cmdFactory->createCommand(cmdInfo_);
     }
     return nullptr;
 }
@@ -27,7 +30,24 @@ bool Parser8::isCmdInfoValid() {
 
 CommandInfo Parser8::createCommandInfo(std::istream& input, const char& endOfLineToken) {
     std::string endToken(1, endOfLineToken);
-    Tokenizer tokenizer;
+    Tokenizer tokenizer; //TK: it is more natural to pass endOfLineToken to the constructor of the tokenizer
+
+    //TK: your parsing should look like this
+    cmdInfo_.second = tokenizer.takeToken(input, endOfLineToken);
+    if (cmdInfo_.second == endToken || cmdInfo_.second.empty())
+        throw ...;
+
+    auto argName = tokenizer.takeToken(input, endOfLineToken);
+    while (argName != endOfLineToken)
+    {
+        //TK: argname starts with '-' check and remove
+        std::string argVal = tokenizer.takeToken(input, endOfLineToken);
+        cmdInfo_.second[argName] = Value(argVal);
+
+        //TK: Next argument
+        argName = tokenizer.takeToken(input, endOfLineToken);
+    }
+    return  cmdInfo_;
 
     auto commandName = tokenizer.takeToken(input, endOfLineToken);
     cmdInfo_.second.clear();
