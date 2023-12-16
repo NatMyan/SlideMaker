@@ -8,14 +8,30 @@ CLIController::CLIController() :
     // dir_(dir)
 {}
 
-void CLIController::execCLI(std::istream& input, const char& eolToken) {
+void CLIController::exec() {
+    //TK: organize your main loop here
+    while (!exit_) {
+        const char eolToken = '\n';
+        //TK: readInputLine should be part of controller (private), your reader class is artificial, you do not need it 
+        std::string strLine = readInputLine();  
+        std::stringstream input(strLine);
+        //TK: but if you will organize your parser more correctly you do not need this readInputLine and stringstream either
+        // since you are passing end of line to your parser it should be able to parse single line from your main input swtream directly 
+        execOnce(input, eolToken);
+        //TK: could be like this instead
+        //execOnce(inputStream_, eolToken);
+    }
+
+}
+void CLIController::execOnce(std::istream& input, const char& eolToken) {
+    //TK: this function need to be for single execution 
     Parser8 parser(input, eolToken);
-    while (!exit) {
+    //while (!exit) {
         // std::string strCmd = parser.createCmdString();  // done like this to avoid mid-state situation if there's any exception
         std::shared_ptr<Command> pCmd = parser.parseCommand();
         pCmd->execute();
         history_->append(parser.createCmdString());
-    }
+    //}
 }
 
 /*if (parser.isCommandValid()) {

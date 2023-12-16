@@ -16,7 +16,7 @@ void AddCommand::execute() {
 
     if (isTypeItem(type)) {
         auto idx = defs::toInt(infoMap_["-idx"]);
-        auto slide = Application::getDocument()->getSlide(idx);
+        auto slide = Application::getDocument()->getSlide(idx); //TK: dereferencing pointer without checking againt nullptr!
         auto item = createTheItem();
         action = std::make_shared<AddItemAction>(slide, item);
     }

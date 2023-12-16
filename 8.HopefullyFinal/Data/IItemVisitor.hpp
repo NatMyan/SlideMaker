@@ -8,8 +8,12 @@ class ItemGroup;
 
 class IItemVisitor {
     public:
-        virtual void visitItem(std::shared_ptr<Item> element) = 0;
-        virtual void visitItemGroup(std::shared_ptr<ItemGroup> element) = 0;
+        //TK: Visitor should look like this, use parametric overloading
+        virtual void visit(ItemLeaf const& element) = 0;
+        virtual void visit(ItemGroup const& element) = 0;
+
+        //virtual void visitItem(std::shared_ptr<Item> element) = 0;
+        //virtual void visitItemGroup(std::shared_ptr<ItemGroup> element) = 0;
 };
 
 #endif // I_ITEM_VISITOR_HPP

@@ -12,11 +12,12 @@ class Command {
         virtual ~Command() = default;
     
     protected:
-        bool isTypeSlide(const std::string& type);
+        //TK: those  methods aren't true base methods
+        bool isTypeSlide(const std::string& type); 
         bool isTypeItem(const std::string& type);
 
     protected:
-        std::string type_;
+        std::string type_; //TK: this memeber doesn't belong to Command
 };
 
 #endif // COMMANDD_HPP

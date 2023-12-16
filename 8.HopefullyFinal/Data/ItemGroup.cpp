@@ -14,7 +14,8 @@ ItemGroup::ItemGroup(int id, BoundingBox bbox, Attributes attrs) :
 }
 
 void ItemGroup::accept(std::unique_ptr<IItemVisitor> visitor) {
-    visitor->visitItemGroup(std::shared_ptr<ItemGroup>(this));
+    //visitor->visitItemGroup(std::shared_ptr<ItemGroup>(this));
+    visitor->visit(this);
 }
 
 void ItemGroup::addItem(std::shared_ptr<Item> itemPtr) {

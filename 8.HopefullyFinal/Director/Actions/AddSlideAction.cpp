@@ -7,7 +7,7 @@ AddSlideAction::AddSlideAction(std::shared_ptr<Document> doc, std::shared_ptr<Sl
 {}
 
 void AddSlideAction::doAction() {
-    doc_->addSlide(slide_);
+    doc_->addSlide(slide_); //TK: you also need to keep the original posiotion to redo correctly
 }
 
 std::shared_ptr<IAction> AddSlideAction::createReverseAction() {

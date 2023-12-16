@@ -20,11 +20,14 @@ Application::Application(std::istream& inputStream, std::ostream& outputStream) 
 Application::~Application() = default;
 
 Application& Application::getApplication(std::istream& inputStream, std::ostream& outputStream) {
+    //TK: to be safe singletone use static shared_ptr and create application upon first request
+    // You should not create Application instance before the main() function call
     static Application instance(inputStream, outputStream);
     return instance;
 }
 
 void Application::setStreams(std::istream& inputStream, std::ostream& outputStream) {
+    //TK: Pass streams to the controller instead keeping them in the application
     inputStream_ = std::make_shared<std::istream>(&inputStream);
     outputStream_ = std::make_shared<std::ostream>(&outputStream);
 }
@@ -33,13 +36,20 @@ void Application::setStreams(std::istream& inputStream, std::ostream& outputStre
 ///NOTE: Enters the main event loop and waits until exit() is called, (IN QT)
 //       then returns the value that was set to exit() (which is 0 if exit() is called via quit()).
 void Application::exec() {
-    
 }
 
+//TK: You need to keep either exec or run, both are same 
 void Application::run() {
-    const char eolToken = '\n';
-    std::istream& input = reader_->readInputLine(*inputStream_, eolToken);
-    ctr_->execCLI(input, eolToken);
+    //TK: organize your main loop here
+    while (!needToExit_) {
+        const char eolToken = '\n';
+        //TK: readInputLine should be part of your execCLI, your reader class is artificial, you do not need it, your eolToken should be member of controller 
+        std::string strLine = readInputLine(); // 
+    std::stringstream input(strLine);
+
+        std::istream& input = reader_->readInputLine(*inputStream_, eolToken);
+        ctr_->execCLI(input, eolToken);
+    }
 }
 
 std::shared_ptr<Document> Application::getDocument() {

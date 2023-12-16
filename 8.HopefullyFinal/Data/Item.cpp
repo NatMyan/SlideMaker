@@ -26,8 +26,9 @@ Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
     }
 } 
 
-void Item::accept(std::unique_ptr<IItemVisitor> visitor) {
-    visitor->visitItem(std::shared_ptr<Item>(this));
+void Item::accept(IItemVisitor& visitor) {
+    //visitor->visitItem(std::shared_ptr<Item>(this)); // What the F***
+    visitor->visit(this);
 }
 
 void Item::setBoundingBox(BoundingBox bbox) {

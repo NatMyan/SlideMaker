@@ -5,6 +5,7 @@
 
 class InputReader {
     public:
+        //TK: This is wrong, see my comment in the cpp
         std::istream& readInputLine (std::istream& inputStream, const char& endOfLineToken);
 };
 

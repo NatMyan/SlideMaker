@@ -7,6 +7,8 @@ DisplayCommand::DisplayCommand(const Map& info) :
 {}
 
 void DisplayCommand::execute() {
+    //TK: I do not understand this, why you need it?
+    //TK: If id is specified then you should display item, otherwise it is slide
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     std::shared_ptr<Renderer> renderer = Application::getRenderer(); // std::make_shared<Renderer>();
     auto renderer = Application::getRenderer();

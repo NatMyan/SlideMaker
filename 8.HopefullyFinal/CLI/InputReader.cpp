@@ -16,6 +16,7 @@ std::istream& InputReader::readInputLine (std::istream& input, const char& endOf
     std::istringstream lineStream(line);
     // std::istream& inputStream = lineStream;
 
+    //TK: Returning reference to local object constructed on the stack, after return your object will be deleted and reference will be invalid
     return lineStream;
     // return inputStream;
 }

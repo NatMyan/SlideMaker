@@ -8,7 +8,7 @@
 
 #include <ostream>
 
-class ShapeBase : public IShape, public ITextDisplayable, public IItemVisitor {
+class ShapeBase : public IShape, public ITextDisplayable { //, public IItemVisitor { //TK: ItemVisitor implements renderer not the shape
     public:
         std::unique_ptr<IShape> clone();
         void display(std::ostream& output, std::shared_ptr<ItemBase> item) final override;

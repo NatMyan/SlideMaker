@@ -91,6 +91,9 @@
         "qjsonobject": "cpp",
         "qjsonarray": "cpp",
         "future": "cpp",
-        "csetjmp": "cpp"
+        "csetjmp": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     }
 }
