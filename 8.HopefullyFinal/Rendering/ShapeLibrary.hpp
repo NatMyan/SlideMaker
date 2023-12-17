@@ -12,7 +12,7 @@
 
 class ShapeLibrary {
     public:
-        std::shared_ptr<IShape> getShape(std::string type);
+        std::shared_ptr<IShape> getShape(std::shared_ptr<Item> item);
 };
 
 #endif // SHAPE_LIBRARY_HPP

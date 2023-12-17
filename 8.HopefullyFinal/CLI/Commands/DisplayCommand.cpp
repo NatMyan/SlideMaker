@@ -8,19 +8,20 @@ DisplayCommand::DisplayCommand(const Map& info) :
 
 void DisplayCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    std::shared_ptr<Renderer> renderer = Application::getRenderer(); // std::make_shared<Renderer>();
-    auto renderer = Application::getRenderer();
+    auto app = Application::getApplication();
+    std::shared_ptr<Renderer> renderer = app->getRenderer(); // std::make_shared<Renderer>();
+    auto renderer = app->getRenderer();
     auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
         auto id = defs::toInt(infoMap_["-id"]);
-        auto item = Application::getDocument()->getSlide(idx)->getItem(id);
-        renderer->display(item, *Application::getOutputStream());
+        auto item = app->getDocument()->getSlide(idx)->getItem(id);
+        renderer->display(item, *app->getOutputStream());
     }
     else if (isTypeSlide(type)) {
-        auto slide = Application::getDocument()->getSlide(idx);
+        auto slide = app->getDocument()->getSlide(idx);
         auto group = slide->getItemGroup();
-        renderer->display(group, *Application::getOutputStream());
+        renderer->display(group, *app->getOutputStream());
     }
     // else {
         ///TODO: display the entire document contents

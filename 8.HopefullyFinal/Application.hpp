@@ -11,40 +11,42 @@
 
 class Application {
     public:    
-        static Application& getApplication(std::istream& inputStream, std::ostream& outputStream);
+        static std::shared_ptr<Application> getApplication();
 
     public:
-        void exec(); // with loop
-        void run();  // without loop
+        // void run(); // with loop
+        void exec(std::istream& inputStream, std::ostream& outputStream);  // without loop
+        void quit();
 
     public:
-        ///TODO: static or not ?
-        static std::shared_ptr<std::istream> getInputStream();
-        static std::shared_ptr<std::ostream> getOutputStream();
+        ///TODO: static or not ? -> NOT
+        std::shared_ptr<std::istream> getInputStream();
+        std::shared_ptr<std::ostream> getOutputStream();
         void setStreams(std::istream& inputStream, std::ostream& outputStream);
 
-        static std::shared_ptr<Document> getDocument();
-        static std::shared_ptr<Director> getDirector();
-        static std::shared_ptr<Renderer> getRenderer();
-        static std::shared_ptr<CLIController> getCLIController();
-        // static std::shared_ptr<Serializer> getSerializer();
+        std::shared_ptr<Document> getDocument();
+        std::shared_ptr<Director> getDirector();
+        std::shared_ptr<Renderer> getRenderer();
+        std::shared_ptr<CLIController> getCLIController();
+        // std::shared_ptr<Serializer> getSerializer();
 
     private:
-        Application(std::istream& inputStream, std::ostream& outputStream);
+        Application();
         ~Application();
 
         Application(const Application&)= delete;
         Application& operator=(const Application&)= delete;
     
     private:
-        static std::shared_ptr<std::istream> inputStream_;
-        static std::shared_ptr<std::ostream> outputStream_;
-        static std::shared_ptr<Document> doc_;
-        static std::shared_ptr<Director> dir_;
-        static std::shared_ptr<Renderer> rend_;
-        static std::shared_ptr<CLIController> ctr_;
-        // static std::shared_ptr<Serializer> srlz_;
-        static std::shared_ptr<InputReader> reader_;
+        std::shared_ptr<std::istream> inputStream_;
+        std::shared_ptr<std::ostream> outputStream_;
+        std::shared_ptr<InputReader> reader_;
+        bool needToExit_ = false;
+        // std::shared_ptr<Document> doc_;
+        // std::shared_ptr<Director> dir_;
+        // std::shared_ptr<Renderer> rend_;
+        // std::shared_ptr<CLIController> ctr_;
+        // std::shared_ptr<Serializer> srlz_;
 };
 
 #endif // APPLICATION_HPP

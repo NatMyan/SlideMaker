@@ -9,13 +9,17 @@ CLIController::CLIController() :
 {}
 
 void CLIController::execCLI(std::istream& input, const char& eolToken) {
-    Parser8 parser(input, eolToken);
     while (!exit) {
-        // std::string strCmd = parser.createCmdString();  // done like this to avoid mid-state situation if there's any exception
-        std::shared_ptr<Command> pCmd = parser.parseCommand();
-        pCmd->execute();
-        history_->append(parser.createCmdString());
+        execOnce(input, eolToken);
     }
+}
+
+void CLIController::execOnce(std::istream& input, const char& eolToken) {
+    Parser8 parser(input, eolToken);
+    std::shared_ptr<Command> pCmd = parser.parseCommand();
+    pCmd->execute();
+    history_->append(parser.createCmdString());
+    // std::string strCmd = parser.createCmdString();  // done like this to avoid mid-state situation if there's any exception
 }
 
 /*if (parser.isCommandValid()) {

@@ -1,4 +1,4 @@
-#include "GroupShape.hpp"
+/*#include "GroupShape.hpp"
 
 std::unique_ptr<IShape> GroupShape::clone() {
     return std::make_unique<GroupShape>(*this); // deep copy
@@ -28,4 +28,4 @@ void GroupShape::draw(QPainter* painter, std::shared_ptr<ItemBase> item) {
     painter->setBrush(brush);
     ///TODO: fix this part
     painter->drawShape(QRectF(l, t, r - l, b - t)); 
-}
+}*/

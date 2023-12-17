@@ -7,6 +7,7 @@
 #include "../Data/IItemVisitor.hpp"
 
 #include <ostream>
+#include <memory>
 
 class ShapeBase : public IShape, public ITextDisplayable, public IItemVisitor {
     public:

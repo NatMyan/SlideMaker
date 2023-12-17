@@ -8,18 +8,19 @@ RemoveCommand::RemoveCommand(const Map& info) :
 
 void RemoveCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    auto dir = Application::getDirector();
+    auto app = Application::getApplication();
+    auto dir = app->getDirector();
     std::shared_ptr<IAction> action = nullptr;
     auto idx = defs::toInt(infoMap_["-idx"]);
 
     if (isTypeItem(type)) {
         auto id = defs::toInt(infoMap_["-id"]);
-        auto slide = Application::getDocument()->getSlide(idx);
+        auto slide = app->getDocument()->getSlide(idx);
         auto item = slide->getItem(id);
         action = std::make_shared<RemoveItemAction>(slide, id);
     }
     else if (isTypeSlide(type)) {
-        auto doc = Application::getDocument();
+        auto doc = app->getDocument();
         auto slide = doc->getSlide(idx);
         action = std::make_shared<RemoveSlideAction>(doc, idx);
     }

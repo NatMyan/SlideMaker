@@ -9,7 +9,8 @@ SaveCommand::SaveCommand(const Map& info) :
 {}
 
 void SaveCommand::execute() {
-    auto doc = Application::getDocument();
+    auto app = Application::getApplication();
+    auto doc = app->getDocument();
     std::shared_ptr<Serializer> serializer = std::make_shared<Serializer>();
     auto fileName = defs::toStr(infoMap_["-file"]);
     JSONDocument jsonDoc;

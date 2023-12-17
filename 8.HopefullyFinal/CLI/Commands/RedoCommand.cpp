@@ -6,6 +6,7 @@ RedoCommand::RedoCommand(const Map& info) :
 {}
 
 void RedoCommand::execute() {
-    auto dir = Application::getDirector();
+    auto app = Application::getApplication();
+    auto dir = app->getDirector();
     dir->redo();
 }

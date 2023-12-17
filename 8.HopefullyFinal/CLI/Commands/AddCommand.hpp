@@ -14,7 +14,7 @@ class AddCommand : public Command {
         std::shared_ptr<Item> createTheItem();
 
     private:
-        static int itemID_;
+        // static int itemID_;
         Map infoMap_;
 };
 

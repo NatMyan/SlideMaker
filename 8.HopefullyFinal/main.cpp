@@ -5,10 +5,10 @@
 int main() {
     std::istream& inputStream = std::cin;
     std::ostream& outputStream = std::cout;
-    Application& a = Application::getApplication(inputStream, outputStream);
+    std::shared_ptr<Application> a = Application::getApplication();
     // Application& a(inputStream, outputStream);
     
     // MainWindow w;
     // w.show();
-    a.exec();
+    a->exec(inputStream, outputStream);
 }

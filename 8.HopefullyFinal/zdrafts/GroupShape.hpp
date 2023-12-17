@@ -1,4 +1,4 @@
-#ifndef GROUP_SHAPE_HPP
+/*#ifndef GROUP_SHAPE_HPP
 #define GROUP_SHAPE_HPP
 
 #include "ShapeBase.hpp"
@@ -10,4 +10,4 @@ class GroupShape : public ShapeBase, public IVisualDisplayable {
         void draw(QPainter* painter, std::shared_ptr<ItemBase> item);
 };
 
-#endif // GROUP_SHAPE_HPP
+#endif // GROUP_SHAPE_HPP*/

@@ -3,7 +3,7 @@
 #include "../../Application.hpp"
 #include "../../Director/Director.hpp"
 
-int AddCommand::itemID_ = 1;
+// int AddCommand::itemID_ = 1;
 
 AddCommand::AddCommand(const Map& info) :
     infoMap_(info)
@@ -11,17 +11,18 @@ AddCommand::AddCommand(const Map& info) :
 
 void AddCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
-    auto dir = Application::getDirector();
+    auto app = Application::getApplication();
+    auto dir = app->getDirector();
     std::shared_ptr<IAction> action = nullptr;
 
     if (isTypeItem(type)) {
         auto idx = defs::toInt(infoMap_["-idx"]);
-        auto slide = Application::getDocument()->getSlide(idx);
+        auto slide = app->getDocument()->getSlide(idx);
         auto item = createTheItem();
         action = std::make_shared<AddItemAction>(slide, item);
     }
     else if (isTypeSlide(type)) {
-        auto doc = Application::getDocument();
+        auto doc = app->getDocument();
         auto slide = std::make_shared<Slide>();
         action = std::make_shared<AddSlideAction>(doc, slide);
     }
@@ -51,8 +52,9 @@ Map AddCommand::getRemainingPairs() {
 }
 
 std::shared_ptr<Item> AddCommand::createTheItem() {
+    static int itemID = 1;
     std::string type = defs::toStr(infoMap_["-type"]);
     BoundingBox bbox = createTheBoundingBox();
     Attributes attrs(getRemainingPairs());
-    return std::make_shared<Item>(type, ++itemID_, bbox, attrs);
+    return std::make_shared<Item>(type, ++itemID, bbox, attrs);
 }

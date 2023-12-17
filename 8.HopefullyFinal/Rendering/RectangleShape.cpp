@@ -9,15 +9,21 @@ void RectangleShape::draw(QPainter* painter, std::shared_ptr<ItemBase> item) {
     if (!painter) {
         return;
     }
-    auto pos = item->getPosition();
+    auto [l, t] = item->getBoundingBox().first;
+    auto [r, b] = item->getBoundingBox().second;
+    /*auto pos = item->getBoundingBox();
     double l = pos.first.first;
     double t = pos.first.second;
     double r = pos.second.first;
-    double b = pos.second.second;
+    double b = pos.second.second;*/
  
     auto lcolour = item->getAttribute("-lcolour");
     auto fcolour = item->getAttribute("-fcolour");
     auto lwidth = item->getAttribute("-lwidth");
+
+    // if("red" Qt::red)
+    // Qt::red
+    // #0934f5
 
     Qt::GlobalColor lglobalColor = stringToGlobalColor(lcolour.toString());
     Qt::GlobalColor fglobalColor = stringToGlobalColor(fcolour.toString());

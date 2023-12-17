@@ -9,7 +9,8 @@ LoadCommand::LoadCommand(const Map& info) :
 {}
 
 void LoadCommand::execute() {
-    auto doc = Application::getDocument();
+    auto app = Application::getApplication();
+    auto doc = app->getDocument();
     auto fileName = defs::toStr(infoMap_["-file"]);
     std::shared_ptr<Deserializer> deserializer = std::make_shared<Deserializer>();
     JSONDocument jsonDoc;

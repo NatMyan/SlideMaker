@@ -6,6 +6,7 @@ UndoCommand::UndoCommand(const Map& info) :
 {}
 
 void UndoCommand::execute() {
-    auto dir = Application::getDirector();
+    auto app = Application::getApplication();
+    auto dir = app->getDirector();
     dir->undo();
 }

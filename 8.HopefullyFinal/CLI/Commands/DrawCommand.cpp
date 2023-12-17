@@ -10,10 +10,11 @@ DrawCommand::DrawCommand(const Map& info) :
 void DrawCommand::execute() {
     const std::string type = defs::toStr(infoMap_["-type"]); 
     // std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>();
-    std::shared_ptr<Renderer> renderer = Application::getRenderer(); // this or the one above ?
+    auto app = Application::getApplication();
+    std::shared_ptr<Renderer> renderer = app->getRenderer(); // this or the one above ?
     auto idx = defs::toInt(infoMap_["-idx"]);
     auto filePath = defs::toStr(infoMap_["-file"]);
-    auto slide = Application::getDocument()->getSlide(idx);
+    auto slide = app->getDocument()->getSlide(idx);
 
     auto [width, height] = calculateImgDocWidthHeight();
     QImage img(width, height, QImage::Format_ARGB32);
@@ -25,7 +26,8 @@ void DrawCommand::execute() {
 // 1 cm -> 37.7952755906 pixel 
 // cmToPixel = (size / cmPerInch) * dpi
 std::pair<double, double> DrawCommand::calculateImgDocWidthHeight() {
-    auto [width, height] = Application::getDocument()->getFormatSize().second; // std::pair for now, might be {string, pair}
+    auto app = Application::getApplication();
+    auto [width, height] = app->getDocument()->getFormatSize().second; // std::pair for now, might be {string, pair}
     return {cmToPixel(width), cmToPixel(height)};
 }
 
