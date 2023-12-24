@@ -2,23 +2,24 @@
 
 #include "Tokenizer.hpp"
 #include "../../definitions.hpp"
+#include "../../Exception.hpp"
 
 #include <sstream>
+#include <iostream>
 
-Parser8::Parser8(std::istream& input, const char& eolToken) :
+Parser8::Parser8(std::shared_ptr<CommandFactory> cmdFactory, std::istream& input, const char& eolToken) :
     syntaxAnalyzer_(std::make_unique<SyntaxAnalyzer>()),
-    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>())
-    // cmdFactory_(std::make_unique<CommandFactory>())
+    semanticAnalyzer_(std::make_unique<SemanticAnalyzer>()),
+    cmdFactory_(cmdFactory)
 {
     createCommandInfo(input, eolToken);
 }
 
 std::shared_ptr<Command> Parser8::parseCommand() {
-    if (isCmdInfoValid()) {
-        auto cmdFactory = std::make_unique<CommandFactory>(cmdInfo_);
-        return cmdFactory->createCommand();
-    }
-    return nullptr;
+    // if (isCmdInfoValid()) {
+        return cmdFactory_->createCommand(cmdInfo_);
+    // }
+    // return nullptr;
 }
     
 bool Parser8::isCmdInfoValid() {
@@ -27,26 +28,32 @@ bool Parser8::isCmdInfoValid() {
 
 CommandInfo Parser8::createCommandInfo(std::istream& input, const char& endOfLineToken) {
     std::string endToken(1, endOfLineToken);
-    Tokenizer tokenizer;
+    Tokenizer tokenizer(endOfLineToken);
 
-    auto commandName = tokenizer.takeToken(input, endOfLineToken);
+    auto commandName = tokenizer.takeToken(input);
+    cmdInfo_.first = commandName;
+    // std::cout << "after cmd Name: " << commandName << std::endl;
     cmdInfo_.second.clear();
 
-    ///TODO: is this ok ? v
+    ///TODO: revisit this, when time is a thing
     bool flag = true;
+    // std::cout << "after bool flag: " << flag << std::endl;
     while (flag) {
         flag = fillCmdInfoMap(input, endOfLineToken, tokenizer);
+        // std::cout << "after bool flag in while: " << flag << std::endl;
     }
     return cmdInfo_;
 }
 
 bool Parser8::fillCmdInfoMap(std::istream& input, const char& endOfLineToken, Tokenizer tokenizer) {
-    std::string argName = tokenizer.takeToken(input, endOfLineToken);
+    std::string argName = tokenizer.takeToken(input);
+    // std::cout << argName << "[arg Name]" << std::endl;
     if (input.eof()) {
         cmdInfo_.second[argName] = Value(std::string(""));
         return false; 
     }
-    std::string argVal = tokenizer.takeToken(input, endOfLineToken);
+    std::string argVal = tokenizer.takeToken(input);
+    // std::cout << argVal << "[arg Val]" << std::endl;
     cmdInfo_.second[argName] = Value(argVal);
     return true;  
 }

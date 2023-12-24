@@ -3,15 +3,14 @@
 
 #include "../VariantWrapper.hpp"
 #include "../Data/Item.hpp"
-#include "../Data/ItemGroup.hpp"
 
 #include <memory>
 #include <QPainter>
-#include <ostream>
 
 class IVisualDisplayable {
     public:
-        virtual void draw(std::shared_ptr<ItemBase> item, QPainter* painter) = 0;
+        virtual ~IVisualDisplayable() = default;
+        virtual void draw(QPainter* painter, std::shared_ptr<Item> item) = 0;
 };
 
 #endif // I_VISUAL_DISPLAYABLE_HPP

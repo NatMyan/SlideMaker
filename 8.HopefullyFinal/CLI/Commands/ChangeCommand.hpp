@@ -2,6 +2,7 @@
 #define CHANGE_COMMANDD_HPP
 
 #include "Command.hpp"
+#include "../../Data/Slide.hpp"
 
 class ChangeCommand : public Command {
     public:

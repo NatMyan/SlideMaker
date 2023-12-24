@@ -9,15 +9,24 @@
 #include <ostream>
 #include <memory>
 
-class ShapeBase : public IShape, public ITextDisplayable, public IItemVisitor {
+class ShapeBase : public IShape, public ITextDisplayable {
     public:
-        std::unique_ptr<IShape> clone();
-        void display(std::ostream& output, std::shared_ptr<ItemBase> item) final override;
+        std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override final;
+        void display(std::ostream& output, std::shared_ptr<Item> item) override final;
         // void display(VariantWrapper<std::shared_ptr<Item>, std::shared_ptr<ItemGroup> > item, std::ostream& output) final override;
 
-    // private:
-        /*template <typename T>
-        void display2(T item, std::ostream& output);*/
+    public:
+        void setType(std::string type);
+        void setBBox(BoundingBox bbox);
+        void setAttrs(Attributes attrs);
+        
+    private:
+        std::string type_;
+        BoundingBox bbox_;
+        Attributes attrs_;
+
+        // template <typename T>
+        // void display2(T item, std::ostream& output);
 };
 
 #endif // SHSPE_BASE_HPP

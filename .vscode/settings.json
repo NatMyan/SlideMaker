@@ -91,6 +91,13 @@
         "qjsonobject": "cpp",
         "qjsonarray": "cpp",
         "future": "cpp",
-        "csetjmp": "cpp"
+        "csetjmp": "cpp",
+        "qtcore": "cpp",
+        "qtgui": "cpp",
+        "qtnetwork": "cpp",
+        "qtprintsupport": "cpp",
+        "qtsql": "cpp",
+        "qtwidgets": "cpp",
+        "qjsondocument": "cpp"
     }
 }

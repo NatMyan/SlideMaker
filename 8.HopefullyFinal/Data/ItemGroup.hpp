@@ -1,38 +1,42 @@
 #ifndef ITEM_GROUPP_HPP
 #define ITEM_GROUPP_HPP
 
-#include "ItemBase.hpp"
+#include "ItemInterface.hpp"
+#include "Item.hpp"
 #include "Attributes.hpp"
 
 #include <string>
 
-class ItemGroup : public ItemBase {
+class ItemGroup : public ItemInterface {
     public:
         using ItemIterator = std::vector<std::shared_ptr<Item> >::iterator;
 
     public:
+        ItemGroup() = default;
+        ItemGroup(int id, BoundingBox bbox);
         ItemGroup(int id, BoundingBox bbox, Attributes attrs);
+        ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs);
 
     public:
-        void accept(std::unique_ptr<IItemVisitor> visitor);
+        void accept(IItemVisitor& visitor);
 
         void addItem(std::shared_ptr<Item> itemPtr);
         void insertItem(std::shared_ptr<Item> itemPtr, int index); // items_.insert(items_.begin(), itemPtr);
         void removeItem(int id);
 
-        int getID() const;
+        int getID() const override;
         // void setID(int id);
 
-        BoundingBox getBoundingBox() const;
-        void setBoundingBox(BoundingBox bbox);
+        BoundingBox getBoundingBox() const override;
+        void setBoundingBox(BoundingBox bbox) override;
         
-        Value getAttribute(Key key) const;
-        void setAttribute(Key key, Value value);
+        Value getAttribute(Key key) const override;
+        void setAttribute(Key key, Value value) override;
 
-        Attributes getAttributes() const;
-        void setAttributes(Attributes attrs);
+        Attributes getAttributes() const override;
+        void setAttributes(Attributes attrs) override;
 
-        std::string getType() const;
+        // std::string getType() const override;
         // void setType(std::string type); // change all the types into 1 type
 
         std::shared_ptr<Item> getItem(int id) const;
@@ -47,6 +51,8 @@ class ItemGroup : public ItemBase {
     
     private:
         void updateBoundingBox(const BoundingBox& bbox);
+        void initAbsentAttrs(Key key, Value val);
+        void setAbsentAttrs();
 
     private:
         std::vector<std::shared_ptr<Item> > items_;

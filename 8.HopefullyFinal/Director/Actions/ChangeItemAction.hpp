@@ -4,6 +4,7 @@
 #include "IAction.hpp"
 #include "../../Data/Slide.hpp"
 #include "../../Data/Item.hpp"
+#include "../../Data/ItemGroup.hpp"
 #include "../../Data/IItemVisitor.hpp"
 
 class ChangeItemAction : public IAction {
@@ -12,12 +13,12 @@ class ChangeItemAction : public IAction {
         ChangeItemAction(std::shared_ptr<ItemGroup> itemGroupPtr, Map info);
     
     public:
-        void doAction();
-        std::shared_ptr<IAction> createReverseAction();
+        std::shared_ptr<IAction> doAction();
+        // std::shared_ptr<IAction> createReverseAction();
     
     private:
-        void changeItemStuff(std::shared_ptr<ItemBase> itemBasePtr, Map info);
-        void getItemStuff(std::shared_ptr<ItemBase> itemBasePtr);
+        void changeItemStuff(std::shared_ptr<ItemInterface> itemInterfacePtr, Map info);
+        void getItemStuff(std::shared_ptr<ItemInterface> itemInterfacePtr);
         void getOriginalItemStuff();
         // void visitItem(std::shared_ptr<Item> itemPtr) override;
         // void visitItemGroup(std::shared_ptr<ItemGroup> itemGroupPtr) override;

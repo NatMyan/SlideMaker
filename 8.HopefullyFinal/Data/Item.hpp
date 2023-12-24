@@ -1,29 +1,33 @@
-#ifndef ITEMM_HPP
-#define ITEMM_HPP
+#ifndef ITEMM_LEAF_HPP
+#define ITEMM_LEAF_HPP
 
 #include "Attributes.hpp"
-#include "ItemBase.hpp"
+#include "ItemInterface.hpp"
+#include "IItemVisitor.hpp"
 
-class Item : public ItemBase {        
+class Item : public ItemInterface {        
     public:
         Item (std::string type, int id, BoundingBox bbox, Attributes attributes);
 
     public:
-        void accept(std::unique_ptr<IItemVisitor> visitor);
+        void accept(IItemVisitor& visitor);
 
-        int getID() const;
+        int getID() const override;
 
         std::string getType() const;
-        // void setType(std::string type);
+        void setType(std::string type);
 
-        BoundingBox getBoundingBox() const;
-        void setBoundingBox(BoundingBox bbox);
+        BoundingBox getBoundingBox() const override;
+        void setBoundingBox(BoundingBox bbox) override;
         
-        Value getAttribute(Key key) const;
-        void setAttribute(Key key, Value value);
+        Value getAttribute(Key key) const override;
+        void setAttribute(Key key, Value value) override;
         
-        Attributes getAttributes() const;
-        void setAttributes(Attributes attrs);
+        Attributes getAttributes() const override;
+        void setAttributes(Attributes attrs) override;
+    
+    private:
+        void initAbsentAttrs(Key key, Value val);
 
     private:
         int id_;
@@ -32,4 +36,4 @@ class Item : public ItemBase {
         Attributes attrs_;
 };
 
-#endif // ITEMM_HPP
+#endif // ITEMM_LEAF_HPP

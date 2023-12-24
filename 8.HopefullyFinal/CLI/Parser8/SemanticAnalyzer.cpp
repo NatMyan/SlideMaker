@@ -1,18 +1,19 @@
 #include "SemanticAnalyzer.hpp"
 #include "CommandRegistry.hpp"
-#include "Exception.hpp"
+#include "../../Exception.hpp"
 
 #include <algorithm>
 
 ///TODO: are values valid -> implement
 
 bool SemanticAnalyzer::isSemanticallyValid (CommandInfo cmdInfo) {
-    const auto cmdName = cmdInfo.first;
+    return true;
+    /*const auto cmdName = cmdInfo.first;
     const auto argMap = cmdInfo.second;
     if (isCmdNameValid(cmdName) && isMandatoryArgListValid(cmdName, argMap) && 
-        isOptionalArgListValid(cmdName, argMap) && areValuesValid(argMap))
+        isOptionalArgListValid(cmdName, argMap)) // && areValuesValid(argMap))
         return true;
-    return false;
+    return false;*/
 }
 
 bool SemanticAnalyzer::isCmdNameValid(const std::string& cmdName) {

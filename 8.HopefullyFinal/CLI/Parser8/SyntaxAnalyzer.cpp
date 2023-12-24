@@ -1,7 +1,11 @@
 #include "SyntaxAnalyzer.hpp"
 
+#include <iostream>
+
 bool SyntaxAnalyzer::isSyntaxValid (CommandInfo cmdInfo) {
-    const auto cmdName = cmdInfo.first;
+    return true;
+    /*const auto cmdName = cmdInfo.first;
+    // std::cout << "h " << cmdName << std::endl;
     const auto argMap = cmdInfo.second;
     if (!cmdName.empty()) {
         for (const auto& pair : argMap) {
@@ -10,7 +14,8 @@ bool SyntaxAnalyzer::isSyntaxValid (CommandInfo cmdInfo) {
         }
         return true;
     }
-    return false;
+    // std::cout << "heal my soul pls" << std::endl;
+    return false;*/
 }
 
 bool SyntaxAnalyzer::isValueEmpty(const Value& value) {

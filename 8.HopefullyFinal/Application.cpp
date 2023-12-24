@@ -1,40 +1,25 @@
 #include "Application.hpp"
 
+std::shared_ptr<CLIController> Application::ctr_;
+
 ///TODO: since static, put them outside of Application
-Application::Application() // :
-    // reader_(std::make_shared<InputReader>()),
-    // ctr_ (std::make_shared<CLIController>()),
-    // doc_ (std::make_shared<Document>()),
-    // dir_ (std::make_shared<Director>()), 
-    // rend_ (std::make_shared<Renderer>())
-    // srlz_(std::make_shared<Serializer>())
-{
-    // reader_ = std::make_shared<InputReader>();
-    // ctr_ = std::make_shared<CLIController>();
-    // doc_ = std::make_shared<Document>();
-    // dir_ = std::make_shared<Director>(); 
-    // rend_ = std::make_shared<Renderer>();
-    // setStreams(inputStream, outputStream);
-}
+Application::Application() {}
 
-Application::~Application() = default;
-
-std::shared_ptr<Application> Application::getApplication() {
-    static std::shared_ptr<Application> instance;
-    return instance;
-}
-
-void Application::setStreams(std::istream& inputStream, std::ostream& outputStream) {
-    inputStream_ = std::make_shared<std::istream>(&inputStream);
-    outputStream_ = std::make_shared<std::ostream>(&outputStream);
+Application* Application::getApplication() {
+    static Application instance; 
+    /*if (!instance) {
+        instance = std::make_shared<Application>();
+    }*/
+    return &instance;
 }
 
 void Application::exec(std::istream& inputStream, std::ostream& outputStream) {
-    setStreams(inputStream, outputStream);
+    // setStreams(inputStream, outputStream);
+    ctr_ = std::make_shared<CLIController>(inputStream, outputStream);
     while (!needToExit_) {
         const char eolToken = '\n';
-        std::istream& input = reader_->readInputLine(inputStream, eolToken);
-        getCLIController()->execCLI(inputStream, eolToken);
+        ctr_->execOnce(eolToken); 
+        ///TODO: there should be 1 loop, right ?
     }
 }
 
@@ -64,25 +49,16 @@ std::shared_ptr<Renderer> Application::getRenderer() {
 }
 
 std::shared_ptr<CLIController> Application::getCLIController() {
-    static std::shared_ptr<CLIController> ctr_;
-    if (!ctr_)
-        ctr_ = std::make_shared<CLIController>();
+    assert(ctr_ != nullptr);
     return ctr_;
 }
 
-std::shared_ptr<std::ostream> Application::getOutputStream() {
-    static std::shared_ptr<std::ostream> outputStream_;
-    if (!outputStream_)
-        outputStream_ = std::make_shared<std::ostream>();
-    return outputStream_;
-}
 
-std::shared_ptr<std::istream> Application::getInputStream() {
-    static std::shared_ptr<std::istream> inputStream_;
-    if (!inputStream_)
-        inputStream_ = std::make_shared<std::istream>();
-    return inputStream_;
-}
+
+/*void Application::setStreams(std::istream& inputStream, std::ostream& outputStream) {
+    inputStream_ = inputStream;
+    outputStream_ = outputStream;
+}*/
 
 /*
 std::shared_ptr<Serializer> Application::getSerializer() {
@@ -90,20 +66,4 @@ std::shared_ptr<Serializer> Application::getSerializer() {
 }
 */
 
-/*
-MeyersSingleton::~MeyersSingleton()= default; 
-
-MeyersSingleton::MeyersSingleton() : value {0} {
-    ++value;
-}
-
-int MeyersSingleton::getValue() const {
-    return value;
-}
-
-MeyersSingleton& MeyersSingleton::getInstance() {
-    static MeyersSingleton instance;
-    return instance;
-}
-*/
 

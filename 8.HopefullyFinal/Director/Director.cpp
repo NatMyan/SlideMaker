@@ -2,35 +2,37 @@
 
 Director::Director() :
     actions_(),
-    it_(actions_.begin())
+    currPosIter_(actions_.begin())
 {}
 
 void Director::runAction(std::shared_ptr<IAction> action) {
-    action->doAction();
+    action = action->doAction();
 
+    ///TODO: revisit to the end() iter
+    if (!actions_.empty() && currPosIter_ != std::prev(actions_.end())) {
+        actions_.erase(currPosIter_, actions_.end());
+    }
     actions_.push_back(action);
-    it_ = actions_.end();
+    currPosIter_ = std::prev(actions_.end());
     if (actions_.size() >= maxCount_) {
         actions_.pop_front();
     }
-    // --it_; // to point at the last valid element
+    // --currPosIter_; // to point at the last valid element
 }
 
 void Director::undo() {
-    if (it_ != actions_.begin()) {
-        --it_;
-        *it_ = (*it_)->createReverseAction();
-        (*it_)->doAction();
+    if (currPosIter_ != actions_.begin()) {
+        --currPosIter_;
+        // *currPosIter_ = (*currPosIter_)->createReverseAction();
+        *currPosIter_ = (*currPosIter_)->doAction();
     }
 }
 
 void Director::redo() {
-    auto lastElemIter = actions_.end();
-    --lastElemIter; // to point at the last valid element
-    if (it_ != lastElemIter) {
-        ++it_;
-        *it_ = (*it_)->createReverseAction();
-        (*it_)->doAction();
+    if (!actions_.empty() && currPosIter_ != std::prev(actions_.end())) { // end() points to the one after the last element
+        ++currPosIter_;
+        // *currPosIter_ = (*currPosIter_)->createReverseAction();
+        *currPosIter_ = (*currPosIter_)->doAction();
     }
 }
 

@@ -6,10 +6,11 @@ AddSlideAction::AddSlideAction(std::shared_ptr<Document> doc, std::shared_ptr<Sl
     doc_(doc)
 {}
 
-void AddSlideAction::doAction() {
+std::shared_ptr<IAction> AddSlideAction::doAction() {
     doc_->addSlide(slide_);
-}
-
-std::shared_ptr<IAction> AddSlideAction::createReverseAction() {
     return std::make_shared<RemoveSlideAction>(doc_, doc_->getSlideCount() - 1);
 }
+
+/*std::shared_ptr<IAction> AddSlideAction::createReverseAction() {
+    return std::make_shared<RemoveSlideAction>(doc_, doc_->getSlideCount() - 1);
+}*/

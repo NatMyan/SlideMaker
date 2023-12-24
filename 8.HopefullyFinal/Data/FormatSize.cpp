@@ -31,19 +31,3 @@ std::pair<std::string, std::pair<double, double> > FormatSize::createFormatSize(
  A9	 37 x 52 mm	     3.7 x 5.2 cm	  1.5 x 2.0 inches
  A10 26 x 37 mm	     2.6 x 3.7 cm	  1.0 x 1.5 inches
 */
-
-/*
-std::unordered_map<std::string, std::pair<double, double> > formatMap {    
-    {"A0", {84.1, 118.9}},
-    {"A1", {59.4, 84.1}},
-    {"A2", {42, 59.4}},
-    {"A3", {29.7, 42}},
-    {"A4", {21, 29.7}},
-    {"A5", {14.85, 21}},
-    {"A6", {10.5, 14.85}},
-    {"A7", {7.4, 10.5}},
-    {"A8", {5.2, 7.4}},
-    {"A9", {3.7, 5.2}},
-    {"A10", {2.6, 3.7}}
-}
-*/

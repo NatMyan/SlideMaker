@@ -18,6 +18,7 @@ class Document {
         void removeSlide(int idx);
 
         std::shared_ptr<Slide> getSlide(int idx) const;
+        std::shared_ptr<Slide> getSlideByItemID(int itemID) const;
         size_t getSlideCount() const;
 
         std::pair<std::string, std::pair<double, double> > getFormatSize();

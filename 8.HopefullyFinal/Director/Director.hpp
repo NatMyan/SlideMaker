@@ -1,13 +1,13 @@
 #ifndef DIRECTORR_HPP
 #define DIRECTORR_HPP
 
-#include "IAction.hpp"
-#include "AddItemAction.hpp"
-#include "AddSlideAction.hpp"
-#include "RemoveItemAction.hpp"
-#include "RemoveSlideAction.hpp"
-#include "ChangeItemAction.hpp"
-#include "ChangeSlideAction.hpp"
+#include "Actions/IAction.hpp"
+#include "Actions/AddItemAction.hpp"
+#include "Actions/AddSlideAction.hpp"
+#include "Actions/RemoveItemAction.hpp"
+#include "Actions/RemoveSlideAction.hpp"
+#include "Actions/ChangeItemAction.hpp"
+#include "Actions/MoveSlideAction.hpp"
 
 #include <list>
 
@@ -23,7 +23,7 @@ class Director {
     private:
         const int maxCount_ = 6;
         std::list<std::shared_ptr<IAction> > actions_;
-        std::list<std::shared_ptr<IAction> >::iterator it_;
+        std::list<std::shared_ptr<IAction> >::iterator currPosIter_;
         // int undoCount_;
         // int redoCount_;
 };

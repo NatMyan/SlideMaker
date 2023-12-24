@@ -3,6 +3,8 @@
 
 #include "Command.hpp"
 
+#include <ios>
+
 class LoadCommand : public Command {
     public:
         LoadCommand(const Map& info);

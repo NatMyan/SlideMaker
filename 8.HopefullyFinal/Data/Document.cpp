@@ -3,6 +3,7 @@
 Document::Document() :
     orientation_("landscape")
 {
+    setFormatSize("A4");
     slides_.push_back(std::make_shared<Slide>());
 }
 
@@ -22,7 +23,16 @@ std::shared_ptr<Slide> Document::getSlide(int idx) const {
     if (idx < slides_.size()) {
         return slides_.at(idx);
     }
-    return {};
+    return nullptr;
+}
+
+std::shared_ptr<Slide> Document::getSlideByItemID(int itemID) const {
+    for (auto slide : slides_) {
+        if (slide->getItem(itemID)) {
+            return slide;
+        }
+    }
+    return nullptr;
 }
 
 size_t Document::getSlideCount() const {

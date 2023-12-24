@@ -7,34 +7,25 @@ ChangeCommand::ChangeCommand(const Map& info) :
 {}
 
 void ChangeCommand::execute() {
-    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     auto app = Application::getApplication();
     auto dir = app->getDirector();
     std::shared_ptr<IAction> action = nullptr;
-    auto idx = defs::toInt(infoMap_["-idx"]);
     
-    if (isTypeItem(type)) {
-        auto slide = app->getDocument()->getSlide(idx);
-        auto id = defs::toInt(infoMap_["-id"]);
-        if (id > 0) {
-            auto item = slide->getItem(id);
-            Map necessaryInfo = createNecessaryInfo();
-            action = std::make_shared<ChangeItemAction>(item, necessaryInfo);
-        }
-        else {
-            auto itemGroup = slide->getItemGroup();
-            Map necessaryInfo = createNecessaryInfo();
-            action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo);
-        }
+    auto id = defs::toInt(infoMap_["-id"]);
+    auto doc = app->getDocument();
+    if (id > 0) {
+        auto slide = doc->getSlideByItemID(id);
+        auto item = slide->getItem(id);
+        Map necessaryInfo = createNecessaryInfo();
+        action = std::make_shared<ChangeItemAction>(item, necessaryInfo);
     }
-    else if (isTypeSlide(type)) {
-        auto doc = app->getDocument();
-        auto slide = doc->getSlide(idx);
-        auto currentIndex = infoMap_["-cidx"]; 
-        auto newIndex = infoMap_["-nidx"];
-        action = std::make_shared<ChangeSlideAction>(doc, slide, currentIndex, newIndex);
+    else {
+        auto slide = doc->getSlide(id * (-1));
+        auto itemGroup = slide->getItemGroup();
+        Map necessaryInfo = createNecessaryInfo();
+        action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo);
     }
-
+    
     dir->runAction(action);
 }
 
@@ -49,3 +40,4 @@ Map ChangeCommand::createNecessaryInfo() {
     }
     return necessaryInfo;
 }
+

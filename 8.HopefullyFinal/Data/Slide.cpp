@@ -1,5 +1,9 @@
 #include "Slide.hpp"
 
+Slide::Slide() :
+    itemGroup_(std::make_shared<ItemGroup>())
+{}
+
 void Slide::addItem(std::shared_ptr<Item> itemPtr) {
     itemGroup_->addItem(itemPtr);
     // slide_.push_back(itemPtr);

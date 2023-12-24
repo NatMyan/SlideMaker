@@ -3,30 +3,31 @@
 #include "../../Application.hpp"
 #include "../../Director/Director.hpp"
 
-// int AddCommand::itemID_ = 1;
+#include <iostream>
 
 AddCommand::AddCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void AddCommand::execute() {
-    const std::string type = defs::toStr(infoMap_["-type"]); // definitions is included
     auto app = Application::getApplication();
     auto dir = app->getDirector();
     std::shared_ptr<IAction> action = nullptr;
 
-    if (isTypeItem(type)) {
+    if (isItem()) {
         auto idx = defs::toInt(infoMap_["-idx"]);
         auto slide = app->getDocument()->getSlide(idx);
-        auto item = createTheItem();
-        action = std::make_shared<AddItemAction>(slide, item);
+        if (slide) {
+            auto item = createTheItem();
+            action = std::make_shared<AddItemAction>(slide, item);
+        }
     }
-    else if (isTypeSlide(type)) {
+    else if (isSlide()) {
         auto doc = app->getDocument();
         auto slide = std::make_shared<Slide>();
         action = std::make_shared<AddSlideAction>(doc, slide);
     }
-    
+
     dir->runAction(action);
 }
 
@@ -57,4 +58,16 @@ std::shared_ptr<Item> AddCommand::createTheItem() {
     BoundingBox bbox = createTheBoundingBox();
     Attributes attrs(getRemainingPairs());
     return std::make_shared<Item>(type, ++itemID, bbox, attrs);
+}
+
+bool AddCommand::isArgFound(const std::string& argName) {
+    return infoMap_.find(argName) != infoMap_.end();
+}
+
+bool AddCommand::isSlide() {
+    return !isArgFound("-idx");
+}
+
+bool AddCommand::isItem() {
+    return isArgFound("-idx");
 }

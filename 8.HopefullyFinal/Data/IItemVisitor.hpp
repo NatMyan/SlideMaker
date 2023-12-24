@@ -8,8 +8,9 @@ class ItemGroup;
 
 class IItemVisitor {
     public:
-        virtual void visitItem(std::shared_ptr<Item> element) = 0;
-        virtual void visitItemGroup(std::shared_ptr<ItemGroup> element) = 0;
+        virtual ~IItemVisitor() = default;
+        virtual void visitItem(const Item& item) = 0;
+        virtual void visitItemGroup(const ItemGroup& itemGroup) = 0;
 };
 
 #endif // I_ITEM_VISITOR_HPP

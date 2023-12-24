@@ -8,6 +8,11 @@ class RemoveCommand : public Command {
         RemoveCommand(const Map& info);
         void execute();
 
+    private:    
+        bool isArgFound(const std::string& argName);
+        bool isSlide();
+        bool isItem();
+
     private:
         Map infoMap_;
 };

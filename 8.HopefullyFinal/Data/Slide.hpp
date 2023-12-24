@@ -9,6 +9,8 @@
 class Slide {
     // public:
         // using ItemIterator = std::vector<std::shared_ptr<ItemBase> >::iterator;
+    public:
+        Slide();
 
     public:    
         void addItem(std::shared_ptr<Item> itemPtr);

@@ -1,18 +1,28 @@
 #include "Tokenizer.hpp"
 
+#include <iomanip>
 #include <sstream>
 
-std::string Tokenizer::takeToken (std::istream& iss, const char& endOfLineToken) {
+Tokenizer::Tokenizer(const char& endOfLineToken) :
+    endOfLineToken_(endOfLineToken)
+{}
+
+std::string Tokenizer::takeToken (std::istream& iss) {
     char nextChar;
     std::string token;
     iss.get(nextChar);
-    if (nextChar == endOfLineToken || nextChar == '\0') {
-        token = endOfLineToken;
+
+    ///TK: skip empty spaces here to handle end of line correctly
+    while (std::isspace(nextChar) && nextChar != endOfLineToken_)
+        iss.get(nextChar);
+
+    if (nextChar == endOfLineToken_ || nextChar == '\0' || iss.eof()) {
+        token = endOfLineToken_;
         return token; 
     } 
     else {
         iss.putback(nextChar); 
-        iss >> token; 
+        iss >> std::quoted(token); 
     }
     return token;
 }

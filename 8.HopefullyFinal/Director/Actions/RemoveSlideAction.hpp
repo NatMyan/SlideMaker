@@ -9,8 +9,8 @@ class RemoveSlideAction : public IAction {
         RemoveSlideAction(std::shared_ptr<Document> doc, int slideIdx);
     
     public:
-        void doAction();
-        std::shared_ptr<IAction> createReverseAction();
+        std::shared_ptr<IAction> doAction();
+        // std::shared_ptr<IAction> createReverseAction();
     
     private:
         std::shared_ptr<Document> doc_;

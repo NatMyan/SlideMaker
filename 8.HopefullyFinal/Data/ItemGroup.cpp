@@ -9,12 +9,62 @@ ItemGroup::ItemGroup(int id, BoundingBox bbox, Attributes attrs) :
 {
     for (const auto& pair : attrs_) {
         const auto key = pair.first;
-        attrStates_[key] = false;
+        attrStates_[key] = true;
+    }
+
+    setAbsentAttrs();
+}
+
+ItemGroup::ItemGroup(int id, BoundingBox bbox) :
+    type_("itemGroup"),
+    id_(id),
+    bbox_(bbox)
+{
+    setAbsentAttrs();
+}
+
+ItemGroup::ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs) :
+    id_(id),
+    bbox_(bbox),
+    attrs_(attrs)
+{
+    if (type.find("Group") == std::string::npos) {
+        type_ = type + "Group";
+    }
+    else {
+        type_ = type;
+    }
+
+    for (const auto& pair : attrs_) {
+        const auto key = pair.first;
+        attrStates_[key] = true;
+    }
+
+    setAbsentAttrs();
+}
+
+void ItemGroup::setAbsentAttrs() {
+    initAbsentAttrs("-lstyle", Value(std::string("straight")));
+    initAbsentAttrs("-angle", Value(0));
+    initAbsentAttrs("-fcolour", Value(std::string("black")));
+    initAbsentAttrs("-lcolour", Value(std::string("green")));
+    initAbsentAttrs("-lwidth", Value(1));
+    initAbsentAttrs("-text", Value(std::string("")));
+
+    if (type_ == std::string("polygonGroup") || type_ == std::string("polygon")) {
+        initAbsentAttrs("-sideCount", Value(3));
     }
 }
 
-void ItemGroup::accept(std::unique_ptr<IItemVisitor> visitor) {
-    visitor->visitItemGroup(std::shared_ptr<ItemGroup>(this));
+void ItemGroup::initAbsentAttrs(Key key, Value val) {
+    if (attrs_.getValue(key) == Value()) {
+        attrs_.setPair(key, val);
+        attrStates_[key] = true;
+    }
+}
+
+void ItemGroup::accept(IItemVisitor& visitor) {
+    visitor.visitItemGroup(*this);
 }
 
 void ItemGroup::addItem(std::shared_ptr<Item> itemPtr) {
@@ -77,16 +127,17 @@ void ItemGroup::setAttributes(Attributes attrs) {
         auto [key, value] = pair;
         attrs_.setPair(key, value);
         attrStates_[key] = true;
-        // auto key = pair.first;
-        // auto value = pair.second;
     }
 }
 
-std::string ItemGroup::getType() const {
+/*std::string ItemGroup::getType() const {
+    auto allTrue = std::all_of(items_.begin(), items_.end(), [](const auto& item) { return item->getType(); });
+    if (allTrue)
+        return (type_ + std::string{"Group"});
     return type_;
 }
 
-/*void ItemGroup::setType(std::string type) { // change all the types into 1 type
+void ItemGroup::setType(std::string type) { // change all the types into 1 type
     for (auto item : items_) {
         item->setType(type);
     }
@@ -98,6 +149,7 @@ std::shared_ptr<Item> ItemGroup::getItem(int id) const {
             return (*it);
         }
     } 
+    return nullptr;
 }
 std::shared_ptr<Item> ItemGroup::getTopItem() const {
     return items_.back();

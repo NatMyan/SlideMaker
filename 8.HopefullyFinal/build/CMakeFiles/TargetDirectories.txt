@@ -1,0 +1,4 @@
+/Users/nataliemanukyan/Desktop/OOP_practice/8.HopefullyFinal/build/CMakeFiles/Pptx.dir
+/Users/nataliemanukyan/Desktop/OOP_practice/8.HopefullyFinal/build/CMakeFiles/edit_cache.dir
+/Users/nataliemanukyan/Desktop/OOP_practice/8.HopefullyFinal/build/CMakeFiles/rebuild_cache.dir
+/Users/nataliemanukyan/Desktop/OOP_practice/8.HopefullyFinal/build/CMakeFiles/Pptx_autogen.dir

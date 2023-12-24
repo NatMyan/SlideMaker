@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 
+using ID = int;
 using Key = std::string;
 using Value = VariantWrapper<std::string, int, double>;
 using Map = std::unordered_map<Key, Value>;

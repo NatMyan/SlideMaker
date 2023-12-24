@@ -12,9 +12,11 @@ class AddCommand : public Command {
         Map getRemainingPairs();
         BoundingBox createTheBoundingBox();
         std::shared_ptr<Item> createTheItem();
+        bool isArgFound(const std::string& argName);
+        bool isSlide();
+        bool isItem();
 
     private:
-        // static int itemID_;
         Map infoMap_;
 };
 

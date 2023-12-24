@@ -4,6 +4,7 @@
 #include <variant>
 #include <type_traits>
 #include <QString>
+#include <string>
 
 template <typename... Types>
 class VariantWrapper {
@@ -22,12 +23,6 @@ class VariantWrapper {
         }
 
     public:
-        QString toString() const {
-            return std::visit([](const auto& value) {
-                return QString::fromStdString(std::to_string(value));
-            }, data_);
-        }
-
         template <typename T>
         T get() const {
             return std::get<T>(data_);

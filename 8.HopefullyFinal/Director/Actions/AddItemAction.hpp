@@ -9,8 +9,8 @@ class AddItemAction : public IAction {
         AddItemAction(std::shared_ptr<Slide> slidePtr, std::shared_ptr<Item> itemPtr);
     
     public:
-        void doAction();
-        std::shared_ptr<IAction> createReverseAction();
+        std::shared_ptr<IAction> doAction();
+        // std::shared_ptr<IAction> createReverseAction();
     
     private:
         std::shared_ptr<Slide> slidePtr_;

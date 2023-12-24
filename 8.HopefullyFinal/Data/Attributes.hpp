@@ -13,15 +13,19 @@ class Attributes {
         Attributes (const Map& info);
  
     public:
+        bool operator==(Attributes other);
+        bool operator!=(Attributes other);
+
         Key getKey(const Value& value) const;
         Value getValue(const Key& key) const;
         void setPair(Key, Value);
 
         AttributesIterator begin();
         AttributesIterator end();  
-        
-        bool operator==(Attributes other);
-        bool operator!=(Attributes other);
+
+        // AttributesIterator cbegin() const;
+        // AttributesIterator cend() const;
+
         ///TODO: setKey, setValue needed ?
         // void setKey(Value value);  
         // void setValue(Key key);

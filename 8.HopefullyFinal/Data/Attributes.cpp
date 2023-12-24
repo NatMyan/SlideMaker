@@ -25,14 +25,6 @@ void Attributes::setPair(Key key, Value value) {
     attributeMap_[key] = value;
 }
 
-Attributes::AttributesIterator Attributes::begin() {
-    return AttributesIterator(attributeMap_.begin()); 
-}
-
-Attributes::AttributesIterator Attributes::end() {
-    return AttributesIterator(attributeMap_.begin()); 
-}
-
 bool Attributes::operator==(Attributes other) {
     return *this == other;
 }
@@ -40,6 +32,15 @@ bool Attributes::operator==(Attributes other) {
 bool Attributes::operator!=(Attributes other) {
     return *this != other;
 }
+
+Attributes::AttributesIterator Attributes::begin() {
+    return AttributesIterator(attributeMap_.begin()); 
+}
+
+Attributes::AttributesIterator Attributes::end() {
+    return AttributesIterator(attributeMap_.end()); 
+}
+
 
 // void Attributes::setKey(Value value) {
 

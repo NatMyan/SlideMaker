@@ -1,5 +1,5 @@
 #include "CommandRegistry.hpp"
-#include "../Exception.hpp"
+#include "../../Exception.hpp"
 
 #include <algorithm>
 
@@ -8,19 +8,21 @@ CommandRegistry::CommandRegistry () :
         {"add", {{"-type"}, 
                  {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
                  // {"-type", "-x", "-y", "-w", "-h", "-idx"}},
-                {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount"}}},   // optional
+                {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text", "-tcolour", "-tsize"}}},   // optional
         {"remove", {{"-id"},
                     {"-idx"}},
                    {{}}},                  // optional
-        {"change", {{"-cidx", "-nidx"},
-                    {"-id"}}, 
-                   {{"-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount"}}}, // optional
+        {"change", {{"-id"}}, 
+                   {{"-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text"}}},  // optional
                     // {"-type", "-x", "-y", "-w", "-h"}      // optional
+        {"move",   {{"-cidx", "-nidx"}}},
+        // {"switch", {{"-idx"}}},
         {"display", {{"-id"},
                      {"-idx"},
                      {}},                  // mandatory empty
                     {{}}},                 // optional
-        {"draw", {{"-idx"}}, {{}}},
+        {"draw", {{"-idx", "-file"}}, 
+                 {{}}},
         {"list", {{}}, {{}}},                   
         {"save", {{"-file"}}, {{}}},                    
         {"load", {{"-file"}}, {{}}},                    
