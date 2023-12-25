@@ -4,31 +4,38 @@
 
 #include <iostream>
 
+namespace cli {
+
 RemoveCommand::RemoveCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void RemoveCommand::execute() {
-    auto app = Application::getApplication();
+    auto app = app::Application::getApplication();
     auto dir = app->getDirector();
     std::shared_ptr<IAction> action = nullptr;
 
     if (isItem()) {
-        // std::cout << "id: " << " ]" << defs::toStr(infoMap_["-id"]) << "[" << std::endl;
-        auto id = defs::toInt(infoMap_["-id"]);
+        ID id;
+        try { id = defs::toInt(infoMap_["-id"]); }
+        catch (const Exception& e) { throw InvalidIDException("ID is not a number: " + std::to_string(id)); }
+        // catch (const std::out_of_range& o) { throw InvalidIDException("ID is not found"); } // assumed id exists from the isItem()
         auto slide = app->getDocument()->getSlideByItemID(id);
-        auto item = slide->getItem(id);
-        action = std::make_shared<RemoveItemAction>(slide, id);
+        if (slide) {
+            auto item = slide->getItem(id);
+            action = std::make_shared<RemoveItemAction>(slide, id);
+        }
     }
     else if (isSlide()) {
-        // std::cout << "idx: " << " ]" << defs::toStr(infoMap_["-idx"]) << "[" << std::endl;
-        auto idx = defs::toInt(infoMap_["-idx"]);
+        ID idx;
+        try { idx = defs::toInt(infoMap_["-idx"]); }
+        catch (const Exception& e) { idx = dir->getActiveSlideIdx(); } // shouldn't need to check if slide is nullptr or not
         auto doc = app->getDocument();
-        auto slide = doc->getSlide(idx);
         action = std::make_shared<RemoveSlideAction>(doc, idx);
     }
 
-    dir->runAction(action);
+    if (action) { dir->runAction(action); }
+    else { throw InvalidActionException("Action is nullptr"); }
 }
 
 bool RemoveCommand::isArgFound(const std::string& argName) {
@@ -41,4 +48,6 @@ bool RemoveCommand::isSlide() {
 
 bool RemoveCommand::isItem() {
     return isArgFound("-id") && !isArgFound("-idx");
+}
+
 }

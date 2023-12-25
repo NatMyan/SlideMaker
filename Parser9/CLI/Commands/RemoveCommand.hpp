@@ -3,7 +3,12 @@
 
 #include "Command.hpp"
 
+namespace cli {
+
 class RemoveCommand : public Command {
+    struct InvalidActionException : public Exception { using Exception::Exception; };
+    struct InvalidIDException : public Exception { using Exception::Exception; };
+
     public:
         RemoveCommand(const Map& info);
         void execute();
@@ -16,5 +21,7 @@ class RemoveCommand : public Command {
     private:
         Map infoMap_;
 };
+
+}
 
 #endif // REMOVE_COMMANDD_HPP

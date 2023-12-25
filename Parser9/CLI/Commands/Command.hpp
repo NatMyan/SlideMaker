@@ -2,6 +2,7 @@
 #define COMMANDD_HPP
 
 #include "../../zhelpers/Definitions.hpp"
+#include "../../zhelpers/Exception.hpp"
 #include "../../Data/Document.hpp"
 
 #include <string>

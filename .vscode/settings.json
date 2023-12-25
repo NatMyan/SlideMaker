@@ -98,6 +98,7 @@
         "qtprintsupport": "cpp",
         "qtsql": "cpp",
         "qtwidgets": "cpp",
-        "qjsondocument": "cpp"
+        "qjsondocument": "cpp",
+        "qtquick": "cpp"
     }
 }

@@ -7,49 +7,35 @@
 
 namespace cli {
 
-using Application = app::Application;
-
 AddCommand::AddCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void AddCommand::execute() {
-    auto app = Application::getApplication();
+    auto app = app::Application::getApplication();
     auto dir = app->getDirector();
+    auto doc = app->getDocument();
     std::shared_ptr<IAction> action = nullptr;
 
     if (isItem()) {
-        /// TODO: make active slide to avoid this mess
         ID idx;
-        try {
-            idx = defs::toInt(infoMap_["-idx"]);
-        }
-        catch (const Exception& e) {
-            throw InvalidIndexException("Slide index not correct: " + idx);
-        }
-        
-        /*
-        // option 2
-        if idx not found:
-        idx = dir->getActiveSlideIdx();
-        */
+        try { idx = defs::toInt(infoMap_["-idx"]); }
+        catch (const std::exception& e) { idx = dir->getActiveSlideIdx(); }
 
-        auto slide = app->getDocument()->getSlide(idx);
+        auto slide = doc->getSlide(idx);
         if (slide) {
             auto item = createTheItem();
             action = std::make_shared<AddItemAction>(slide, item);
         }
-        else {
-            throw InvalidSlideException("Slide is nullptr");
-        }
+        else { throw InvalidSlideException("Slide is nullptr"); }
     }
     else if (isSlide()) {
-        auto doc = app->getDocument();
         auto slide = std::make_shared<Slide>();
         action = std::make_shared<AddSlideAction>(doc, slide);
     }
 
-    dir->runAction(action);
+    if (action) { dir->runAction(action); }
+    else { throw InvalidActionException("Action is nullptr"); }
 }
 
 BoundingBox AddCommand::createTheBoundingBox() {
@@ -74,23 +60,22 @@ Map AddCommand::getRemainingPairs() {
 }
 
 std::shared_ptr<Item> AddCommand::createTheItem() {
-    static int itemID = 1;
+    static int itemID = 0;
     std::string type = defs::toStr(infoMap_["-type"]);
     BoundingBox bbox = createTheBoundingBox();
     Attributes attrs(getRemainingPairs());
     return std::make_shared<Item>(type, ++itemID, bbox, attrs);
-}
-
-bool AddCommand::isArgFound(const std::string& argName) {
-    return infoMap_.find(argName) != infoMap_.end();
-}
+} 
 
 bool AddCommand::isSlide() {
-    return !isArgFound("-idx");
+    return ((infoMap_.find("-type") != infoMap_.end()) && (infoMap_["-type"] == Value(std::string("slide"))));
 }
 
 bool AddCommand::isItem() {
-    return isArgFound("-idx");
+    return !isSlide();
 }
 
 }
+
+// catch (const Exception& e) { idx = dir->getActiveSlideIdx(); }
+// catch (const std::out_of_range& o) { idx = dir->getActiveSlideIdx(); }

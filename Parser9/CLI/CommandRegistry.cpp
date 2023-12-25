@@ -8,8 +8,8 @@ namespace cli {
 CommandRegistry::CommandRegistry () :
     cmdTemplates_ {
         {"add", {{"-type"}, 
-                 {"-type", "-t", "-r", "-b", "-l", "-idx"}}, 
-                {{"-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text", "-tcolour", "-tsize"}}},   // optional
+                 {"-type", "-t", "-r", "-b", "-l"}}, 
+                {{"-idx", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text", "-tcolour", "-tsize"}}},   // optional
         {"remove", {{"-id"},
                     {"-idx"}},
                    {{}}},                  // optional
