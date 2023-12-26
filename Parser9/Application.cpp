@@ -45,16 +45,16 @@ std::shared_ptr<Director> Application::getDirector() {
     return dir_;
 }
 
-std::shared_ptr<Renderer> Application::getRenderer() {
-    static std::shared_ptr<Renderer> rend_;
-    if (!rend_)
-        rend_ = std::make_shared<Renderer>();
-    return rend_;
-}
-
 std::shared_ptr<Controller> Application::getController() {
     assert(ctr_ != nullptr);
     return ctr_;
 }
 
 }
+
+/*std::shared_ptr<Renderer> Application::getRenderer() {
+    static std::shared_ptr<Renderer> rend_;
+    if (!rend_)
+        rend_ = std::make_shared<Renderer>();
+    return rend_;
+}*/

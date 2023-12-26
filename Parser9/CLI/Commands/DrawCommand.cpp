@@ -7,101 +7,54 @@
 #include <QFile>
 #include <iostream>
 
+namespace cli {
+
 DrawCommand::DrawCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void DrawCommand::execute() {
-    auto app = Application::getApplication();
-    std::shared_ptr<Renderer> renderer = app->getRenderer(); // this or the one above ?
-    auto idx = defs::toInt(infoMap_["-idx"]);
+    auto app = app::Application::getApplication();
+    std::shared_ptr<Renderer> renderer = std::make_shared<Renderer>(); 
+    
+    ID idx = takeIndex();
+
     auto slide = app->getDocument()->getSlide(idx);
     if (slide) {
-        auto filePath = QString::fromUtf8(defs::toStr(infoMap_["-file"]));
-        std::cout << filePath.toStdString()  << " file" << std::endl;
-        QFile file(filePath);
-        auto [width, height] = app->getDocument()->getFormatSize().second;
-        std::unique_ptr<DimensionConverter> converter = std::make_unique<DimensionConverter>();
-        auto [convWidth, convHeight] = converter->calculateImgDocWidthHeight(width, height);
+        QString filePath;
+        try { filePath = QString::fromUtf8(defs::toStr(infoMap_["-file"])); }
+        catch (const std::out_of_range& e) { throw InvalidFileException("File not found"); }
 
-        if (file.exists()) {
-            QImage img(convWidth, convHeight, QImage::Format_ARGB32);
-            renderer->draw(slide, &img);
-            if (img.save(filePath)) {
-                std::cout << "Image saved successfully." << std::endl;
-            } 
-            else {
-                std::cerr << "Error: Failed to save the image." << std::endl;
-            }
-        }
+        QFile file(filePath);
+        auto [convWidth, convHeight] = takeConvertedSize();
+
+        if (file.exists()) { throw FileExistsException("File exists: " + filePath.toStdString()); }
         else {
             if (file.open(QIODevice::WriteOnly)) {
-                std::cout << "File created successfully." << std::endl;
-                // file.close();
-                // std::cout << "File closed." << std::endl;
                 QImage img(convWidth, convHeight, QImage::Format_ARGB32);
-                std::cout << "Img created." << std::endl;
                 renderer->draw(slide, &img);
-                std::cout << "renderer called." << std::endl;
 
-                if (img.save(filePath)) {
-                    std::cout << "Image saved successfully." << std::endl;
-                    file.close();
-                    std::cout << "File closed." << std::endl;
-                } 
-                else {
-                    std::cerr << "Error: Failed to save the image." << std::endl;
-                }
+                if (!img.save(filePath)) { throw FailedToSaveException("Image failed to get saved: " + filePath.toStdString()); }
                 file.close();
-                std::cout << "File closed2." << std::endl;
             } 
-            else {
-                std::cerr << "Error: Failed to create the file." << std::endl;
-            }
+            else { throw FileDidNotOpenException("File didn't open: " + filePath.toStdString()); }
         }
     }
+    else { throw InvalidSlideException("Slide is nullptr"); }
 }
 
-/*
-#include <QFile>
-
-// ...
-
-auto filePath = QString::fromUtf8(defs::toStr(infoMap_["-file"]));
-std::cout << filePath.toStdString() << " file" << std::endl;
-
-QFile file(filePath);
-
-if (file.exists()) {
-    // File exists, proceed with saving the image.
-    QImage img(convWidth, convHeight, QImage::Format_ARGB32);
-    renderer->draw(slide, &img);
-
-    if (img.save(filePath)) {
-        std::cout << "Image saved successfully." << std::endl;
-    } else {
-        std::cerr << "Error: Failed to save the image." << std::endl;
-    }
-} 
-else {
-    // File doesn't exist, attempt to create it.
-    if (file.open(QIODevice::WriteOnly)) {
-        std::cout << "File created successfully." << std::endl;
-        file.close();
-
-        // Proceed with saving the image.
-        QImage img(convWidth, convHeight, QImage::Format_ARGB32);
-        renderer->draw(slide, &img);
-
-        if (img.save(filePath)) {
-            std::cout << "Image saved successfully." << std::endl;
-        } 
-        else {
-            std::cerr << "Error: Failed to save the image." << std::endl;
-        }
-    } 
-    else {
-        std::cerr << "Error: Failed to create the file." << std::endl;
-    }
+ID DrawCommand::takeIndex() {
+    ID idx;
+    try { idx = defs::toInt(infoMap_["-idx"]); }
+    catch (const std::exception& e) { idx = app::Application::getApplication()->getDirector()->getActiveSlideIdx(); }
+    return idx;
 }
-*/
+
+std::pair<double, double> DrawCommand::takeConvertedSize() {
+    auto [width, height] = app::Application::getApplication()->getDocument()->getFormatSize().second;
+    std::unique_ptr<DimensionConverter> converter = std::make_unique<DimensionConverter>();
+    auto [convWidth, convHeight] = converter->calculateImgDocWidthHeight(width, height);
+    return {convWidth, convHeight};
+}
+
+}

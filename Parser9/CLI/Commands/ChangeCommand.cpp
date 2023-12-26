@@ -17,17 +17,25 @@ void ChangeCommand::execute() {
     
     ID id;
     try { id = defs::toInt(infoMap_["-id"]); }
-    catch (const Exception& e) { throw InvalidIDException("ID is incorrect" + std::to_string(id)); }
+    catch (const Exception& e) { throw InvalidIDException("ID is incorrect: " + std::to_string(id)); }
 
     if (id > 0) {
         auto slide = doc->getSlideByItemID(id);
-        auto item = slide->getItem(id);
-        action = std::make_shared<ChangeItemAction>(item, necessaryInfo);
+        if (slide) {
+            auto item = slide->getItem(id);
+            if (item) { action = std::make_shared<ChangeItemAction>(item, necessaryInfo); }
+            else { throw InvalidItemException("Item is nullptr"); }
+        }
+        else { throw InvalidSlideException("Slide is nullptr"); }
     }
     else {
         auto slide = doc->getSlide(id * (-1));
-        auto itemGroup = slide->getItemGroup();
-        action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo);
+        if (slide) {
+            auto itemGroup = slide->getItemGroup();
+            if (itemGroup) { action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo); }
+            else { throw InvalidItemException("Item group is nullptr"); }
+        }
+        else { throw InvalidSlideException("Slide is nullptr"); }
     }
     
     if (action) { dir->runAction(action); }

@@ -3,6 +3,8 @@
 
 #include "Command.hpp"
 
+namespace cli {
+
 class UndoCommand : public Command {
     public:
         UndoCommand(const Map& info);
@@ -11,5 +13,7 @@ class UndoCommand : public Command {
     private:
         Map info_;
 };
+
+}
 
 #endif // UNDO_COMMANDD_HPP

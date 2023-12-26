@@ -3,6 +3,8 @@
 
 #include "Command.hpp"
 
+namespace cli {
+
 class ExitCommand : public Command {
     public:
         ExitCommand(const Map& info);
@@ -11,5 +13,7 @@ class ExitCommand : public Command {
     private:
         Map info_;
 };
+
+}
 
 #endif // EXIT_COMMANDD_HPP

@@ -3,7 +3,12 @@
 
 #include "Command.hpp"
 
+namespace cli {
+
 class MoveCommand : public Command {
+    struct InvalidIndexException : public Exception { using Exception::Exception; };
+    struct InvalidActionException : public Exception { using Exception::Exception; };
+
     public:
         MoveCommand(const Map& info);
         void execute();
@@ -11,5 +16,7 @@ class MoveCommand : public Command {
     private:
         Map infoMap_;
 };
+
+}
 
 #endif // MOVE_COMMAND_HPP

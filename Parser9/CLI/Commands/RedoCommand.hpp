@@ -3,6 +3,8 @@
 
 #include "Command.hpp"
 
+namespace cli {
+
 class RedoCommand : public Command {
     public:
         RedoCommand(const Map& info);
@@ -11,5 +13,7 @@ class RedoCommand : public Command {
     private:
         Map info_;
 };
+
+}
 
 #endif // REDO_COMMANDD_HPP

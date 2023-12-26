@@ -5,17 +5,24 @@
 
 #include <fstream>
 
+namespace cli {
+
 SaveCommand::SaveCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void SaveCommand::execute() {
-    auto app = Application::getApplication();
+    auto app = app::Application::getApplication();
     auto doc = app->getDocument();
+
     JSONDocument jsonDoc;
-    std::shared_ptr<ISerializer> serializer = std::make_shared<JsonSerializer>(doc, jsonDoc);
-    auto fileName = defs::toStr(infoMap_["-file"]);
-    serializer->relocateInfo();
+    std::shared_ptr<JsonSerializer> serializer = std::make_shared<JsonSerializer>(doc, jsonDoc);
+
+    std::string fileName;
+    try { fileName = defs::toStr(infoMap_["-file"]); }
+    catch (const std::exception& e) { throw InvalidFileException("File name not found: " + fileName); }
+
+    serializer->save();
     QByteArray buffer = jsonDoc.getQJson().toJson();
 
     std::ofstream file(fileName, std::ios::out | std::ios::binary);
@@ -23,4 +30,7 @@ void SaveCommand::execute() {
         file.write(buffer.data(), buffer.size());
         file.close();
     }
+    else { throw InvalidFileException("File failed to open: " + fileName); }
+}
+
 }

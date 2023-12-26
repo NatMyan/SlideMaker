@@ -16,7 +16,7 @@ CommandRegistry::CommandRegistry () :
         {"change", {{"-id"}}, 
                    {{"-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text"}}},  // optional
         {"move",   {{"-cidx", "-nidx"}}, {{}}},
-        // {"switch", {{"-idx"}}},
+        {"switch", {{"-idx"}}},
         {"display", {{"-id"},
                      {"-idx"},
                      {}},                  // mandatory empty

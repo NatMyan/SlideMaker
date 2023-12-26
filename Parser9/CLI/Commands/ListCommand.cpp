@@ -3,24 +3,29 @@
 
 #include <iostream>
 
+namespace cli {
+
 ListCommand::ListCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void ListCommand::execute() {
-    auto app = Application::getApplication();
+    auto app = app::Application::getApplication();
     auto doc = app->getDocument();
-    auto& ostr = app->getCLIController()->getOutputStream();
-    // std::cout << "list-i darder " << std::endl;
+    auto& ostr = app->getController()->getOutputStream();
+
     int idx = 0;
     for (auto& slide : *doc) {
         ostr << "slide idx: " << idx << "\n";
-        for (const auto& item : *slide->getItemGroup()) {
-            auto id = item->getID();
-            auto type = item->getType();
-            ostr << "id = " << id << ", type = " << type << std::endl;
+        auto group = slide->getItemGroup();
+        if (group) {
+            for (const auto& item : *group) {
+                ostr << "id = " << item->getID() << ", type = " << item->getType() << std::endl;
+            }
         }
+        else { throw GroupNotFoundException("Item group is nullptr"); }
         ++idx;
     }
 }
 
+}

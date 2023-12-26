@@ -2,20 +2,34 @@
 #include "../../Application.hpp"
 #include "../../Director/Director.hpp"
 
+namespace cli {
+
 MoveCommand::MoveCommand(const Map& info) :
     infoMap_(info)
 {}
 
 void MoveCommand::execute() {
-    auto app = Application::getApplication();
+    auto app = app::Application::getApplication();
     auto dir = app->getDirector();
-    std::shared_ptr<IAction> action = nullptr;
-
     auto doc = app->getDocument();
-    auto currentIndex = defs::toInt(infoMap_["-cidx"]); 
-    auto newIndex = defs::toInt(infoMap_["-nidx"]);
-    auto slide = doc->getSlide(currentIndex);
-    action = std::make_shared<MoveSlideAction>(doc, slide, currentIndex, newIndex);
+    std::shared_ptr<IAction> action = nullptr;
+    
+    ID currIdx;
+    try { currIdx = defs::toInt(infoMap_["-cidx"]); }
+    catch (const std::exception& e) { currIdx = dir->getActiveSlideIdx(); }
 
-    dir->runAction(action);
+    ID newIdx;
+    try { newIdx = defs::toInt(infoMap_["-nidx"]); }
+    catch (const std::exception& e) { newIdx = dir->getActiveSlideIdx(); }
+
+    auto slide = doc->getSlide(currIdx);
+    auto slideAtNewIdx = doc->getSlide(newIdx);
+    if (slide && slideAtNewIdx) { action = std::make_shared<MoveSlideAction>(doc, slide, currIdx, newIdx); }
+    else if (!slide) { throw InvalidIndexException("Slide not found at index: " + currIdx); }
+    else if (!slideAtNewIdx) { throw InvalidIndexException("Slide not found at index: " + newIdx); }
+
+    if (action) { dir->runAction(action); }
+    else { throw InvalidActionException("Action is nullptr"); }
+}
+
 }

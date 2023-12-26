@@ -25,7 +25,7 @@ class Application {
         std::shared_ptr<Controller> getController();
         std::shared_ptr<Document> getDocument();
         std::shared_ptr<Director> getDirector();
-        std::shared_ptr<Renderer> getRenderer();
+        // std::shared_ptr<Renderer> getRenderer();
 
     private:
         Application();

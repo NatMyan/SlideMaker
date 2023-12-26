@@ -25,6 +25,7 @@ void RemoveCommand::execute() {
             auto item = slide->getItem(id);
             action = std::make_shared<RemoveItemAction>(slide, id);
         }
+        else { throw InvalidSlideException("Slide is nullptr");}
     }
     else if (isSlide()) {
         ID idx;
