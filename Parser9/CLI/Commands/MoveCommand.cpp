@@ -12,7 +12,7 @@ void MoveCommand::execute() {
     auto app = app::Application::getApplication();
     auto dir = app->getDirector();
     auto doc = app->getDocument();
-    std::shared_ptr<IAction> action = nullptr;
+    std::shared_ptr<dir::IAction> action = nullptr;
     
     ID currIdx;
     try { currIdx = defs::toInt(infoMap_["-cidx"]); }
@@ -24,7 +24,7 @@ void MoveCommand::execute() {
 
     auto slide = doc->getSlide(currIdx);
     auto slideAtNewIdx = doc->getSlide(newIdx);
-    if (slide && slideAtNewIdx) { action = std::make_shared<MoveSlideAction>(doc, slide, currIdx, newIdx); }
+    if (slide && slideAtNewIdx) { action = std::make_shared<dir::MoveSlideAction>(doc, slide, currIdx, newIdx); }
     else if (!slide) { throw InvalidIndexException("Slide not found at index: " + currIdx); }
     else if (!slideAtNewIdx) { throw InvalidIndexException("Slide not found at index: " + newIdx); }
 

@@ -1,5 +1,4 @@
 #include "AddCommand.hpp"
-#include "../../Data/Item.hpp"
 #include "../../Application.hpp"
 #include "../../Director/Director.hpp"
 
@@ -15,7 +14,7 @@ void AddCommand::execute() {
     auto app = app::Application::getApplication();
     auto dir = app->getDirector();
     auto doc = app->getDocument();
-    std::shared_ptr<IAction> action = nullptr;
+    std::shared_ptr<dir::IAction> action = nullptr;
 
     if (isItem()) {
         ID idx;
@@ -25,13 +24,13 @@ void AddCommand::execute() {
         auto slide = doc->getSlide(idx);
         if (slide) {
             auto item = createTheItem();
-            action = std::make_shared<AddItemAction>(slide, item);
+            action = std::make_shared<dir::AddItemAction>(slide, item);
         }
         else { throw InvalidSlideException("Slide is nullptr"); }
     }
     else if (isSlide()) {
-        auto slide = std::make_shared<Slide>();
-        action = std::make_shared<AddSlideAction>(doc, slide);
+        auto slide = std::make_shared<dat::Slide>();
+        action = std::make_shared<dir::AddSlideAction>(doc, slide);
     }
 
     if (action) { dir->runAction(action); }
@@ -59,12 +58,12 @@ Map AddCommand::getRemainingPairs() {
     return remainingPairs;
 }
 
-std::shared_ptr<Item> AddCommand::createTheItem() {
+std::shared_ptr<dat::Item> AddCommand::createTheItem() {
     static int itemID = 0;
     std::string type = defs::toStr(infoMap_["-type"]);
     BoundingBox bbox = createTheBoundingBox();
-    Attributes attrs(getRemainingPairs());
-    return std::make_shared<Item>(type, ++itemID, bbox, attrs);
+    dat::Attributes attrs(getRemainingPairs());
+    return std::make_shared<dat::Item>(type, ++itemID, bbox, attrs);
 } 
 
 bool AddCommand::isSlide() {

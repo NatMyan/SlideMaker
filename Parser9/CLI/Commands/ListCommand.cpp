@@ -1,5 +1,6 @@
 #include "ListCommand.hpp"
 #include "../../Application.hpp"
+#include "../../Data/Document.hpp"
 
 #include <iostream>
 

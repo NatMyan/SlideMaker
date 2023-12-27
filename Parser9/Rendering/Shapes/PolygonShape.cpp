@@ -1,5 +1,7 @@
 #include "PolygonShape.hpp"
 
+namespace ren {
+
 ///TODO: rechange this
 void PolygonShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     if (!painter) {
@@ -64,6 +66,7 @@ QVector<QPointF> PolygonShape::takeVertices(double l, double t, double r, double
     }
 }
 
+}
 
 /*std::unique_ptr<IShape> PolygonShape::clone() {
     return std::make_unique<PolygonShape>(*this); // deep copy

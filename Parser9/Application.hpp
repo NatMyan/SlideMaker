@@ -12,6 +12,8 @@
 namespace app {
 
 using Controller = cli::Controller;
+using Document = dat::Document;
+using Director = dir::Director;
 
 class Application {
     public:    
@@ -25,7 +27,6 @@ class Application {
         std::shared_ptr<Controller> getController();
         std::shared_ptr<Document> getDocument();
         std::shared_ptr<Director> getDirector();
-        // std::shared_ptr<Renderer> getRenderer();
 
     private:
         Application();

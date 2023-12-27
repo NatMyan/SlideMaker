@@ -1,6 +1,7 @@
 #include "RemoveCommand.hpp"
 #include "../../Application.hpp"
 #include "../../Director/Director.hpp"
+#include "../../Data/Document.hpp"
 
 #include <iostream>
 
@@ -13,7 +14,7 @@ RemoveCommand::RemoveCommand(const Map& info) :
 void RemoveCommand::execute() {
     auto app = app::Application::getApplication();
     auto dir = app->getDirector();
-    std::shared_ptr<IAction> action = nullptr;
+    std::shared_ptr<dir::IAction> action = nullptr;
 
     if (isItem()) {
         ID id;
@@ -23,7 +24,7 @@ void RemoveCommand::execute() {
         auto slide = app->getDocument()->getSlideByItemID(id);
         if (slide) {
             auto item = slide->getItem(id);
-            action = std::make_shared<RemoveItemAction>(slide, id);
+            action = std::make_shared<dir::RemoveItemAction>(slide, id);
         }
         else { throw InvalidSlideException("Slide is nullptr");}
     }
@@ -32,7 +33,7 @@ void RemoveCommand::execute() {
         try { idx = defs::toInt(infoMap_["-idx"]); }
         catch (const Exception& e) { idx = dir->getActiveSlideIdx(); } // shouldn't need to check if slide is nullptr or not
         auto doc = app->getDocument();
-        action = std::make_shared<RemoveSlideAction>(doc, idx);
+        action = std::make_shared<dir::RemoveSlideAction>(doc, idx);
     }
 
     if (action) { dir->runAction(action); }

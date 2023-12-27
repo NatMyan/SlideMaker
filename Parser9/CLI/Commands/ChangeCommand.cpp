@@ -12,7 +12,7 @@ void ChangeCommand::execute() {
     auto app = app::Application::getApplication();
     auto dir = app->getDirector();
     auto doc = app->getDocument();
-    std::shared_ptr<IAction> action = nullptr;
+    std::shared_ptr<dir::IAction> action = nullptr;
     Map necessaryInfo = createNecessaryInfo();
     
     ID id;
@@ -23,7 +23,7 @@ void ChangeCommand::execute() {
         auto slide = doc->getSlideByItemID(id);
         if (slide) {
             auto item = slide->getItem(id);
-            if (item) { action = std::make_shared<ChangeItemAction>(item, necessaryInfo); }
+            if (item) { action = std::make_shared<dir::ChangeItemAction>(item, necessaryInfo); }
             else { throw InvalidItemException("Item is nullptr"); }
         }
         else { throw InvalidSlideException("Slide is nullptr"); }
@@ -32,7 +32,7 @@ void ChangeCommand::execute() {
         auto slide = doc->getSlide(id * (-1));
         if (slide) {
             auto itemGroup = slide->getItemGroup();
-            if (itemGroup) { action = std::make_shared<ChangeItemAction>(itemGroup, necessaryInfo); }
+            if (itemGroup) { action = std::make_shared<dir::ChangeItemAction>(itemGroup, necessaryInfo); }
             else { throw InvalidItemException("Item group is nullptr"); }
         }
         else { throw InvalidSlideException("Slide is nullptr"); }

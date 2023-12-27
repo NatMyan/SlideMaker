@@ -20,7 +20,10 @@ void DisplayCommand::execute() {
         auto slide = app->getDocument()->getSlideByItemID(id);
         if (slide) {
             auto item = slide->getItem(id); // validator should make sure id is correct, so the checking should be unnecessary
-            if (item) { renderer->display(item, app->getController()->getOutputStream()); }
+            if (item) { 
+                renderer->display(item, app->getController()->getOutputStream()); 
+                item->accept(renderer);
+            }
             else { throw InvalidItemException("Item is nullptr"); }
         }
         else { throw InvalidSlideException("Slide is nullptr"); }
@@ -31,7 +34,10 @@ void DisplayCommand::execute() {
         catch (const std::exception& e) { idx = app->getDirector()->getActiveSlideIdx(); }
 
         auto slide = app->getDocument()->getSlide(idx); // validator should make sure id is correct, so the checking should be unnecessary
-        if (slide) { renderer->display(slide, app->getController()->getOutputStream()); }
+        if (slide) { 
+            renderer->display(slide, app->getController()->getOutputStream()); 
+            slide->getItemGroup()->accept(renderer); // What ?
+        }
         else { throw InvalidSlideException("Slide is nullptr"); } 
     }
 }

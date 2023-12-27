@@ -2,6 +2,7 @@
 #define ADD_COMMANDD_HPP
 
 #include "Command.hpp"
+#include "../../Data/Item.hpp"
 
 namespace cli {
 
@@ -17,7 +18,7 @@ class AddCommand : public Command {
     private:
         Map getRemainingPairs();
         BoundingBox createTheBoundingBox();
-        std::shared_ptr<Item> createTheItem();
+        std::shared_ptr<dat::Item> createTheItem();
         bool isSlide();
         bool isItem();
 
