@@ -99,6 +99,7 @@
         "qtsql": "cpp",
         "qtwidgets": "cpp",
         "qjsondocument": "cpp",
-        "qtquick": "cpp"
+        "qtquick": "cpp",
+        "unordered_set": "cpp"
     }
 }

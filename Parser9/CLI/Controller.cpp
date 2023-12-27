@@ -1,6 +1,6 @@
 #include "Controller.hpp"
 #include "Commands/Command.hpp"
-#include "Parser8/Parser8.hpp"
+#include "Parser9/Parser9.hpp"
 #include "../zhelpers/Exception.hpp"
 
 #include <sstream>
@@ -35,12 +35,20 @@ void Controller::execCLI(std::istream& input, const char& eolToken) {
 }
 
 void Controller::execOnce(const char& eolToken) {
-    Parser8 parser(cmdFactory_, inputStream_, eolToken);
+    std::cout << "about to parse1" << std::endl;
+    std::string strLine = readInput(inputStream_, eolToken);
+    std::istringstream iss(strLine);
+
+    Parser9 parser(cmdFactory_, iss, eolToken);
+    std::cout << "about to parse2" << std::endl;
     std::shared_ptr<Command> pCmd = parser.parseCommand();
+    std::cout << "parsed?" << std::endl;
     auto str = parser.createCmdString();
+    std::cout << "str: " << str << std::endl;
 
     if (pCmd) {
         // try {
+            std::cout << "About to execute cmd" << std::endl;
             pCmd->execute(); 
         // }
         // catch (const Exception& e) {
@@ -50,8 +58,23 @@ void Controller::execOnce(const char& eolToken) {
         history_->append(str);
     }
     else { 
+        std::cout << "what" << std::endl;
         throw InvalidCommandException("Wrong command: " + str); 
     }
+}
+
+std::string Controller::readInput(std::istream& input, const char& eolToken) {
+    std::string inputPart;
+    char currentChar;
+    
+    while (input.get(currentChar)) {
+        if (currentChar == eolToken) {
+            break;
+        }
+        inputPart += currentChar;
+    }
+
+    return inputPart;
 }
 
 }

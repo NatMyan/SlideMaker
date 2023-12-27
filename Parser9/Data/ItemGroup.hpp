@@ -40,7 +40,7 @@ class ItemGroup : public IItem {
         Attributes getAttributes() const override;
         void setAttributes(const Attributes& attrs) override;
 
-        std::string getType() const override;
+        std::string getType() override;
         void setType(const std::string& type) override; // change all the types into 1 type
 
         std::shared_ptr<Item> getItem(int id) const;

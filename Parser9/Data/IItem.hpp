@@ -13,7 +13,7 @@ class IItem {
         
         virtual ID getID() const = 0;
 
-        virtual std::string getType() const = 0;
+        virtual std::string getType() = 0;
         virtual void setType(const std::string& type) = 0;
         
         virtual BoundingBox getBoundingBox() const = 0;

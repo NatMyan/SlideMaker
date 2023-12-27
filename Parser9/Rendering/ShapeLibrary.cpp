@@ -12,12 +12,13 @@ ShapeLibrary::ShapeLibrary () {
     items_["ellipse"] = std::make_shared<EllipseShape>();
     items_["line"] = std::make_shared<LineShape>();
     items_["polygon"] = std::make_shared<PolygonShape>();
+    items_["text"] = std::make_shared<TextShape>();
 }
 
-std::shared_ptr<IShape> ShapeLibrary::getShape(std::shared_ptr<Item> item) {
+std::shared_ptr<ShapeBase> ShapeLibrary::getShape(std::shared_ptr<Item> item) {
     auto it = items_.find(item->getType());
     if (it != items_.end()) {
-        return it->second->clone(item);
+        return std::dynamic_pointer_cast<ShapeBase>(it->second->clone(item));
     }
     return nullptr; 
 }

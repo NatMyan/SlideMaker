@@ -19,6 +19,9 @@ class Controller {
         void execOnce(const char& eolToken);
         std::istream& getInputStream(); // no smart ptr for streams 
         std::ostream& getOutputStream();        
+
+    private:
+        std::string readInput(std::istream& input, const char& eolToken);
         
     private:
         std::shared_ptr<CommandHistory> history_;

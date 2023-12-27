@@ -37,18 +37,26 @@ void TrapezoidShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     auto upRight = (3 * r + l) / 4.0;
     QList<QPointF> pairs = {{upLeft, t}, {l, b}, {r, b}, {upRight, t}};
     painter->drawPolygon(pairs);
+}
 
-    auto tcolour = defs::toStr(item->getAttribute("-tcolour"));
-    auto text = defs::toStr(item->getAttribute("-text"));
-    auto tsize = defs::toDouble(item->getAttribute("-tsize"));
-    
-    QColor tcolor {QString::fromUtf8(tcolour)};
+void TrapezoidShape::setType(std::string type) {
+    type_ = type;
+}
 
-    painter->setPen(tcolor);
+void TrapezoidShape::setBBox(BoundingBox bbox) {
+    bbox_ = bbox;
+}
 
-    QFont font("Arial", tsize);
-    painter->setFont(font);
-    painter->drawText(centerX, centerY, QString::fromUtf8(text));
+void TrapezoidShape::setAttrs(Attributes attrs) {
+    attrs_ = attrs;
+}
+
+std::shared_ptr<IShape> TrapezoidShape::clone(std::shared_ptr<Item> item) const {
+    auto shape = std::make_shared<TrapezoidShape>();
+    shape->setBBox(item->getBoundingBox());
+    shape->setType(item->getType());
+    shape->setAttrs(item->getAttributes());
+    return shape; 
 }
 
 }

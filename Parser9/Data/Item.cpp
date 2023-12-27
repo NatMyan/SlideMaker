@@ -2,7 +2,7 @@
 
 namespace dat {
 
-explicit Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
+Item::Item (std::string type, int id, BoundingBox bbox, Attributes attributes) :
     type_(type), 
     id_(id), 
     bbox_(bbox),
@@ -21,6 +21,7 @@ void Item::setAbsentAttrs() {
     initAbsentAttrs("-text", Value(std::string("")));
     initAbsentAttrs("-tcolour", Value(std::string("black")));
     initAbsentAttrs("-tsize", Value(12));
+    initAbsentAttrs("-tfont", Value(std::string("Arial")));
 
     if (type_ == std::string("polygon")) { 
         initAbsentAttrs("-sideCount", Value(3)); 
@@ -48,7 +49,7 @@ int Item::getID() const {
     return id_;
 }
 
-std::string Item::getType() const {
+std::string Item::getType() {
     return type_;
 }
 

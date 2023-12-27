@@ -17,6 +17,9 @@ using ItemGroup = dat::ItemGroup;
 using Slide = dat::Slide;
 
 class Renderer : public IItemVisitor {
+    struct InvalidShapeException : public Exception { using Exception::Exception; };
+    struct InvalidPointerException : public Exception { using Exception::Exception; };
+
     public:
         Renderer();
         void draw(std::shared_ptr<Slide> slide, QPaintDevice* paintDevice);
@@ -27,7 +30,6 @@ class Renderer : public IItemVisitor {
         void visitItem(const Item& item) override final;
         void visitItemGroup(const ItemGroup& itemGroup) override final;
         void takeOstream(std::ostream& ostr);
-        // void display(std::shared_ptr<Item> slide);
     
     private:
         std::shared_ptr<ShapeLibrary> shapeLib_;

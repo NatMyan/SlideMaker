@@ -2,23 +2,23 @@
 #define SHAPE_LIBRARY_HPP
 
 #include "IShape.hpp"
-#include "EllipseShape.hpp"
-#include "LineShape.hpp"
-#include "RectangleShape.hpp"
-#include "TriangleShape.hpp"
-#include "TrapezoidShape.hpp"
-#include "PolygonShape.hpp"
-// #include "GroupShape.hpp"
+#include "Shapes/EllipseShape.hpp"
+#include "Shapes/LineShape.hpp"
+#include "Shapes/RectangleShape.hpp"
+#include "Shapes/TriangleShape.hpp"
+#include "Shapes/TrapezoidShape.hpp"
+#include "Shapes/PolygonShape.hpp"
+#include "Shapes/TextShape.hpp"
 
 namespace ren {
 
 class ShapeLibrary {
     public:
         ShapeLibrary();
-        std::shared_ptr<IShape> getShape(std::shared_ptr<Item> item);
+        std::shared_ptr<ShapeBase> getShape(std::shared_ptr<Item> item);
     
     private:
-        std::unordered_map<std::string, std::shared_ptr<IShape> > items_;
+        std::unordered_map<std::string, std::shared_ptr<ShapeBase> > items_;
 };
 
 }

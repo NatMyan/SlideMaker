@@ -35,23 +35,29 @@ void EllipseShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     painter->setBrush(brush);
 
     painter->drawEllipse(QRectF(l, t, r - l, b - t));
-
-    auto tcolour = defs::toStr(item->getAttribute("-tcolour"));
-    auto text = defs::toStr(item->getAttribute("-text"));
-    auto tsize = defs::toDouble(item->getAttribute("-tsize"));
-    
-    QColor tcolor {QString::fromUtf8(tcolour)};
-
-    painter->setPen(tcolor);
-
-    QFont font("Arial", tsize);
-    painter->setFont(font);
-    painter->drawText(centerX, centerY, QString::fromUtf8(text));
 }
 
+void EllipseShape::setType(std::string type) {
+    type_ = type;
 }
 
-/*std::unique_ptr<IShape> EllipseShape::clone() {
-    return std::make_unique<EllipseShape>(*this); // deep copy
-}*/
+void EllipseShape::setBBox(BoundingBox bbox) {
+    bbox_ = bbox;
+}
+
+void EllipseShape::setAttrs(Attributes attrs) {
+    attrs_ = attrs;
+}
+
+std::shared_ptr<IShape> EllipseShape::clone(std::shared_ptr<Item> item) const {
+    auto shape = std::make_shared<EllipseShape>();
+    shape->setBBox(item->getBoundingBox());
+    shape->setType(item->getType());
+    shape->setAttrs(item->getAttributes());
+    return shape; 
+}
+
+
+    // return std::make_unique<EllipseShape>(*this); // deep copy
+}
 

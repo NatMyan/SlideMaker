@@ -1,5 +1,7 @@
 #include "Document.hpp"
 
+#include <algorithm>    // std::min, std::max
+
 namespace dat {
 
 Document::Document() :
@@ -60,6 +62,19 @@ std::string Document::getOrientation() const {
 
 void Document::setOrientation(const std::string& orientation) {
     orientation_ = orientation;
+
+    auto temp = currFormat_.second;
+    if (orientation_ == "landscape") {
+        currFormat_.second.first = std::max(temp.first, temp.second);
+        currFormat_.second.second = std::min(temp.first, temp.second);
+    }
+    else if (orientation_ == "portrait") {
+        currFormat_.second.first = std::min(temp.first, temp.second);
+        currFormat_.second.second = std::max(temp.first, temp.second);
+    }
+    else {
+        throw InvalidOrientationException("Invalid orientation: " + orientation);
+    }
 }
 
 Document::slide_iterator Document::begin() {

@@ -1,9 +1,11 @@
 #include "ItemGroup.hpp"
 #include "Item.hpp"
 
+#include <unordered_set>
+
 namespace dat {
 
-explicit ItemGroup::ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs) :
+ItemGroup::ItemGroup(std::string type, int id, BoundingBox bbox, Attributes attrs) :
     id_(id),
     bbox_(bbox),
     attrs_(attrs)
@@ -19,7 +21,7 @@ explicit ItemGroup::ItemGroup(std::string type, int id, BoundingBox bbox, Attrib
     setAbsentAttrs();
 }
 
-explicit ItemGroup::ItemGroup(int id, BoundingBox bbox, Attributes attrs) :
+ItemGroup::ItemGroup(int id, BoundingBox bbox, Attributes attrs) :
     type_("itemGroup"),
     id_(id),
     bbox_(bbox),
@@ -40,6 +42,9 @@ void ItemGroup::setAbsentAttrs() {
     initAbsentAttrs("-lcolour", Value(std::string("green")));
     initAbsentAttrs("-lwidth", Value(1));
     initAbsentAttrs("-text", Value(std::string("")));
+    initAbsentAttrs("-tcolour", Value(std::string("black")));
+    initAbsentAttrs("-tsize", Value(12));
+    initAbsentAttrs("-tfont", Value(std::string("Arial")));
 
     if (type_ == std::string("polygonGroup") || type_ == std::string("polygon")) {
         initAbsentAttrs("-sideCount", Value(3));
@@ -114,9 +119,11 @@ void ItemGroup::setAttributes(const Attributes& attrs) {
     }
 }
 
-std::string ItemGroup::getType() const {
-    auto allTrue = std::all_of(items_.begin(), items_.end(), [](const auto& item) { return item->getType(); });
-    if (allTrue) { return (type_ + std::string{"Group"}); }
+std::string ItemGroup::getType() {
+    std::unordered_set<std::string> uniqueTypes;
+    for (const auto& item : items_) { uniqueTypes.insert(item->getType()); }
+    if (uniqueTypes.size() == 1) { type_ = std::string(*uniqueTypes.begin() + "Group"); } 
+    
     return type_;
 }
 
@@ -164,4 +171,18 @@ void ItemGroup::updateBoundingBox(const BoundingBox& bbox) {
 
 /*std::shared_ptr<Item> ItemGroup::getTopItem() const {
     return items_.back();
+}*/
+
+/*std::string ItemGroup::getType() const {
+    for (auto i = 0; i < items_.size(); ++i) {
+        for (auto j = 0; j < items_.size(); ++j) {
+            if (i == j) {
+                continue;
+            }
+            if (items_.at(i) != items_.at(j)) {
+                return type_;
+            }
+        }
+    }
+    return (type_ + std::string{"Group"});
 }*/

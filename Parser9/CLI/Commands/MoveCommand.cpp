@@ -25,8 +25,8 @@ void MoveCommand::execute() {
     auto slide = doc->getSlide(currIdx);
     auto slideAtNewIdx = doc->getSlide(newIdx);
     if (slide && slideAtNewIdx) { action = std::make_shared<dir::MoveSlideAction>(doc, slide, currIdx, newIdx); }
-    else if (!slide) { throw InvalidIndexException("Slide not found at index: " + currIdx); }
-    else if (!slideAtNewIdx) { throw InvalidIndexException("Slide not found at index: " + newIdx); }
+    else if (!slide) { throw InvalidIndexException("Slide not found at index: " + defs::toStr(Value(currIdx))); }
+    else if (!slideAtNewIdx) { throw InvalidIndexException("Slide not found at index: " + defs::toStr(Value(newIdx))); }
 
     if (action) { dir->runAction(action); }
     else { throw InvalidActionException("Action is nullptr"); }

@@ -1,6 +1,7 @@
 #include "DimensionConverter.hpp"
 
 namespace ren {
+
 // 1 cm -> 37.7952755906 pixel 
 // cmToPixel = (size / cmPerInch) * dpi
 std::pair<double, double> DimensionConverter::calculateImgDocWidthHeight(int width, int height) {

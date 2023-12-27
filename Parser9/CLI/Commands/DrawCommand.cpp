@@ -9,6 +9,8 @@
 
 namespace cli {
 
+using Renderer = ren::Renderer;
+
 DrawCommand::DrawCommand(const Map& info) :
     infoMap_(info)
 {}
@@ -52,7 +54,7 @@ ID DrawCommand::takeIndex() {
 
 std::pair<double, double> DrawCommand::takeConvertedSize() {
     auto [width, height] = app::Application::getApplication()->getDocument()->getFormatSize().second;
-    std::unique_ptr<DimensionConverter> converter = std::make_unique<DimensionConverter>();
+    std::unique_ptr<ren::DimensionConverter> converter = std::make_unique<ren::DimensionConverter>();
     auto [convWidth, convHeight] = converter->calculateImgDocWidthHeight(width, height);
     return {convWidth, convHeight};
 }

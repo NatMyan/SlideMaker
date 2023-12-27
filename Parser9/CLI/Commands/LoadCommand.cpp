@@ -1,10 +1,12 @@
 #include "LoadCommand.hpp"
 #include "../../Application.hpp"
-#include "../../Serializing/JsonDeserializer.hpp"
+#include "../../Serialization/JsonDeserializer.hpp"
 
 #include <fstream>
 
 namespace cli {
+
+using JsonDeserializer = srl::JsonDeserializer;
 
 LoadCommand::LoadCommand(const Map& info) :
     infoMap_(info)
@@ -14,7 +16,7 @@ void LoadCommand::execute() {
     auto app = app::Application::getApplication();
     auto doc = app->getDocument();
 
-    JSONDocument jsonDoc; 
+    srl::JSONDocument jsonDoc; 
     std::shared_ptr<JsonDeserializer> deserializer = std::make_shared<JsonDeserializer>(doc, jsonDoc);
 
     std::string fileName;

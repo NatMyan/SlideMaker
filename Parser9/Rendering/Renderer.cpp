@@ -11,17 +11,22 @@ Renderer::Renderer() :
 void Renderer::draw(std::shared_ptr<Slide> slide, QPaintDevice* paintDevice) {
     QPainter* painter = new QPainter;
 
+    // painter->save();
     painter->begin(paintDevice);
     for (auto it = slide->getItemGroup()->begin(); it != slide->getItemGroup()->end(); ++it) {
         auto item = (*it);
         std::shared_ptr<IShape> shape = shapeLib_->getShape(item);
         if (shape) {
+            std::cout << "shape isn't nullptr" << std::endl;
             std::shared_ptr<IVisualDisplayable> ptr = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
             if (ptr) {
                 ptr->draw(painter, item);
             }
+            else { throw InvalidPointerException("Ptr is nullptr"); }
         }
+        else { throw InvalidShapeException("Shape is nullptr"); }
     }
+    // painter->restore();
     painter->end();
 }
 

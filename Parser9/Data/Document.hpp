@@ -3,10 +3,13 @@
 
 #include "Slide.hpp"
 #include "FormatSize.hpp"
+#include "../zhelpers/Exception.hpp"
 
 namespace dat {
 
 class Document {
+    struct InvalidOrientationException : public Exception { using Exception::Exception; };
+
     public:
         using slide_iterator = std::vector<std::shared_ptr<Slide> >::iterator;
         using const_slide_iterator = std::vector<std::shared_ptr<Slide> >::const_iterator;

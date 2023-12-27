@@ -1,8 +1,8 @@
 #ifndef COMMAND_REGISTRYY_HPP
 #define COMMAND_REGISTRYY_HPP
 
-#include "../../zhelpers/Definitions.hpp"
-#include "../../zhelpers/Exception.hpp"
+#include "../zhelpers/Definitions.hpp"
+#include "../zhelpers/Exception.hpp"
 
 namespace cli {
 

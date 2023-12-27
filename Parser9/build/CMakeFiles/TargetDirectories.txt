@@ -1,0 +1,4 @@
+/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles/Pptx.dir
+/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles/edit_cache.dir
+/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles/rebuild_cache.dir
+/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles/Pptx_autogen.dir

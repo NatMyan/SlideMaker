@@ -1,8 +1,9 @@
 #ifndef SHAPE_BASE_HPP
 #define SHAPE_BASE_HPP
 
-#include "IShape.hpp"
-#include "ITextDisplayable.hpp"
+#include "../IShape.hpp"
+#include "../ITextDisplayable.hpp"
+#include "../IVisualDisplayable.hpp"
 #include "../../Data/Item.hpp"
 #include "../../Data/IItemVisitor.hpp"
 
@@ -11,12 +12,15 @@
 
 namespace ren {
 
-class ShapeBase : public IShape, public ITextDisplayable {
+///NOTE: if I put the commented part in ShapeBase, the dynamic cast fails, that's why it's in the derived classes
+
+using Attributes = dat::Attributes;
+
+class ShapeBase : public IShape, public ITextDisplayable, public IVisualDisplayable {
     public:
-        std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override final;
         void display(std::ostream& output, std::shared_ptr<Item> item) override final;
 
-    public:
+    /*public:
         void setType(std::string type);
         void setBBox(BoundingBox bbox);
         void setAttrs(Attributes attrs);
@@ -24,7 +28,7 @@ class ShapeBase : public IShape, public ITextDisplayable {
     private:
         std::string type_;
         BoundingBox bbox_;
-        Attributes attrs_;
+        Attributes attrs_;*/
 };
 
 }

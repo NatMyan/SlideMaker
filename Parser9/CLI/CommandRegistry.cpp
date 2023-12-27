@@ -1,5 +1,5 @@
 #include "CommandRegistry.hpp"
-#include "../../Exception.hpp"
+#include "../zhelpers/Exception.hpp"
 
 #include <algorithm>
 
@@ -9,12 +9,14 @@ CommandRegistry::CommandRegistry () :
     cmdTemplates_ {
         {"add", {{"-type"}, 
                  {"-type", "-t", "-r", "-b", "-l"}}, 
-                {{"-idx", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text", "-tcolour", "-tsize"}}},   // optional
+                {{"-idx", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", 
+                  "-text", "-tcolour", "-tsize", "-tfont"}}},   // optional
         {"remove", {{"-id"},
                     {"-idx"}},
                    {{}}},                  // optional
         {"change", {{"-id"}}, 
-                   {{"-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", "-text", "-tcolour", "-tsize"}}},  // optional
+                   {{"-t", "-r", "-b", "-l", "-lstyle", "-fcolour", "-lcolour", "-lwidth", "-angle", "-sideCount", 
+                     "-text", "-tcolour", "-tsize", "-tfont"}}},  // optional
         {"move",   {{"-cidx", "-nidx"}}, {{}}},
         {"switch", {{"-idx"}}},
         {"display", {{"-id"},

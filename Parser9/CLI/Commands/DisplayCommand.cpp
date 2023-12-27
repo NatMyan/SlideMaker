@@ -4,6 +4,8 @@
 
 namespace cli {
 
+using Renderer = ren::Renderer;
+
 DisplayCommand::DisplayCommand(const Map& info) :
     infoMap_(info)
 {}

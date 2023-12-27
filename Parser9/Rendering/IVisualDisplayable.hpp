@@ -1,7 +1,6 @@
 #ifndef I_VISUAL_DISPLAYABLE_HPP
 #define I_VISUAL_DISPLAYABLE_HPP
 
-#include "../VariantWrapper.hpp"
 #include "../Data/Item.hpp"
 
 #include <memory>

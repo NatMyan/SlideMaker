@@ -1,9 +1,9 @@
 #ifndef I_ACTION_HPP
 #define I_ACTION_HPP
 
-#include "../Data/Item.hpp"
-#include "../Data/ItemGroup.hpp"
-#include "../Data/Document.hpp"
+#include "../../Data/Item.hpp"
+#include "../../Data/ItemGroup.hpp"
+#include "../../Data/Document.hpp"
 
 #include <memory>
 

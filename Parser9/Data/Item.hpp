@@ -19,7 +19,7 @@ class Item : public IItem {
         
         ID getID() const override;
 
-        std::string getType() const override;
+        std::string getType() override;
         void setType(const std::string& type) override;
         
         BoundingBox getBoundingBox() const override;

@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+4a681cd09ec7fc0d356bfe1c96c779f9 CMakeFiles/Pptx_autogen

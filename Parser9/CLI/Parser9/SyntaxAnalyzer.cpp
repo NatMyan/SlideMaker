@@ -5,6 +5,8 @@
 namespace cli {
 
 bool SyntaxAnalyzer::isSyntaxValid (CommandInfo cmdInfo) {
+    return true;
+    
     const auto cmdName = cmdInfo.first;
     const auto argMap = cmdInfo.second;
     
