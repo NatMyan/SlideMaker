@@ -6,7 +6,7 @@
 
 namespace ren {
 
-class EllipseShape : public ShapeBase { //}, public IVisualDisplayable {
+class EllipseShape : public ShapeBase { //, public IVisualDisplayable {
     public:
         std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override;
         void draw(QPainter* painter, std::shared_ptr<Item> item) override;

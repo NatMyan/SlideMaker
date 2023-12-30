@@ -20,6 +20,7 @@ void Renderer::draw(std::shared_ptr<Slide> slide, QPaintDevice* paintDevice) {
             std::cout << "shape isn't nullptr" << std::endl;
             std::shared_ptr<IVisualDisplayable> ptr = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
             if (ptr) {
+                std::cout << "ptr isn't nullptr, yey" << std::endl;
                 ptr->draw(painter, item);
             }
             else { throw InvalidPointerException("Ptr is nullptr"); }

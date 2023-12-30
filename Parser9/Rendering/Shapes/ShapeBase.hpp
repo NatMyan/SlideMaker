@@ -32,4 +32,4 @@ class ShapeBase : public IShape, public ITextDisplayable, public IVisualDisplaya
 };
 
 }
-#endif // SHSPE_BASE_HPP
+#endif // SHAPE_BASE_HPP

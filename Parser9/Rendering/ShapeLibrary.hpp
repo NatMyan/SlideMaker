@@ -9,6 +9,7 @@
 #include "Shapes/TrapezoidShape.hpp"
 #include "Shapes/PolygonShape.hpp"
 #include "Shapes/TextShape.hpp"
+// #include "Shapes/VisualShapeBase.hpp"
 
 namespace ren {
 

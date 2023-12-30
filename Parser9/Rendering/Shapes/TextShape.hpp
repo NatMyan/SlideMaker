@@ -6,7 +6,7 @@
 
 namespace ren {
 
-class TextShape : public ShapeBase { //}, public IVisualDisplayable {
+class TextShape : public ShapeBase { //,  public IVisualDisplayable {
     public:
         // TextShape(std::shared_ptr<IShape> ogShape);
         std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override;
