@@ -34,7 +34,7 @@ void LoadCommand::execute() {
         }
         file.close();
     }
-    else { throw InvalidFileException("File failed to open: " + fileName); }
+    else { throw InvalidFileException("File failed to open or doesn't even exist: " + fileName); }
 }
 
 std::streamsize LoadCommand::takeFileSize(std::ifstream& file) {

@@ -18,14 +18,16 @@ void Application::exec(std::istream& inputStream, std::ostream& outputStream) {
     ctr_ = std::make_shared<Controller>(inputStream, outputStream);
     while (!isExit_) {
         const char eolToken = '\n';
-        // try {
+        try {
             std::cout << "Ctr starting" << std::endl;
             ctr_->execOnce(eolToken); 
             // std::cout << "exec" << std::endl;
-        // }
-        // catch (const Exception& e) {
+        }
+        catch (const Exception& e) {
+            std::cout << "continue" << std::endl;
+            continue;
             // std::cout << "Exception caught in Application exec, now what?" << std::endl;
-        // }
+        }
     }
 }
 

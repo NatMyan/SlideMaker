@@ -17,6 +17,11 @@ class JsonSerializer : public ISerializer {
         void save();
     
     private:
+        QJsonObject takeBbox(std::shared_ptr<dat::IItem> item);
+        QJsonArray takeItemArray(std::shared_ptr<dat::ItemGroup> group);
+        QJsonArray takeGroupArray(std::shared_ptr<dat::Document> doc); 
+    
+    private:
         std::shared_ptr<Document> doc_;
         JSONDocument jsonDoc_;
 };

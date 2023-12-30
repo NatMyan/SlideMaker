@@ -17,6 +17,10 @@ class JsonDeserializer : public IDeserializer {
         void load();
     
     private:
+        void addItemsToGroup(QJsonArray itemArray, std::shared_ptr<dat::ItemGroup> group);
+        void takeItemGroup(const QJsonValueRef &groupValue, std::shared_ptr<dat::ItemGroup> group);
+    
+    private:
         std::shared_ptr<Document> doc_;
         JSONDocument jsonDoc_;
 };
