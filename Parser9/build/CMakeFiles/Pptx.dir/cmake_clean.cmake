@@ -96,6 +96,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o.d"
   "CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o"
   "CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o.d"
+  "CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o"
+  "CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o.d"
   "CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o"
   "CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o.d"
   "CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o"

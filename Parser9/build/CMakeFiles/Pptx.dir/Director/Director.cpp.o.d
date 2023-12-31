@@ -775,6 +775,7 @@ CMakeFiles/Pptx.dir/Director/Director.cpp.o: \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/ShapeLibrary.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/Shapes/EllipseShape.hpp \
+  /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/Shapes/VisualShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/Shapes/ShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/Shapes/../IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Director/../Rendering/Shapes/../ITextDisplayable.hpp \

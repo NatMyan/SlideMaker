@@ -1270,6 +1270,30 @@ Rendering/Shapes/TriangleShape.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pptx.dir/build.make CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.s
 .PHONY : Rendering/Shapes/TriangleShape.cpp.s
 
+Rendering/Shapes/VisualShapeBase.o: Rendering/Shapes/VisualShapeBase.cpp.o
+.PHONY : Rendering/Shapes/VisualShapeBase.o
+
+# target to build an object file
+Rendering/Shapes/VisualShapeBase.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pptx.dir/build.make CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o
+.PHONY : Rendering/Shapes/VisualShapeBase.cpp.o
+
+Rendering/Shapes/VisualShapeBase.i: Rendering/Shapes/VisualShapeBase.cpp.i
+.PHONY : Rendering/Shapes/VisualShapeBase.i
+
+# target to preprocess a source file
+Rendering/Shapes/VisualShapeBase.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pptx.dir/build.make CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.i
+.PHONY : Rendering/Shapes/VisualShapeBase.cpp.i
+
+Rendering/Shapes/VisualShapeBase.s: Rendering/Shapes/VisualShapeBase.cpp.s
+.PHONY : Rendering/Shapes/VisualShapeBase.s
+
+# target to generate assembly for a file
+Rendering/Shapes/VisualShapeBase.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pptx.dir/build.make CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.s
+.PHONY : Rendering/Shapes/VisualShapeBase.cpp.s
+
 Serialization/JSONDocument.o: Serialization/JSONDocument.cpp.o
 .PHONY : Serialization/JSONDocument.o
 
@@ -1541,6 +1565,9 @@ help:
 	@echo "... Rendering/Shapes/TriangleShape.o"
 	@echo "... Rendering/Shapes/TriangleShape.i"
 	@echo "... Rendering/Shapes/TriangleShape.s"
+	@echo "... Rendering/Shapes/VisualShapeBase.o"
+	@echo "... Rendering/Shapes/VisualShapeBase.i"
+	@echo "... Rendering/Shapes/VisualShapeBase.s"
 	@echo "... Serialization/JSONDocument.o"
 	@echo "... Serialization/JSONDocument.i"
 	@echo "... Serialization/JSONDocument.s"

@@ -9,17 +9,17 @@
 #include "Shapes/TrapezoidShape.hpp"
 #include "Shapes/PolygonShape.hpp"
 #include "Shapes/TextShape.hpp"
-// #include "Shapes/VisualShapeBase.hpp"
+#include "Shapes/VisualShapeBase.hpp"
 
 namespace ren {
 
 class ShapeLibrary {
     public:
         ShapeLibrary();
-        std::shared_ptr<ShapeBase> getShape(std::shared_ptr<Item> item);
+        std::shared_ptr<VisualShapeBase> getShape(std::shared_ptr<Item> item);
     
     private:
-        std::unordered_map<std::string, std::shared_ptr<ShapeBase> > items_;
+        std::unordered_map<std::string, std::shared_ptr<VisualShapeBase> > items_;
 };
 
 }

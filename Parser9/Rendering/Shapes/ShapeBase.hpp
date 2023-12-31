@@ -16,9 +16,10 @@ namespace ren {
 
 using Attributes = dat::Attributes;
 
-class ShapeBase : public IShape, public ITextDisplayable, public IVisualDisplayable {
+class ShapeBase : public IShape, public ITextDisplayable { //, public IVisualDisplayable {
     public:
         void display(std::ostream& output, std::shared_ptr<Item> item) override final;
+        // void draw(QPainter* painter, std::shared_ptr<Item> item) override; // decorator pattern
 
     /*public:
         void setType(std::string type);

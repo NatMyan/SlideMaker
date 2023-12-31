@@ -615,10 +615,24 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/ShapeBase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Pptx.dir/Rendering/Shapes/ShapeBase.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/ShapeBase.cpp -o CMakeFiles/Pptx.dir/Rendering/Shapes/ShapeBase.cpp.s
 
+CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o: CMakeFiles/Pptx.dir/flags.make
+CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.cpp
+CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.cpp
+
+CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.cpp > CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.i
+
+CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.cpp -o CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.s
+
 CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/EllipseShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/EllipseShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.i: cmake_force
@@ -632,7 +646,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/LineShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/LineShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.i: cmake_force
@@ -646,7 +660,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/PolygonShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/PolygonShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.i: cmake_force
@@ -660,7 +674,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/RectangleShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/RectangleShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.i: cmake_force
@@ -674,7 +688,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/RectangleShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/ShapeLibrary.cpp
 CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/ShapeLibrary.cpp
 
 CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.i: cmake_force
@@ -688,7 +702,7 @@ CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TrapezoidShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TrapezoidShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.i: cmake_force
@@ -702,7 +716,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TriangleShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TriangleShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.i: cmake_force
@@ -716,7 +730,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/TriangleShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TextShape.cpp
 CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TextShape.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.i: cmake_force
@@ -730,7 +744,7 @@ CMakeFiles/Pptx.dir/Rendering/Shapes/TextShape.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Renderer.cpp
 CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o -MF CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o.d -o CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Renderer.cpp
 
 CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.i: cmake_force
@@ -744,7 +758,7 @@ CMakeFiles/Pptx.dir/Rendering/Renderer.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JSONDocument.cpp
 CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o -MF CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o.d -o CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JSONDocument.cpp
 
 CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.i: cmake_force
@@ -758,7 +772,7 @@ CMakeFiles/Pptx.dir/Serialization/JSONDocument.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JsonSerializer.cpp
 CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o -MF CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o.d -o CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JsonSerializer.cpp
 
 CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.i: cmake_force
@@ -772,7 +786,7 @@ CMakeFiles/Pptx.dir/Serialization/JsonSerializer.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JsonDeserializer.cpp
 CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o -MF CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o.d -o CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JsonDeserializer.cpp
 
 CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.i: cmake_force
@@ -786,7 +800,7 @@ CMakeFiles/Pptx.dir/Serialization/JsonDeserializer.cpp.s: cmake_force
 CMakeFiles/Pptx.dir/main.cpp.o: CMakeFiles/Pptx.dir/flags.make
 CMakeFiles/Pptx.dir/main.cpp.o: /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/main.cpp
 CMakeFiles/Pptx.dir/main.cpp.o: CMakeFiles/Pptx.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/Pptx.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/Pptx.dir/main.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pptx.dir/main.cpp.o -MF CMakeFiles/Pptx.dir/main.cpp.o.d -o CMakeFiles/Pptx.dir/main.cpp.o -c /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/main.cpp
 
 CMakeFiles/Pptx.dir/main.cpp.i: cmake_force
@@ -838,6 +852,7 @@ Pptx_OBJECTS = \
 "CMakeFiles/Pptx.dir/Director/Director.cpp.o" \
 "CMakeFiles/Pptx.dir/Rendering/DimensionConverter.cpp.o" \
 "CMakeFiles/Pptx.dir/Rendering/Shapes/ShapeBase.cpp.o" \
+"CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o" \
 "CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o" \
 "CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o" \
 "CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o" \
@@ -894,6 +909,7 @@ Pptx: CMakeFiles/Pptx.dir/Director/Actions/RemoveSlideAction.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Director/Director.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Rendering/DimensionConverter.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Rendering/Shapes/ShapeBase.cpp.o
+Pptx: CMakeFiles/Pptx.dir/Rendering/Shapes/VisualShapeBase.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Rendering/Shapes/EllipseShape.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Rendering/Shapes/LineShape.cpp.o
 Pptx: CMakeFiles/Pptx.dir/Rendering/Shapes/PolygonShape.cpp.o
@@ -912,7 +928,7 @@ Pptx: /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets
 Pptx: /opt/homebrew/lib/QtGui.framework/Versions/A/QtGui
 Pptx: /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore
 Pptx: CMakeFiles/Pptx.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Linking CXX executable Pptx"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Linking CXX executable Pptx"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Pptx.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

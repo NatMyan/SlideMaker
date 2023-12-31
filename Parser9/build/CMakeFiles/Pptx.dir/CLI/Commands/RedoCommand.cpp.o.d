@@ -779,6 +779,7 @@ CMakeFiles/Pptx.dir/CLI/Commands/RedoCommand.cpp.o: \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/ShapeLibrary.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/Shapes/EllipseShape.hpp \
+  /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/Shapes/VisualShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/Shapes/ShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/Shapes/../IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/CLI/Commands/../../Rendering/Shapes/../ITextDisplayable.hpp \

@@ -37,9 +37,11 @@ void TrapezoidShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     auto upRight = (3 * r + l) / 4.0;
     QList<QPointF> pairs = {{upLeft, t}, {l, b}, {r, b}, {upRight, t}};
     painter->drawPolygon(pairs);
+
+    VisualShapeBase::draw(painter, item);
 }
 
-void TrapezoidShape::setType(std::string type) {
+/*void TrapezoidShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -57,7 +59,7 @@ std::shared_ptr<IShape> TrapezoidShape::clone(std::shared_ptr<Item> item) const 
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }
 

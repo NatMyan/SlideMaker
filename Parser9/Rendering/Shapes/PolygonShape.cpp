@@ -37,6 +37,8 @@ void PolygonShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     painter->setBrush(brush);
     
     painter->drawPolygon(vertices.data(), sideCount);
+
+    VisualShapeBase::draw(painter, item);
 }
 
 QVector<QPointF> PolygonShape::takeVertices(double l, double t, double r, double b, double sideCount) {
@@ -55,7 +57,7 @@ QVector<QPointF> PolygonShape::takeVertices(double l, double t, double r, double
     return vertices;
 }
 
-void PolygonShape::setType(std::string type) {
+/*void PolygonShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -73,7 +75,7 @@ std::shared_ptr<IShape> PolygonShape::clone(std::shared_ptr<Item> item) const {
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }
 

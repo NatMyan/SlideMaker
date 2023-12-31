@@ -19,6 +19,7 @@ using Slide = dat::Slide;
 class Renderer : public IItemVisitor {
     struct InvalidShapeException : public Exception { using Exception::Exception; };
     struct InvalidPointerException : public Exception { using Exception::Exception; };
+    struct OutputStreamFailException : public Exception { using Exception::Exception; };
 
     public:
         Renderer();

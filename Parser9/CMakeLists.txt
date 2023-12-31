@@ -48,6 +48,7 @@ add_executable(Pptx
     "Director/Director.cpp"
     "Rendering/DimensionConverter.cpp"
     "Rendering/Shapes/ShapeBase.cpp"
+    "Rendering/Shapes/VisualShapeBase.cpp"
     "Rendering/Shapes/EllipseShape.cpp"
     "Rendering/Shapes/LineShape.cpp"
     "Rendering/Shapes/PolygonShape.cpp"

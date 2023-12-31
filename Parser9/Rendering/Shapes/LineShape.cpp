@@ -28,9 +28,11 @@ void LineShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     painter->setPen(pen);
 
     painter->drawLine(l, t, r, b);
+
+    VisualShapeBase::draw(painter, item);
 }
 
-void LineShape::setType(std::string type) {
+/*void LineShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -48,7 +50,7 @@ std::shared_ptr<IShape> LineShape::clone(std::shared_ptr<Item> item) const {
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }
 

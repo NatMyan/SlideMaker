@@ -36,9 +36,11 @@ void RectangleShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     painter->setBrush(brush);
 
     painter->drawRect(QRectF(l, t, r - l, b - t));
+
+    VisualShapeBase::draw(painter, item);
 }
 
-void RectangleShape::setType(std::string type) {
+/*void RectangleShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -56,7 +58,7 @@ std::shared_ptr<IShape> RectangleShape::clone(std::shared_ptr<Item> item) const 
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }
 

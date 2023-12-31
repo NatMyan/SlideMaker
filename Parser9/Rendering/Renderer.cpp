@@ -15,13 +15,16 @@ void Renderer::draw(std::shared_ptr<Slide> slide, QPaintDevice* paintDevice) {
     painter->begin(paintDevice);
     for (auto it = slide->getItemGroup()->begin(); it != slide->getItemGroup()->end(); ++it) {
         auto item = (*it);
-        std::shared_ptr<IShape> shape = shapeLib_->getShape(item);
+        std::shared_ptr<VisualShapeBase> shape = shapeLib_->getShape(item);
         if (shape) {
             std::cout << "shape isn't nullptr" << std::endl;
             std::shared_ptr<IVisualDisplayable> ptr = std::dynamic_pointer_cast<IVisualDisplayable>(shape);
             if (ptr) {
                 std::cout << "ptr isn't nullptr, yey" << std::endl;
                 ptr->draw(painter, item);
+                // std::shared_ptr<ShapeBase> backPtr = std::dynamic_pointer_cast<ShapeBase>(ptr);
+                // backPtr->drawText(painter, item);
+                // ptr->drawText(painter, item);
             }
             else { throw InvalidPointerException("Ptr is nullptr"); }
         }
@@ -53,9 +56,11 @@ void Renderer::visitItem(const Item& item) {
         }
         else {
             // std::cout << "no ptr" << std::endl;
+            throw InvalidPointerException("Ptr is nullptr"); 
         }
     }
     else {
+        throw OutputStreamFailException("Ostream failed");
         // std::cout << "ostr doesn't work" << std::endl;
     }
 }

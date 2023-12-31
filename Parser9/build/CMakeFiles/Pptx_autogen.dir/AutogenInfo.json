@@ -596,6 +596,12 @@
 			null
 		],
 		[
+			"/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.hpp",
+			"MU",
+			"LJONSNJYZD/moc_VisualShapeBase.cpp",
+			null
+		],
+		[
 			"/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Serialization/JSONDocument.hpp",
 			"MU",
 			"FVSBAVFDNL/moc_JSONDocument.cpp",
@@ -905,6 +911,11 @@
 		],
 		[
 			"/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TriangleShape.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.cpp",
 			"MU",
 			null
 		],

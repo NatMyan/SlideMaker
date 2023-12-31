@@ -1,15 +1,15 @@
 #ifndef LINE_SHAPE_HPP
 #define LINE_SHAPE_HPP
 
-#include "ShapeBase.hpp"
+#include "VisualShapeBase.hpp"
 #include "../IVisualDisplayable.hpp"
 
 namespace ren {
 
-class LineShape : public ShapeBase { //, public IVisualDisplayable {
+class LineShape : public VisualShapeBase { //, public IVisualDisplayable {
     public:
-        std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override;
         void draw(QPainter* painter, std::shared_ptr<Item> item) override;
+        /*std::shared_ptr<IShape> clone(std::shared_ptr<Item> item) const override;
     
     public:
         void setType(std::string type);
@@ -19,7 +19,7 @@ class LineShape : public ShapeBase { //, public IVisualDisplayable {
     private:
         std::string type_;
         BoundingBox bbox_;
-        Attributes attrs_;
+        Attributes attrs_;*/
 };
 
 }

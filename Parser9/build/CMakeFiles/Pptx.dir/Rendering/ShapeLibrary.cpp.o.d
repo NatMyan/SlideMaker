@@ -746,6 +746,7 @@ CMakeFiles/Pptx.dir/Rendering/ShapeLibrary.cpp.o: \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/../Data/IItem.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/../Data/IItemVisitor.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/EllipseShape.hpp \
+  /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/ShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/../IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/../ITextDisplayable.hpp \

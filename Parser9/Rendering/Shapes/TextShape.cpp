@@ -3,7 +3,8 @@
 namespace ren {
 
 void TextShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
-    if (!painter) {
+    VisualShapeBase::draw(painter, item);
+    /*if (!painter) {
         return;
     }
     
@@ -30,10 +31,10 @@ void TextShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
 
     QFont font(QString::fromUtf8(tfont), tsize);
     painter->setFont(font);
-    painter->drawText(centerX, centerY, QString::fromUtf8(text));
+    painter->drawText(centerX, centerY, QString::fromUtf8(text));*/
 }
 
-void TextShape::setType(std::string type) {
+/*void TextShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -51,6 +52,6 @@ std::shared_ptr<IShape> TextShape::clone(std::shared_ptr<Item> item) const {
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }

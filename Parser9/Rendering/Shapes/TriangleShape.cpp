@@ -36,9 +36,11 @@ void TriangleShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     auto mid = (l + r) / 2.0;
     QList<QPointF> pairs = {{mid, t}, {r, b}, {l, b}};
     painter->drawPolygon(pairs);
+
+    VisualShapeBase::draw(painter, item);
 }
 
-void TriangleShape::setType(std::string type) {
+/*void TriangleShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -56,7 +58,7 @@ std::shared_ptr<IShape> TriangleShape::clone(std::shared_ptr<Item> item) const {
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
+}*/
 
 }
 

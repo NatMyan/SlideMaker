@@ -15,24 +15,16 @@ ShapeLibrary::ShapeLibrary () {
     items_["text"] = std::make_shared<TextShape>();
 }
 
-std::shared_ptr<ShapeBase> ShapeLibrary::getShape(std::shared_ptr<Item> item) {
+std::shared_ptr<VisualShapeBase> ShapeLibrary::getShape(std::shared_ptr<Item> item) {
     auto it = items_.find(item->getType());
+    // std::cout << item->getType() << " type" << std::endl;
     if (it != items_.end()) {
-        return std::dynamic_pointer_cast<ShapeBase>(it->second->clone(item));
+        // std::cout << "clone " << std::endl;
+        return std::dynamic_pointer_cast<VisualShapeBase>(it->second->clone(item));
     }
+    // std::cout << "null " << std::endl;
     return nullptr; 
 }
 
 }
 
-/*std::shared_ptr<IShape> ShapeLibrary::getShape(std::shared_ptr<Item> item) {
-///NOTE: PRETEND THIS IF ELSE IS A MAP
-    auto type = item->getType();
-    if (type == "rectangle") return std::make_shared<RectangleShape>();
-    else if (type == "triangle") return std::make_shared<TriangleShape>();
-    else if (type == "trapezoid") return std::make_shared<TrapezoidShape>();
-    else if (type == "ellipse") return std::make_shared<EllipseShape>();
-    else if (type == "line") return std::make_shared<LineShape>();
-    else if (type == "polygon") return std::make_shared<PolygonShape>();
-    // else if (type == "itemGroup") return std::make_shared<GroupShape>();
-}*/

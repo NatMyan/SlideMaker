@@ -35,9 +35,11 @@ void EllipseShape::draw(QPainter* painter, std::shared_ptr<Item> item) {
     painter->setBrush(brush);
 
     painter->drawEllipse(QRectF(l, t, r - l, b - t));
+
+    VisualShapeBase::draw(painter, item);
 }
 
-void EllipseShape::setType(std::string type) {
+/*void EllipseShape::setType(std::string type) {
     type_ = type;
 }
 
@@ -55,8 +57,7 @@ std::shared_ptr<IShape> EllipseShape::clone(std::shared_ptr<Item> item) const {
     shape->setType(item->getType());
     shape->setAttrs(item->getAttributes());
     return shape; 
-}
-
+}*/
 
     // return std::make_unique<EllipseShape>(*this); // deep copy
 }

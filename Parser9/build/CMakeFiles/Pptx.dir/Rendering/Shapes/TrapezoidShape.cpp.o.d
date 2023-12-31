@@ -1,6 +1,7 @@
 CMakeFiles/Pptx.dir/Rendering/Shapes/TrapezoidShape.cpp.o: \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TrapezoidShape.cpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/TrapezoidShape.hpp \
+  /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/VisualShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/ShapeBase.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/../IShape.hpp \
   /Users/nataliemanukyan/Desktop/OOP_entirety/SlideMaker/Parser9/Rendering/Shapes/../../Data/Item.hpp \
